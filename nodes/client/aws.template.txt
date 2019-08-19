@@ -1,0 +1,9 @@
+Instance type: c5n.2xlarge
+Capability: up to 25G, large ramdisk
+Setup: EBS-backed local install, virtualized, on private network behind elastic IP (NAT)
+Software:
+Centos7 with either OSG or Globus provided globus-url-copy
+Relevant setup:
+   no firewall
+   export GLOBUS_FTP_CLIENT_DATA_IP=<elastic IP>
+
