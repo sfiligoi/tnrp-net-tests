@@ -1,0 +1,21 @@
+[sfiligoi@osg ~]$ export GLOBUS_TCP_PORT_RANGE=50000,51000
+[sfiligoi@osg ~]$ time globus-url-copy -vb -fast -p 16 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8513912832 bytes      1014.93 MB/sec avg      1184.22 MB/sec inst
+
+real	0m9.253s
+user	0m1.414s
+sys	0m7.104s
+[sfiligoi@osg ~]$ time globus-url-copy -vb -fast -p 16 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8963489792 bytes      1068.52 MB/sec avg      1282.26 MB/sec inst
+
+real	0m8.690s
+user	0m1.311s
+sys	0m6.793s

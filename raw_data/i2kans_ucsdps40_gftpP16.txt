@@ -1,0 +1,21 @@
+[sfiligoi@osg ~]$ export GLOBUS_TCP_PORT_RANGE=50000,51000
+[sfiligoi@osg ~]$ time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9720816640 bytes      1158.80 MB/sec avg      1366.50 MB/sec inst
+
+real	0m8.259s
+user	0m1.060s
+sys	0m6.193s
+[sfiligoi@osg ~]$ time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9356181504 bytes      1115.34 MB/sec avg      1343.34 MB/sec inst
+
+real	0m8.432s
+user	0m1.174s
+sys	0m6.656s
