@@ -1,0 +1,36 @@
+# Gloubus provided globus-url-copy seems to have serious concurrency issue
+# This data provided just for completeness, OSG version of the tool used to evaluate the network from i2chic
+[sfiligoi@osg ~]$ time globus-url-copy -vb -len 5000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/5G_1.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  5G_1.dat
+ 
+   4246732800 bytes       674.98 MB/sec avg      1555.88 MB/sec inst
+ 
+real   0m6.404s
+user   0m0.090s
+sys    0m2.987s
+sfiligoi@osg ~]$ time globus-url-copy -vb -len 5000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/5G_1.dat & time globus-url-copy -vb -len 5000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/5G_2.dat &
+[1] 367007
+[2] 367008
+[sfiligoi@osg ~]$ Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+Dest:   file:///dev/shm/
+  10G.dat  ->  5G_2.dat
+  10G.dat  ->  5G_1.dat
+ 
+ 
+   2213543936 bytes       351.83 MB/sec avg       162.50 MB/sec inst
+ 
+real   0m6.467s
+user   0m0.068s
+sys    0m3.023s
+   2921332736 bytes        51.59 MB/sec avg       294.94 MB/sec inst
+ 
+real   0m55.213s
+user   0m0.089s
+sys    0m3.263s
+ 
+[1]-  Done                    time globus-url-copy -vb -len 5000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/5G_1.dat
+[2]+  Done                    time globus-url-copy -vb -len 5000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/5G_2.dat

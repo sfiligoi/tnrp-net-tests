@@ -1,0 +1,21 @@
+# Gloubus provided globus-url-copy seems to have serious concurrency issue
+# This data provided just for completeness, OSG version of the tool used to evaluate the network in other file
+[root@ip-172-31-27-188 centos]# time globus-url-copy -len 5000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/5G_1.dat
+
+real	0m21.997s
+user	0m0.244s
+sys	0m4.282s
+[root@ip-172-31-27-188 centos]# time globus-url-copy -len 5000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/5G_1.dat & time globus-url-copy -len 5000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/5G_2.dat &
+[1] 6050
+[2] 6051
+[root@ip-172-31-27-188 centos]# 
+real	0m35.206s
+user	0m0.248s
+sys	0m5.281s
+
+real	1m12.714s
+user	0m0.235s
+sys	0m4.625s
+
+[1]-  Done                    time globus-url-copy -len 5000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/5G_1.dat
+[2]+  Done                    time globus-url-copy -len 5000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/5G_2.dat
