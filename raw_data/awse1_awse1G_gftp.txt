@@ -1,0 +1,73 @@
+[root@ip-172-31-28-221 centos]# time globus-url-copy -vb ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8978956288 bytes       535.19 MB/sec avg       569.04 MB/sec inst
+
+real	0m17.752s
+user	0m0.350s
+sys	0m12.541s
+#
+# The non-scaling is surprising, but was repeatedy measured
+#
+[root@ip-172-31-28-221 centos]# for i in 1 2 3 4 5; do time globus-url-copy -vb -len 2000000000 ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat & done; time wait
+[1] 24366
+[2] 24367
+[3] 24368
+[4] 24370
+[5] 24372
+Source: ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/
+Source: ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/
+Source: ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+Dest:   file:///dev/shm/
+Dest:   file:///dev/shm/
+  10G.dat  ->  2G_2.dat
+  10G.dat  ->  2G_4.dat
+  10G.dat  ->  2G_1.dat
+Source: ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/
+Source: ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+Dest:   file:///dev/shm/
+  10G.dat  ->  2G_3.dat
+  10G.dat  ->  2G_5.dat
+
+
+
+
+
+    903872512 bytes        71.83 MB/sec avg        76.50 MB/sec inst
+
+real	0m13.093s
+user	0m0.497s
+sys	0m6.398s
+
+
+real	0m13.463s
+user	0m0.269s
+sys	0m5.521s
+
+
+real	0m13.845s
+user	0m0.251s
+sys	0m5.050s
+[1]   Done                    time globus-url-copy -vb -len 2000000000 ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+[2]   Done                    time globus-url-copy -vb -len 2000000000 ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+[5]+  Done                    time globus-url-copy -vb -len 2000000000 ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+   1714421760 bytes       102.19 MB/sec avg       278.51 MB/sec instsec inst
+
+real	0m16.504s
+user	0m0.365s
+sys	0m4.699s
+
+
+real	0m16.731s
+user	0m0.198s
+sys	0m3.367s
+[3]-  Done                    time globus-url-copy -vb -len 2000000000 ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+[4]+  Done                    time globus-url-copy -vb -len 2000000000 ftp://ec2-3-213-155-48.compute-1.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+
+real	0m16.731s
+user	0m1.582s
+sys	0m25.035s
