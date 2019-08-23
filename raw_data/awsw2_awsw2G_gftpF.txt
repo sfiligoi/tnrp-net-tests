@@ -1,0 +1,21 @@
+[root@ip-172-31-31-148 centos]# export GLOBUS_FTP_CLIENT_DATA_IP=172.31.31.148
+[root@ip-172-31-31-148 centos]# time globus-url-copy -vb -fast -p 16 ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8119386112 bytes      1290.51 MB/sec avg      1284.97 MB/sec inst
+
+real	0m7.440s
+user	0m0.341s
+sys	0m6.923s
+[root@ip-172-31-31-148 centos]# time globus-url-copy -vb -fast -p 20 ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   7343177728 bytes      1167.14 MB/sec avg      1350.22 MB/sec inst
+
+real	0m7.866s
+user	0m0.322s
+sys	0m7.539s

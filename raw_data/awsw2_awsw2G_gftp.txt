@@ -1,0 +1,48 @@
+[root@ip-172-31-31-148 centos]# time globus-url-copy -vb ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9198108672 bytes       548.25 MB/sec avg       572.49 MB/sec inst
+
+real	0m17.340s
+user	0m0.339s
+sys	0m11.425s
+#
+# This is unexpected, but was this is the result
+#
+[root@ip-172-31-31-148 centos]# for i in 1 2 3 4 5; do time globus-url-copy -len 2000000000 ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat & done; time wait
+[1] 3036
+[2] 3037
+[3] 3038
+[4] 3040
+[5] 3042
+
+real	0m12.212s
+user	0m0.462s
+sys	0m6.332s
+
+real	0m12.659s
+user	0m0.483s
+sys	0m6.888s
+
+real	0m12.742s
+user	0m0.343s
+sys	0m4.797s
+[1]   Done                    time globus-url-copy -len 2000000000 ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+[4]-  Done                    time globus-url-copy -len 2000000000 ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+[5]+  Done                    time globus-url-copy -len 2000000000 ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+
+real	0m16.549s
+user	0m0.301s
+sys	0m4.986s
+[2]-  Done                    time globus-url-copy -len 2000000000 ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+
+real	0m16.728s
+user	0m0.368s
+sys	0m4.714s
+[3]+  Done                    time globus-url-copy -len 2000000000 ftp://ip-172-31-17-182.us-west-2.compute.internal:2811/export/data/10G.dat file:///dev/shm/2G_${i}.dat
+
+real	0m16.728s
+user	0m1.958s
+sys	0m27.718s
