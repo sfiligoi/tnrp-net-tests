@@ -1,0 +1,35 @@
+[root@osg /]# iperf -c osg.newy32aoa.nrp.internet2.edu -p 50093
+------------------------------------------------------------
+Client connecting to osg.newy32aoa.nrp.internet2.edu, TCP port 50093
+TCP window size:  325 KByte (default)
+------------------------------------------------------------
+[  3] local 163.253.70.2 port 46190 connected with 163.253.72.2 port 50093
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  29.5 GBytes  25.3 Gbits/sec
+[root@osg /]# iperf -c osg.newy32aoa.nrp.internet2.edu -p 50093 -P 10
+------------------------------------------------------------
+Client connecting to osg.newy32aoa.nrp.internet2.edu, TCP port 50093
+TCP window size:  325 KByte (default)
+------------------------------------------------------------
+[ 12] local 163.253.70.2 port 46222 connected with 163.253.72.2 port 50093
+[  6] local 163.253.70.2 port 46204 connected with 163.253.72.2 port 50093
+[  7] local 163.253.70.2 port 46206 connected with 163.253.72.2 port 50093
+[  9] local 163.253.70.2 port 46210 connected with 163.253.72.2 port 50093
+[ 11] local 163.253.70.2 port 46218 connected with 163.253.72.2 port 50093
+[  3] local 163.253.70.2 port 46216 connected with 163.253.72.2 port 50093
+[  8] local 163.253.70.2 port 46208 connected with 163.253.72.2 port 50093
+[ 10] local 163.253.70.2 port 46212 connected with 163.253.72.2 port 50093
+[  5] local 163.253.70.2 port 46202 connected with 163.253.72.2 port 50093
+[  4] local 163.253.70.2 port 46214 connected with 163.253.72.2 port 50093
+[ ID] Interval       Transfer     Bandwidth
+[ 12]  0.0-10.0 sec  20.2 GBytes  17.3 Gbits/sec
+[  3]  0.0-10.0 sec  19.9 GBytes  17.1 Gbits/sec
+[  8]  0.0-10.0 sec  11.1 GBytes  9.50 Gbits/sec
+[  5]  0.0-10.0 sec  7.35 GBytes  6.32 Gbits/sec
+[  9]  0.0-10.0 sec  5.23 GBytes  4.48 Gbits/sec
+[ 10]  0.0-10.0 sec  5.58 GBytes  4.78 Gbits/sec
+[  4]  0.0-10.0 sec  13.7 GBytes  11.8 Gbits/sec
+[ 11]  0.0-10.1 sec  13.3 GBytes  11.3 Gbits/sec
+[  6]  0.0-10.1 sec  12.0 GBytes  10.2 Gbits/sec
+[  7]  0.0-10.1 sec  5.14 GBytes  4.38 Gbits/sec
+[SUM]  0.0-10.1 sec   113 GBytes  96.7 Gbits/sec

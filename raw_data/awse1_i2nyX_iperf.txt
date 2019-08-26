@@ -1,0 +1,82 @@
+[root@ip-172-31-28-221 centos]# iperf -c osg.newy32aoa.nrp.internet2.edu -p 50093
+------------------------------------------------------------
+Client connecting to osg.newy32aoa.nrp.internet2.edu, TCP port 50093
+TCP window size:  136 KByte (default)
+------------------------------------------------------------
+[  3] local 172.31.28.221 port 53406 connected with 163.253.72.2 port 50093
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  1.09 GBytes   933 Mbits/sec
+[root@ip-172-31-28-221 centos]# iperf -c osg.newy32aoa.nrp.internet2.edu -p 50093 -P 10
+------------------------------------------------------------
+Client connecting to osg.newy32aoa.nrp.internet2.edu, TCP port 50093
+TCP window size:  170 KByte (default)
+------------------------------------------------------------
+[ 12] local 172.31.28.221 port 53426 connected with 163.253.72.2 port 50093
+[  4] local 172.31.28.221 port 53410 connected with 163.253.72.2 port 50093
+[  6] local 172.31.28.221 port 53412 connected with 163.253.72.2 port 50093
+[  3] local 172.31.28.221 port 53414 connected with 163.253.72.2 port 50093
+[  7] local 172.31.28.221 port 53408 connected with 163.253.72.2 port 50093
+[  8] local 172.31.28.221 port 53416 connected with 163.253.72.2 port 50093
+[  9] local 172.31.28.221 port 53418 connected with 163.253.72.2 port 50093
+[ 10] local 172.31.28.221 port 53422 connected with 163.253.72.2 port 50093
+[  5] local 172.31.28.221 port 53420 connected with 163.253.72.2 port 50093
+[ 11] local 172.31.28.221 port 53424 connected with 163.253.72.2 port 50093
+[ ID] Interval       Transfer     Bandwidth
+[  7]  0.0-10.0 sec   138 MBytes   116 Mbits/sec
+[ 12]  0.0-10.0 sec  94.2 MBytes  79.0 Mbits/sec
+[  6]  0.0-10.0 sec  96.8 MBytes  81.0 Mbits/sec
+[  3]  0.0-10.0 sec   142 MBytes   119 Mbits/sec
+[  8]  0.0-10.0 sec   125 MBytes   105 Mbits/sec
+[  5]  0.0-10.0 sec   149 MBytes   125 Mbits/sec
+[ 11]  0.0-10.0 sec  98.9 MBytes  82.9 Mbits/sec
+[  4]  0.0-10.0 sec   111 MBytes  92.7 Mbits/sec
+[  9]  0.0-10.0 sec  93.1 MBytes  77.9 Mbits/sec
+[ 10]  0.0-10.0 sec  74.5 MBytes  62.3 Mbits/sec
+[SUM]  0.0-10.0 sec  1.10 GBytes   938 Mbits/sec
+[root@ip-172-31-28-221 centos]# iperf -c osg.newy32aoa.nrp.internet2.edu -p 50093 -P 20
+------------------------------------------------------------
+Client connecting to osg.newy32aoa.nrp.internet2.edu, TCP port 50093
+TCP window size:  170 KByte (default)
+------------------------------------------------------------
+[ 16] local 172.31.28.221 port 53458 connected with 163.253.72.2 port 50093
+[  3] local 172.31.28.221 port 53428 connected with 163.253.72.2 port 50093
+[  4] local 172.31.28.221 port 53430 connected with 163.253.72.2 port 50093
+[  7] local 172.31.28.221 port 53436 connected with 163.253.72.2 port 50093
+[  6] local 172.31.28.221 port 53432 connected with 163.253.72.2 port 50093
+[  5] local 172.31.28.221 port 53434 connected with 163.253.72.2 port 50093
+[  8] local 172.31.28.221 port 53438 connected with 163.253.72.2 port 50093
+[ 13] local 172.31.28.221 port 53442 connected with 163.253.72.2 port 50093
+[ 11] local 172.31.28.221 port 53440 connected with 163.253.72.2 port 50093
+[  9] local 172.31.28.221 port 53444 connected with 163.253.72.2 port 50093
+[ 14] local 172.31.28.221 port 53446 connected with 163.253.72.2 port 50093
+[ 17] local 172.31.28.221 port 53454 connected with 163.253.72.2 port 50093
+[ 12] local 172.31.28.221 port 53448 connected with 163.253.72.2 port 50093
+[ 10] local 172.31.28.221 port 53450 connected with 163.253.72.2 port 50093
+[ 18] local 172.31.28.221 port 53460 connected with 163.253.72.2 port 50093
+[ 22] local 172.31.28.221 port 53464 connected with 163.253.72.2 port 50093
+[ 19] local 172.31.28.221 port 53452 connected with 163.253.72.2 port 50093
+[ 20] local 172.31.28.221 port 53466 connected with 163.253.72.2 port 50093
+[ 15] local 172.31.28.221 port 53462 connected with 163.253.72.2 port 50093
+[ 21] local 172.31.28.221 port 53456 connected with 163.253.72.2 port 50093
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.0 sec  73.0 MBytes  61.2 Mbits/sec
+[  8]  0.0-10.0 sec  73.5 MBytes  61.6 Mbits/sec
+[ 11]  0.0-10.0 sec  48.5 MBytes  40.7 Mbits/sec
+[ 21]  0.0-10.0 sec  56.2 MBytes  47.2 Mbits/sec
+[  3]  0.0-10.0 sec  49.4 MBytes  41.4 Mbits/sec
+[ 13]  0.0-10.0 sec  40.2 MBytes  33.7 Mbits/sec
+[  9]  0.0-10.0 sec  46.2 MBytes  38.7 Mbits/sec
+[ 12]  0.0-10.0 sec  62.1 MBytes  52.0 Mbits/sec
+[ 10]  0.0-10.0 sec  39.1 MBytes  32.7 Mbits/sec
+[ 22]  0.0-10.0 sec  40.0 MBytes  33.5 Mbits/sec
+[ 15]  0.0-10.0 sec  59.1 MBytes  49.5 Mbits/sec
+[  7]  0.0-10.0 sec  49.2 MBytes  41.1 Mbits/sec
+[  6]  0.0-10.0 sec  73.9 MBytes  61.7 Mbits/sec
+[ 16]  0.0-10.1 sec  74.9 MBytes  62.5 Mbits/sec
+[ 17]  0.0-10.0 sec  35.9 MBytes  29.9 Mbits/sec
+[ 18]  0.0-10.0 sec  43.1 MBytes  36.0 Mbits/sec
+[ 19]  0.0-10.1 sec  56.8 MBytes  47.4 Mbits/sec
+[  5]  0.0-10.1 sec  59.8 MBytes  49.8 Mbits/sec
+[ 14]  0.0-10.1 sec   109 MBytes  90.6 Mbits/sec
+[ 20]  0.0-10.1 sec  41.2 MBytes  34.4 Mbits/sec
+[SUM]  0.0-10.1 sec  1.10 GBytes   942 Mbits/sec
