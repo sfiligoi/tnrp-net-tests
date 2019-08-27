@@ -1,0 +1,58 @@
+[root@osg /]# ping stashcache.t2.ucsd.edu
+PING stashcache.t2.ucsd.edu (169.228.130.97) 56(84) bytes of data.
+64 bytes from stashcache.t2.ucsd.edu (169.228.130.97): icmp_seq=1 ttl=56 time=35.2 ms
+[root@osg /]# time xrdcp root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][635.8MB/s]  
+
+real	0m14.923s
+user	0m0.050s
+sys	0m10.473s
+[root@osg /]# time xrdcp root://169.228.130.97:50094//testucsd/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][867MB/s]    
+
+real	0m11.582s
+user	0m0.050s
+sys	0m10.367s
+#
+#
+# Something is wrong with DNS, using Ip from now on
+#
+[root@osg /]# time xrdcp -DICPParallelChunks 8 root://169.228.130.97:50094//testucsd/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.33GB/s]   
+
+real	0m6.176s
+user	0m0.078s
+sys	0m9.490s
+[root@osg /]# time xrdcp -DICPParallelChunks 16 root://169.228.130.97:50094//testucsd/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.863GB/s]  
+
+real	0m5.983s
+user	0m0.054s
+sys	0m9.417s
+[root@osg /]# time xrdcp -DICPParallelChunks 32 root://169.228.130.97:50094//testucsd/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.552GB/s]  
+
+real	0m5.925s
+user	0m0.053s
+sys	0m9.115s
+[root@osg /]# time xrdcp --stream 7 root://169.228.130.97:50094//testucsd/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][733.6MB/s]  
+
+real	0m12.555s
+user	0m0.067s
+sys	0m10.287s
+[root@osg /]# time xrdcp --stream 7 -DICPParallelChunks 8 root://169.228.130.97:50094//testucsd/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.33GB/s]   
+
+real	0m7.405s
+user	0m0.072s
+sys	0m9.749s
+[root@osg /]# time xrdcp --stream 7 -DICPParallelChunks 16 root://169.228.130.97:50094//testucsd/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.863GB/s]  
+
+real	0m5.711s
+user	0m0.070s
+sys	0m8.643s
+#
+# Any higher concurrency would end up in stuck transfer
+#

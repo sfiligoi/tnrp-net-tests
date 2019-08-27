@@ -1,0 +1,25 @@
+[root@ps-100g /]# hostname
+ps-100g.sdsu.edu
+[root@ps-100g /]# ping ps-40g-gridftp.calit2.optiputer.net
+PING ps-40g-gridftp.calit2.optiputer.net (67.58.50.66) 56(84) bytes of data.
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=1 ttl=60 time=0.667 ms
+[root@ps-100g /]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:/export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:/export/shm/
+  10G.dat
+
+   9793961984 bytes      1167.53 MB/sec avg      1289.70 MB/sec inst
+
+real	0m8.158s
+user	0m0.787s
+sys	0m7.313s
+[root@ps-100g /]# time globus-url-copy -vb -fast -p 4 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:/export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:/export/shm/
+  10G.dat
+
+   7566000128 bytes      1202.55 MB/sec avg      1366.94 MB/sec inst
+
+real	0m7.667s
+user	0m0.748s
+sys	0m6.875s
