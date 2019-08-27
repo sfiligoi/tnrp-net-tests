@@ -1,0 +1,47 @@
+[root@osg /]# rpm -qa |grep xrootd-client
+xrootd-client-libs-4.8.5-1.osg34.el7.x86_64
+xrootd-client-4.8.5-1.osg34.el7.x86_64
+root@osg /]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=59 time=33.2 ms
+[root@osg /]# time xrdcp root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][867MB/s]    
+
+real	0m11.248s
+user	0m0.058s
+[root@osg /]# time xrdcp -DICPParallelChunks 8 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.552GB/s]  
+
+real	0m6.504s
+user	0m0.063s
+sys	0m9.732s
+[root@osg /]# time xrdcp -DICPParallelChunks 8 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /dev/null 
+[9.313GB/9.313GB][100%][==================================================][1.552GB/s]  
+
+real	0m5.798s
+user	0m0.079s
+sys	0m4.932s
+[root@osg /]# time xrdcp -DICPParallelChunks 8 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/data/10G.out
+[9.313GB/9.313GB][100%][==================================================][867MB/s]    
+
+real	0m10.538s
+user	0m0.090s
+sys	0m8.613s
+[root@osg /]# time xrdcp -DICPParallelChunks 16 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.552GB/s]  
+
+real	0m6.683s
+user	0m0.075s
+sys	0m10.494s
+[root@osg /]# time xrdcp --streams=7 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][794.7MB/s]  
+
+real	0m12.415s
+user	0m0.063s
+sys	0m10.896s
+[root@osg /]# time xrdcp --streams=7 -DICPParallelChunks 8 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.164GB/s]  
+
+real	0m7.966s
+user	0m0.067s
+sys	0m10.086s

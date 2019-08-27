@@ -1,0 +1,24 @@
+[root@osg xrootd]# hostname
+osg.newy32aoa.nrp.internet2.edu
+[root@osg xrootd]# time cat /export/shm/10G.dat >/dev/null
+
+real	0m1.688s
+user	0m0.061s
+sys	0m1.623s
+[root@osg xrootd]# time cp /export/shm/10G.dat /export/shm/10G.out
+
+real	0m4.884s
+user	0m0.064s
+sys	0m4.807s
+root@osg xrootd]# time xrdcp  root://localhost:50094//testi2ny/10G.dat -f /dev/null
+[9.313GB/9.313GB][100%][==================================================][3.104GB/s]  
+
+real	0m2.890s
+user	0m0.044s
+sys	0m2.821s
+[root@osg xrootd]# time xrdcp  root://localhost:50094//testi2ny/10G.dat -f /export/shm/10G.out
+[9.313GB/9.313GB][100%][==================================================][2.328GB/s]  
+
+real	0m4.603s
+user	0m0.047s
+sys	0m7.174s
