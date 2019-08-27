@@ -21,6 +21,12 @@ sys	0m8.378s
 real	0m3.426s
 user	0m0.045s
 sys	0m3.402s
+[root@ps-100g /]# time xrdcp root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /dev/null
+[9.313GB/9.313GB][100%][==================================================][3.104GB/s]  
+
+real	0m2.923s
+user	0m0.046s
+sys	0m2.894s
 [root@ps-100g /]# time xrdcp -DICPParallelChunks 8 root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /export/shm/10G.dat
 [9.313GB/9.313GB][100%][==================================================][1.863GB/s]  
 
