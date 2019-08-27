@@ -1,0 +1,35 @@
+[root@ps-100g /]# hostname
+ps-100g.sdsu.edu
+[root@ps-100g /]# ping stashcache.t2.ucsd.edu
+PING stashcache.t2.ucsd.edu (169.228.130.97) 56(84) bytes of data.
+64 bytes from stashcache.t2.ucsd.edu (169.228.130.97): icmp_seq=1 ttl=59 time=0.727 ms
+#
+# After warming up the cache
+#
+[root@ps-100g /]# time curl -o /export/shm/10G.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9540M  100 9540M    0     0  1153M      0  0:00:08  0:00:08 --:--:-- 1109M
+
+real	0m8.281s
+user	0m0.698s
+sys	0m7.085s
+[root@ps-100g shm]# time wget http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+--2019-08-27 23:52:04--  http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+Resolving stashcache.t2.ucsd.edu (stashcache.t2.ucsd.edu)... 169.228.130.97, 2607:f720:1700:1b30::61
+Connecting to stashcache.t2.ucsd.edu (stashcache.t2.ucsd.edu)|169.228.130.97|:9001... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10003415040 (9.3G)
+Saving to: ‘bigfile.txt’
+
+100%[===========================================================================>] 10,003,415,040 1.06GB/s   in 9.6s   
+
+2019-08-27 23:52:13 (991 MB/s) - ‘bigfile.txt’ saved [10003415040/10003415040]
+
+
+real	0m9.634s
+user	0m0.775s
+sys	0m8.463s
+#
+# Note: aria2c fails, server does not support partial downloads
+#
