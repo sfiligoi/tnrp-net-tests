@@ -1,0 +1,45 @@
+[root@osg /]#  ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=60 time=22.3 ms
+[root@osg /]# time xrdcp root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.552GB/s]  
+
+real	0m6.082s
+user	0m0.051s
+sys	0m7.036s
+root@osg /]# time xrdcp -DICPParallelChunks 8 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.863GB/s]  
+
+real	0m5.469s
+user	0m0.029s
+sys	0m8.083s
+[root@osg /]# time xrdcp -DICPParallelChunks 8 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /dev/null
+[9.313GB/9.313GB][100%][==================================================][2.328GB/s]  
+
+real	0m3.930s
+user	0m0.033s
+sys	0m3.498s
+[root@osg /]# time xrdcp -DICPParallelChunks 8 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/data/10G.out
+[9.313GB/9.313GB][100%][==================================================][1.33GB/s]   
+
+real	0m6.383s
+user	0m0.039s
+sys	0m8.810s
+[root@osg /]#  time xrdcp -DICPParallelChunks 16 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.552GB/s]  
+
+real	0m5.678s
+user	0m0.044s
+sys	0m8.176s
+[root@osg /]# time xrdcp --streams=7 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.33GB/s]   
+
+real	0m7.061s
+user	0m0.048s
+sys	0m7.399s
+[root@osg /]# time xrdcp --streams=7 -DICPParallelChunks 8 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][1.552GB/s]  
+
+real	0m5.891s
+user	0m0.060s
+sys	0m8.047s
