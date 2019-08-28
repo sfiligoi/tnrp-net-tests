@@ -3,6 +3,8 @@ osg.chic.nrp.internet2.edu
 [root@osg shm]# ping osg.newy32aoa.nrp.internet2.edu
 PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
 64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=60 time=22.3 ms
+[root@osg shm]# rpm -qa |grep aria2
+aria2-1.34.0-5.el7.x86_64
 #
 # After warming up the cache
 #
@@ -30,3 +32,24 @@ Saving to: ‘bigfile.txt’
 real	0m11.014s
 user	0m1.243s
 sys	0m9.491s
+#
+# Note: aria2 requesting unsupported digest by default, but neve uses them... disabling
+#
+[root@osg shm]# time aria2c --header='Want-Digest: '  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+08/28 16:05:59 [NOTICE] Downloading 1 item(s)
+[#bb6be9 8.7GiB/9.3GiB(93%) CN:1 DL:1.0GiB]                                                                                                                                                                                                  
+08/28 16:06:09 [NOTICE] Download complete: /export/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+bb6be9|OK  |   0.9GiB/s|/export/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m10.063s
+user	0m2.084s
+sys	0m7.687s
+

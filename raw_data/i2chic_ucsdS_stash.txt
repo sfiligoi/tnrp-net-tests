@@ -50,3 +50,58 @@ sys	0m9.477s
 real	0m9.945s
 user	0m0.972s
 sys	0m8.335s
+#
+# Must disable aria2 digest request, was not used anyway
+#
+[root@osg shm]# time aria2c --header='Want-Digest: ' http://169.228.130.97:9001/user/dweitzel/public/bigfile.txt
+
+08/28 16:09:13 [NOTICE] Downloading 1 item(s)
+[#98119f 8.2GiB/9.3GiB(88%) CN:1 DL:1.0GiB]                                                                                                                                                                                                  
+08/28 16:09:23 [NOTICE] Download complete: /export/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+98119f|OK  |   0.9GiB/s|/export/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m10.436s
+user	0m2.244s
+sys	0m7.594s
+[root@osg shm]# time aria2c -j 16 --header='Want-Digest: ' http://169.228.130.97:9001/user/dweitzel/public/bigfile.txt
+
+08/28 16:10:33 [NOTICE] Downloading 1 item(s)
+[#9a45aa 8.8GiB/9.3GiB(95%) CN:1 DL:0.9GiB]                                                                                                                                                                                                  
+08/28 16:10:43 [NOTICE] Download complete: /export/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+9a45aa|OK  |   892MiB/s|/export/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m10.868s
+user	0m2.438s
+sys	0m7.837s
+[root@osg shm]# time aria2c -j 16 -x 16 --header='Want-Digest: ' http://169.228.130.97:9001/user/dweitzel/public/bigfile.txt
+
+08/28 16:14:58 [NOTICE] Downloading 1 item(s)
+[#908a9e 9.0GiB/9.3GiB(97%) CN:5 DL:1.0GiB]                                                                                                                                                                                                  
+08/28 16:15:09 [NOTICE] Download complete: /export/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+908a9e|OK  |   880MiB/s|/export/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m11.016s
+user	0m2.263s
+sys	0m7.979s
+
