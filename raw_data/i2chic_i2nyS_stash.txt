@@ -1,0 +1,32 @@
+[root@osg shm]# hostname
+osg.chic.nrp.internet2.edu
+[root@osg shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=60 time=22.3 ms
+#
+# After warming up the cache
+#
+[root@osg shm]# time curl -o /export/shm/10G.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9540M  100 9540M    0     0  1111M      0  0:00:08  0:00:08 --:--:-- 1204M
+
+real	0m8.584s
+user	0m0.949s
+sys	0m7.317s
+[root@osg shm]# time wget http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+--2019-08-28 00:14:02--  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+Resolving osg.newy32aoa.nrp.internet2.edu (osg.newy32aoa.nrp.internet2.edu)... 2001:468:2808::2, 163.253.72.2
+Connecting to osg.newy32aoa.nrp.internet2.edu (osg.newy32aoa.nrp.internet2.edu)|2001:468:2808::2|:9001... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10003415040 (9.3G)
+Saving to: ‘bigfile.txt’
+
+100%[======================================================================================================================>] 10,003,415,040  914MB/s   in 11s    
+
+2019-08-28 00:14:13 (871 MB/s) - ‘bigfile.txt’ saved [10003415040/10003415040]
+
+
+real	0m11.014s
+user	0m1.243s
+sys	0m9.491s

@@ -1,0 +1,52 @@
+[root@osg shm]# hostname
+osg.chic.nrp.internet2.edu
+[root@osg shm]# ping 169.228.130.97
+PING 169.228.130.97 (169.228.130.97) 56(84) bytes of data.
+64 bytes from 169.228.130.97: icmp_seq=1 ttl=55 time=45.9 ms
+#
+# Not the closest cache, but will still test it
+# Note IPv6 path problematic, will use ipv4
+#
+[root@osg shm]# time wget http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+--2019-08-28 00:19:48--  http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+Resolving stashcache.t2.ucsd.edu (stashcache.t2.ucsd.edu)... 2607:f720:1700:1b30::61, 169.228.130.97
+Connecting to stashcache.t2.ucsd.edu (stashcache.t2.ucsd.edu)|2607:f720:1700:1b30::61|:9001... failed: No route to host.
+Connecting to stashcache.t2.ucsd.edu (stashcache.t2.ucsd.edu)|169.228.130.97|:9001... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10003415040 (9.3G)
+Saving to: ‘bigfile.txt’
+
+100%[====================================================================================>] 10,003,415,040  733MB/s   in 12s    
+
+2019-08-28 00:20:03 (795 MB/s) - ‘bigfile.txt’ saved [10003415040/10003415040]
+
+
+real	0m15.173s
+user	0m1.274s
+sys	0m8.869s
+#
+# switching to IPv4
+#
+[root@osg shm]# time wget http://169.228.130.97:9001/user/dweitzel/public/bigfile.txt
+--2019-08-28 00:21:11--  http://169.228.130.97:9001/user/dweitzel/public/bigfile.txt
+Connecting to 169.228.130.97:9001... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10003415040 (9.3G)
+Saving to: ‘bigfile.txt’
+
+100%[====================================================================================>] 10,003,415,040  918MB/s   in 11s    
+
+2019-08-28 00:21:23 (853 MB/s) - ‘bigfile.txt’ saved [10003415040/10003415040]
+
+
+real	0m11.285s
+user	0m1.241s
+sys	0m9.477s
+[root@osg shm]# time curl -o /export/shm/10G.dat http://169.228.130.97:9001/user/dweitzel/public/bigfile.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9540M  100 9540M    0     0   959M      0  0:00:09  0:00:09 --:--:-- 1159M
+
+real	0m9.945s
+user	0m0.972s
+sys	0m8.335s
