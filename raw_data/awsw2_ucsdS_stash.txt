@@ -1,0 +1,335 @@
+[root@ip-172-31-31-148 shm]#  ping stashcache.t2.ucsd.edu
+PING stashcache.t2.ucsd.edu (169.228.130.97) 56(84) bytes of data.
+64 bytes from stashcache.t2.ucsd.edu (169.228.130.97): icmp_seq=1 ttl=40 time=35.6 ms
+#
+# After warmin cache
+#
+[root@ip-172-31-31-148 shm]# time curl -o /dev/shm/10G.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9540M  100 9540M    0     0  43.0M      0  0:03:41  0:03:41 --:--:-- 43.0M
+
+real	3m41.863s
+user	0m2.048s
+sys	0m17.802s
+[root@ip-172-31-31-148 shm]# time wget /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+/dev/shm/1G_9.dat: Scheme missing.
+--2019-08-28 21:41:27--  http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+Resolving stashcache.t2.ucsd.edu (stashcache.t2.ucsd.edu)... 169.228.130.97, 2607:f720:1700:1b30::61
+Connecting to stashcache.t2.ucsd.edu (stashcache.t2.ucsd.edu)|169.228.130.97|:9001... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10003415040 (9.3G)
+Saving to: ‘bigfile.txt’
+
+100%[==================================================================================================================================================================>] 10,003,415,040 41.1MB/s   in 3m 55s 
+
+2019-08-28 21:45:22 (40.6 MB/s) - ‘bigfile.txt’ saved [10003415040/10003415040]
+
+FINISHED --2019-08-28 21:45:22--
+Total wall clock time: 3m 55s
+Downloaded: 1 files, 9.3G in 3m 55s (40.6 MB/s)
+
+real	3m54.971s
+user	0m1.272s
+sys	0m17.327s
+#
+# Manual multi download
+#
+[root@ip-172-31-31-148 shm]# for i in 0 1 2 3 4 5 6 7 8 9; do time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 3573
+[2] 3574
+[3] 3575
+[4] 3577
+[5] 3579
+[6] 3581
+[7] 3583
+[8] 3585
+[9] 3587
+[10] 3588
+
+real	0m21.429s
+user	0m0.194s
+sys	0m1.587s
+[1]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m21.486s
+user	0m0.177s
+sys	0m1.718s
+[2]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m22.059s
+user	0m0.160s
+sys	0m1.598s
+
+real	0m22.193s
+user	0m0.232s
+sys	0m1.653s
+
+real	0m22.548s
+user	0m0.224s
+sys	0m1.668s
+
+real	0m22.925s
+user	0m0.217s
+sys	0m1.636s
+
+real	0m22.996s
+user	0m0.205s
+sys	0m1.663s
+
+real	0m23.015s
+user	0m0.233s
+sys	0m1.630s
+
+real	0m23.654s
+user	0m0.182s
+sys	0m1.635s
+[3]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[9]-  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[10]+  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m23.685s
+user	0m0.200s
+sys	0m1.659s
+[4]+  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m23.685s
+user	0m2.026s
+sys	0m16.448s
+[root@ip-172-31-31-148 shm]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 3663
+[2] 3664
+[3] 3665
+[4] 3667
+[5] 3668
+[6] 3670
+[7] 3672
+[8] 3675
+[9] 3677
+[10] 3679
+[11] 3681
+[12] 3683
+[13] 3684
+[14] 3685
+[15] 3686
+[16] 3687
+[17] 3689
+[18] 3691
+[19] 3692
+[20] 3693
+
+real	0m10.667s
+user	0m0.109s
+sys	0m0.927s
+
+real	0m10.773s
+user	0m0.102s
+sys	0m0.918s
+
+real	0m10.774s
+user	0m0.128s
+sys	0m0.897s
+
+real	0m10.783s
+user	0m0.121s
+sys	0m0.891s
+
+real	0m10.917s
+user	0m0.110s
+sys	0m0.891s
+
+real	0m10.994s
+user	0m0.105s
+sys	0m0.877s
+
+real	0m11.033s
+user	0m0.119s
+sys	0m0.924s
+
+real	0m11.041s
+user	0m0.096s
+sys	0m0.937s
+
+real	0m11.058s
+user	0m0.101s
+sys	0m0.899s
+
+real	0m11.186s
+user	0m0.105s
+sys	0m0.890s
+
+real	0m11.236s
+user	0m0.126s
+sys	0m0.905s
+
+real	0m11.267s
+user	0m0.119s
+sys	0m0.878s
+
+real	0m11.320s
+user	0m0.102s
+sys	0m0.895s
+
+real	0m11.566s
+user	0m0.103s
+sys	0m0.941s
+
+real	0m11.567s
+user	0m0.124s
+sys	0m0.941s
+
+real	0m11.562s
+user	0m0.104s
+sys	0m0.961s
+
+real	0m11.569s
+user	0m0.094s
+sys	0m0.921s
+
+real	0m11.584s
+user	0m0.092s
+sys	0m0.901s
+
+real	0m11.749s
+user	0m0.119s
+sys	0m0.887s
+[1]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[2]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[4]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[9]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[10]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[11]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[12]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[13]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[14]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[15]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[16]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[17]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[18]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[19]-  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+[20]+  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m11.874s
+user	0m0.107s
+sys	0m0.920s
+[3]+  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m11.873s
+user	0m2.192s
+sys	0m18.203s
+#
+# Note: aria2 requesting unsupported digest by default, but neve uses them... disabling
+#
+Installed:
+  aria2.x86_64 0:1.34.0-5.el7                                                                                                                                                                                  
+[root@ip-172-31-31-148 shm]# time aria2c --header='Want-Digest: '  http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+08/28 18:19:45 [NOTICE] Downloading 1 item(s)
+ *** Download Progress Summary as of Wed Aug 28 18:20:45 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#ab2a66 2.4GiB/9.3GiB(26%) CN:1 DL:42MiB ETA:2m47s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Wed Aug 28 18:21:46 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#ab2a66 4.9GiB/9.3GiB(52%) CN:1 DL:42MiB ETA:1m46s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Wed Aug 28 18:22:46 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#ab2a66 7.4GiB/9.3GiB(79%) CN:1 DL:42MiB ETA:46s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[#ab2a66 9.2GiB/9.3GiB(99%) CN:1 DL:42MiB]                                                                                                                                                                    
+08/28 18:23:33 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+ab2a66|OK  |    41MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	3m47.849s
+user	0m4.506s
+sys	0m18.677s
+[root@ip-172-31-31-148 shm]# time aria2c -j 16 -x 16 --header='Want-Digest: '  http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+08/28 18:23:56 [NOTICE] Downloading 1 item(s)
+[#c29f8c 9.2GiB/9.3GiB(99%) CN:4 DL:214MiB]                                                                                                                                                                   
+08/28 18:24:41 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c29f8c|OK  |   210MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m45.454s
+user	0m4.072s
+sys	0m14.013s
+[root@ip-172-31-31-148 shm]# time aria2c -j 64 -x 16 --header='Want-Digest: '  http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+08/28 22:05:00 [NOTICE] Downloading 1 item(s)
+[#9936de 9.2GiB/9.3GiB(99%) CN:5 DL:212MiB]                                                                                                                                                                   
+08/28 22:05:46 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+9936de|OK  |   207MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m46.110s
+user	0m4.079s
+sys	0m14.110s
+[root@ip-172-31-31-148 shm]# time aria2c -j 10 -x 10 --header='Want-Digest: '  http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+08/28 22:05:58 [NOTICE] Downloading 1 item(s)
+[#2abe4e 9.2GiB/9.3GiB(99%) CN:5 DL:202MiB]                                                                                                                                                                   
+08/28 22:06:52 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+2abe4e|OK  |   179MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m53.404s
+user	0m3.839s
+sys	0m13.690s
+[root@ip-172-31-31-148 shm]# time aria2c -j 50 -x 10 --header='Want-Digest: '  http://stashcache.t2.ucsd.edu:9001/user/dweitzel/public/bigfile.txt
+
+08/28 22:07:01 [NOTICE] Downloading 1 item(s)
+[#e468b6 9.2GiB/9.3GiB(98%) CN:5 DL:210MiB]                                                                                                                                                                   
+08/28 22:07:47 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+e468b6|OK  |   206MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m46.372s
+user	0m4.020s
+sys	0m13.848s

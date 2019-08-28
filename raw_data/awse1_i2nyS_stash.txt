@@ -1,0 +1,120 @@
+[root@ip-172-31-28-221 shm]# hostname
+ip-172-31-28-221.ec2.internal
+[root@ip-172-31-28-221 shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=49 time=6.64 ms
+#
+# After warming up the cache
+#
+[root@ip-172-31-28-221 shm]# time curl -s -o /dev/shm/10G.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m48.561s
+user	0m1.272s
+sys	0m12.079s
+[root@ip-172-31-28-221 shm]# time wget http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+--2019-08-28 21:36:00--  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+Resolving osg.newy32aoa.nrp.internet2.edu (osg.newy32aoa.nrp.internet2.edu)... 163.253.72.2, 2001:468:2808::2
+Connecting to osg.newy32aoa.nrp.internet2.edu (osg.newy32aoa.nrp.internet2.edu)|163.253.72.2|:9001... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10003415040 (9.3G)
+Saving to: ‘bigfile.txt’
+
+100%[==================================================================================================================================================================>] 10,003,415,040  232MB/s   in 41s    
+
+2019-08-28 21:36:41 (232 MB/s) - ‘bigfile.txt’ saved [10003415040/10003415040]
+
+
+real	0m41.109s
+user	0m0.896s
+sys	0m14.956s
+#
+# Multiple parallel streams, manual
+#
+[root@ip-172-31-28-221 shm]# for i in 0 1 2 3 4 5 6 7 8 9; do time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 4835
+[2] 4836
+[3] 4837
+[4] 4839
+[5] 4841
+[6] 4843
+[7] 4845
+[8] 4847
+[9] 4849
+[10] 4851
+
+real	0m4.197s
+user	0m0.136s
+sys	0m1.812s
+
+real	0m4.350s
+user	0m0.124s
+sys	0m1.851s
+
+real	0m4.360s
+user	0m0.145s
+sys	0m1.497s
+[1]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[9]-  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.395s
+user	0m0.145s
+sys	0m1.791s
+
+real	0m4.481s
+user	0m0.129s
+sys	0m1.913s
+
+real	0m4.541s
+user	0m0.159s
+sys	0m1.941s
+[2]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[7]-  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.571s
+user	0m0.124s
+sys	0m1.736s
+
+real	0m4.615s
+user	0m0.164s
+sys	0m1.687s
+
+real	0m4.616s
+user	0m0.127s
+sys	0m1.719s
+
+real	0m4.699s
+user	0m0.152s
+sys	0m1.504s
+[3]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[4]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[6]-  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[10]+  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.698s
+user	0m1.407s
+sys	0m17.452s
+#
+# Note: aria2 requesting unsupported digest by default, but neve uses them... disabling
+#
+[root@ip-172-31-28-221 shm]# time aria2c --header='Want-Digest: '  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+08/28 21:38:00 [NOTICE] Downloading 1 item(s)
+[#75a817 9.2GiB/9.3GiB(99%) CN:1 DL:209MiB]                                                                                                                                                                   
+08/28 21:38:50 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+75a817|OK  |   191MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m50.031s
+user	0m3.010s
+sys	0m13.603s
+#
+# No multi-stream test, as the xrootd server has a bug in how it formats response headers that confuses aria2
+#
