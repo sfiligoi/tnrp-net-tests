@@ -1,0 +1,205 @@
+[root@ip-172-31-28-221 shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=49 time=6.78 ms
+#
+# After warming cache
+#
+[root@ip-172-31-28-221 shm]# time curl -s -o /dev/shm/10G.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m41.309s
+user	0m1.285s
+sys	0m15.715s
+[root@ip-172-31-28-221 shm]# for i in 0 1 2 3 4 5 6 7 8 9; do time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 10494
+[2] 10495
+[3] 10496
+[4] 10497
+[5] 10498
+[6] 10500
+[7] 10502
+[8] 10505
+[9] 10508
+[10] 10510
+
+real	0m4.584s
+user	0m0.096s
+sys	0m1.003s
+
+real	0m4.692s
+user	0m0.121s
+sys	0m1.132s
+
+real	0m4.698s
+user	0m0.106s
+sys	0m0.945s
+[1]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[10]+  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.781s
+user	0m0.109s
+sys	0m1.252s
+[2]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.816s
+user	0m0.098s
+sys	0m0.917s
+
+real	0m4.849s
+user	0m0.115s
+sys	0m1.076s
+[3]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.849s
+user	0m0.117s
+sys	0m1.082s
+
+real	0m4.908s
+user	0m0.112s
+sys	0m0.877s
+
+real	0m4.941s
+user	0m0.115s
+sys	0m0.931s
+
+real	0m5.103s
+user	0m0.118s
+sys	0m1.327s
+[4]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[7]-  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[9]+  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m5.102s
+user	0m1.112s
+sys	0m10.541s
+[root@ip-172-31-28-221 shm]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 10676
+[2] 10677
+[3] 10679
+[4] 10681
+[5] 10682
+[6] 10684
+[7] 10686
+[8] 10688
+[9] 10691
+[10] 10692
+[11] 10695
+[12] 10696
+[13] 10698
+[14] 10701
+[15] 10702
+[16] 10703
+[17] 10706
+[18] 10708
+[19] 10710
+[20] 10711
+
+real	0m3.940s
+user	0m0.057s
+sys	0m0.711s
+
+real	0m4.190s
+user	0m0.044s
+sys	0m0.822s
+
+real	0m4.205s
+user	0m0.049s
+sys	0m0.798s
+[1]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[3]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[16]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.216s
+user	0m0.043s
+sys	0m0.784s
+
+real	0m4.224s
+user	0m0.055s
+sys	0m0.771s
+
+real	0m4.224s
+user	0m0.067s
+sys	0m0.766s
+
+real	0m4.244s
+user	0m0.045s
+sys	0m0.756s
+
+real	0m4.271s
+user	0m0.061s
+sys	0m0.718s
+
+real	0m4.282s
+user	0m0.067s
+sys	0m0.810s
+
+real	0m4.291s
+user	0m0.057s
+sys	0m0.799s
+[2]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[10]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[13]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[18]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[19]-  Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.292s
+user	0m0.041s
+sys	0m0.663s
+
+real	0m4.294s
+user	0m0.045s
+sys	0m0.781s
+[4]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[15]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.298s
+user	0m0.060s
+sys	0m0.800s
+
+real	0m4.307s
+user	0m0.040s
+sys	0m0.830s
+
+real	0m4.323s
+user	0m0.052s
+sys	0m0.697s
+
+real	0m4.332s
+user	0m0.047s
+sys	0m0.713s
+
+real	0m4.349s
+user	0m0.046s
+sys	0m0.795s
+
+real	0m4.362s
+user	0m0.060s
+sys	0m0.752s
+
+real	0m4.367s
+user	0m0.052s
+sys	0m0.767s
+[5]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[9]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[11]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[12]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[14]   Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[20]+  Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.566s
+user	0m0.071s
+sys	0m0.788s
+[17]+  Done                    time curl -s -r 0-500177752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m4.566s
+user	0m1.064s
+sys	0m15.322s
+#
+#
+# NOTE: Not any faster than the small awse1 instance
+#
