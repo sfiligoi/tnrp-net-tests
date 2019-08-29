@@ -1,0 +1,34 @@
+[root@instance-1 shm]# ping ps-40g-gridftp.calit2.optiputer.net
+PING ps-40g-gridftp.calit2.optiputer.net (67.58.50.66) 56(84) bytes of data.
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=1 ttl=51 time=29.8 ms
+[root@instance-1 shm]# export GLOBUS_FTP_CLIENT_DATA_IP=35.197.126.4
+[root@instance-1 shm]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9345171456 bytes       742.67 MB/sec avg       803.69 MB/sec inst
+
+real    0m12.884s
+user    0m0.747s
+sys     0m11.336s
+root@instance-1 shm]# time globus-url-copy -vb -fast -p 20 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8991014912 bytes       714.53 MB/sec avg       799.34 MB/sec inst
+
+real    0m13.177s
+user    0m0.781s
+sys     0m11.894s
+[root@instance-1 shm]# time globus-url-copy -vb -fast -p 32 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9981649920 bytes       679.93 MB/sec avg       773.75 MB/sec inst
+
+real    0m14.025s
+user    0m1.152s
+sys     0m12.419s

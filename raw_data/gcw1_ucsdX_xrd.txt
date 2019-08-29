@@ -1,0 +1,47 @@
+[root@instance-1 igor_sfiligoi]#  ping stashcache.t2.ucsd.edu
+PING stashcache.t2.ucsd.edu (169.228.130.97) 56(84) bytes of data.
+64 bytes from stashcache.t2.ucsd.edu (169.228.130.97): icmp_seq=1 ttl=50 time=29.7 ms
+[root@instance-1 igor_sfiligoi]# rpm -qa |grep xrootd-client
+xrootd-client-4.10.0-1.osg34.el7.x86_64
+[root@instance-1 igor_sfiligoi]#  time xrdcp root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][99.34MB/s]  
+
+real    1m35.360s
+user    0m0.745s
+sys     0m17.056s
+[root@instance-1 igor_sfiligoi]#  time xrdcp -DICPParallelChunks 16 root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][100.4MB/s]  
+
+real    1m35.079s
+user    0m0.593s
+sys     0m17.019s
+[root@instance-1 igor_sfiligoi]#  time xrdcp --stream 7  root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][119.2MB/s]  
+
+real    1m20.506s
+user    0m0.534s
+sys     0m16.403s
+[root@instance-1 igor_sfiligoi]#  time xrdcp --stream 7 -DICPParallelChunks 16  root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][227.1MB/s]  
+
+real    0m42.757s
+user    0m0.539s
+sys     0m17.091s
+[root@instance-1 igor_sfiligoi]#  time xrdcp --stream 7 -DICPParallelChunks 32  root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][328.9MB/s]  
+
+real    0m29.087s
+user    0m0.539s
+sys     0m15.281s
+[root@instance-1 igor_sfiligoi]#  time xrdcp --stream 15 -DICPParallelChunks 32  root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][381.5MB/s]  
+
+real    0m25.518s
+user    0m0.473s
+sys     0m15.533s
+[root@instance-1 igor_sfiligoi]#  time xrdcp --stream 15 -DICPParallelChunks 64  root://stashcache.t2.ucsd.edu:50094//testucsd/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][328.9MB/s]  
+
+real    0m28.903s
+user    0m0.560s
+sys     0m17.250s

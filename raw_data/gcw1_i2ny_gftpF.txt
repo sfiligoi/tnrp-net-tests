@@ -1,0 +1,32 @@
+[root@instance-1 shm]# export GLOBUS_FTP_CLIENT_DATA_IP=35.197.126.4
+[root@instance-1 shm]# time globus-url-copy -vb -fast -p 16 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9871556608 bytes       109.47 MB/sec avg       111.75 MB/sec inst
+
+real    1m27.848s
+user    0m3.877s
+sys     0m30.336s
+[root@instance-1 shm]# time globus-url-copy -vb -fast -p 32 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9998164992 bytes       108.35 MB/sec avg        60.49 MB/sec inst
+
+real    1m28.367s
+user    0m4.528s
+sys     0m36.621s
+[root@instance-1 shm]# time globus-url-copy -vb -fast -p 50 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9998689280 bytes       105.95 MB/sec avg         1.62 MB/sec inst
+
+real    1m30.672s
+user    0m4.930s
+sys     0m42.166s
