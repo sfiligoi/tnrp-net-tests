@@ -1,0 +1,295 @@
+[root@ip-172-31-34-66 shm]# hostname
+ip-172-31-34-66.eu-central-1.compute.internal
+[root@ip-172-31-34-66 shm]# ping fiona-r-uva.vlan7.uvalight.net
+PING fiona-r-uva.vlan7.uvalight.net (145.146.100.30) 56(84) bytes of data.
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=1 ttl=49 time=6.88 ms
+[root@ip-172-31-34-66 shm]# rpm -qa |grep aria2
+aria2-1.34.0-5.el7.x86_64
+#
+# After cache warmup
+#
+[root@ip-172-31-34-66 shm]# time curl -o /dev/shm/10G.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9540M  100 9540M    0     0   217M      0  0:00:43  0:00:43 --:--:--  217M
+
+real	0m43.927s
+user	0m2.031s
+sys	0m15.299s
+[root@ip-172-31-34-66 shm]# time wget http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+--2019-08-30 20:35:31--  http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+Resolving fiona-r-uva.vlan7.uvalight.net (fiona-r-uva.vlan7.uvalight.net)... 145.146.100.30
+Connecting to fiona-r-uva.vlan7.uvalight.net (fiona-r-uva.vlan7.uvalight.net)|145.146.100.30|:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10003415040 (9.3G)
+Saving to: ‘bigfile.txt’
+
+100%[==================================================================================================================================================================>] 10,003,415,040  226MB/s   in 42s    
+
+2019-08-30 20:36:13 (226 MB/s) - ‘bigfile.txt’ saved [10003415040/10003415040]
+
+
+real	0m42.285s
+user	0m1.303s
+sys	0m16.979s
+[root@ip-172-31-34-66 shm]# for i in 0 1 2 3 4 5 6 7 8 9; do time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 14096
+[2] 14097
+[3] 14098
+[4] 14100
+[5] 14102
+[6] 14104
+[7] 14107
+[8] 14109
+[9] 14110
+[10] 14112
+
+real	0m6.142s
+user	0m0.185s
+sys	0m1.419s
+
+real	0m6.472s
+user	0m0.146s
+sys	0m1.445s
+[1]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+
+real	0m6.893s
+user	0m0.207s
+sys	0m1.442s
+
+real	0m7.816s
+user	0m0.185s
+sys	0m1.496s
+
+real	0m7.836s
+user	0m0.157s
+sys	0m1.341s
+
+real	0m8.445s
+user	0m0.170s
+sys	0m1.487s
+
+real	0m8.606s
+user	0m0.219s
+sys	0m1.601s
+
+real	0m9.337s
+user	0m0.171s
+sys	0m1.397s
+
+real	0m9.355s
+user	0m0.212s
+sys	0m1.482s
+
+real	0m9.809s
+user	0m0.192s
+sys	0m1.550s
+[2]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[3]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[4]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[9]-  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[10]+  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+
+real	0m9.808s
+user	0m1.847s
+sys	0m14.662s
+[root@ip-172-31-34-66 shm]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 14281
+[2] 14282
+[3] 14283
+[4] 14285
+[5] 14287
+[6] 14290
+[7] 14291
+[8] 14293
+[9] 14295
+[10] 14297
+[11] 14299
+[12] 14301
+[13] 14303
+[14] 14305
+[15] 14307
+[16] 14309
+[17] 14311
+[18] 14312
+[19] 14315
+[20] 14316
+
+real	0m5.553s
+user	0m0.116s
+sys	0m0.805s
+
+real	0m5.699s
+user	0m0.095s
+sys	0m0.777s
+
+real	0m6.733s
+user	0m0.107s
+sys	0m0.826s
+
+real	0m7.179s
+user	0m0.095s
+sys	0m0.864s
+
+real	0m7.390s
+user	0m0.095s
+sys	0m0.790s
+
+real	0m7.518s
+user	0m0.112s
+sys	0m0.811s
+
+real	0m7.901s
+user	0m0.112s
+sys	0m0.867s
+
+real	0m8.033s
+user	0m0.092s
+sys	0m0.765s
+
+real	0m8.065s
+user	0m0.105s
+sys	0m0.857s
+
+real	0m8.179s
+user	0m0.135s
+sys	0m0.923s
+
+real	0m8.218s
+user	0m0.110s
+sys	0m0.941s
+
+real	0m8.233s
+user	0m0.104s
+sys	0m0.864s
+
+real	0m8.532s
+user	0m0.097s
+sys	0m0.815s
+
+real	0m8.674s
+user	0m0.103s
+sys	0m0.835s
+
+real	0m8.682s
+user	0m0.110s
+sys	0m0.782s
+
+real	0m9.372s
+user	0m0.137s
+sys	0m0.924s
+
+real	0m9.402s
+user	0m0.114s
+sys	0m0.809s
+
+real	0m9.533s
+user	0m0.120s
+sys	0m0.858s
+
+real	0m9.574s
+user	0m0.089s
+sys	0m0.786s
+[1]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[2]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[3]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[4]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[9]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[10]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[11]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[12]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[13]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[14]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[15]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[16]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[17]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[18]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[19]-  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+[20]+  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+
+real	0m9.814s
+user	0m0.108s
+sys	0m0.708s
+[5]+  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+
+real	0m9.812s
+user	0m2.160s
+sys	0m16.611s
+#
+# aria: disable digest, since xrootd does not support it; not used by aria2 anyway
+#
+[root@ip-172-31-34-66 shm]# time aria2c --header='Want-Digest: '  http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+
+08/30 20:40:45 [NOTICE] Downloading 1 item(s)
+[#ed47e1 9.1GiB/9.3GiB(98%) CN:1 DL:225MiB]                                                                                                                                                                   
+08/30 20:41:29 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+ed47e1|OK  |   220MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m43.378s
+user	0m4.440s
+sys	0m18.818s
+[root@ip-172-31-34-66 shm]# time aria2c -j 20 -x 4 --header='Want-Digest: '  http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+
+08/30 20:42:32 [NOTICE] Downloading 1 item(s)
+[#b41e8f 8.6GiB/9.3GiB(92%) CN:4 DL:813MiB]                                                                                                                                                                   
+08/30 20:42:45 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+b41e8f|OK  |   745MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m12.894s
+user	0m2.230s
+sys	0m10.570s
+[root@ip-172-31-34-66 shm]# time aria2c -j 40 -x 8 --header='Want-Digest: '  http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+
+08/30 20:43:32 [NOTICE] Downloading 1 item(s)
+[#134838 9.1GiB/9.3GiB(98%) CN:5 DL:868MiB]                                                                                                                                                                   
+08/30 20:43:44 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+134838|OK  |   784MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m12.258s
+user	0m2.193s
+sys	0m9.956s
+[root@ip-172-31-34-66 shm]# time aria2c -j 80 -x 16 --header='Want-Digest: '  http://fiona-r-uva.vlan7.uvalight.net:8000/user/dweitzel/public/bigfile.txt
+
+08/30 20:43:50 [NOTICE] Downloading 1 item(s)
+[#791ccc 8.9GiB/9.3GiB(96%) CN:5 DL:0.9GiB]                                                                                                                                                                   
+08/30 20:44:01 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+791ccc|OK  |   837MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m11.494s
+user	0m2.107s
+sys	0m9.258s
