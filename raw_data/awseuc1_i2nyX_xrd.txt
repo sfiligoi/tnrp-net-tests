@@ -1,0 +1,31 @@
+[root@ip-172-31-34-66 shm]# hostname
+ip-172-31-34-66.eu-central-1.compute.internal
+[root@ip-172-31-34-66 shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=46 time=91.3 ms
+[root@ip-172-31-34-66 shm]# ping osg.chic.nrp.internet2.edu
+PING osg.chic.nrp.internet2.edu (163.253.70.2) 56(84) bytes of data.
+[root@ip-172-31-34-66 shm]# time xrdcp root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][16.25MB/s]  
+
+real	9m47.414s
+user	0m3.444s
+sys	0m40.594s
+[root@ip-172-31-34-66 shm]# time xrdcp -DICPParallelChunks 64 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][16.25MB/s]  
+
+real	9m47.172s
+user	0m3.413s
+sys	0m39.976s
+[root@ip-172-31-34-66 shm]# time xrdcp --streams 7 -DICPParallelChunks 16 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][68.61MB/s]  
+
+real	2m18.896s
+user	0m3.611s
+sys	0m40.660s
+[root@ip-172-31-34-66 shm]# time xrdcp --streams 15 -DICPParallelChunks 32 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /dev/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][90.83MB/s]  
+
+real	1m44.849s
+user	0m4.010s
+sys	0m40.616s

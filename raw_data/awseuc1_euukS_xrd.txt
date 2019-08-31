@@ -1,0 +1,35 @@
+[root@ip-172-31-34-66 shm]# hostname
+ip-172-31-34-66.eu-central-1.compute.internal
+[root@ip-172-31-34-66 shm]# ping stashcache.gravity.cf.ac.uk
+PING stashcache.gravity.cf.ac.uk (131.251.129.34) 56(84) bytes of data.
+64 bytes from stashcache.gravity.cf.ac.uk (131.251.129.34): icmp_seq=1 ttl=44 time=20.1 ms
+[root@ip-172-31-34-66 shm]# time xrdcp root://stashcache.gravity.cf.ac.uk:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][66.71MB/s]  
+
+real	2m22.821s
+user	0m3.606s
+sys	0m38.403s
+[root@ip-172-31-34-66 shm]# time xrdcp -DICPParallelChunks 16 root://stashcache.gravity.cf.ac.uk:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][73.95MB/s]  
+
+real	2m8.882s
+user	0m3.360s
+sys	0m39.240s
+[root@ip-172-31-34-66 shm]# time xrdcp --streams 7 -DICPParallelChunks 32 root://stashcache.gravity.cf.ac.uk:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][95.4MB/s]   
+
+real	1m40.398s
+user	0m3.582s
+sys	0m35.449s
+[root@ip-172-31-34-66 shm]# time xrdcp --streams 15 -DICPParallelChunks 32 root://stashcache.gravity.cf.ac.uk:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][97.35MB/s]  
+
+real	1m37.634s
+user	0m3.783s
+sys	0m36.673s
+[root@ip-172-31-34-66 shm]# time xrdcp --streams 15 -DICPParallelChunks 64 root://stashcache.gravity.cf.ac.uk:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][103.7MB/s]  
+
+real	1m32.889s
+user	0m3.914s
+sys	0m37.147s

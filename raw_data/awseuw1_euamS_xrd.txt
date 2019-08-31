@@ -1,0 +1,48 @@
+[root@ip-172-31-33-102 shm]# hostname
+ip-172-31-33-102.eu-west-1.compute.internal
+[root@ip-172-31-33-102 shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=42 time=107 ms
+[root@ip-172-31-33-102 shm]# ping fiona-r-uva.vlan7.uvalight.net
+PING fiona-r-uva.vlan7.uvalight.net (145.146.100.30) 56(84) bytes of data.
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=1 ttl=40 time=15.2 ms
+#
+# After warming the cache
+#
+[root@ip-172-31-33-102 shm]#  time xrdcp root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][90.86MB/s]  
+
+real	1m44.847s
+user	0m1.150s
+sys	0m19.140s
+[root@ip-172-31-33-102 shm]# time xrdcp -DICPParallelChunks 16 root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][96.36MB/s]  
+
+real	1m39.342s
+user	0m0.925s
+sys	0m16.941s
+[root@ip-172-31-33-102 shm]# time xrdcp --streams 7 root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][227.1MB/s]  
+
+real	0m42.042s
+user	0m0.951s
+sys	0m16.369s
+[root@ip-172-31-33-102 shm]# time xrdcp --streams 7 -DICPParallelChunks  32 root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+
+[9.316GB/9.316GB][100%][==================================================][433.6MB/s]  
+
+real	0m21.906s
+user	0m0.816s
+sys	0m15.759s
+[root@ip-172-31-33-102 shm]# time xrdcp --streams 15 -DICPParallelChunks 32 root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][454.3MB/s]  
+
+real	0m20.803s
+user	0m0.673s
+sys	0m14.906s
+[root@ip-172-31-33-102 shm]# time xrdcp --streams 15 -DICPParallelChunks 64 root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/bigfile.txt -f /dev/shm/10G.dat
+[9.316GB/9.316GB][100%][==================================================][681.4MB/s]  
+
+real	0m14.131s
+user	0m0.394s
+sys	0m14.458s

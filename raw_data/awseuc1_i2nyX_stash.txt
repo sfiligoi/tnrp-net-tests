@@ -1,0 +1,277 @@
+[root@ip-172-31-34-66 shm]# hostname
+ip-172-31-34-66.eu-central-1.compute.internal
+[root@ip-172-31-34-66 shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=46 time=91.3 ms
+[root@ip-172-31-34-66 shm]# time curl -o /dev/shm/10G.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9540M  100 9540M    0     0  16.2M      0  0:09:46  0:09:46 --:--:-- 16.2M
+
+real	9m46.103s
+user	0m5.974s
+sys	0m39.141s
+[root@ip-172-31-34-66 shm]# for i in 0 1 2 3 4 5 6 7 8 9; do time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt & done; time wait
+[1] 32483
+[2] 32484
+[3] 32485
+[4] 32487
+[5] 32489
+[6] 32491
+[7] 32493
+[8] 32495
+[9] 32497
+[10] 32499
+
+real	1m23.665s
+user	0m0.668s
+sys	0m3.853s
+
+real	1m23.668s
+user	0m0.644s
+sys	0m3.831s
+
+real	1m23.677s
+user	0m0.722s
+sys	0m3.893s
+
+real	1m23.849s
+user	0m0.658s
+sys	0m3.931s
+
+real	1m27.329s
+user	0m0.632s
+sys	0m3.884s
+
+real	1m27.332s
+user	0m0.683s
+sys	0m3.873s
+
+real	1m27.346s
+user	0m0.727s
+sys	0m3.856s
+
+real	1m27.362s
+user	0m0.677s
+sys	0m3.832s
+
+real	1m27.369s
+user	0m0.720s
+sys	0m3.866s
+
+real	1m27.405s
+user	0m0.643s
+sys	0m3.950s
+[1]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[2]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[3]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[4]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[9]-  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[10]+  Done                    time curl -s -r 0-1000341504 -o /dev/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	1m27.404s
+user	0m6.777s
+sys	0m38.770s
+[root@ip-172-31-34-66 shm]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 32517
+[2] 32518
+[3] 32519
+[4] 32521
+[5] 32523
+[6] 32525
+[7] 32527
+[8] 32529
+[9] 32531
+[10] 32532
+[11] 32534
+[12] 32537
+[13] 32539
+[14] 32541
+[15] 32543
+[16] 32545
+[17] 32547
+[18] 32549
+[19] 32551
+[20] 32552
+
+real	0m45.642s
+user	0m0.344s
+sys	0m1.958s
+
+real	0m49.234s
+user	0m0.320s
+sys	0m1.789s
+[1]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[20]+  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m56.452s
+user	0m0.321s
+sys	0m1.907s
+
+real	0m56.903s
+user	0m0.288s
+sys	0m1.723s
+
+real	0m57.298s
+user	0m0.332s
+sys	0m1.886s
+
+real	1m7.094s
+user	0m0.338s
+sys	0m1.972s
+
+real	1m7.515s
+user	0m0.343s
+sys	0m1.908s
+
+real	1m10.148s
+user	0m0.357s
+sys	0m1.958s
+
+real	1m15.200s
+user	0m0.314s
+sys	0m1.921s
+
+real	1m19.945s
+user	0m0.353s
+sys	0m1.892s
+
+real	1m20.162s
+user	0m0.386s
+sys	0m1.967s
+
+real	1m20.858s
+user	0m0.341s
+sys	0m1.929s
+
+real	1m21.130s
+user	0m0.298s
+sys	0m1.933s
+
+real	1m21.756s
+user	0m0.339s
+sys	0m1.950s
+
+real	1m22.620s
+user	0m0.316s
+sys	0m1.946s
+
+real	1m23.295s
+user	0m0.367s
+sys	0m1.952s
+
+real	1m25.688s
+user	0m0.330s
+sys	0m1.980s
+
+real	1m29.325s
+user	0m0.335s
+sys	0m1.942s
+
+real	1m29.393s
+user	0m0.340s
+sys	0m1.961s
+
+real	1m32.037s
+user	0m0.321s
+sys	0m1.977s
+[2]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[3]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[4]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[9]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[10]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[11]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[12]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[13]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[14]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[15]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[16]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[17]   Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[18]-  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[19]+  Done                    time curl -s -r 0-500170752 -o /dev/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	1m32.036s
+user	0m6.689s
+sys	0m38.453s
+#
+# aria: disable digest, not used and not supported bt xrootd
+#
+[root@ip-172-31-34-66 shm]# time aria2c --header='Want-Digest: '  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+08/30 22:19:32 [NOTICE] Downloading 1 item(s)
+ *** Download Progress Summary as of Fri Aug 30 22:20:32 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 0.9GiB/9.3GiB(10%) CN:1 DL:16MiB ETA:8m46s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Fri Aug 30 22:21:33 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 1.9GiB/9.3GiB(20%) CN:1 DL:16MiB ETA:7m45s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Fri Aug 30 22:22:33 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 2.8GiB/9.3GiB(30%) CN:1 DL:16MiB ETA:6m45s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Fri Aug 30 22:23:34 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 3.8GiB/9.3GiB(41%) CN:1 DL:16MiB ETA:5m44s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Fri Aug 30 22:24:34 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 4.7GiB/9.3GiB(51%) CN:1 DL:16MiB ETA:4m44s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Fri Aug 30 22:25:35 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 5.7GiB/9.3GiB(61%) CN:1 DL:16MiB ETA:3m43s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Fri Aug 30 22:26:35 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 6.7GiB/9.3GiB(72%) CN:1 DL:16MiB ETA:2m43s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Fri Aug 30 22:27:36 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 7.6GiB/9.3GiB(82%) CN:1 DL:16MiB ETA:1m42s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ *** Download Progress Summary as of Fri Aug 30 22:28:36 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#cfbf62 8.6GiB/9.3GiB(92%) CN:1 DL:16MiB ETA:42s]
+FILE: /dev/shm/bigfile.txt
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[#cfbf62 9.3GiB/9.3GiB(99%) CN:1 DL:16MiB]                                                                                                                                                                    
+08/30 22:29:18 [NOTICE] Download complete: /dev/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+cfbf62|OK  |    16MiB/s|/dev/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	9m46.990s
+user	0m11.908s
+sys	0m41.328s

@@ -51,3 +51,197 @@ sys	0m14.059s
 real	0m11.013s
 user	0m0.548s
 sys	0m13.393s
+#
+# multi
+#
+[root@ip-172-31-34-66 shm]# for i in 0 1 2 3 4 5 6 7 8 9; do time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat & done; time wait
+[1] 5723
+[2] 5724
+[3] 5725
+[4] 5727
+[5] 5729
+[6] 5731
+[7] 5733
+[8] 5735
+[9] 5737
+[10] 5739
+
+real	0m6.509s
+user	0m0.093s
+sys	0m1.582s
+
+real	0m6.631s
+user	0m0.091s
+sys	0m1.656s
+
+real	0m7.022s
+user	0m0.089s
+sys	0m1.527s
+
+real	0m8.394s
+user	0m0.082s
+sys	0m1.468s
+[1]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+[8]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+[9]-  Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+[10]+  Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+
+real	0m8.461s
+user	0m0.075s
+sys	0m1.594s
+
+real	0m8.657s
+user	0m0.094s
+sys	0m1.634s
+
+real	0m9.277s
+user	0m0.108s
+sys	0m1.481s
+[2]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+[3]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+[4]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+
+real	0m9.281s
+user	0m0.094s
+sys	0m1.672s
+
+real	0m9.488s
+user	0m0.100s
+sys	0m1.676s
+
+real	0m9.540s
+user	0m0.111s
+sys	0m1.522s
+[5]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+[6]-  Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+[7]+  Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/chep-cvmfs/test_file.1000mb -f /dev/shm/1G_$i.dat
+
+real	0m9.540s
+user	0m0.938s
+sys	0m15.814s
+[root@ip-172-31-34-66 shm]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat & done; time wait
+[1] 7362
+[2] 7363
+[3] 7364
+[4] 7366
+[5] 7368
+[6] 7370
+[7] 7372
+[8] 7375
+[9] 7377
+[10] 7378
+[11] 7380
+[12] 7382
+[13] 7384
+[14] 7386
+[15] 7388
+[16] 7391
+[17] 7392
+[18] 7394
+[19] 7396
+[20] 7398
+
+real	0m6.518s
+user	0m0.063s
+sys	0m0.934s
+
+real	0m6.621s
+user	0m0.057s
+sys	0m0.812s
+
+real	0m6.733s
+user	0m0.057s
+sys	0m0.881s
+
+real	0m6.785s
+user	0m0.056s
+sys	0m0.912s
+[1]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[8]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[12]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[19]-  Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+
+real	0m7.323s
+user	0m0.049s
+sys	0m0.871s
+
+real	0m7.660s
+user	0m0.060s
+sys	0m0.894s
+
+real	0m7.929s
+user	0m0.064s
+sys	0m0.807s
+
+real	0m8.063s
+user	0m0.073s
+sys	0m1.032s
+
+real	0m8.311s
+user	0m0.058s
+sys	0m0.972s
+
+real	0m8.429s
+user	0m0.045s
+sys	0m0.861s
+
+real	0m8.643s
+user	0m0.067s
+sys	0m1.058s
+
+real	0m8.690s
+user	0m0.077s
+sys	0m0.931s
+
+real	0m8.794s
+user	0m0.060s
+sys	0m0.962s
+
+real	0m8.882s
+user	0m0.059s
+sys	0m0.983s
+
+real	0m8.899s
+user	0m0.048s
+sys	0m0.870s
+
+real	0m9.134s
+user	0m0.063s
+sys	0m0.882s
+
+real	0m9.647s
+user	0m0.070s
+sys	0m1.001s
+
+real	0m9.665s
+user	0m0.058s
+sys	0m0.790s
+
+real	0m9.829s
+user	0m0.060s
+sys	0m1.072s
+
+real	0m9.844s
+user	0m0.087s
+sys	0m0.995s
+[2]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[3]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[4]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[5]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[6]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[7]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[9]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[10]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[11]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[13]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[14]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[15]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[16]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[17]   Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[18]-  Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+[20]+  Done                    time xrdcp -s root://fiona-r-uva.vlan7.uvalight.net:1094//user/dweitzel/public/loadtest/loadtest.500M -f /dev/shm/05G_$i.dat
+
+real	0m9.842s
+user	0m1.237s
+sys	0m18.521s
+
