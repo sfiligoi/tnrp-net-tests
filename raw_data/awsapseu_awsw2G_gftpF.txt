@@ -1,0 +1,59 @@
+[root@ip-172-31-19-239 ~]# hostname
+ip-172-31-19-239.ap-northeast-2.compute.internal
+[root@ip-172-31-19-239 ~]# tracepath ec2-54-200-110-185.us-west-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ap-northeast-2.compute.internal        0.068ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  100.64.17.193                                         0.336ms 
+ 5:  54.239.122.29                                         1.386ms 
+ 6:  54.239.123.30                                         7.569ms asymm 11 
+ 7:  54.239.123.47                                         1.345ms asymm  9 
+ 8:  54.239.45.187                                       126.375ms asymm 21 
+ 9:  100.91.146.50                                       126.649ms asymm 20 
+10:  100.91.146.125                                      126.510ms asymm 19 
+11:  54.239.46.231                                       126.364ms asymm 18 
+12:  54.239.44.111                                       130.214ms asymm 17 
+# ping does not answer
+[root@ip-172-31-19-239 ~]# export GLOBUS_FTP_CLIENT_DATA_IP=15.164.242.106
+[root@ip-172-31-19-239 ~]# time globus-url-copy -vb -fast -p 16 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9738125312 bytes       171.98 MB/sec avg       174.00 MB/sec inst
+
+real	0m55.566s
+user	0m0.901s
+sys	0m15.056s
+[root@ip-172-31-19-239 ~]# time globus-url-copy -vb -fast -p 32 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9998689280 bytes       297.98 MB/sec avg         0.75 MB/sec inst
+
+real	0m33.291s
+user	0m0.928s
+sys	0m17.183s
+[root@ip-172-31-19-239 ~]# time globus-url-copy -vb -fast -p 64 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9999737856 bytes       476.82 MB/sec avg       394.87 MB/sec inst
+
+real	0m20.034s
+user	0m1.035s
+sys	0m16.300s
+[root@ip-172-31-19-239 ~]# time globus-url-copy -vb -fast -p 96 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9221701632 bytes       488.58 MB/sec avg       573.74 MB/sec inst
+
+real	0m19.963s
+user	0m1.327s
+sys	0m16.022s
