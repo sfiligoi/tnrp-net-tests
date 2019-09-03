@@ -1,0 +1,61 @@
+[root@ip-172-31-33-102 centos]# hostname
+ip-172-31-33-102.eu-west-1.compute.internal
+[root@ip-172-31-33-102 centos]# tracepath ec2-54-200-110-185.us-west-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-32-1.eu-west-1.compute.internal             0.036ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.11.97                                          0.928ms 
+ 7:  100.64.164.57                                         8.665ms asymm 16 
+ 8:  100.64.161.108                                        1.368ms asymm 15 
+ 9:  52.93.7.142                                           4.827ms asymm 14 
+10:  52.93.6.233                                           1.161ms asymm 12 
+11:  100.91.9.194                                        125.580ms asymm 32 
+12:  52.93.128.110                                       134.896ms asymm 23 
+13:  100.91.191.124                                      127.949ms asymm 32 
+14:  100.91.191.13                                       124.504ms asymm 30 
+# ping does not answer
+[root@ip-172-31-33-102 centos]# export GLOBUS_FTP_CLIENT_DATA_IP=18.202.224.202
+[root@ip-172-31-33-102 centos]# time globus-url-copy -vb -fast -p 16 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9825419264 bytes       161.56 MB/sec avg       155.87 MB/sec inst
+
+real	0m59.569s
+user	0m1.053s
+sys	0m17.210s
+[root@ip-172-31-33-102 centos]# time globus-url-copy -vb -fast -p 32 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9998951424 bytes       280.46 MB/sec avg         0.75 MB/sec inst
+
+real	0m35.163s
+user	0m1.085s
+sys	0m17.898s
+[root@ip-172-31-33-102 centos]# time globus-url-copy -vb -fast -p 64 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9998689280 bytes       397.31 MB/sec avg         1.00 MB/sec inst
+
+real	0m25.314s
+user	0m1.023s
+sys	0m16.322s
+[root@ip-172-31-33-102 centos]# time globus-url-copy -vb -fast -p 96 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9999213568 bytes       397.33 MB/sec avg         0.50 MB/sec inst
+
+real	0m24.985s
+user	0m1.329s
+sys	0m16.050s
