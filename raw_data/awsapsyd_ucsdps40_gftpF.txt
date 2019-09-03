@@ -1,0 +1,73 @@
+[root@ip-172-31-8-107 centos]# hostname
+ip-172-31-8-107.ap-southeast-2.compute.internal
+[root@ip-172-31-8-107 centos]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-0-1.ap-southeast-2.compute.internal         0.064ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.9.1                                            0.270ms asymm  7 
+ 7:  52.95.38.211                                          0.922ms asymm  8 
+ 8:  52.95.37.88                                           3.497ms asymm 11 
+ 9:  52.95.36.113                                          1.319ms 
+10:  unknown.telstraglobal.net                             2.353ms asymm 12 
+11:  i-0-1-0-24.sydp-core04.bi.telstraglobal.net           2.756ms asymm 13 
+12:  i-73.paix-core02.telstraglobal.net                  188.908ms 
+13:  i-0-0-0-1.paix-core02.telstraglobal.net             179.786ms asymm  9 
+14:  i-92.paix02.telstraglobal.net                       179.663ms asymm 10 
+15:  198.32.176.128                                      180.519ms asymm 14 
+16:  198.71.47.75                                        181.650ms asymm 17 
+17:  dc-lax-agg8--svl-agg8-100ge-1.cenic.net             148.680ms 
+18:  dc-lax-agg6--lax-agg8-100ge-3.cenic.net             148.938ms asymm 13 
+19:  dc-sdg-agg4--tus-agg3-100ge-2.cenic.net             161.095ms asymm 15 
+20:  dc-ucsd-100ge--sdg-agg4.cenic.net                   159.658ms asymm 19 
+21:  mx0-router.optiputer.net                            160.004ms asymm 22 
+22:  mx0-router.optiputer.net                            150.328ms 
+23:  ps-40g-gridftp.calit2.optiputer.net                 160.734ms !H
+     Resume: pmtu 1500 
+[root@ip-172-31-8-107 centos]# ping ps-40g-gridftp.calit2.optiputer.net
+PING ps-40g-gridftp.calit2.optiputer.net (67.58.50.66) 56(84) bytes of data.
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=1 ttl=47 time=150 ms
+[root@ip-172-31-8-107 centos]# export GLOBUS_FTP_CLIENT_DATA_IP=3.104.220.145
+[root@ip-172-31-8-107 centos]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9852420096 bytes       138.18 MB/sec avg       140.37 MB/sec inst
+
+real	1m9.704s
+user	0m1.577s
+sys	0m22.021s
+[root@ip-172-31-8-107 centos]# time globus-url-copy -vb -fast -p 32 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9997640704 bytes       190.69 MB/sec avg        62.49 MB/sec inst
+
+real	0m50.693s
+user	0m1.918s
+sys	0m25.451s
+[root@ip-172-31-8-107 centos]# time globus-url-copy -vb -fast -p 64 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9974054912 bytes       237.80 MB/sec avg       154.00 MB/sec inst
+
+real	0m41.827s
+user	0m1.981s
+sys	0m27.869s
+[root@ip-172-31-8-107 centos]# time globus-url-copy -vb -fast -p 96 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9986368512 bytes       226.76 MB/sec avg       127.00 MB/sec inst
+
+real	0m43.470s
+user	0m2.235s
+sys	0m31.397s
