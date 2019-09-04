@@ -1,0 +1,13 @@
+Node: fiona-r-uva.vlan7.uvalight.net
+Setup: k8s
+k8s setup details:
+      hostNetwork: true
+      nodeSelector:
+        kubernetes.io/hostname: fiona-r-uva.vlan7.uvalight.net
+      containers:
+      - image: sfiligoi/prp-osg-head:client
+Relevant config:
+  OSG repo
+  yum install osg-wn-client aria2
+  export GLOBUS_TCP_PORT_RANGE=50000,51000
+

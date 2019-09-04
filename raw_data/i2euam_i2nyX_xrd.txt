@@ -1,0 +1,41 @@
+[root@fiona-r-uva shm]# hostname
+fiona-r-uva.vlan7.uvalight.net
+[root@fiona-r-uva shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=61 time=90.8 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=2 ttl=61 time=90.8 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=3 ttl=61 time=90.7 ms
+^C
+--- osg.newy32aoa.nrp.internet2.edu ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2001ms
+rtt min/avg/max/mdev = 90.781/90.844/90.880/0.044 ms
+[root@fiona-r-uva shm]# tracepath osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      1.453ms 
+ 3:  et-4-1-0.120.rtsw.newy32aoa.net.internet2.edu        91.489ms 
+ 4:  osg.newy32aoa.nrp.internet2.edu                      91.060ms reach: pmtu 9000 hops 4 back 4 
+[root@fiona-r-uva shm]# time xrdcp root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][98.32MB/s]  
+
+real	1m37.596s
+user	0m0.519s
+sys	0m13.458s
+[root@fiona-r-uva shm]# time xrdcp -DICPParallelChunks 64 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][100.4MB/s]  
+
+real	1m34.944s
+user	0m0.489s
+sys	0m16.473s
+[root@fiona-r-uva shm]# time xrdcp --streams 7 -DICPParallelChunks 16 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][85.15MB/s]  
+
+real	1m51.630s
+user	0m0.443s
+sys	0m14.753s
+[root@fiona-r-uva shm]# time xrdcp --streams 15 -DICPParallelChunks 32 root://osg.newy32aoa.nrp.internet2.edu:50094//testi2ny/10G.dat -f /export/shm/10G.dat
+[9.313GB/9.313GB][100%][==================================================][112.2MB/s]  
+
+real	1m24.969s
+user	0m0.427s
+sys	0m16.085s

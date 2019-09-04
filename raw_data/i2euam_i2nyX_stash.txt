@@ -1,0 +1,311 @@
+[root@fiona-r-uva /]# hostname
+fiona-r-uva.vlan7.uvalight.net
+[root@fiona-r-uva /]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=61 time=90.9 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=2 ttl=61 time=90.8 ms
+^C
+--- osg.newy32aoa.nrp.internet2.edu ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 90.828/90.911/90.995/0.312 ms
+[root@fiona-r-uva /]# tracepath osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.750ms 
+ 3:  et-4-1-0.120.rtsw.newy32aoa.net.internet2.edu        91.781ms 
+ 4:  osg.newy32aoa.nrp.internet2.edu                      90.918ms reached
+     Resume: pmtu 9000 hops 4 back 4 
+#
+# After warming the cache
+#
+[root@fiona-r-uva /]# time curl -o /export/shm/10G.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9540M  100 9540M    0     0   187M      0  0:00:50  0:00:50 --:--:--  279M
+
+real	0m50.760s
+user	0m1.813s
+sys	0m14.380s
+[root@fiona-r-uva shm]# time wget http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+--2019-09-04 20:37:25--  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+Resolving osg.newy32aoa.nrp.internet2.edu (osg.newy32aoa.nrp.internet2.edu)... 163.253.72.2, 2001:468:2808::2
+Connecting to osg.newy32aoa.nrp.internet2.edu (osg.newy32aoa.nrp.internet2.edu)|163.253.72.2|:9001... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10003415040 (9.3G)
+Saving to: ‘bigfile.txt’
+
+100%[=================================================================================================================================================================================================>] 10,003,415,040  292MB/s   in 58s    
+
+2019-09-04 20:38:23 (166 MB/s) - ‘bigfile.txt’ saved [10003415040/10003415040]
+
+
+real	0m57.991s
+user	0m1.502s
+sys	0m17.281s
+[root@fiona-r-uva /]# for i in 0 1 2 3 4 5 6 7 8 9; do time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt & done; time wait
+[1] 178
+[2] 179
+[3] 181
+[4] 183
+[5] 185
+[6] 186
+[7] 187
+[8] 189
+[9] 190
+[10] 191
+
+real	0m12.204s
+user	0m0.216s
+sys	0m1.635s
+
+real	0m14.391s
+user	0m0.226s
+sys	0m1.430s
+
+real	0m15.384s
+user	0m0.244s
+sys	0m1.393s
+[1]   Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[2]   Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m16.348s
+user	0m0.201s
+sys	0m1.305s
+
+real	0m18.038s
+user	0m0.225s
+sys	0m1.715s
+
+real	0m19.704s
+user	0m0.199s
+sys	0m1.340s
+
+real	0m20.943s
+user	0m0.198s
+sys	0m1.440s
+
+real	0m21.229s
+user	0m0.225s
+sys	0m1.486s
+
+real	0m21.232s
+user	0m0.223s
+sys	0m1.487s
+
+real	0m21.988s
+user	0m0.227s
+sys	0m1.440s
+[3]   Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[4]   Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[6]   Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[8]   Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[9]-  Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[10]+  Done                    time curl -s -r 0-1000341504 -o /export/shm/1G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m21.987s
+user	0m2.189s
+sys	0m14.673s
+[root@fiona-r-uva /]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt& done; time wait
+[1] 1388
+[2] 1389
+[3] 1390
+[4] 1392
+[5] 1394
+[6] 1396
+[7] 1397
+[8] 1399
+[9] 1400
+[10] 1402
+[11] 1405
+[12] 1408
+[13] 1409
+[14] 1412
+[15] 1413
+[16] 1414
+[17] 1415
+[18] 1416
+[19] 1418
+[20] 1419
+
+real	0m7.832s
+user	0m0.100s
+sys	0m0.711s
+
+real	0m11.956s
+user	0m0.132s
+sys	0m0.829s
+
+real	0m12.243s
+user	0m0.103s
+sys	0m0.728s
+[1]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[4]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[7]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m14.224s
+user	0m0.118s
+sys	0m0.881s
+
+real	0m14.500s
+user	0m0.120s
+sys	0m0.866s
+
+real	0m14.842s
+user	0m0.130s
+sys	0m0.726s
+
+real	0m15.093s
+user	0m0.103s
+sys	0m0.772s
+
+real	0m15.792s
+user	0m0.106s
+sys	0m0.846s
+
+real	0m15.798s
+user	0m0.117s
+sys	0m0.857s
+
+real	0m16.006s
+user	0m0.142s
+sys	0m0.930s
+
+real	0m16.157s
+user	0m0.121s
+sys	0m0.878s
+
+real	0m16.746s
+user	0m0.122s
+sys	0m0.924s
+
+real	0m16.796s
+user	0m0.129s
+sys	0m0.818s
+
+real	0m17.532s
+user	0m0.106s
+sys	0m0.814s
+[2]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[3]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[5]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[9]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[10]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[11]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[12]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[13]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[14]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[19]-  Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[20]+  Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m17.610s
+user	0m0.126s
+sys	0m0.850s
+
+real	0m17.996s
+user	0m0.149s
+sys	0m0.892s
+[6]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[15]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m18.104s
+user	0m0.123s
+sys	0m0.844s
+
+real	0m18.296s
+user	0m0.119s
+sys	0m0.879s
+
+real	0m18.301s
+user	0m0.121s
+sys	0m0.916s
+[8]   Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[17]-  Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+[18]+  Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m18.750s
+user	0m0.121s
+sys	0m0.781s
+[16]+  Done                    time curl -s -r 0-500170752 -o /export/shm/05G_$i.dat http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+real	0m18.752s
+user	0m2.413s
+sys	0m16.746s
+#
+# aria2 is requesting checksums that xrootd does not understand, but never uses - disabling
+#
+[root@fiona-r-uva shm]# time aria2c --header='Want-Digest: '  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+09/04 22:44:51 [NOTICE] Downloading 1 item(s)
+ *** Download Progress Summary as of Wed Sep  4 22:45:52 2019 ***                                                                                                                                                                            
+=============================================================================================================================================================================================================================================
+[#74e96d 7.3GiB/9.3GiB(78%) CN:1 DL:239MiB ETA:8s]
+FILE: /export/shm/bigfile.txt
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[#74e96d 9.1GiB/9.3GiB(97%) CN:1 DL:264MiB]                                                                                                                                                                                                  
+09/04 22:46:00 [NOTICE] Download complete: /export/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+74e96d|OK  |   140MiB/s|/export/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	1m8.744s
+user	0m4.346s
+sys	0m14.953s
+[root@fiona-r-uva shm]# time aria2c -j 20 -x 4 --header='Want-Digest: '  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+09/04 22:47:56 [NOTICE] Downloading 1 item(s)
+[#d9ed3a 9.2GiB/9.3GiB(99%) CN:1 DL:197MiB]                                                                                                                                                                                                  
+09/04 22:48:45 [NOTICE] Download complete: /export/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+d9ed3a|OK  |   193MiB/s|/export/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m49.610s
+user	0m4.204s
+sys	0m12.565s
+[root@fiona-r-uva shm]# time aria2c -j 40 -x 8 --header='Want-Digest: '  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+09/04 22:49:02 [NOTICE] Downloading 1 item(s)
+[#3cf7df 9.2GiB/9.3GiB(99%) CN:3 DL:336MiB]                                                                                                                                                                                                  
+09/04 22:49:46 [NOTICE] Download complete: /export/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+3cf7df|OK  |   218MiB/s|/export/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m44.312s
+user	0m4.308s
+sys	0m12.491s
+[root@fiona-r-uva shm]# time aria2c -j 80 -x 16 --header='Want-Digest: '  http://osg.newy32aoa.nrp.internet2.edu:9001/user/dweitzel/public/bigfile.txt
+
+09/04 22:51:44 [NOTICE] Downloading 1 item(s)
+[#8ac99f 9.2GiB/9.3GiB(99%) CN:2 DL:286MiB]                                                                                                                                                                                                  
+09/04 22:52:29 [NOTICE] Download complete: /export/shm/bigfile.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8ac99f|OK  |   214MiB/s|/export/shm/bigfile.txt
+
+Status Legend:
+(OK):download completed.
+
+real	0m45.039s
+user	0m4.372s
+sys	0m12.719s

@@ -1,0 +1,92 @@
+[root@fiona-r-uva shm]# hostname
+fiona-r-uva.vlan7.uvalight.net
+[root@fiona-r-uva shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=61 time=90.8 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=2 ttl=61 time=90.8 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=3 ttl=61 time=90.7 ms
+^C
+--- osg.newy32aoa.nrp.internet2.edu ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2001ms
+rtt min/avg/max/mdev = 90.781/90.844/90.880/0.044 ms
+[root@fiona-r-uva shm]# tracepath osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      1.453ms 
+ 3:  et-4-1-0.120.rtsw.newy32aoa.net.internet2.edu        91.489ms 
+ 4:  osg.newy32aoa.nrp.internet2.edu                      91.060ms reach: pmtu 9000 hops 4 back 4 
+[root@fiona-r-uva shm]# time globus-url-copy -vb ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9892265984 bytes       115.05 MB/sec avg       127.50 MB/sec inst
+
+real	1m23.020s
+user	0m1.125s
+sys	0m10.413s
+[root@fiona-r-uva shm]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat& done; time wait
+[1] 2098
+[2] 2099
+[3] 2100
+[4] 2102
+[5] 2103
+[6] 2106
+[7] 2107
+[8] 2109
+[9] 2110
+[10] 2112
+
+real	0m17.830s
+user	0m0.095s
+sys	0m1.071s
+
+real	0m24.900s
+user	0m0.126s
+sys	0m1.155s
+
+real	0m26.717s
+user	0m0.127s
+sys	0m1.020s
+[1]   Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+[6]   Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+[9]-  Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+
+real	0m27.033s
+user	0m0.138s
+sys	0m1.206s
+
+real	0m27.183s
+user	0m0.156s
+sys	0m1.217s
+
+real	0m28.113s
+user	0m0.158s
+sys	0m1.293s
+[2]   Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+[3]   Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+[5]   Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+
+real	0m28.167s
+user	0m0.166s
+sys	0m1.223s
+
+real	0m28.245s
+user	0m0.166s
+sys	0m1.259s
+
+real	0m28.331s
+user	0m0.159s
+sys	0m1.122s
+[4]   Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+[7]   Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+[10]+  Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+
+real	0m29.033s
+user	0m0.152s
+sys	0m1.097s
+[8]+  Done                    time globus-url-copy -len 1000000000 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/1G_${i}.dat
+
+real	0m29.040s
+user	0m1.445s
+sys	0m11.665s

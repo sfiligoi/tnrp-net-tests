@@ -1,0 +1,60 @@
+[root@fiona-r-uva shm]# hostname
+fiona-r-uva.vlan7.uvalight.net
+[root@fiona-r-uva shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=61 time=90.8 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=2 ttl=61 time=90.8 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=3 ttl=61 time=90.7 ms
+^C
+--- osg.newy32aoa.nrp.internet2.edu ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2001ms
+rtt min/avg/max/mdev = 90.781/90.844/90.880/0.044 ms
+[root@fiona-r-uva shm]# tracepath osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      1.453ms 
+ 3:  et-4-1-0.120.rtsw.newy32aoa.net.internet2.edu        91.489ms 
+ 4:  osg.newy32aoa.nrp.internet2.edu                      91.060ms reached
+     Resume: pmtu 9000 hops 4 back 4 
+#
+[root@fiona-r-uva /]# export GLOBUS_TCP_PORT_RANGE=50000,51000
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 16 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   8640790528 bytes       374.56 MB/sec avg       939.69 MB/sec inst
+
+real	0m23.762s
+user	0m1.137s
+sys	0m10.239s
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 32 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9846128640 bytes       469.49 MB/sec avg       991.14 MB/sec inst
+
+real	0m20.888s
+user	0m1.220s
+sys	0m10.776s
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 64 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9591324672 bytes       508.16 MB/sec avg       850.60 MB/sec inst
+
+real	0m18.722s
+user	0m1.290s
+sys	0m11.398s
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 96  ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   8912109568 bytes       531.20 MB/sec avg       891.33 MB/sec inst
+
+real	0m17.900s
+user	0m1.242s
+sys	0m11.338s
