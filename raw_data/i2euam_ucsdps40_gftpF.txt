@@ -1,0 +1,66 @@
+[root@fiona-r-uva /]# hostname
+fiona-r-uva.vlan7.uvalight.net
+[root@fiona-r-uva /]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.606ms 
+ 3:  et-4-1-0.120.rtsw.newy32aoa.net.internet2.edu        91.623ms 
+ 4:  ae-3.4079.rtsw.wash.net.internet2.edu                97.288ms 
+ 5:  ae-5.4079.rtsw.losa.net.internet2.edu               156.207ms 
+ 6:  hpr-lax-hpr3--i2-r-and-e.cenic.net                  156.381ms 
+ 7:  hpr-sdg-hpr3--lax-hpr3-100ge.cenic.net              158.410ms 
+ 8:  hpr-ucsd-100ge--sdg-hpr3.cenic.net                  158.947ms 
+ 9:  mx0-router.optiputer.net                            158.541ms 
+10:  ps-40g-gridftp.calit2.optiputer.net                 158.419ms !H
+     Resume: pmtu 9000 
+[root@fiona-r-uva /]# export GLOBUS_TCP_PORT_RANGE=50000,51000
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9787670528 bytes       518.57 MB/sec avg       778.26 MB/sec inst
+
+real	0m18.565s
+user	0m1.441s
+sys	0m11.321s
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 32 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   8897167360 bytes       530.30 MB/sec avg       650.93 MB/sec inst
+
+real	0m17.505s
+user	0m2.319s
+sys	0m11.812s
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 64 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   8384413696 bytes       571.14 MB/sec avg       789.80 MB/sec inst
+
+real	0m16.080s
+user	0m1.304s
+sys	0m11.700s
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 96 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9641911296 bytes       574.70 MB/sec avg       769.66 MB/sec inst
+
+real	0m16.286s
+user	0m2.570s
+sys	0m10.954s
+[root@fiona-r-uva /]# time globus-url-copy -vb -fast -p 128 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9999213568 bytes       596.00 MB/sec avg       805.14 MB/sec inst
+
+real	0m16.034s
+user	0m1.828s
+sys	0m11.164s
