@@ -1,0 +1,83 @@
+[root@ip-172-31-19-239 centos]# hostname
+ip-172-31-19-239.ap-northeast-2.compute.internal
+[root@ip-172-31-19-239 centos]# tracepath ec2-52-29-200-40.eu-central-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ap-northeast-2.compute.internal        0.053ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  100.64.17.1                                           0.341ms 
+ 5:  54.239.122.23                                         1.375ms 
+ 6:  54.239.123.52                                         7.236ms asymm 11 
+ 7:  54.239.123.69                                         1.301ms asymm  9 
+ 8:  54.239.45.185                                       272.594ms asymm 29 
+ 9:  100.91.146.0                                        271.907ms asymm 28 
+10:  100.91.146.27                                       272.043ms asymm 27 
+11:  54.239.43.114                                       267.544ms asymm 29 
+12:  54.239.44.5                                         264.936ms asymm 28 
+13:  52.93.129.95                                        283.923ms asymm 24 
+14:  100.91.16.28                                        294.209ms asymm 26 
+15:  100.91.16.19                                        293.778ms asymm 25 
+16:  52.93.133.152                                       274.031ms asymm 24 
+17:  100.91.35.71                                        271.900ms asymm 19 
+18:  54.239.106.150                                      266.965ms asymm 26 
+19:  52.93.111.236                                       265.056ms asymm 24 
+20:  52.93.111.227                                       273.762ms asymm 25 
+21:  54.239.106.51                                       272.234ms asymm 23 
+22:  54.239.4.216                                        266.954ms asymm 25 
+23:  no reply
+24:  no reply
+25:  no reply
+26:  ec2-52-29-200-40.eu-central-1.compute.amazonaws.com 271.913ms reached
+     Resume: pmtu 1500 hops 26 back 26 
+[root@ip-172-31-19-239 centos]# export GLOBUS_FTP_CLIENT_DATA_IP=15.164.179.243
+[root@ip-172-31-19-239 centos]# time globus-url-copy -vb -fast -p 16 ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9990832128 bytes        78.10 MB/sec avg        86.38 MB/sec inst
+
+real	2m3.138s
+user	0m1.183s
+sys	0m20.030s
+[root@ip-172-31-19-239 centos]# time globus-url-copy -vb -fast -p 32 ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9990045696 bytes       153.67 MB/sec avg       167.50 MB/sec inst
+
+real	1m2.928s
+user	0m0.930s
+sys	0m18.022s
+[root@ip-172-31-19-239 centos]# time globus-url-copy -vb -fast -p 64 ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9987154944 bytes       280.13 MB/sec avg       321.01 MB/sec inst
+
+real	0m35.738s
+user	0m0.993s
+sys	0m19.618s
+[root@ip-172-31-19-239 centos]# time globus-url-copy -vb -fast -p 96 ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9997640704 bytes       366.71 MB/sec avg       152.62 MB/sec inst
+
+real	0m27.417s
+user	0m1.030s
+sys	0m17.781s
+[root@ip-172-31-19-239 centos]# time globus-url-copy -vb -fast -p 128 ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ec2-52-29-200-40.eu-central-1.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9997378560 bytes       397.26 MB/sec avg        12.13 MB/sec inst
+
+real	0m25.657s
+user	0m1.239s
+sys	0m16.264s
