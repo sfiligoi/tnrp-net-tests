@@ -1,0 +1,44 @@
+[root@ip-172-31-34-66 centos]# hostname
+ip-172-31-34-66.eu-central-1.compute.internal
+[root@ip-172-31-34-66 centos]# ping fiona-r-uva.vlan7.uvalight.net
+PING fiona-r-uva.vlan7.uvalight.net (145.146.100.30) 56(84) bytes of data.
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=1 ttl=48 time=7.46 ms
+[root@ip-172-31-34-66 centos]# tracepath fiona-r-uva.vlan7.uvalight.net
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-32-1.eu-central-1.compute.internal          0.050ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  100.65.0.193                                          0.604ms 
+ 5:  54.239.4.217                                          1.262ms asymm  6 
+ 6:  54.239.106.72                                         3.645ms asymm 11 
+ 7:  54.239.106.171                                        1.351ms asymm  9 
+ 8:  54.239.41.145                                         6.626ms asymm 13 
+ 9:  52.93.130.80                                          6.012ms asymm 12 
+10:  52.93.130.80                                          6.494ms asymm 12 
+11:  54.239.114.61                                         6.456ms asymm 13 
+12:  54.239.114.25                                         7.331ms asymm 14 
+13:  ae2.jnr02.Asd001A.surf.net                            7.421ms asymm 15 
+14:  lo0-2.asd001b-jnx-01-sn7-internet.surf.net            7.549ms asymm 15 
+15:  no reply
+[root@ip-172-31-34-66 centos]# export GLOBUS_FTP_CLIENT_DATA_IP=52.58.105.95
+[root@ip-172-31-34-66 centos]# time globus-url-copy -vb -fast -p 16 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8297906176 bytes       989.16 MB/sec avg       942.91 MB/sec inst
+
+real	0m9.781s
+user	0m0.397s
+sys	0m8.879s
+[root@ip-172-31-34-66 centos]# time globus-url-copy -vb -fast -p 32 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8162115584 bytes       973.00 MB/sec avg      1121.42 MB/sec inst
+
+real	0m9.569s
+user	0m0.428s
+sys	0m9.039s
