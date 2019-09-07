@@ -1,0 +1,13 @@
+Node: fiona-r-uva.vlan7.uvalight.net
+Setup: k8s
+k8s setup details:
+      hostNetwork: true
+      nodeSelector:
+        kubernetes.io/hostname: fiona-r-uva.vlan7.uvalight.net
+      containers:
+      - image: sfiligoi/tnrp-net-tests:gridftp
+Relevant config:
+  OSG repo
+  yum install osg-wn-client osg-gridftp
+  anon ftp enabled
+
