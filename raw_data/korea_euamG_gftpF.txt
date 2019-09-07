@@ -1,0 +1,54 @@
+[root@dtn2-daejeon /]# hostname
+dtn2-daejeon.kreonet.net
+[root@dtn2-daejeon /]# tracepath fiona-r-uva.vlan7.uvalight.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.359ms 
+ 1:  gateway                                               0.293ms 
+ 2:  134.75.103.193                                        1.170ms asymm  3 
+ 3:  134.75.103.34                                       155.321ms asymm  4 
+ 4:  134.75.103.66                                       264.641ms asymm  5 
+ 5:  et-0-0-0.672.jnr01.asd001a.surf.net                 264.490ms asymm  6 
+ 6:  no reply
+ 7:  145.146.100.30                                      264.353ms reached
+     Resume: pmtu 9000 hops 7 back 8 
+[root@dtn2-daejeon /]# export GLOBUS_TCP_PORT_RANGE=50000,51000
+[root@dtn2-daejeon /]# time globus-url-copy -vb -fast -p 16 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   8650227712 bytes       412.47 MB/sec avg       507.86 MB/sec inst
+
+real	0m21.991s
+user	0m4.065s
+sys	0m10.626s
+[root@dtn2-daejeon /]# time globus-url-copy -vb -fast -p 32 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9647685632 bytes       460.03 MB/sec avg       745.70 MB/sec inst
+
+real	0m21.666s
+user	0m3.494s
+sys	0m11.030s
+[root@dtn2-daejeon /]# time globus-url-copy -vb -fast -p 64 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9189982208 bytes       486.90 MB/sec avg       715.39 MB/sec inst
+
+real	0m19.101s
+user	0m3.345s
+sys	0m11.050s
+[root@dtn2-daejeon /]# time globus-url-copy -vb -fast -p 96 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9683337216 bytes       513.04 MB/sec avg       754.57 MB/sec inst
+
+real	0m19.798s
+user	0m2.899s
+sys	0m11.293s

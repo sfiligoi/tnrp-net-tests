@@ -1,0 +1,47 @@
+[root@dtn2-daejeon /]# hostname
+dtn2-daejeon.kreonet.net
+[root@dtn2-daejeon /]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.343ms 
+ 1:  gateway                                               0.295ms 
+ 2:  134.75.103.193                                        1.086ms asymm  3 
+ 3:  134.75.103.241                                        1.058ms 
+ 4:  134.75.103.82                                       112.910ms 
+ 5:  cenichpr-1-is-jmb-778.snvaca.pacificwave.net        130.302ms 
+ 6:  hpr-lax-hpr3--svl-hpr3-100ge.cenic.net              137.517ms 
+ 7:  hpr-sdg-hpr3--lax-hpr3-100ge.cenic.net              139.646ms 
+ 8:  hpr-ucsd-100ge--sdg-hpr3.cenic.net                  140.889ms 
+ 9:  mx0-router.optiputer.net                            139.613ms 
+10:  ps-40g-gridftp.calit2.optiputer.net                 140.334ms !H
+     Resume: pmtu 9000 
+[root@dtn2-daejeon /]# export GLOBUS_TCP_PORT_RANGE=50000,51000
+[root@dtn2-daejeon /]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9994757120 bytes       680.84 MB/sec avg       677.64 MB/sec inst
+
+real	0m14.322s
+user	0m2.421s
+sys	0m8.610s
+[root@dtn2-daejeon /]# time globus-url-copy -vb -fast -p 32 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9940231168 bytes       677.12 MB/sec avg       525.54 MB/sec inst
+
+real	0m15.752s
+user	0m2.211s
+sys	0m8.977s
+[root@dtn2-daejeon /]# time globus-url-copy -vb -fast -p 64 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9991349248 bytes       680.60 MB/sec avg       784.35 MB/sec inst
+
+real	0m14.546s
+user	0m2.745s
+sys	0m8.737s
