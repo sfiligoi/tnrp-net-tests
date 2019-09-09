@@ -1,0 +1,98 @@
+[root@fiona-r-uva /]# hostname
+fiona-r-uva.vlan7.uvalight.net
+[root@fiona-r-uva /]# ping ps-40g-gridftp.calit2.optiputer.net
+PING ps-40g-gridftp.calit2.optiputer.net (67.58.50.66) 56(84) bytes of data.
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=1 ttl=55 time=158 ms
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=2 ttl=55 time=158 ms
+^C
+--- ps-40g-gridftp.calit2.optiputer.net ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 158.366/158.386/158.407/0.398 ms
+[root@fiona-r-uva /]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.484ms 
+ 3:  et-4-1-0.120.rtsw.newy32aoa.net.internet2.edu        91.497ms 
+ 4:  ae-3.4079.rtsw.wash.net.internet2.edu                96.960ms 
+ 5:  ae-5.4079.rtsw.losa.net.internet2.edu               156.187ms 
+ 6:  hpr-lax-hpr3--i2-r-and-e.cenic.net                  156.040ms 
+ 7:  hpr-sdg-hpr3--lax-hpr3-100ge.cenic.net              158.473ms 
+ 8:  hpr-ucsd-100ge--sdg-hpr3.cenic.net                  158.761ms 
+ 9:  mx0-router.optiputer.net                            158.555ms 
+10:  ps-40g-gridftp.calit2.optiputer.net                 158.550ms !H
+     Resume: pmtu 9000 
+[root@fiona-r-uva /]# time globus-url-copy -vb ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.out
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat  ->  10G.out
+
+   8971616256 bytes       427.79 MB/sec avg       645.02 MB/sec inst
+
+real	0m21.595s
+user	0m0.527s
+sys	0m11.104s
+[root@fiona-r-uva /]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out& done; time wait
+[1] 126
+[2] 127
+[3] 128
+[4] 131
+[5] 132
+[6] 134
+[7] 137
+[8] 138
+[9] 140
+[10] 142
+
+real	0m13.063s
+user	0m0.169s
+sys	0m1.416s
+
+real	0m14.022s
+user	0m0.208s
+sys	0m1.413s
+
+real	0m14.147s
+user	0m0.153s
+sys	0m1.446s
+
+real	0m14.374s
+user	0m0.203s
+sys	0m1.381s
+
+real	0m19.721s
+user	0m0.203s
+sys	0m1.487s
+
+real	0m25.067s
+user	0m0.194s
+sys	0m1.517s
+
+real	0m25.472s
+user	0m0.202s
+sys	0m1.585s
+
+real	0m26.286s
+user	0m0.244s
+sys	0m1.592s
+[1]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[2]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[3]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[4]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[5]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[6]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[7]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[9]-  Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+
+real	0m27.335s
+user	0m0.256s
+sys	0m1.574s
+
+real	0m27.337s
+user	0m0.244s
+sys	0m1.581s
+[8]-  Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[10]+  Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+
+real	0m27.342s
+user	0m2.079s
+sys	0m14.993s
