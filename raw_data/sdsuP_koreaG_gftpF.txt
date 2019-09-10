@@ -1,0 +1,66 @@
+[root@ps-100g /]# hostname
+ps-100g.sdsu.edu
+[root@ps-100g /]# tracepath dtn2-daejeon.kreonet.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.275ms 
+ 1:  gateway                                               0.177ms 
+ 2:  hpr-sdg-hpr3--sdsu-sdmz-100ge.cenic.net               0.785ms 
+ 3:  hpr-lax-hpr3--sdg-hpr3-100ge.cenic.net                3.062ms 
+ 4:  hpr-svl-hpr3--lax-hpr3-100ge.cenic.net               10.837ms 
+ 5:  kreonet-1-is-jmb-778.sttlwa.pacificwave.net          28.933ms 
+ 6:  134.75.103.81                                       140.748ms 
+ 7:  134.75.103.113                                      140.819ms 
+ 8:  kreonet2-gr-bb1-kreonet-dj-bb1.daej.kreonet2.net    140.199ms 
+ 9:  134.75.115.132                                      140.028ms reached
+     Resume: pmtu 9000 hops 9 back 9 
+
+[root@ps-100g /]# time globus-url-copy -vb -fast -p 16 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat  ->  10G.out
+
+   9978766336 bytes       297.39 MB/sec avg       314.79 MB/sec inst
+
+real	0m32.605s
+user	0m1.542s
+sys	0m7.538s
+[root@ps-100g /]# time globus-url-copy -vb -fast -p 32 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat  ->  10G.out
+
+   9981387776 bytes       279.97 MB/sec avg       207.89 MB/sec inst
+
+real	0m35.553s
+user	0m1.679s
+sys	0m8.257s
+[root@ps-100g /]# time globus-url-copy -vb -fast -p 64 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat  ->  10G.out
+
+   9986892800 bytes       317.47 MB/sec avg        67.98 MB/sec inst
+
+real	0m31.736s
+user	0m1.639s
+sys	0m8.771s
+[root@ps-100g /]# time globus-url-copy -vb -fast -p 96 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat  ->  10G.out
+
+   9999737856 bytes       340.59 MB/sec avg        66.63 MB/sec inst
+
+real	0m28.048s
+user	0m1.724s
+sys	0m9.244s
+[root@ps-100g /]# time globus-url-copy -vb -fast -p 128 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat  ->  10G.out
+
+   9992922112 bytes       476.50 MB/sec avg       648.27 MB/sec inst
+
+real	0m20.607s
+user	0m1.947s
+sys	0m8.135s

@@ -1,0 +1,215 @@
+[root@ps-100g /]# hostname
+ps-100g.sdsu.edu
+[root@ps-100g /]# tracepath dtn2-daejeon.kreonet.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.275ms 
+ 1:  gateway                                               0.177ms 
+ 2:  hpr-sdg-hpr3--sdsu-sdmz-100ge.cenic.net               0.785ms 
+ 3:  hpr-lax-hpr3--sdg-hpr3-100ge.cenic.net                3.062ms 
+ 4:  hpr-svl-hpr3--lax-hpr3-100ge.cenic.net               10.837ms 
+ 5:  kreonet-1-is-jmb-778.sttlwa.pacificwave.net          28.933ms 
+ 6:  134.75.103.81                                       140.748ms 
+ 7:  134.75.103.113                                      140.819ms 
+ 8:  kreonet2-gr-bb1-kreonet-dj-bb1.daej.kreonet2.net    140.199ms 
+ 9:  134.75.115.132                                      140.028ms reached
+     Resume: pmtu 9000 hops 9 back 9 
+[root@ps-100g /]# time globus-url-copy -vb ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat  ->  10G.out
+
+   9958326272 bytes        55.86 MB/sec avg        57.00 MB/sec inst
+
+real	2m50.701s
+user	0m5.775s
+sys	0m8.220s
+[root@ps-100g /]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out& done; time wait
+[1] 4711
+[2] 4712
+[3] 4713
+[4] 4716
+[5] 4718
+[6] 4720
+[7] 4722
+[8] 4723
+[9] 4724
+[10] 4727
+
+real	0m19.551s
+user	0m0.300s
+sys	0m0.752s
+[1]   Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+
+real	0m19.595s
+user	0m0.276s
+sys	0m0.767s
+
+real	0m19.959s
+user	0m0.276s
+sys	0m0.742s
+
+real	0m20.060s
+user	0m0.241s
+sys	0m0.671s
+[2]   Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+[6]   Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+[10]+  Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+
+real	0m20.583s
+user	0m0.255s
+sys	0m0.679s
+
+real	0m20.702s
+user	0m0.301s
+sys	0m0.679s
+
+real	0m21.484s
+user	0m0.309s
+sys	0m0.707s
+
+real	0m21.849s
+user	0m0.287s
+sys	0m0.773s
+
+real	0m22.343s
+user	0m0.261s
+sys	0m0.704s
+
+real	0m22.565s
+user	0m0.327s
+sys	0m0.732s
+[3]   Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+[4]   Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+[5]   Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+[7]   Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+[8]-  Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+[9]+  Done                    time globus-url-copy -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/1G_${i}.out
+
+real	0m22.565s
+user	0m2.834s
+sys	0m7.208s
+[root@ps-100g /]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ; do time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out& done; time wait
+[1] 4865
+[2] 4866
+[3] 4868
+[4] 4869
+[5] 4870
+[6] 4873
+[7] 4874
+[8] 4877
+[9] 4878
+[10] 4879
+[11] 4880
+[12] 4881
+[13] 4883
+[14] 4885
+[15] 4886
+[16] 4887
+[17] 4888
+[18] 4890
+[19] 4891
+[20] 4892
+
+real	0m11.192s
+user	0m0.152s
+sys	0m0.307s
+
+real	0m11.326s
+user	0m0.090s
+sys	0m0.381s
+
+real	0m11.438s
+user	0m0.116s
+sys	0m0.369s
+
+real	0m12.314s
+user	0m0.146s
+sys	0m0.394s
+
+real	0m12.948s
+user	0m0.178s
+sys	0m0.346s
+
+real	0m13.571s
+user	0m0.162s
+sys	0m0.359s
+
+real	0m13.736s
+user	0m0.119s
+sys	0m0.387s
+
+real	0m13.827s
+user	0m0.145s
+sys	0m0.359s
+
+real	0m14.137s
+user	0m0.144s
+sys	0m0.360s
+
+real	0m14.522s
+user	0m0.153s
+sys	0m0.370s
+
+real	0m15.053s
+user	0m0.132s
+sys	0m0.393s
+[1]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[2]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[3]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[4]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[6]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[7]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[9]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[10]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[14]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[17]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[19]-  Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+
+real	0m15.846s
+user	0m0.160s
+sys	0m0.380s
+[5]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+
+real	0m15.916s
+user	0m0.167s
+sys	0m0.311s
+
+real	0m16.104s
+user	0m0.207s
+sys	0m0.362s
+
+real	0m16.117s
+user	0m0.136s
+sys	0m0.376s
+[8]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[12]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[13]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+
+real	0m16.897s
+user	0m0.160s
+sys	0m0.374s
+
+real	0m17.570s
+user	0m0.194s
+sys	0m0.338s
+[11]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[18]-  Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+
+real	0m17.673s
+user	0m0.170s
+sys	0m0.366s
+
+real	0m17.860s
+user	0m0.191s
+sys	0m0.352s
+
+real	0m18.321s
+user	0m0.217s
+sys	0m0.370s
+[15]   Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[16]-  Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+[20]+  Done                    time globus-url-copy -len 500000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///export/shm/0.5G_${i}.out
+
+real	0m18.348s
+user	0m3.144s
+sys	0m7.256s

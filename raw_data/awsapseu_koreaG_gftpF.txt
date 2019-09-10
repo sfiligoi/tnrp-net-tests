@@ -1,0 +1,53 @@
+[root@ip-172-31-19-239 centos]# hostname
+ip-172-31-19-239.ap-northeast-2.compute.internal
+[root@ip-172-31-19-239 centos]# ping dtn2-daejeon.kreonet.net
+PING dtn2-daejeon.kreonet.net (134.75.115.132) 56(84) bytes of data.
+64 bytes from 134.75.115.132 (134.75.115.132): icmp_seq=1 ttl=47 time=4.81 ms
+[root@ip-172-31-19-239 centos]# tracepath dtn2-daejeon.kreonet.net
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ap-northeast-2.compute.internal        0.038ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  100.64.17.71                                          0.330ms 
+ 5:  54.239.122.29                                         2.375ms 
+ 6:  54.239.122.242                                        5.002ms asymm 11 
+ 7:  54.239.123.87                                         1.450ms asymm  9 
+ 8:  54.239.44.246                                         2.055ms asymm 10 
+ 9:  52.93.248.84                                         14.726ms asymm 14 
+10:  52.93.248.59                                          2.000ms asymm 12 
+11:  192.145.251.129                                       2.982ms asymm 12 
+12:  134.75.3.1                                            2.642ms asymm 13 
+13:  134.75.2.2                                            4.855ms asymm 14 
+14:  kreonet2-gr-bb1-kreonet-dj-bb1.daej.kreonet2.net      5.074ms asymm 17 
+15:  no reply
+[root@ip-172-31-19-239 centos]# time globus-url-copy -vb -fast -p 16 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  10G.out
+
+   8421113856 bytes      1003.86 MB/sec avg      1068.80 MB/sec inst
+
+real	0m9.734s
+user	0m0.603s
+sys	0m8.475s
+[root@ip-172-31-19-239 centos]# time globus-url-copy -vb -fast -p 32 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  10G.out
+
+   9197060096 bytes       877.07 MB/sec avg       991.05 MB/sec inst
+
+real	0m10.752s
+user	0m0.501s
+sys	0m10.176s
+[root@ip-172-31-19-239 centos]# time globus-url-copy -vb -fast -p 64 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  10G.out
+
+   8408530944 bytes       801.89 MB/sec avg       822.98 MB/sec inst
+
+real	0m11.654s
+user	0m0.830s
+sys	0m10.735s
