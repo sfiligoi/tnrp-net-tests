@@ -1,0 +1,179 @@
+[root@gce-nl igor_sfiligoi]# hostname
+gce-nl
+[root@gce-nl igor_sfiligoi]# ping fiona-r-uva.vlan7.uvalight.net
+PING fiona-r-uva.vlan7.uvalight.net (145.146.100.30) 56(84) bytes of data.
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=1 ttl=54 time=4.50 ms
+[root@gce-nl igor_sfiligoi]# tracepath fiona-r-uva.vlan7.uvalight.net
+ 1?: [LOCALHOST]                                         pmtu 1460
+ 1:  172.253.66.16                                         4.914ms asymm  6 
+ 1:  72.14.236.19                                          4.113ms asymm  6 
+ 2:  216.239.41.48                                         4.764ms asymm  7 
+ 3:  108.170.241.235                                       4.392ms asymm  8 
+ 4:  ae10.asd001b-jnx-01.surf.net                          4.253ms asymm  9 
+ 5:  no reply
+[root@gce-nl igor_sfiligoi]# time globus-url-copy -vb ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   8717860864 bytes       593.86 MB/sec avg       635.03 MB/sec inst
+real    0m15.945s
+user    0m0.280s
+sys     0m10.110s
+[root@gce-nl igor_sfiligoi]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out& done; time wait
+[1] 3198
+[2] 3199
+[3] 3200
+[4] 3202
+[5] 3204
+[6] 3206
+[7] 3208
+[8] 3210
+[9] 3212
+[10] 3214
+real    0m6.672s
+user    0m0.164s
+sys     0m1.431s
+real    0m7.183s
+user    0m0.174s
+sys     0m1.404s
+real    0m7.497s
+user    0m0.158s
+sys     0m1.498s
+real    0m7.895s
+user    0m0.172s
+sys     0m1.457s
+real    0m8.353s
+user    0m0.136s
+sys     0m1.248s
+real    0m8.427s
+user    0m0.186s
+sys     0m1.382s
+real    0m8.433s
+user    0m0.146s
+sys     0m1.223s
+[1]   Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[2]   Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[4]   Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[5]   Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[6]   Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[7]   Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[10]+  Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+real    0m8.680s
+user    0m0.143s
+sys     0m1.482s
+[3]   Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+real    0m9.122s
+user    0m0.162s
+sys     0m1.493s
+real    0m9.290s
+user    0m0.166s
+sys     0m1.472s
+[8]-  Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[9]+  Done                    time globus-url-copy -len 1000000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+real    0m9.290s
+user    0m1.612s
+sys     0m14.094s
+root@gce-nl igor_sfiligoi]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ; do time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out& done; time wait
+[1] 3334
+[2] 3335
+[3] 3336
+[4] 3338
+[5] 3339
+[6] 3342
+[7] 3344
+[8] 3346
+[9] 3348
+[10] 3350
+[11] 3352
+[12] 3354
+[13] 3355
+[14] 3356
+[15] 3357
+[16] 3358
+[17] 3360
+[18] 3361
+[19] 3363
+[20] 3364
+real    0m6.222s
+user    0m0.127s
+sys     0m0.743s
+real    0m7.228s
+user    0m0.090s
+sys     0m0.899s
+[1]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[19]-  Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+real    0m7.420s
+user    0m0.118s
+sys     0m1.023s
+real    0m7.555s
+user    0m0.137s
+sys     0m1.050s
+real    0m7.858s
+user    0m0.144s
+sys     0m0.945s
+real    0m8.117s
+user    0m0.128s
+sys     0m1.030s
+real    0m8.272s
+user    0m0.131s
+sys     0m0.984s
+real    0m8.570s
+user    0m0.137s
+sys     0m0.845s
+real    0m8.661s
+user    0m0.138s
+sys     0m0.983s
+real    0m8.750s
+user    0m0.148s
+sys     0m1.079s
+real    0m8.859s
+user    0m0.140s
+sys     0m0.958s
+[2]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[6]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[7]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[8]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[10]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[14]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[17]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[18]-  Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[20]+  Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+real    0m9.044s
+user    0m0.147s
+sys     0m1.091s
+real    0m9.067s
+user    0m0.138s
+sys     0m1.000s
+real    0m9.072s
+user    0m0.143s
+sys     0m0.980s
+[3]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[5]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[16]+  Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+real    0m9.163s
+user    0m0.128s
+sys     0m0.836s
+real    0m9.176s
+user    0m0.128s
+sys     0m0.949s
+real    0m9.184s
+user    0m0.143s
+sys     0m1.065s
+real    0m9.330s
+user    0m0.164s
+sys     0m0.938s
+real    0m9.402s
+user    0m0.153s
+sys     0m0.955s
+[4]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[9]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[11]   Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[13]-  Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[15]+  Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+real    0m9.503s
+user    0m0.136s
+sys     0m0.968s
+[12]+  Done                    time globus-url-copy -len 500000000 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+real    0m9.503s
+user    0m2.724s
+sys     0m19.331s

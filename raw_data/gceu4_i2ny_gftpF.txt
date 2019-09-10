@@ -1,0 +1,32 @@
+[root@gce-nl igor_sfiligoi]# hostname
+gce-nl
+[root@gce-nl igor_sfiligoi]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=50 time=89.1 ms
+root@gce-nl igor_sfiligoi]# tracepath osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 1460
+ 1:  172.253.66.30                                         4.634ms asymm  6 
+ 1:  lag-13.ear4.Amsterdam1.Level3.net                     4.735ms asymm  9 
+ 2:  209.85.253.112                                       11.325ms asymm  7 
+ 3:  108.170.241.167                                       6.497ms asymm  8 
+ 4:  lag-13.ear4.Amsterdam1.Level3.net                     4.034ms asymm  9 
+ 5:  ae-2-3607.ear1.Washington1.Level3.net                85.701ms asymm 12 
+ 6:  UCAID.ear1.Washington1.Level3.net                    84.530ms asymm 14 
+ 7:  163.253.72.1                                         90.289ms asymm 14 
+ 8:  no reply
+ root@gce-nl igor_sfiligoi]# time globus-url-copy -vb -fast -p 16 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9996067840 bytes       108.33 MB/sec avg        82.74 MB/sec inst
+real    1m29.187s
+user    0m3.636s
+sys     0m31.345s
+[root@gce-nl igor_sfiligoi]# time globus-url-copy -vb -fast -p 32 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9999475712 bytes       105.96 MB/sec avg         3.13 MB/sec instst
+real    1m30.290s
+user    0m4.300s
+sys     0m41.579s
