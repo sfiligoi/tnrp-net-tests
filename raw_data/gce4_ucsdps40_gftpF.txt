@@ -1,0 +1,50 @@
+[root@gc-east igor_sfiligoi]# hostname
+gc-east
+[root@gc-east igor_sfiligoi]# ping ps-40g-gridftp.calit2.optiputer.net
+PING ps-40g-gridftp.calit2.optiputer.net (67.58.50.66) 56(84) bytes of data.
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=1 ttl=47 time=65.1 ms
+root@gc-east igor_sfiligoi]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 1460
+ 1:  ps-40g-gridftp.calit2.optiputer.net                  65.030ms !H
+ 1:  ps-40g-gridftp.calit2.optiputer.net                  64.650ms !H
+     Resume: pmtu 1460 
+[root@gc-east igor_sfiligoi]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9548070912 bytes       650.40 MB/sec avg       729.22 MB/sec inst
+real    0m14.646s
+user    0m1.058s
+sys     0m10.142s
+[root@gc-east igor_sfiligoi]# time globus-url-copy -vb -fast -p 32 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9662103552 bytes       658.18 MB/sec avg       798.51 MB/sec inst
+real    0m14.550s
+user    0m1.181s
+sys     0m11.488s
+[root@gc-east igor_sfiligoi]# time globus-url-copy -vb -fast -p 64 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9505079296 bytes       755.39 MB/sec avg       909.93 MB/sec inst
+real    0m12.569s
+user    0m1.225s
+sys     0m10.274s
+[root@gc-east igor_sfiligoi]# time globus-url-copy -vb -fast -p 96 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9323675648 bytes       740.97 MB/sec avg       885.95 MB/sec inst
+real    0m12.671s
+user    0m1.242s
+sys     0m10.428s
+[root@gc-east igor_sfiligoi]# time globus-url-copy -vb -fast -p 128 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9089318912 bytes       722.34 MB/sec avg       831.01 MB/sec inst
+real    0m12.979s
+user    0m1.423s
+sys     0m10.576s

@@ -1,0 +1,30 @@
+[root@gc-east igor_sfiligoi]# hostname
+gc-east
+[root@gc-east igor_sfiligoi]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=53 time=7.27 ms
+[root@gc-east igor_sfiligoi]# export GLOBUS_FTP_CLIENT_DATA_IP=35.212.116.3
+[root@gc-east igor_sfiligoi]# time globus-url-copy -vb -fast -p 16 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9986892800 bytes       110.75 MB/sec avg       112.75 MB/sec instt
+real    1m26.522s
+user    0m4.063s
+sys     0m36.701s
+[root@gc-east igor_sfiligoi]# time globus-url-copy -vb -fast -p 32 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9923198976 bytes       110.04 MB/sec avg       111.25 MB/sec inst
+real    1m27.655s
+user    0m4.506s
+sys     0m45.554s
+[root@gc-east igor_sfiligoi]# time globus-url-copy -vb -fast -p 64 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+   9888595968 bytes       109.66 MB/sec avg       111.75 MB/sec inst
+real    1m27.449s
+user    0m5.268s
+sys     0m54.929s
