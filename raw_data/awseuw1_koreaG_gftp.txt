@@ -1,0 +1,237 @@
+[root@ip-172-31-31-148 centos]# hostname
+ip-172-31-31-148.us-west-2.compute.internal
+[root@ip-172-31-31-148 centos]# ping dtn2-daejeon.kreonet.net
+PING dtn2-daejeon.kreonet.net (134.75.115.132) 56(84) bytes of data.
+64 bytes from 134.75.115.132 (134.75.115.132): icmp_seq=1 ttl=41 time=172 ms
+[root@ip-172-31-31-148 centos]# tracepath dtn2-daejeon.kreonet.net
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.us-west-2.compute.internal             0.045ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.11.225                                         0.498ms 
+ 7:  52.93.13.64                                          12.714ms asymm 14 
+ 8:  52.93.12.92                                           8.220ms asymm 13 
+ 9:  52.93.12.45                                           1.448ms asymm 11 
+10:  100.91.25.70                                          8.970ms asymm 18 
+11:  54.239.43.119                                         8.374ms asymm 16 
+12:  52.93.131.48                                          9.950ms asymm 16 
+13:  100.91.139.21                                         7.411ms asymm 14 
+14:  52.95.52.85                                           6.624ms asymm 16 
+15:  121.189.2.189                        129.959ms asymm 19 
+16:  112.174.87.85                                       167.716ms asymm 19 
+17:  121.189.2.189                                        28.041ms asymm 19 
+18:  112.174.85.30                                       143.531ms asymm 20 
+19:  203.234.255.166                                     135.087ms asymm 20 
+20:  203.234.255.166                                     136.825ms 
+21:  203.234.255.166                                     165.232ms asymm 20 
+22:  134.75.5.209                                        144.455ms asymm 21 
+23:  134.75.2.2                                          148.304ms asymm 22 
+24:  kreonet2-gr-bb1-kreonet-dj-bb1.daej.kreonet2.net    145.235ms asymm 23 
+25:  no reply
+#
+# Note: Transfer 1G due to slow speed
+[root@ip-172-31-31-148 centos]# time globus-url-copy -vb -len 1000000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/1G.dat
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  1G.dat
+
+    991952896 bytes        10.51 MB/sec avg        11.00 MB/sec inst
+
+real	1m30.857s
+user	0m0.470s
+sys	0m3.815s
+[root@ip-172-31-31-148 centos]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat& done; time wait
+[1] 3054
+[2] 3055
+[3] 3056
+[4] 3058
+[5] 3059
+[6] 3061
+[7] 3064
+[8] 3066
+[9] 3068
+[10] 3070
+
+real	0m13.643s
+user	0m0.041s
+sys	0m0.388s
+
+real	0m14.699s
+user	0m0.038s
+sys	0m0.410s
+
+real	0m17.579s
+user	0m0.065s
+sys	0m0.403s
+
+real	0m18.312s
+user	0m0.044s
+sys	0m0.394s
+
+real	0m18.950s
+user	0m0.052s
+sys	0m0.380s
+[1]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[4]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[6]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[8]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[9]-  Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m20.211s
+user	0m0.053s
+sys	0m0.389s
+
+real	0m21.038s
+user	0m0.068s
+sys	0m0.438s
+[2]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[3]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m22.083s
+user	0m0.051s
+sys	0m0.382s
+[5]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m22.733s
+user	0m0.047s
+sys	0m0.434s
+[7]-  Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m24.855s
+user	0m0.057s
+sys	0m0.373s
+[10]+  Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m24.856s
+user	0m0.519s
+sys	0m3.991s
+#
+# Note: Transfer 2G
+[root@ip-172-31-31-148 centos]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat& done; time wait
+[1] 3115
+[2] 3116
+[3] 3117
+[4] 3119
+[5] 3121
+[6] 3123
+[7] 3125
+[8] 3127
+[9] 3129
+[10] 3131
+[11] 3133
+[12] 3135
+[13] 3136
+[14] 3137
+[15] 3139
+[16] 3140
+[17] 3142
+[18] 3143
+[19] 3144
+[20] 3146
+
+real	0m16.774s
+user	0m0.064s
+sys	0m0.440s
+
+real	0m19.069s
+user	0m0.060s
+sys	0m0.452s
+
+real	0m20.532s
+user	0m0.056s
+sys	0m0.382s
+
+real	0m22.933s
+user	0m0.069s
+sys	0m0.494s
+[1]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[6]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[7]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[10]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m23.712s
+user	0m0.064s
+sys	0m0.493s
+
+real	0m24.274s
+user	0m0.068s
+sys	0m0.491s
+
+real	0m25.168s
+user	0m0.068s
+sys	0m0.490s
+
+real	0m26.339s
+user	0m0.053s
+sys	0m0.478s
+
+real	0m27.089s
+user	0m0.072s
+sys	0m0.499s
+
+real	0m27.394s
+user	0m0.073s
+sys	0m0.516s
+
+real	0m29.383s
+user	0m0.060s
+sys	0m0.490s
+
+real	0m29.753s
+user	0m0.064s
+sys	0m0.421s
+[2]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[9]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[11]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[12]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[14]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[15]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[17]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[19]-  Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m30.983s
+user	0m0.050s
+sys	0m0.475s
+[3]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m31.017s
+user	0m0.057s
+sys	0m0.504s
+
+real	0m31.553s
+user	0m0.062s
+sys	0m0.506s
+
+real	0m32.071s
+user	0m0.069s
+sys	0m0.417s
+
+real	0m32.211s
+user	0m0.071s
+sys	0m0.456s
+
+real	0m32.909s
+user	0m0.056s
+sys	0m0.453s
+
+real	0m33.714s
+user	0m0.073s
+sys	0m0.457s
+
+real	0m35.004s
+user	0m0.064s
+sys	0m0.386s
+[4]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[5]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[8]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[13]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[16]   Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[18]-  Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[20]+  Done                    time globus-url-copy -len 100000000 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m35.002s
+user	0m1.276s
+sys	0m9.301s

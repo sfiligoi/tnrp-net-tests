@@ -1,0 +1,74 @@
+[root@ip-172-31-31-148 centos]# hostname
+ip-172-31-31-148.us-west-2.compute.internal
+[root@ip-172-31-31-148 centos]# ping dtn2-daejeon.kreonet.net
+PING dtn2-daejeon.kreonet.net (134.75.115.132) 56(84) bytes of data.
+64 bytes from 134.75.115.132 (134.75.115.132): icmp_seq=1 ttl=41 time=172 ms
+[root@ip-172-31-31-148 centos]# tracepath dtn2-daejeon.kreonet.net
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.us-west-2.compute.internal             0.045ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.11.225                                         0.498ms 
+ 7:  52.93.13.64                                          12.714ms asymm 14 
+ 8:  52.93.12.92                                           8.220ms asymm 13 
+ 9:  52.93.12.45                                           1.448ms asymm 11 
+10:  100.91.25.70                                          8.970ms asymm 18 
+11:  54.239.43.119                                         8.374ms asymm 16 
+12:  52.93.131.48                                          9.950ms asymm 16 
+13:  100.91.139.21                                         7.411ms asymm 14 
+14:  52.95.52.85                                           6.624ms asymm 16 
+15:  121.189.2.189                                       129.959ms asymm 19 
+16:  112.174.87.85                                       167.716ms asymm 19 
+17:  121.189.2.189                                        28.041ms asymm 19 
+18:  112.174.85.30                                       143.531ms asymm 20 
+19:  203.234.255.166                                     135.087ms asymm 20 
+20:  203.234.255.166                                     136.825ms 
+21:  203.234.255.166                                     165.232ms asymm 20 
+22:  134.75.5.209                                        144.455ms asymm 21 
+23:  134.75.2.2                                          148.304ms asymm 22 
+24:  kreonet2-gr-bb1-kreonet-dj-bb1.daej.kreonet2.net    145.235ms asymm 23 
+25:  no reply
+[root@ip-172-31-31-148 centos]# export GLOBUS_FTP_CLIENT_DATA_IP=54.213.23.31
+[root@ip-172-31-31-148 centos]# time globus-url-copy -vb -fast -p 16 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  10G.out
+
+   9982960640 bytes        64.33 MB/sec avg        37.50 MB/sec inst
+
+real	2m29.069s
+user	0m3.889s
+sys	0m49.835s
+[root@ip-172-31-31-148 centos]# time globus-url-copy -vb -fast -p 32 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  10G.out
+
+   9993184256 bytes        72.20 MB/sec avg        50.50 MB/sec inst
+
+real	2m13.189s
+user	0m3.616s
+sys	0m59.444s
+[root@ip-172-31-31-148 centos]# time globus-url-copy -vb -fast -p 64 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  10G.out
+
+   9993446400 bytes        74.46 MB/sec avg        34.37 MB/sec inst
+
+real	2m8.979s
+user	0m3.388s
+sys	1m10.004s
+[root@ip-172-31-31-148 centos]# time globus-url-copy -vb -fast -p 96 ftp://dtn2-daejeon.kreonet.net:2811/export/data/10G.dat file:///dev/shm/10G.out
+Source: ftp://dtn2-daejeon.kreonet.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  10G.out
+
+   9997640704 bytes        72.23 MB/sec avg         8.75 MB/sec inst
+
+real	2m12.813s
+user	0m3.495s
+sys	1m18.010s
