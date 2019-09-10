@@ -1,6 +1,16 @@
 [root@instance-1 shm]# ping osg.newy32aoa.nrp.internet2.edu
 PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
 64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=50 time=74.6 ms
+[root@instance-1 igor_sfiligoi]# tracepath osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 1460
+ 1:  172.253.71.139                                        7.564ms asymm  6 
+ 1:  172.253.71.129                                        7.615ms asymm  6 
+ 2:  74.125.243.182                                        7.760ms asymm  7 
+ 3:  4.68.70.161                                           7.732ms asymm  8 
+ 4:  ae-2-3607.ear1.Washington1.Level3.net                65.990ms asymm 12 
+ 5:  UCAID.ear1.Washington1.Level3.net                    68.730ms asymm 14 
+ 6:  163.253.72.1                                         71.382ms asymm 13 
+ 7:  no reply
 root@instance-1 shm]# time globus-url-copy -vb ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
 Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
 Dest:   file:///dev/shm/

@@ -1,6 +1,22 @@
 [root@instance-1 shm]# ping ps-40g-gridftp.calit2.optiputer.net
 PING ps-40g-gridftp.calit2.optiputer.net (67.58.50.66) 56(84) bytes of data.
 64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=1 ttl=51 time=29.8 ms
+root@instance-1 igor_sfiligoi]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 1460
+ 1:  209.85.252.205                                       57.615ms asymm  6 
+ 1:  209.85.252.205                                       29.574ms asymm  6 
+ 2:  216.239.58.214                                       18.559ms asymm  7 
+ 3:  108.170.242.84                                       18.447ms asymm  7 
+ 4:  no reply
+ 5:  dc-svl-agg8--svl-agg4-100ge-1.cenic.net              20.845ms asymm 10 
+ 6:  137.164.11.66                                        27.209ms asymm 10 
+ 7:  dc-lax-agg6--lax-agg8-100ge-3.cenic.net              26.352ms asymm  8 
+ 8:  dc-ucsd-100ge--sdg-agg4.cenic.net                    29.688ms asymm 12 
+ 9:  dc-sdg-agg4--tus-agg3-100ge-2.cenic.net              28.209ms asymm 11 
+10:  dc-ucsd-100ge--sdg-agg4.cenic.net                    28.201ms asymm 12 
+11:  mx0-router.optiputer.net                             28.188ms asymm 13 
+12:  ps-40g-gridftp.calit2.optiputer.net                  29.492ms !H
+     Resume: pmtu 1460 
 [root@instance-1 shm]# time globus-url-copy -vb -fast -p 20 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
 Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
 Dest:   file:///dev/shm/
