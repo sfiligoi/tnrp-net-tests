@@ -1,0 +1,27 @@
+[root@ip-172-31-28-221 centos]# hostname
+ip-172-31-28-221.ec2.internal
+[root@ip-172-31-28-221 centos]# tracepath ip-172-31-23-45.ec2.internal
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-23-45.ec2.internal                          0.327ms reached
+ 1:  ip-172-31-23-45.ec2.internal                          0.295ms reached
+     Resume: pmtu 9001 hops 1 back 1 
+[root@ip-172-31-28-221 centos]# time globus-url-copy -vb -fast -p 16 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ip-172-31-23-45.ec2.internal:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8480620544 bytes      1347.95 MB/sec avg      1389.04 MB/sec inst
+
+real	0m7.099s
+user	0m0.288s
+sys	0m6.584s
+[root@ip-172-31-28-221 centos]# time globus-url-copy -vb -fast -p 32 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ip-172-31-23-45.ec2.internal:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9744941056 bytes      1161.66 MB/sec avg      1264.25 MB/sec inst
+
+real	0m8.190s
+user	0m0.367s
+sys	0m7.812s

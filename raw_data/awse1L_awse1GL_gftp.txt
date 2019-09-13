@@ -1,0 +1,403 @@
+[root@ip-172-31-28-221 centos]# hostname
+ip-172-31-28-221.ec2.internal
+[root@ip-172-31-28-221 centos]# tracepath ip-172-31-23-45.ec2.internal
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-23-45.ec2.internal                          0.327ms reached
+ 1:  ip-172-31-23-45.ec2.internal                          0.295ms reached
+     Resume: pmtu 9001 hops 1 back 1 
+[root@ip-172-31-28-221 centos]# time globus-url-copy -vb ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ip-172-31-23-45.ec2.internal:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8618246144 bytes      1027.30 MB/sec avg      1127.05 MB/sec inst
+
+real	0m9.177s
+user	0m0.091s
+sys	0m9.032s
+[root@ip-172-31-28-221 centos]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out& done; time wait
+[1] 8610
+[2] 8611
+[3] 8612
+[4] 8613
+[5] 8614
+[6] 8616
+[7] 8619
+[8] 8622
+[9] 8624
+[10] 8626
+
+real	0m2.949s
+user	0m0.038s
+sys	0m0.670s
+
+real	0m2.960s
+user	0m0.039s
+sys	0m0.845s
+[1]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[5]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+
+real	0m3.078s
+user	0m0.032s
+sys	0m0.864s
+
+real	0m3.105s
+user	0m0.032s
+sys	0m0.673s
+
+real	0m3.208s
+user	0m0.045s
+sys	0m0.805s
+
+real	0m3.225s
+user	0m0.039s
+sys	0m0.855s
+
+real	0m3.269s
+user	0m0.052s
+sys	0m0.784s
+
+real	0m3.322s
+user	0m0.037s
+sys	0m0.698s
+
+real	0m3.386s
+user	0m0.043s
+sys	0m0.856s
+
+real	0m3.414s
+user	0m0.042s
+sys	0m0.761s
+[2]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[3]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[4]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[6]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[7]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[8]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[9]-  Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[10]+  Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+
+real	0m3.413s
+user	0m0.403s
+sys	0m7.812s
+#
+# Note: Transfer 50G
+[root@ip-172-31-28-221 centos]# for i in 0 1 2 3 4 5 6 7 8 9 ; do time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out& done; time wait
+[1] 8693
+[2] 8694
+[3] 8695
+[4] 8696
+[5] 8697
+[6] 8699
+[7] 8702
+[8] 8705
+[9] 8707
+[10] 8710
+
+real	0m14.044s
+user	0m0.171s
+sys	0m4.800s
+
+real	0m14.286s
+user	0m0.227s
+sys	0m4.005s
+[1]   Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+[6]   Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+
+real	0m14.481s
+user	0m0.193s
+sys	0m4.816s
+
+real	0m14.884s
+user	0m0.155s
+sys	0m3.899s
+
+real	0m14.966s
+user	0m0.186s
+sys	0m4.816s
+
+real	0m16.277s
+user	0m0.146s
+sys	0m3.931s
+
+real	0m16.278s
+user	0m0.179s
+sys	0m4.725s
+
+real	0m16.363s
+user	0m0.156s
+sys	0m4.040s
+
+real	0m16.370s
+user	0m0.190s
+sys	0m4.513s
+
+real	0m16.454s
+user	0m0.214s
+sys	0m4.538s
+[2]   Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+[3]   Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+[4]   Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+[5]   Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+[7]   Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+[8]   Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+[9]-  Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+[10]+  Done                    time globus-url-copy -len 5000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/5G_${i}.out
+
+real	0m16.453s
+user	0m1.821s
+sys	0m44.084s
+#
+# Note: Transfer 10G
+[root@ip-172-31-28-221 centos]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ; do time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out& done; time wait
+[1] 8630
+[2] 8631
+[3] 8632
+[4] 8633
+[5] 8635
+[6] 8638
+[7] 8639
+[8] 8642
+[9] 8644
+[10] 8646
+[11] 8649
+[12] 8650
+[13] 8652
+[14] 8654
+[15] 8657
+[16] 8658
+[17] 8660
+[18] 8663
+[19] 8664
+[20] 8667
+
+real	0m2.746s
+user	0m0.027s
+sys	0m0.538s
+
+real	0m2.909s
+user	0m0.035s
+sys	0m0.486s
+
+real	0m3.028s
+user	0m0.036s
+sys	0m0.531s
+
+real	0m3.069s
+user	0m0.027s
+sys	0m0.497s
+
+real	0m3.076s
+user	0m0.043s
+sys	0m0.531s
+
+real	0m3.113s
+user	0m0.037s
+sys	0m0.497s
+
+real	0m3.152s
+user	0m0.040s
+sys	0m0.544s
+
+real	0m3.163s
+user	0m0.042s
+sys	0m0.538s
+
+real	0m3.185s
+user	0m0.032s
+sys	0m0.497s
+
+real	0m3.194s
+user	0m0.023s
+sys	0m0.480s
+
+real	0m3.216s
+user	0m0.029s
+sys	0m0.506s
+
+real	0m3.220s
+user	0m0.041s
+sys	0m0.486s
+
+real	0m3.260s
+user	0m0.028s
+sys	0m0.489s
+
+real	0m3.283s
+user	0m0.029s
+sys	0m0.408s
+[1]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[2]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[6]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[7]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[9]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[10]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[11]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[12]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[13]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[14]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[16]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[18]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[19]-  Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[20]+  Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+
+real	0m3.296s
+user	0m0.029s
+sys	0m0.515s
+[3]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+
+real	0m3.319s
+user	0m0.031s
+sys	0m0.474s
+
+real	0m3.353s
+user	0m0.038s
+sys	0m0.487s
+
+real	0m3.359s
+user	0m0.026s
+sys	0m0.450s
+
+real	0m3.376s
+user	0m0.025s
+sys	0m0.512s
+[4]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[5]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[8]   Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+[15]-  Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+
+real	0m3.381s
+user	0m0.031s
+sys	0m0.485s
+[17]+  Done                    time globus-url-copy -len 500000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.out
+
+real	0m3.381s
+user	0m0.656s
+sys	0m9.953s
+#
+# Note: Transfer 20G
+[root@ip-172-31-28-221 centos]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ; do time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out& done; time wait
+[1] 8774
+[2] 8775
+[3] 8776
+[4] 8777
+[5] 8778
+[6] 8780
+[7] 8783
+[8] 8786
+[9] 8788
+[10] 8790
+[11] 8792
+[12] 8795
+[13] 8796
+[14] 8798
+[15] 8801
+[16] 8802
+[17] 8804
+[18] 8807
+[19] 8808
+[20] 8810
+
+real	0m5.514s
+user	0m0.024s
+sys	0m0.730s
+
+real	0m5.802s
+user	0m0.068s
+sys	0m0.860s
+
+real	0m5.816s
+user	0m0.042s
+sys	0m0.875s
+
+real	0m5.893s
+user	0m0.041s
+sys	0m0.745s
+
+real	0m5.895s
+user	0m0.031s
+sys	0m0.759s
+
+real	0m6.106s
+user	0m0.048s
+sys	0m0.878s
+
+real	0m6.169s
+user	0m0.054s
+sys	0m0.884s
+
+real	0m6.195s
+user	0m0.055s
+sys	0m0.796s
+
+real	0m6.242s
+user	0m0.073s
+sys	0m0.893s
+
+real	0m6.335s
+user	0m0.036s
+sys	0m0.746s
+
+real	0m6.339s
+user	0m0.058s
+sys	0m0.896s
+
+real	0m6.349s
+user	0m0.028s
+sys	0m0.738s
+
+real	0m6.387s
+user	0m0.035s
+sys	0m0.745s
+
+real	0m6.460s
+user	0m0.046s
+sys	0m0.830s
+
+real	0m6.509s
+user	0m0.035s
+sys	0m0.739s
+
+real	0m6.539s
+user	0m0.042s
+sys	0m0.812s
+[1]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[2]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[3]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[4]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[6]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[7]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[8]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[9]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[10]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[12]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[13]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[14]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[17]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[18]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[19]-  Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[20]+  Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+
+real	0m6.573s
+user	0m0.072s
+sys	0m0.861s
+
+real	0m6.596s
+user	0m0.047s
+sys	0m0.841s
+
+real	0m6.615s
+user	0m0.043s
+sys	0m0.743s
+[5]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[11]   Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+[15]-  Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+
+real	0m6.643s
+user	0m0.034s
+sys	0m0.766s
+[16]+  Done                    time globus-url-copy -len 1000000000 ftp://ip-172-31-23-45.ec2.internal:2811/export/data/10G.dat file:///dev/shm/1G_${i}.out
+
+real	0m6.642s
+user	0m0.918s
+sys	0m16.138s
