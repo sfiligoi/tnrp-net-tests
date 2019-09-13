@@ -1,0 +1,236 @@
+[root@ip-172-31-34-66 centos]# hostname
+ip-172-31-34-66.eu-central-1.compute.internal
+[root@ip-172-31-34-66 centos]# tracepath ec2-54-200-110-185.us-west-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-32-1.eu-central-1.compute.internal          0.055ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  100.65.1.65                                           0.351ms 
+ 5:  52.93.23.127                                          2.263ms asymm  6 
+ 6:  54.239.107.72                                         9.441ms asymm 11 
+ 7:  54.239.106.177                                        1.062ms asymm  9 
+ 8:  100.91.37.112                                       166.924ms asymm 23 
+ 9:  52.93.134.64                                        172.119ms asymm 24 
+10:  54.239.46.241                                       162.285ms asymm 22 
+11:  54.239.43.69                                        163.679ms asymm 20 
+12:  72.21.222.55                                        173.856ms asymm 20 
+13:  52.93.131.72                                        163.932ms asymm 19 
+14:  100.91.27.23                                        163.434ms asymm 16 
+15:  52.93.15.44                                         165.206ms asymm 21 
+16:  52.93.15.35                                         163.993ms asymm 19 
+17:  52.93.14.73                                         162.860ms asymm 19 
+18:  52.93.246.149                                       159.817ms asymm 29 
+19:  52.93.246.157                                       158.262ms asymm 29 
+20:  52.93.246.53                                        186.188ms asymm 19 
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  ec2-54-200-110-185.us-west-2.compute.amazonaws.com  162.612ms reached
+     Resume: pmtu 1500 hops 26 back 26 
+#
+# Note: Transfer 1G due to slow speed
+[root@ip-172-31-34-66 centos]# time globus-url-copy -vb -len 1000000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/1G.out
+Source: ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  1G.out
+
+    985661440 bytes         8.87 MB/sec avg         7.50 MB/sec inst
+
+real	1m47.732s
+user	0m0.172s
+sys	0m1.639s
+[root@ip-172-31-34-66 centos]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat& done; time wait
+[1] 3919
+[2] 3920
+[3] 3921
+[4] 3923
+[5] 3925
+[6] 3927
+[7] 3929
+[8] 3931
+[9] 3933
+[10] 3935
+
+real	0m13.063s
+user	0m0.015s
+sys	0m0.163s
+
+real	0m13.083s
+user	0m0.013s
+sys	0m0.156s
+
+real	0m13.119s
+user	0m0.023s
+sys	0m0.165s
+
+real	0m13.365s
+user	0m0.015s
+sys	0m0.151s
+[1]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[2]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[7]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[8]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m13.505s
+user	0m0.018s
+sys	0m0.144s
+[3]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m13.512s
+user	0m0.017s
+sys	0m0.172s
+
+real	0m14.177s
+user	0m0.013s
+sys	0m0.159s
+
+real	0m14.248s
+user	0m0.019s
+sys	0m0.166s
+
+real	0m14.394s
+user	0m0.016s
+sys	0m0.175s
+[4]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[6]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[9]-  Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[10]+  Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m20.641s
+user	0m0.020s
+sys	0m0.195s
+[5]+  Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m20.641s
+user	0m0.172s
+sys	0m1.647s
+#
+# Note: Transfer 2G
+[root@ip-172-31-34-66 centos]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat& done; time wait
+[1] 4024
+[2] 4025
+[3] 4026
+[4] 4028
+[5] 4030
+[6] 4032
+[7] 4034
+[8] 4036
+[9] 4038
+[10] 4040
+[11] 4042
+[12] 4044
+[13] 4045
+[14] 4047
+[15] 4048
+[16] 4051
+[17] 4054
+[18] 4055
+[19] 4057
+[20] 4059
+
+real	0m13.101s
+user	0m0.015s
+sys	0m0.143s
+
+real	0m13.200s
+user	0m0.010s
+sys	0m0.151s
+
+real	0m13.250s
+user	0m0.020s
+sys	0m0.156s
+
+real	0m13.266s
+user	0m0.014s
+sys	0m0.162s
+
+real	0m13.305s
+user	0m0.013s
+sys	0m0.154s
+
+real	0m13.364s
+user	0m0.013s
+sys	0m0.173s
+
+real	0m13.426s
+user	0m0.019s
+sys	0m0.129s
+
+real	0m13.497s
+user	0m0.014s
+sys	0m0.146s
+
+real	0m13.511s
+user	0m0.020s
+sys	0m0.168s
+
+real	0m13.538s
+user	0m0.014s
+sys	0m0.140s
+
+real	0m13.562s
+user	0m0.012s
+sys	0m0.151s
+[1]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[2]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[4]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[7]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[10]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[11]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[14]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[15]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[16]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[17]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[18]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m13.583s
+user	0m0.018s
+sys	0m0.150s
+
+real	0m13.589s
+user	0m0.015s
+sys	0m0.154s
+
+real	0m13.599s
+user	0m0.014s
+sys	0m0.164s
+
+real	0m13.960s
+user	0m0.016s
+sys	0m0.167s
+
+real	0m13.964s
+user	0m0.012s
+sys	0m0.153s
+
+real	0m14.726s
+user	0m0.009s
+sys	0m0.160s
+[3]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[5]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[8]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[9]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[13]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+[19]-  Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m18.604s
+user	0m0.017s
+sys	0m0.162s
+[6]   Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m19.190s
+user	0m0.018s
+sys	0m0.178s
+[12]-  Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m27.470s
+user	0m0.022s
+sys	0m0.188s
+[20]+  Done                    time globus-url-copy -len 100000000 ftp://ec2-54-200-110-185.us-west-2.compute.amazonaws.com:2811/export/data/10G.dat file:///dev/shm/01G_$i.dat
+
+real	0m27.471s
+user	0m0.309s
+sys	0m3.151s
