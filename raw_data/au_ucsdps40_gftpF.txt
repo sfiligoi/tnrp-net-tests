@@ -1,0 +1,52 @@
+[root@uqucsdedgefs /]# hostname
+uqucsdedgefs.aiq.dc.uq.edu.au
+[root@uqucsdedgefs /]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  130.102.84.66                                         0.623ms asymm  2 
+ 1:  130.102.84.66                                         0.451ms asymm  2 
+ 2:  no reply
+ 3:  no reply
+ 4:  10.141.128.19                                         1.024ms 
+ 5:  SERVER-BYPASS-se10.router.uq.edu.au                   1.201ms 
+ 6:  et-0-1-0-243.pe1.gdpt.qld.aarnet.net.au               1.437ms 
+ 7:  et-5-3-0.pe1.brwy.nsw.aarnet.net.au                  17.036ms 
+ 8:  et-1-3-0.pe1.sxt.bkvl.nsw.aarnet.net.au              16.659ms 
+ 9:  et-0-0-0.pe1.a.hnl.aarnet.net.au                    110.306ms 
+10:  et-2-1-0.bdr1.a.sea.aarnet.net.au                   161.745ms 
+11:  cenichpr-1-is-jmb-778.snvaca.pacificwave.net        178.198ms 
+12:  hpr-lax-hpr3--svl-hpr3-100ge.cenic.net              175.054ms asymm 11 
+13:  hpr-sdg-hpr3--lax-hpr3-100ge.cenic.net              176.699ms asymm 12 
+14:  hpr-ucsd-100ge--sdg-hpr3.cenic.net                  178.817ms asymm 13 
+15:  mx0-router.optiputer.net                            176.623ms asymm 14 
+16:  ps-40g-gridftp.calit2.optiputer.net                 176.597ms !H
+     Resume: pmtu 9000 
+[root@uqucsdedgefs /]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9394192384 bytes       344.57 MB/sec avg       418.07 MB/sec inst
+
+real	0m27.739s
+user	0m5.105s
+sys	0m17.916s
+[root@uqucsdedgefs /]# time globus-url-copy -vb -fast -p 32 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9358540800 bytes       297.50 MB/sec avg       361.14 MB/sec inst
+
+real	0m31.525s
+user	0m7.456s
+sys	0m20.807s
+[root@uqucsdedgefs /]# time globus-url-copy -vb -fast -p 64 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9433768960 bytes       299.88 MB/sec avg       366.93 MB/sec inst
+
+real	0m31.226s
+user	0m7.975s
+sys	0m20.075s

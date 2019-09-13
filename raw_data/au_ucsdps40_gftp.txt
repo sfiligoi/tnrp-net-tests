@@ -1,0 +1,97 @@
+[root@uqucsdedgefs /]# hostname
+uqucsdedgefs.aiq.dc.uq.edu.au
+[root@uqucsdedgefs /]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  130.102.84.66                                         0.623ms asymm  2 
+ 1:  130.102.84.66                                         0.451ms asymm  2 
+ 2:  no reply
+ 3:  no reply
+ 4:  10.141.128.19                                         1.024ms 
+ 5:  SERVER-BYPASS-se10.router.uq.edu.au                   1.201ms 
+ 6:  et-0-1-0-243.pe1.gdpt.qld.aarnet.net.au               1.437ms 
+ 7:  et-5-3-0.pe1.brwy.nsw.aarnet.net.au                  17.036ms 
+ 8:  et-1-3-0.pe1.sxt.bkvl.nsw.aarnet.net.au              16.659ms 
+ 9:  et-0-0-0.pe1.a.hnl.aarnet.net.au                    110.306ms 
+10:  et-2-1-0.bdr1.a.sea.aarnet.net.au                   161.745ms 
+11:  cenichpr-1-is-jmb-778.snvaca.pacificwave.net        178.198ms 
+12:  hpr-lax-hpr3--svl-hpr3-100ge.cenic.net              175.054ms asymm 11 
+13:  hx-hpr3-100ge.cenic.net              176.699ms asymm 12 
+14:  hpr-ucsd-100ge--sdg-hpr3.cenic.net                  178.817ms asymm 13 
+15:  mx0-router.optiputer.net                            176.623ms asymm 14 
+16:  ps-40g-gridftp.calit2.optiputer.net                 176.597ms !H
+     Resume: pmtu 9000 
+[root@uqucsdedgefs /]# time globus-url-copy -vb ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9468641280 bytes       301.00 MB/sec avg       356.13 MB/sec inst
+
+real	0m31.432s
+user	0m1.267s
+sys	0m17.487s
+[root@uqucsdedgefs /]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out& done; time wait
+[1] 151
+[2] 153
+[3] 154
+[4] 155
+[5] 156
+[6] 157
+[7] 158
+[8] 160
+[9] 161
+[10] 162
+
+real	0m7.940s
+user	0m0.238s
+sys	0m3.176s
+
+real	0m8.248s
+user	0m0.239s
+sys	0m3.480s
+
+real	0m11.217s
+user	0m0.449s
+sys	0m3.509s
+
+real	0m12.846s
+user	0m0.389s
+sys	0m3.041s
+
+real	0m14.254s
+user	0m0.575s
+sys	0m2.879s
+
+real	0m14.630s
+user	0m0.555s
+sys	0m3.253s
+
+real	0m21.775s
+user	0m0.675s
+sys	0m2.805s
+
+real	0m24.134s
+user	0m0.651s
+sys	0m2.786s
+
+real	0m28.469s
+user	0m0.774s
+sys	0m2.106s
+[1]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[2]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[3]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[4]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[5]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[6]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[8]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[9]-  Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+[10]+  Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+
+real	0m28.757s
+user	0m0.838s
+sys	0m2.419s
+[7]+  Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///export/shm/1G_$i.out
+
+real	0m28.759s
+user	0m5.386s
+sys	0m29.457s

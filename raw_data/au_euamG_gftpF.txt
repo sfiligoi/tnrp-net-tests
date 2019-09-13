@@ -1,0 +1,58 @@
+[root@uqucsdedgefs /]# hostname
+uqucsdedgefs.aiq.dc.uq.edu.au
+[root@uqucsdedgefs /]# tracepath fiona-r-uva.vlan7.uvalight.net
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  130.102.84.66                                         0.493ms asymm  2 
+ 2:  no reply
+ 3:  no reply
+ 4:  10.141.128.19                                         1.161ms 
+ 5:  SERVER-BYPASS-se10.router.uq.edu.au                   1.024ms 
+ 6:  et-0-1-0-243.pe1.gdpt.qld.aarnet.net.au               1.423ms 
+ 7:  et-5-3-0.pe1.brwy.nsw.aarnet.net.au                  23.803ms 
+ 8:  et-1-3-0.pe1.sxt.bkvl.nsw.aarnet.net.au              16.756ms 
+ 9:  et-0-0-0.pe1.a.hnl.aarnet.net.au                    110.540ms 
+10:  et-2-1-0.bdr1.a.sea.aarnet.net.au                   168.258ms 
+11:  abilene-1-lo-jmb-706.sttlwa.pacificwave.net         162.277ms 
+12:  et-4-0-0.4079.rtsw.miss2.net.internet2.edu          172.403ms 
+13:  et-4-0-0.4079.rtsw.minn.net.internet2.edu           198.701ms 
+14:  et-1-1-5.4079.rtsw.eqch.net.internet2.edu           203.353ms 
+15:  ae-0.4079.rtsw3.eqch.net.internet2.edu              203.068ms 
+16:  ae-1.4079.rtsw.clev.net.internet2.edu               212.179ms 
+17:  ae-0.4079.rtsw.ashb.net.internet2.edu               221.094ms 
+18:  ae-2.4079.rtsw2.ashb.net.internet2.edu              219.823ms 
+19:  ae-2.4079.rtsw.wash.net.internet2.edu               220.258ms 
+20:  ae-5.4079.rtsw.newy32aoa.net.internet2.edu          225.764ms 
+21:  v3-6-8.120.xsr03.amsterdam1a.surf.net               300.552ms asymm 10 
+22:  no reply
+23:  fiona-r-uva.vlan7.uvalight.net                      300.615ms reached
+     Resume: pmtu 9000 hops 23 back 12 
+[root@uqucsdedgefs /]# time globus-url-copy -vb -fast -p 16 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9926868992 bytes       364.11 MB/sec avg       506.64 MB/sec inst
+
+real	0m26.140s
+user	0m2.488s
+sys	0m17.402s
+[root@uqucsdedgefs /]# time globus-url-copy -vb -fast -p 32 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9426960384 bytes       374.59 MB/sec avg       527.13 MB/sec inst
+
+real	0m24.952s
+user	0m2.070s
+sys	0m17.709s
+[root@uqucsdedgefs /]# time globus-url-copy -vb -fast -p 64 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///export/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///export/shm/
+  10G.dat
+
+   9359851520 bytes       371.92 MB/sec avg       541.22 MB/sec inst
+
+real	0m25.004s
+user	0m2.278s
+sys	0m17.837s
