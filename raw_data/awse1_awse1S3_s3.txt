@@ -1,0 +1,14 @@
+[root@ip-172-31-28-221 centos]# hostname
+ip-172-31-28-221.ec2.internal
+[root@ip-172-31-28-221 centos]# time aws s3 cp /dev/shm/10G.dat s3://prp-test-us-east1/test/data/10G.dat
+upload: ../../dev/shm/10G.dat to s3://prp-test-us-east1/test/data/10G.dat
+
+real	0m53.365s
+user	0m54.520s
+sys	0m45.887s
+[root@ip-172-31-28-221 centos]# time aws s3 cp s3://prp-test-us-east1/test/data/10G.dat /dev/shm/10G.dat
+download: s3://prp-test-us-east1/test/data/10G.dat to ../../dev/shm/10G.dat
+
+real	0m48.079s
+user	0m54.174s
+sys	1m14.080s
