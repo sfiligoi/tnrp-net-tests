@@ -1,0 +1,206 @@
+[root@gc-east-2 igor_sfiligoi]# hostname
+gc-east-2
+[root@gc-east-2 igor_sfiligoi]# time aws s3 cp s3://prp-test-us-east1/test/data/10G.dat /dev/shm/10G.dat
+download: s3://prp-test-us-east1/test/data/10G.dat to ../../dev/shm/10G.dat
+
+real    1m38.089s
+user    2m9.733s
+sys     2m15.713s
+
+[root@gc-east-2 igor_sfiligoi]# for i in 0 1 2 3 4 5 6 7 8 9; do time aws s3 cp --only-show-errors s3://prp-test-us
+-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat& done; time wait
+[1] 2906
+[2] 2907
+[3] 2908
+[4] 2909
+[5] 2912
+[6] 2914
+[7] 2917
+[8] 2918
+[9] 2920
+[10] 2922
+
+real    0m17.984s
+user    0m7.582s
+sys     0m6.850s
+
+real    0m18.318s
+user    0m7.826s
+sys     0m6.775s
+
+real    0m18.322s
+user    0m7.950s
+sys     0m6.905s
+[1]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+[3]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+[9]-  Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+
+real    0m18.398s
+user    0m8.020s
+sys     0m6.943s
+
+real    0m18.521s
+user    0m7.790s
+sys     0m6.881s
+[2]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+[4]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+
+real    0m18.556s
+user    0m7.984s
+sys     0m6.740s
+
+real    0m18.561s
+user    0m7.951s
+sys     0m6.853s
+
+
+real    0m18.566s
+user    0m8.006s
+sys     0m6.775s
+[5]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+[8]-  Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+[10]+  Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+
+real    0m18.588s
+user    0m8.043s
+sys     0m6.809s
+
+real    0m18.630s
+user    0m7.665s
+sys     0m6.291s
+[6]-  Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+[7]+  Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/1G_${i}.dat /dev/shm/1G_${i}.dat
+
+real    0m18.630s
+user    1m18.820s
+sys     1m7.825s
+
+
+
+[root@gc-east-2 igor_sfiligoi]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat& done; time wait
+[1] 3132
+[2] 3133
+[3] 3134
+[4] 3135
+[5] 3138
+[6] 3140
+[7] 3142
+[8] 3145
+[9] 3146
+[10] 3148
+[11] 3149
+[12] 3151
+[13] 3153
+[14] 3154
+[15] 3155
+[16] 3157
+[17] 3158
+[18] 3159
+[19] 3161
+[20] 3162
+
+real    0m12.582s
+user    0m3.497s
+sys     0m1.626s
+
+real    0m13.062s
+user    0m3.522s
+sys     0m1.707s
+
+real    0m13.106s
+user    0m3.618s
+sys     0m1.666s
+
+real    0m13.154s
+user    0m3.524s
+sys     0m1.555s
+
+real    0m13.259s
+user    0m3.740s
+sys     0m1.773s
+
+real    0m13.278s
+user    0m3.673s
+sys     0m1.652s
+
+real    0m13.304s
+user    0m3.591s
+sys     0m1.571s
+[1]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[3]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[7]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[8]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[9]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[15]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[20]+  Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+
+real    0m13.303s
+user    0m3.575s
+sys     0m1.713s
+
+real    0m13.325s
+user    0m3.735s
+sys     0m1.757s
+
+
+real    0m13.337s
+user    0m3.664s
+sys     0m1.622s
+
+real    0m13.367s
+user    0m3.829s
+sys     0m1.660s
+
+real    0m13.349s
+user    0m3.575s
+sys     0m1.729s
+
+real    0m13.380s
+user    0m3.637s
+sys     0m1.627s
+
+real    0m13.388s
+user    0m3.917s
+sys     0m1.751s
+[2]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[4]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[6]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[11]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[13]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[14]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[17]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+
+real    0m13.370s
+user    0m3.673s
+sys     0m1.725s
+
+real    0m13.376s
+user    0m3.687s
+sys     0m1.649s
+
+real    0m13.387s
+user    0m3.764s
+sys     0m1.695s
+
+real    0m13.429s
+user    0m3.800s
+sys     0m1.696s
+
+real    0m13.430s
+user    0m3.667s
+sys     0m1.773s
+
+real    0m13.540s
+user    0m3.813s
+sys     0m1.848s
+[5]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[10]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[12]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[16]   Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[18]-  Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+[19]+  Done                    time aws s3 cp --only-show-errors s3://prp-test-us-east1/test/data/05G_${i}.dat /dev/shm/05G_${i}.dat
+
+real    0m13.537s
+user    1m13.508s
+sys     0m33.804s
+
