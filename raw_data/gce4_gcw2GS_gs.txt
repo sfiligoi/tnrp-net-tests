@@ -1,0 +1,198 @@
+[root@gc-east-2 igor_sfiligoi]# hostname
+gc-east-2
+[root@gc-east-2 igor_sfiligoi]# time gsutil cp gs://tnrp_west2/test/data/10G.dat file:///dev/shm/10G.dat
+Copying gs://tnrp_west2/test/data/10G.dat...
+==> NOTE: You are downloading one or more large file(s), which would            
+run significantly faster if you enabled sliced object downloads. This
+feature is enabled by default but requires that compiled crcmod be
+installed (see "gsutil help crcmod").
+| [1 files][  9.3 GiB/  9.3 GiB]  142.4 MiB/s                                   
+Operation completed over 1 objects/9.3 GiB.                                      
+real    1m8.150s
+user    0m44.774s
+sys     0m22.809s
+[root@gc-east-2 igor_sfiligoi]# time gsutil cp gs://tnrp_west2/test/data/1G_1.dat file:///dev/shm/1G.dat
+Copying gs://tnrp_west2/test/data/1G_1.dat...
+==> NOTE: You are downloading one or more large file(s), which would            
+run significantly faster if you enabled sliced object downloads. This
+feature is enabled by default but requires that compiled crcmod be
+installed (see "gsutil help crcmod").
+| [1 files][953.7 MiB/953.7 MiB]                                                
+Operation completed over 1 objects/953.7 MiB.                                    
+real    0m7.625s
+user    0m4.933s
+sys     0m2.345s
+[root@gc-east-2 igor_sfiligoi]# time gsutil cp gs://tnrp_west2/test/data/05G_1.dat file:///dev/shm/05G.dat
+Copying gs://tnrp_west2/test/data/05G_1.dat...
+==> NOTE: You are downloading one or more large file(s), which would            
+run significantly faster if you enabled sliced object downloads. This
+feature is enabled by default but requires that compiled crcmod be
+installed (see "gsutil help crcmod").
+\ [1 files][476.8 MiB/476.8 MiB]                                                
+Operation completed over 1 objects/476.8 MiB.                                    
+real    0m4.861s
+user    0m3.286s
+sys     0m1.320s
+#
+# Multi
+root@gc-east-2 igor_sfiligoi]# for i in 0 1 2 3 4 5 6 7 8 9; do time (gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat >/dev/null 2>/dev/null )& done; time wait
+[1] 5529
+[2] 5530
+[3] 5531
+[4] 5533
+[5] 5535
+[6] 5537
+[7] 5539
+[8] 5542
+[9] 5543
+[10] 5545
+real    0m15.302s
+user    0m8.340s
+sys     0m3.749s
+real    0m15.311s
+user    0m8.584s
+sys     0m3.705s
+real    0m15.426s
+user    0m8.406s
+sys     0m3.801s
+real    0m15.433s
+user    0m8.376s
+sys     0m3.608s
+real    0m15.433s
+user    0m8.391s
+sys     0m3.503s
+real    0m15.522s
+user    0m8.551s
+sys     0m4.110s
+real    0m15.622s
+user    0m8.393s
+sys     0m3.777s
+real    0m15.688s
+user    0m8.396s
+sys     0m4.363s
+real    0m15.861s
+user    0m8.189s
+sys     0m4.420s
+real    0m15.975s
+user    0m8.511s
+sys     0m4.131s
+[1]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[2]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[3]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[4]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[5]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[6]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[7]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[8]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[9]-  Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+[10]+  Done                    time ( gsutil cp gs://tnrp_west2/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat > /dev/null 2> /dev/null )
+real    0m15.973s
+user    1m24.139s
+sys     0m39.168s
+#
+# 20
+root@gc-east-2 igor_sfiligoi]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time (gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat >/dev/null 2>
+/dev/null )& done; time wait
+[1] 11215
+[2] 11216
+[3] 11217
+[4] 11219
+[5] 11221
+[6] 11223
+[7] 11225
+[8] 11227
+[9] 11229
+[10] 11231
+[11] 11233
+[12] 11234
+[13] 11237
+[14] 11238
+[15] 11240
+[16] 11241
+[17] 11244
+[18] 11248
+[19] 11250
+[20] 11252
+real    0m16.137s
+user    0m4.793s
+sys     0m1.944s
+real    0m16.299s
+user    0m4.763s
+sys     0m1.971s
+real    0m16.517s
+user    0m4.796s
+sys     0m1.909s
+real    0m16.690s
+user    0m4.844s
+sys     0m1.908s
+real    0m16.734s
+user    0m4.872s
+sys     0m2.130s
+real    0m17.032s
+user    0m4.791s
+sys     0m2.057s
+real    0m17.397s
+user    0m5.452s
+sys     0m2.203s
+real    0m17.451s
+user    0m4.864s
+sys     0m2.277s
+real    0m17.484s
+user    0m4.890s
+sys     0m2.184s
+real    0m17.580s
+user    0m5.426s
+sys     0m2.148s
+real    0m17.588s
+user    0m4.924s
+sys     0m2.138s
+[1]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[5]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[6]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[7]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[8]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[9]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[10]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[12]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[15]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[19]-  Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[20]+  Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+real    0m17.753s
+user    0m4.793s
+sys     0m2.037s
+real    0m17.818s
+user    0m5.459s
+sys     0m1.859s
+real    0m17.876s
+user    0m5.400s
+sys     0m2.073s
+real    0m17.983s
+user    0m5.539s
+sys     0m2.160s
+real    0m18.033s
+user    0m5.515s
+sys     0m1.903s
+real    0m18.041s
+user    0m5.571s
+sys     0m2.115s
+[2]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[4]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[11]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[13]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[16]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[18]+  Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+real    0m18.135s
+user    0m5.355s
+sys     0m2.083s
+[3]   Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+real    0m18.188s
+user    0m5.498s
+sys     0m2.044s
+real    0m18.548s
+user    0m5.220s
+sys     0m2.202s
+[14]-  Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+[17]+  Done                    time ( gsutil cp gs://tnrp_west2/test/data/05G_${i}.dat file:///dev/shm/05G_${i}.dat > /dev/null 2> /dev/null )
+real    0m18.549s
+user    1m42.773s
+sys     0m41.349s

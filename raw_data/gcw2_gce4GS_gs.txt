@@ -13,6 +13,37 @@ Operation completed over 1 objects/9.3 GiB.
 real	1m2.117s
 user	0m40.358s
 sys	0m21.505s
+#
+# Smaller transfers
+[root@us-west-2 isfiligoi]# time gsutil cp gs://tnrp_east4/test/data/1G_1.dat file:///dev/shm/1G.dat
+Copying gs://tnrp_east4/test/data/1G_1.dat...
+==> NOTE: You are downloading one or more large file(s), which would            
+run significantly faster if you enabled sliced object downloads. This
+feature is enabled by default but requires that compiled crcmod be
+installed (see "gsutil help crcmod").
+
+\ [1 files][953.7 MiB/953.7 MiB]                                                
+Operation completed over 1 objects/953.7 MiB.                                    
+
+real	0m7.294s
+user	0m4.552s
+sys	0m2.169s
+[root@us-west-2 isfiligoi]# time gsutil cp gs://tnrp_east4/test/data/05G_1.dat file:///dev/shm/05G.dat
+Copying gs://tnrp_east4/test/data/05G_1.dat...
+==> NOTE: You are downloading one or more large file(s), which would            
+run significantly faster if you enabled sliced object downloads. This
+feature is enabled by default but requires that compiled crcmod be
+installed (see "gsutil help crcmod").
+
+- [1 files][476.8 MiB/476.8 MiB]                                                
+Operation completed over 1 objects/476.8 MiB.                                    
+
+real	0m4.173s
+user	0m2.692s
+sys	0m1.252s
+#
+# Multi, back to 10G
+#
 [root@us-west-2 isfiligoi]# for i in 0 1 2 3 4 5 6 7 8 9; do time (gsutil cp gs://tnrp_east4/test/data/1G_${i}.dat file:///dev/shm/1G_${i}.dat >/dev/null 2>/dev/null )& done; time wait
 [1] 4806
 [2] 4807
