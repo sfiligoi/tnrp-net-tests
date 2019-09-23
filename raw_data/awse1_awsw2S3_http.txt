@@ -1,0 +1,427 @@
+[root@ip-172-31-28-221 shm]# hostname
+ip-172-31-28-221.ec2.internal
+[root@ip-172-31-28-221 shm]# ping prp-test-us-west2.S3.amazonaws.com
+PING s3-us-west-2-w.amazonaws.com (52.218.192.106) 56(84) bytes of data.
+64 bytes from s3-us-west-2-w.amazonaws.com (52.218.192.106): icmp_seq=1 ttl=33 time=73.3 ms
+# Use awscli as a baseline
+[root@ip-172-31-28-221 shm]# time aws s3 cp s3://prp-test-us-west2/test/data/10G.dat /dev/shm/10G.dat
+download: s3://prp-test-us-west2/test/data/10G.dat to ./10G.dat    
+
+real	1m5.576s
+user	0m37.287s
+sys	0m38.527s
+# now curl and aria2
+[root@ip-172-31-28-221 shm]# time curl -o /dev/shm/10G.dat https://prp-test-us-west2.S3.amazonaws.com/test/data/10G.dat
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9536M  100 9536M    0     0  19.5M      0  0:08:07  0:08:07 --:--:-- 19.5M
+
+real	8m7.558s
+user	0m11.823s
+sys	0m24.025s
+[root@ip-172-31-28-221 shm]# time aria2c https://prp-test-us-west2.S3.amazonaws.com/test/data/10G.dat
+
+09/23 04:31:05 [NOTICE] Downloading 1 item(s)
+...
+ *** Download Progress Summary as of Mon Sep 23 04:38:09 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#0aae4c 8.2GiB/9.3GiB(88%) CN:1 DL:20MiB ETA:52s]
+FILE: /dev/shm/10G.dat
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[#0aae4c 9.3GiB/9.3GiB(99%) CN:1 DL:20MiB]                                                                                                                                                                    
+09/23 04:39:02 [NOTICE] Download complete: /dev/shm/10G.dat
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+0aae4c|OK  |    20MiB/s|/dev/shm/10G.dat
+
+Status Legend:
+(OK):download completed.
+
+real	7m56.508s
+user	0m17.420s
+sys	0m29.550s
+[root@ip-172-31-28-221 shm]# time aria2c -j 20 -x 4 https://prp-test-us-west2.S3.amazonaws.com/test/data/10G.dat
+
+09/23 04:28:44 [NOTICE] Downloading 1 item(s)
+ *** Download Progress Summary as of Mon Sep 23 04:29:45 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#558356 4.9GiB/9.3GiB(53%) CN:4 DL:85MiB ETA:52s]
+FILE: /dev/shm/10G.dat
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[#558356 9.2GiB/9.3GiB(99%) CN:4 DL:85MiB]                                                                                                                                                                    
+09/23 04:30:37 [NOTICE] Download complete: /dev/shm/10G.dat
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+558356|OK  |    84MiB/s|/dev/shm/10G.dat
+
+Status Legend:
+(OK):download completed.
+
+real	1m53.285s
+user	0m15.257s
+sys	0m23.331s
+[root@ip-172-31-28-221 shm]# time aria2c -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/10G.dat
+
+09/23 04:26:43 [NOTICE] Downloading 1 item(s)
+ *** Download Progress Summary as of Mon Sep 23 04:27:44 2019 ***                                                                                                                                             
+==============================================================================================================================================================================================================
+[#790ac2 5.8GiB/9.3GiB(62%) CN:5 DL:99MiB ETA:36s]
+FILE: /dev/shm/10G.dat
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[#790ac2 9.3GiB/9.3GiB(99%) CN:1 DL:91MiB]                                                                                                                                                                    
+09/23 04:28:20 [NOTICE] Download complete: /dev/shm/10G.dat
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+790ac2|OK  |    98MiB/s|/dev/shm/10G.dat
+
+Status Legend:
+(OK):download completed.
+
+real	1m37.531s
+user	0m14.334s
+sys	0m22.352s
+#
+# Multi
+# First 1G for reference
+[root@ip-172-31-28-221 shm]# time aria2c -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G.dat
+
+09/23 04:19:39 [NOTICE] Downloading 1 item(s)
+[#8cf144 0.9GiB/0.9GiB(98%) CN:1 DL:92MiB]                                                                                                                                                                    
+09/23 04:19:51 [NOTICE] Download complete: /dev/shm/1G.dat
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8cf144|OK  |    84MiB/s|/dev/shm/1G.dat
+
+Status Legend:
+(OK):download completed.
+
+real	0m11.515s
+user	0m0.824s
+sys	0m2.152s
+# Now 10G
+[root@ip-172-31-28-221 shm]# for i in 0 1 2 3 4 5 6 7 8 9; do time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat& done; time wait
+[1] 3845
+[2] 3846
+[3] 3847
+[4] 3849
+[5] 3851
+[6] 3853
+[7] 3855
+[8] 3857
+[9] 3859
+[10] 3860
+
+real	0m10.991s
+user	0m1.104s
+sys	0m2.839s
+
+real	0m11.351s
+user	0m0.999s
+sys	0m2.715s
+
+real	0m11.439s
+user	0m1.085s
+sys	0m2.836s
+[1]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+[5]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+[9]-  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+
+real	0m11.447s
+user	0m1.018s
+sys	0m2.708s
+
+real	0m11.453s
+user	0m0.894s
+sys	0m2.863s
+
+real	0m11.493s
+user	0m0.968s
+sys	0m2.743s
+
+real	0m11.553s
+user	0m0.965s
+sys	0m2.815s
+
+real	0m11.661s
+user	0m1.030s
+sys	0m2.916s
+
+real	0m11.701s
+user	0m0.891s
+sys	0m2.678s
+[2]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+[3]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+[4]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+[7]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+[8]-  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+[10]+  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+
+real	0m11.983s
+user	0m0.944s
+sys	0m2.735s
+[6]+  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/1G_$i.dat
+
+real	0m11.982s
+user	0m9.900s
+sys	0m27.850s
+[root@ip-172-31-28-221 shm]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat& done; time wait
+[1] 3674
+[2] 3675
+[3] 3676
+[4] 3678
+[5] 3680
+[6] 3682
+[7] 3684
+[8] 3687
+[9] 3688
+[10] 3690
+[11] 3691
+[12] 3693
+[13] 3694
+[14] 3695
+[15] 3697
+[16] 3698
+[17] 3701
+[18] 3702
+[19] 3704
+[20] 3705
+
+real	0m6.956s
+user	0m0.764s
+sys	0m1.483s
+
+real	0m6.991s
+user	0m0.726s
+sys	0m1.465s
+
+real	0m6.998s
+user	0m0.736s
+sys	0m1.450s
+
+real	0m7.013s
+user	0m0.730s
+sys	0m1.475s
+
+real	0m7.024s
+user	0m0.773s
+sys	0m1.404s
+
+real	0m7.016s
+user	0m0.727s
+sys	0m1.476s
+
+real	0m7.090s
+user	0m0.716s
+sys	0m1.472s
+
+real	0m7.165s
+user	0m0.745s
+sys	0m1.400s
+
+real	0m7.190s
+user	0m0.749s
+sys	0m1.484s
+
+real	0m7.197s
+user	0m0.729s
+sys	0m1.433s
+
+real	0m7.202s
+user	0m0.740s
+sys	0m1.415s
+
+real	0m7.224s
+user	0m0.797s
+sys	0m1.426s
+
+real	0m7.243s
+user	0m0.738s
+sys	0m1.444s
+[1]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[2]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[5]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[6]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[8]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[10]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[11]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[13]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[14]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[17]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[18]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[19]-  Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[20]+  Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+
+real	0m7.252s
+user	0m0.763s
+sys	0m1.425s
+
+real	0m7.272s
+user	0m0.775s
+sys	0m1.426s
+
+real	0m7.332s
+user	0m0.768s
+sys	0m1.445s
+
+real	0m7.362s
+user	0m0.751s
+sys	0m1.407s
+
+real	0m7.364s
+user	0m0.743s
+sys	0m1.492s
+
+real	0m7.449s
+user	0m0.728s
+sys	0m1.438s
+[3]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[4]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[7]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[9]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[12]   Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[15]-  Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+
+real	0m7.515s
+user	0m0.780s
+sys	0m1.459s
+[16]+  Done                    time aria2c -q -j 80 -x 16 https://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+
+real	0m7.533s
+user	0m14.983s
+sys	0m28.922s
+[root@ip-172-31-28-221 shm]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat& done; time wait
+[1] 3448
+[2] 3449
+[3] 3450
+[4] 3452
+[5] 3454
+[6] 3456
+[7] 3457
+[8] 3461
+[9] 3462
+[10] 3464
+[11] 3466
+[12] 3467
+[13] 3469
+[14] 3471
+[15] 3472
+[16] 3474
+[17] 3475
+[18] 3476
+[19] 3478
+[20] 3480
+
+real	0m6.586s
+user	0m0.414s
+sys	0m1.316s
+
+real	0m6.726s
+user	0m0.432s
+sys	0m1.367s
+
+real	0m6.774s
+user	0m0.395s
+sys	0m1.324s
+[1]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[2]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[17]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+
+real	0m6.756s
+user	0m0.401s
+sys	0m1.376s
+
+real	0m6.763s
+user	0m0.423s
+sys	0m1.301s
+
+real	0m6.825s
+user	0m0.386s
+sys	0m1.362s
+
+real	0m6.849s
+user	0m0.434s
+sys	0m1.335s
+[3]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[10]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[18]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[19]-  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+
+real	0m6.850s
+user	0m0.430s
+sys	0m1.378s
+
+real	0m6.870s
+user	0m0.435s
+sys	0m1.346s
+
+real	0m6.856s
+user	0m0.444s
+sys	0m1.344s
+
+real	0m6.901s
+user	0m0.423s
+sys	0m1.287s
+
+real	0m6.899s
+user	0m0.428s
+sys	0m1.375s
+
+real	0m6.925s
+user	0m0.394s
+sys	0m1.408s
+
+real	0m6.946s
+user	0m0.394s
+sys	0m1.395s
+
+real	0m6.949s
+user	0m0.418s
+sys	0m1.336s
+
+real	0m6.951s
+user	0m0.419s
+sys	0m1.362s
+
+real	0m6.975s
+user	0m0.406s
+sys	0m1.421s
+
+real	0m7.079s
+user	0m0.444s
+sys	0m1.377s
+[4]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[5]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[6]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[7]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[8]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[9]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[11]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[13]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[14]   Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[16]-  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+[20]+  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+
+real	0m7.218s
+user	0m0.445s
+sys	0m1.335s
+[12]-  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+
+real	0m7.272s
+user	0m0.463s
+sys	0m1.285s
+[15]+  Done                    time aria2c -q -j 80 -x 16 http://prp-test-us-west2.S3.amazonaws.com/test/data/05G_$i.dat
+
+real	0m7.272s
+user	0m8.432s
+sys	0m27.031s
