@@ -131,5 +131,13 @@ for cluster in digested5.keys():
      ts.sort() 
      for t in ts:
         fd.write("%.3f\n"%tdata[t])
+     fd.write("# max: %0.3f\n"%max(tdata.values()))
 
+with open("digested_max.out","w") as fd:
+   fd.write("# Number of 1 GB files per second, averaged over 5s, max per trial\n")
+   clusters = list(digested5.keys())
+   clusters.sort()
+   for cluster in clusters:
+      tdata = digested5[cluster]
+      fd.write("%i: %0.3f\n"%(cluster,max(tdata.values())))
 
