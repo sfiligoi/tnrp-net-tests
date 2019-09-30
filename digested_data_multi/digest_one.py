@@ -58,6 +58,9 @@ for cluster in jobs.keys():
          if (len(linearr)!=3):
             #print("DEBUG: Skipping, not date %s"%line)
             continue # not a date
+         if (len(linearr[1])>2):
+            #print("DEBUG: Skipping, not minute in date %s"%line)
+            continue # not a date
         
          h=int(linearr[0].rsplit(" ",1)[-1])
          m=int(linearr[1])
