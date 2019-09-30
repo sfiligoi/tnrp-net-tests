@@ -1,0 +1,69 @@
+[root@wn-east-7 shm]# hostname
+wn-east-7
+[root@wn-east-7 shm]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=54 time=68.9 ms
+[root@wn-east-7 shm]# tracepath osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  be-142-0.ibr03.bl7.ntwk.msn.net                      69.480ms asymm 23 
+ 8:  be-6-0.ibr01.cle30.ntwk.msn.net                      68.878ms asymm 22 
+ 9:  be-3-0.ibr01.ch4.ntwk.msn.net                        68.820ms asymm 22 
+10:  be-3-0.ibr01.ch4.ntwk.msn.net                        69.589ms asymm 22 
+11:  be-7-0.ibr01.dsm05.ntwk.msn.net                      69.473ms asymm 20 
+12:  be-5-0.ibr01.cys04.ntwk.msn.net                      69.795ms asymm 19 
+13:  be-5-0.ibr01.cys04.ntwk.msn.net                      69.409ms asymm 19 
+14:  be-5-0.ibr01.stb.ntwk.msn.net                        70.379ms asymm 17 
+15:  be-5-0.ibr02.stb.ntwk.msn.net                        70.463ms asymm 17 
+16:  abilene-1-is-jmb-776.sttlwa.pacificwave.net          74.274ms asymm 18 
+17:  abilene-1-is-jmb-776.sttlwa.pacificwave.net          74.585ms asymm 18 
+18:  et-4-0-0.4079.rtsw.miss2.net.internet2.edu           85.445ms asymm 19 
+19:  et-4-0-0.4079.rtsw.minn.net.internet2.edu            65.497ms asymm 14 
+20:  ae-0.4079.rtsw3.eqch.net.internet2.edu               66.970ms asymm 12 
+21:  ae-1.4079.rtsw.clev.net.internet2.edu                75.026ms asymm 13 
+22:  ae-1.4079.rtsw.clev.net.internet2.edu                75.815ms asymm 13 
+23:  ae-2.4079.rtsw2.ashb.net.internet2.edu               64.892ms asymm  8 
+24:  ae-2.4079.rtsw2.ashb.net.internet2.edu               66.664ms asymm  8 
+25:  ae-2.4079.rtsw.wash.net.internet2.edu                64.539ms asymm 11 
+26:  ae-5.4079.rtsw.newy32aoa.net.internet2.edu           69.126ms asymm 12 
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+[root@wn-east-7 shm]# time globus-url-copy -vb -fast -p 16 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9402056704 bytes       560.41 MB/sec avg       613.40 MB/sec inst
+
+real	0m17.155s
+user	0m0.998s
+sys	0m12.865s
+[root@wn-east-7 shm]# time globus-url-copy -vb -fast -p 32 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9826729984 bytes       585.71 MB/sec avg       658.15 MB/sec inst
+
+real	0m16.611s
+user	0m0.990s
+sys	0m13.593s
+[root@wn-east-7 shm]# time globus-url-copy -vb -fast -p 64 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9737338880 bytes       580.29 MB/sec avg       626.40 MB/sec inst
+
+real	0m17.387s
+user	0m1.254s
+sys	0m14.097s
