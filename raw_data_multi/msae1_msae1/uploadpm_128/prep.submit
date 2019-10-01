@@ -1,0 +1,16 @@
+universe = vanilla
+
+# Files
+executable = create_file.sh
+output = out/cf.$(cluster).$(process).out
+error = err/cf.$(cluster).$(process).err
+log = cf.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+requirements = (SlotID =?= 1)
+
+# Run jobs once
+queue 16
