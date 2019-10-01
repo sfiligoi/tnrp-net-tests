@@ -44,7 +44,7 @@ for cluster in jobs.keys():
       with open("%s/out/data.%i.%i.out"%(dname, cluster, process),"r") as fd:
          lines=fd.readlines()
       nlines=len(lines)
-      nl=0
+      nl=3 # skip top lines
       tprev=0
       rcprev=1
       while (nl<nlines):
@@ -88,7 +88,7 @@ for cluster in jobs.keys():
             break # end of file
          line = lines[nl]
          if not line.startswith("RC "):
-            print("WARN: Found date not followed by RC")
+            print("WARN: Found date not followed by RC (%i,%s)"%(nl,line))
             rcprev=1
             continue
 
