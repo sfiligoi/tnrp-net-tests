@@ -1,0 +1,18 @@
+universe = vanilla
+
+# Files
+executable = upload.sh
+arguments = $(process)
+output = out/data.$(cluster).$(process).out
+error = err/data.$(cluster).$(process).err
+log = bench.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+requirements = TRUE
+#requirements = (SlotID <6)
+
+# Run jobs once
+queue 16
