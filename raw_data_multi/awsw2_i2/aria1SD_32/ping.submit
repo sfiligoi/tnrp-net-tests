@@ -1,0 +1,17 @@
+universe = vanilla
+
+# Files
+executable = ping.sh
+output = out/ping.$(cluster).$(process).out
+error = err/ping.$(cluster).$(process).err
+log = bench.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+requirements=(CLOUD_Region =?= "AWSUSWest2")
+
+# Run job once
+queue 1
