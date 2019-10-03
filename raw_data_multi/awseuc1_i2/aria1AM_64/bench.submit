@@ -1,0 +1,17 @@
+universe = vanilla
+
+# Files
+executable = aria1.sh
+output = out/data.$(cluster).$(process).out
+error = err/data.$(cluster).$(process).err
+log = bench.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+requirements=(CLOUD_Region =?= "AWSEUCentral1")
+
+# Run job once
+queue 64
