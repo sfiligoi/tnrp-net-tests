@@ -11,6 +11,7 @@ RUN yum -y install https://repo.opensciencegrid.org/osg/3.5/osg-3.5-el7-release-
 RUN yum -y install epel-release yum-plugin-priorities
 RUN yum install -y condor
 RUN yum install -y osg-wn-client aria2
+RUN yum -y install supervisor
 
 RUN yum clean all
 
