@@ -1,0 +1,225 @@
+[centos@ip-172-31-21-145 ~]$ for n in stashcache.t2.ucsd.edu osg.chic.nrp.internet2.edu osg.newy32aoa.nrp.internet2.edu fiona-r-uva.vlan7.uvalight.net dtn2-daejeon.kreonet.net; do echo $n; ping -c 2 $n; echo "============"; done
+stashcache.t2.ucsd.edu
+PING stashcache.t2.ucsd.edu (198.17.101.66) 56(84) bytes of data.
+64 bytes from 198.17.101.66 (198.17.101.66): icmp_seq=1 ttl=35 time=62.8 ms
+64 bytes from 198.17.101.66 (198.17.101.66): icmp_seq=2 ttl=35 time=62.8 ms
+
+--- stashcache.t2.ucsd.edu ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 62.876/62.877/62.878/0.001 ms
+============
+osg.chic.nrp.internet2.edu
+PING osg.chic.nrp.internet2.edu (163.253.70.2) 56(84) bytes of data.
+64 bytes from osg.chic.nrp.internet2.edu (163.253.70.2): icmp_seq=1 ttl=40 time=18.5 ms
+64 bytes from osg.chic.nrp.internet2.edu (163.253.70.2): icmp_seq=2 ttl=40 time=18.5 ms
+
+--- osg.chic.nrp.internet2.edu ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 18.556/18.559/18.563/0.136 ms
+============
+osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=36 time=23.9 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=2 ttl=36 time=25.9 ms
+
+--- osg.newy32aoa.nrp.internet2.edu ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 23.902/24.901/25.900/0.999 ms
+============
+fiona-r-uva.vlan7.uvalight.net
+PING fiona-r-uva.vlan7.uvalight.net (145.146.100.30) 56(84) bytes of data.
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=1 ttl=35 time=94.2 ms
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=2 ttl=35 time=94.1 ms
+
+--- fiona-r-uva.vlan7.uvalight.net ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 94.155/94.182/94.210/0.308 ms
+============
+dtn2-daejeon.kreonet.net
+PING dtn2-daejeon.kreonet.net (134.75.115.132) 56(84) bytes of data.
+64 bytes from 134.75.115.132 (134.75.115.132): icmp_seq=1 ttl=32 time=215 ms
+64 bytes from 134.75.115.132 (134.75.115.132): icmp_seq=2 ttl=32 time=214 ms
+
+--- dtn2-daejeon.kreonet.net ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 214.909/215.035/215.162/0.480 ms
+============
+[centos@ip-172-31-21-145 ~]$ for n in stashcache.t2.ucsd.edu osg.chic.nrp.internet2.edu osg.newy32aoa.nrp.internet2.edu fiona-r-uva.vlan7.uvalight.net dtn2-daejeon.kreonet.net; do echo $n; tracepath $n; echo "============"; done
+stashcache.t2.ucsd.edu
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.044ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.15.97                                          5.150ms asymm  7 
+ 7:  52.93.28.113                                          2.637ms asymm  8 
+ 8:  100.100.6.64                                          0.913ms asymm 13 
+ 9:  100.91.177.22                                        60.387ms asymm 30 
+10:  100.91.165.104                                       58.156ms asymm 29 
+11:  100.91.164.37                                        59.560ms asymm 28 
+12:  100.91.198.116                                       61.007ms asymm 27 
+13:  100.91.198.75                                        60.442ms asymm 28 
+14:  54.240.229.172                                       61.480ms asymm 25 
+15:  54.239.46.5                                          68.154ms asymm 24 
+16:  54.239.44.56                                         62.980ms asymm 23 
+17:  100.91.5.141                                         59.790ms asymm 22 
+18:  100.100.4.37                                         61.882ms asymm 26 
+19:  100.91.5.143                                         60.180ms asymm 22 
+20:  100.100.88.67                                        61.811ms asymm 25 
+21:  100.100.2.34                                         60.565ms asymm 25 
+22:  99.82.179.203                                        59.942ms asymm 25 
+23:  dc-lax-agg6--lax-agg8-100ge-3.cenic.net              60.558ms asymm 25 
+24:  dc-tus-agg3--lax-agg6-100ge-2.cenic.net              63.851ms asymm 25 
+25:  dc-sdsc-100ge--sdg-agg4.cenic.net                    62.865ms asymm 27 
+26:  medusa-mx960.sdsc.edu                                62.986ms asymm 28 
+27:  stingray.sdsc.edu                                    62.970ms asymm 29 
+28:  stingray.sdsc.edu                                    64.102ms asymm 29 
+29:  198.17.101.66                                        62.859ms reached
+     Resume: pmtu 1500 hops 29 back 30 
+============
+osg.chic.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.030ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.13.65                                          8.912ms asymm  7 
+ 7:  52.93.28.109                                          0.577ms asymm  8 
+ 8:  100.100.28.28                                         1.266ms asymm 12 
+ 9:  100.95.7.65                                           9.634ms asymm 12 
+10:  100.100.30.86                                         0.786ms asymm 12 
+11:  100.95.23.177                                         1.354ms asymm 12 
+12:  lag-194.ear2.Washington1.Level3.net                  20.984ms asymm 24 
+13:  ae-2-3607.ear1.Washington1.Level3.net                23.432ms asymm 24 
+14:  UCAID.ear1.Washington1.Level3.net                    21.001ms asymm 27 
+15:  ae-2-3607.ear1.Washington1.Level3.net                23.366ms asymm 24 
+16:  163.253.70.1                                         19.067ms asymm 24 
+17:  ae-0.4079.rtsw2.ashb.net.internet2.edu               27.430ms asymm 28 
+18:  163.253.70.1                                         19.580ms asymm 24 
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+============
+osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.042ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.14.81                                          0.388ms asymm  7 
+ 7:  52.93.28.99                                           0.600ms asymm  8 
+ 8:  100.100.28.36                                         0.741ms asymm 12 
+ 9:  100.95.23.161                                         2.207ms asymm 12 
+10:  100.100.30.102                                        1.281ms asymm 12 
+11:  54.239.110.3                                          1.780ms asymm 12 
+12:  52.93.114.152                                        14.188ms asymm 14 
+13:  54.239.109.93                                         1.902ms asymm 12 
+14:  no reply
+15:  ae-2-3607.ear1.Washington1.Level3.net                23.087ms asymm 24 
+16:  UCAID.ear1.Washington1.Level3.net                    20.621ms asymm 27 
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+============
+fiona-r-uva.vlan7.uvalight.net
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.033ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.13.129                                         0.348ms asymm  7 
+ 7:  52.93.28.105                                          0.614ms asymm  8 
+ 8:  100.100.28.34                                         0.956ms asymm 12 
+ 9:  100.95.7.241                                          1.426ms asymm 12 
+10:  100.100.30.92                                         0.829ms asymm 12 
+11:  54.239.108.243                                        2.269ms asymm 12 
+12:  52.93.114.86                                         17.909ms asymm 14 
+13:  54.239.108.73                                         1.441ms asymm 12 
+14:  ahbn-s1-rou-1041.eurorings.net                        0.995ms asymm 13 
+15:  asd2-rou-1044.NL.eurorings.net                       91.378ms asymm 25 
+16:  rt2-rou-1022.NL.eurorings.net                        88.411ms asymm 29 
+17:  134.222.155.83                                       94.232ms asymm 28 
+18:  asd-s5-rou-1041.NL.eurorings.net                     90.271ms asymm 27 
+19:  134.222.155.83                                       90.644ms asymm 28 
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+============
+dtn2-daejeon.kreonet.net
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.038ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.15.145                                         0.352ms asymm  7 
+ 7:  52.93.28.81                                           0.382ms asymm  8 
+ 8:  100.100.2.80                                          0.704ms asymm 12 
+ 9:  ae0-1983.cr3-was1.ip4.gtt.net                         1.321ms asymm 12 
+10:  et-1-0-35.cr3-lax1.ip4.gtt.net                       69.486ms asymm 27 
+11:  as4766.lax10.ip4.gtt.net                             76.589ms asymm 32 
+12:  112.174.87.17                                       666.089ms asymm 30 
+13:  112.174.85.205                                      196.200ms asymm 27 
+14:  112.174.85.26                                       185.681ms asymm 31 
+15:  203.234.255.166                                     183.688ms asymm 29 
+16:  134.75.5.209                                        183.442ms asymm 30 
+17:  134.75.2.2                                          191.246ms asymm 33 
+18:  kreonet2-gr-bb1-kreonet-dj-bb1.daej.kreonet2.net    191.028ms asymm 34 
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+============
