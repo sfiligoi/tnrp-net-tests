@@ -1,0 +1,21 @@
+universe = vanilla
+
+# Files
+executable = aria1mW.sh
+arguments = $(process)
+output = out/data.$(cluster).$(process).out
+error = err/data.$(cluster).$(process).err
+log = bench.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+#requirements=TRUE
+
+# The slot attributes were not properly configured
+requirements=(CLOUD_Region =?= "AWSUSWest2")&&(SlotID <9)
+
+# Run job once
+queue 32
