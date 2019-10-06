@@ -1,0 +1,249 @@
+[root@stashcache ~]# hostname
+stashcache.t2.ucsd.edu
+[root@stashcache ~]# for p in us-west2,51.143.19.250 us-east,40.76.65.99 eu-west,51.144.4.191 ap-Australia,52.187.239.157 ap-Korea,52.141.2.50 sa-Brazil,104.41.1.29; do d=`echo $p |awk '{split($1,a,","); print a[1]}'`; n=`echo $p |awk '{split($1,a,","); print a[2]}'`; echo $d; ping -c 2 $n; done
+us-west2
+PING 51.143.19.250 (51.143.19.250) 56(84) bytes of data.
+64 bytes from 51.143.19.250: icmp_seq=1 ttl=43 time=32.0 ms
+64 bytes from 51.143.19.250: icmp_seq=2 ttl=43 time=32.0 ms
+
+--- 51.143.19.250 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 32.066/32.076/32.086/0.010 ms
+us-east
+PING 40.76.65.99 (40.76.65.99) 56(84) bytes of data.
+64 bytes from 40.76.65.99: icmp_seq=1 ttl=44 time=58.2 ms
+64 bytes from 40.76.65.99: icmp_seq=2 ttl=44 time=58.3 ms
+
+--- 40.76.65.99 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 58.247/58.278/58.310/0.243 ms
+eu-west
+PING 51.144.4.191 (51.144.4.191) 56(84) bytes of data.
+64 bytes from 51.144.4.191: icmp_seq=1 ttl=39 time=138 ms
+64 bytes from 51.144.4.191: icmp_seq=2 ttl=39 time=138 ms
+
+--- 51.144.4.191 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 138.142/138.210/138.279/0.378 ms
+ap-Australia
+PING 52.187.239.157 (52.187.239.157) 56(84) bytes of data.
+64 bytes from 52.187.239.157: icmp_seq=1 ttl=48 time=151 ms
+64 bytes from 52.187.239.157: icmp_seq=2 ttl=48 time=151 ms
+
+--- 52.187.239.157 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 151.053/151.439/151.825/0.386 ms
+ap-Korea
+PING 52.141.2.50 (52.141.2.50) 56(84) bytes of data.
+64 bytes from 52.141.2.50: icmp_seq=1 ttl=44 time=135 ms
+64 bytes from 52.141.2.50: icmp_seq=2 ttl=44 time=135 ms
+
+--- 52.141.2.50 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 135.080/135.170/135.261/0.378 ms
+sa-Brazil
+PING 104.41.1.29 (104.41.1.29) 56(84) bytes of data.
+64 bytes from 104.41.1.29: icmp_seq=1 ttl=43 time=166 ms
+64 bytes from 104.41.1.29: icmp_seq=2 ttl=43 time=166 ms
+
+--- 104.41.1.29 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 166.088/166.093/166.099/0.407 ms
+[root@stashcache ~]# for p in us-west2,51.143.19.250 us-east,40.76.65.99 eu-west,51.144.4.191 ap-Australia,52.187.239.157 ap-Korea,52.141.2.50 sa-Brazil,104.41.1.29; do d=`echo $p |awk '{split($1,a,","); print a[1]}'`; n=`echo $p |awk '{split($1,a,","); print a[2]}'`; echo $d; tracepath $n; done
+us-west2
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.851ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.755ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.238ms 
+ 3:  192.12.207.45                                         0.913ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.652ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.727ms 
+ 6:  dc-lax-agg6--tus-agg3-100ge-1.cenic.net               3.012ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-2.cenic.net               4.641ms 
+ 8:  cenic.lax-96cbe-1a.ntwk.msn.net                       8.061ms pmtu 1500
+ 8:  ae64-0.lax-96cbe-1a.ntwk.msn.net                      3.006ms 
+ 9:  be-61-0.ibr01.lax03.ntwk.msn.net                     32.684ms asymm 19 
+10:  be-6-0.ibr04.by4.ntwk.msn.net                        32.403ms asymm 18 
+11:  be-2-0.ibr03.by21.ntwk.msn.net                       32.582ms asymm 17 
+12:  be-3-0.ibr02.pdx30.ntwk.msn.net                      32.662ms asymm 16 
+13:  be-4-0.ibr04.mwh01.ntwk.msn.net                      32.848ms asymm 15 
+14:  ae141-0.icr01.mwh01.ntwk.msn.net                     32.175ms 
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  51.143.19.250                                        32.870ms reached
+     Resume: pmtu 1500 hops 29 back 22 
+us-east
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.824ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.709ms 
+ 2:  medusa-mx960.sdsc.edu                                 3.272ms 
+ 3:  192.12.207.45                                         0.477ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.662ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.678ms 
+ 6:  137.164.11.60                                         3.159ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-1.cenic.net               3.734ms 
+ 8:  cenic.lax-96cbe-1a.ntwk.msn.net                      10.875ms pmtu 1500
+ 8:  ae64-0.lax-96cbe-1a.ntwk.msn.net                      3.134ms 
+ 9:  be-73-0.ibr02.lax03.ntwk.msn.net                     58.166ms asymm 19 
+10:  be-5-0.ibr02.sn1.ntwk.msn.net                        58.442ms asymm 20 
+11:  be-3-0.ibr02.atl30.ntwk.msn.net                      58.375ms asymm 17 
+12:  be-6-0.ibr02.bn6.ntwk.msn.net                        58.410ms asymm 16 
+13:  be-2-0.ibr04.bl20.ntwk.msn.net                       58.500ms asymm 15 
+14:  ae162-0.icr02.bl20.ntwk.msn.net                      58.202ms 
+15:  ae162-0.icr02.bl7.ntwk.msn.net                       58.947ms 
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  40.76.65.99                                          58.533ms reached
+     Resume: pmtu 1500 hops 27 back 21 
+eu-west
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         1.107ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.738ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.117ms 
+ 3:  192.12.207.45                                         0.535ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.658ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.811ms 
+ 6:  dc-lax-agg6--tus-agg3-100ge-2.cenic.net               3.121ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-4.cenic.net               5.016ms 
+ 8:  cenic.lax-96cbe-1a.ntwk.msn.net                      11.081ms pmtu 1500
+ 8:  ae64-0.lax-96cbe-1a.ntwk.msn.net                      3.105ms 
+ 9:  be-71-0.ibr02.lax03.ntwk.msn.net                    139.584ms asymm 31 
+10:  be-5-0.ibr02.sn1.ntwk.msn.net                       138.437ms asymm 30 
+11:  be-3-0.ibr02.atl30.ntwk.msn.net                     138.404ms asymm 29 
+12:  be-6-0.ibr02.bn6.ntwk.msn.net                       138.598ms asymm 28 
+13:  be-4-0.ibr03.bn6.ntwk.msn.net                       138.519ms asymm 27 
+14:  be-2-0.ibr04.bl7.ntwk.msn.net                       138.497ms asymm 26 
+15:  be-7-0.ibr02.ewr30.ntwk.msn.net                     138.574ms asymm 25 
+16:  be-4-0.ibr01.sxl71.ntwk.msn.net                     138.481ms asymm 24 
+17:  be-6-0.ibr02.dub07.ntwk.msn.net                     138.574ms asymm 23 
+18:  be-7-0.ibr01.ams30.ntwk.msn.net                     138.488ms asymm 22 
+19:  be-3-0.ibr04.ams06.ntwk.msn.net                     138.788ms asymm 21 
+20:  ae143-0.icr04.ams06.ntwk.msn.net                    138.316ms 
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+ap-Australia
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.842ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.755ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.156ms 
+ 3:  192.12.207.45                                         0.525ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.672ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.515ms 
+ 6:  dc-lax-agg6--tus-agg3-100ge-2.cenic.net               2.998ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-1.cenic.net               3.635ms 
+ 8:  cenic.lax-96cbe-1a.ntwk.msn.net                      10.908ms pmtu 1500
+ 8:  ae64-0.lax-96cbe-1a.ntwk.msn.net                      3.079ms 
+ 9:  be-71-0.ibr02.lax03.ntwk.msn.net                    151.315ms asymm 13 
+10:  be-7-0.ibr01.syd03.ntwk.msn.net                     151.344ms asymm 12 
+11:  ae102-0.icr02.syd03.ntwk.msn.net                    151.157ms 
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  52.187.239.157                                      152.494ms reached
+     Resume: pmtu 1500 hops 24 back 17 
+ap-Korea
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.819ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.745ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.170ms 
+ 3:  192.12.207.45                                         0.615ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.677ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.686ms 
+ 6:  dc-lax-agg6--tus-agg3-100ge-2.cenic.net               2.966ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-1.cenic.net               3.730ms 
+ 8:  cenic.lax-96cbe-1a.ntwk.msn.net                      11.094ms pmtu 1500
+ 8:  ae64-0.lax-96cbe-1a.ntwk.msn.net                      3.019ms 
+ 9:  be-63-0.ibr01.lax03.ntwk.msn.net                    136.306ms asymm 19 
+10:  be-10-0.ibr01.tyo30.ntwk.msn.net                    134.834ms asymm 18 
+11:  no reply
+12:  104.44.19.95                                        134.887ms asymm 16 
+13:  ae102-0.icr02.sel20.ntwk.msn.net                    144.400ms asymm 15 
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  52.141.2.50                                         135.767ms reached
+     Resume: pmtu 1500 hops 26 back 21 
+sa-Brazil
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         2.217ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.987ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.164ms 
+ 3:  192.12.207.45                                         0.760ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.672ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.480ms 
+ 6:  137.164.11.60                                         3.010ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-2.cenic.net               4.435ms 
+ 8:  cenic.lax-96cbe-1a.ntwk.msn.net                       6.069ms pmtu 1500
+ 8:  ae64-0.lax-96cbe-1a.ntwk.msn.net                      2.989ms 
+ 9:  be-73-0.ibr02.lax03.ntwk.msn.net                    166.487ms asymm 25 
+10:  be-5-0.ibr02.sn1.ntwk.msn.net                       166.303ms asymm 24 
+11:  be-3-0.ibr02.atl30.ntwk.msn.net                     166.340ms asymm 23 
+12:  ae29-0.mia-96cbe-1b.ntwk.msn.net                     57.160ms 
+13:  ae14-0.mia-96cbe-1a.ntwk.msn.net                     57.302ms 
+14:  104.44.22.99                                        166.435ms asymm 20 
+15:  be-1-0.ibr02.gru30.ntwk.msn.net                     166.393ms asymm 19 
+16:  be-3-0.ibr02.cpq02.ntwk.msn.net                     166.541ms asymm 18 
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  104.41.1.29                                         166.328ms reached
+     Resume: pmtu 1500 hops 30 back 22 

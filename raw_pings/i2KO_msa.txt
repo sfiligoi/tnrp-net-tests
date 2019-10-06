@@ -1,0 +1,262 @@
+[root@dtn2-daejeon xrootd]# hostname
+dtn2-daejeon.kreonet.net
+[root@dtn2-daejeon xrootd]# for p in us-west2,51.143.19.250 us-east,40.76.65.99 eu-west,51.144.4.191 ap-Australia,52.187.239.157 ap-Korea,52.141.2.50 sa-Brazil,104.41.1.29; do d=`echo $p |awk '{split($1,a,","); print a[1]}'`; n=`echo $p |awk '{split($1,a,","); print a[2]}'`; echo $d; ping -c 2 $n; done
+us-west2
+PING 51.143.19.250 (51.143.19.250) 56(84) bytes of data.
+64 bytes from 51.143.19.250: icmp_seq=1 ttl=43 time=153 ms
+64 bytes from 51.143.19.250: icmp_seq=2 ttl=43 time=152 ms
+
+--- 51.143.19.250 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 999ms
+rtt min/avg/max/mdev = 152.705/152.872/153.040/0.425 ms
+us-east
+PING 40.76.65.99 (40.76.65.99) 56(84) bytes of data.
+64 bytes from 40.76.65.99: icmp_seq=1 ttl=37 time=217 ms
+64 bytes from 40.76.65.99: icmp_seq=2 ttl=37 time=217 ms
+
+--- 40.76.65.99 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 217.266/217.328/217.390/0.062 ms
+eu-west
+PING 51.144.4.191 (51.144.4.191) 56(84) bytes of data.
+64 bytes from 51.144.4.191: icmp_seq=1 ttl=42 time=240 ms
+64 bytes from 51.144.4.191: icmp_seq=2 ttl=42 time=239 ms
+
+--- 51.144.4.191 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 239.833/239.920/240.008/0.497 ms
+ap-Australia
+PING 52.187.239.157 (52.187.239.157) 56(84) bytes of data.
+64 bytes from 52.187.239.157: icmp_seq=1 ttl=49 time=160 ms
+64 bytes from 52.187.239.157: icmp_seq=2 ttl=49 time=160 ms
+
+--- 52.187.239.157 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 160.049/160.093/160.137/0.044 ms
+ap-Korea
+PING 52.141.2.50 (52.141.2.50) 56(84) bytes of data.
+64 bytes from 52.141.2.50: icmp_seq=1 ttl=50 time=41.3 ms
+64 bytes from 52.141.2.50: icmp_seq=2 ttl=50 time=41.1 ms
+
+--- 52.141.2.50 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 41.196/41.293/41.391/0.225 ms
+sa-Brazil
+PING 104.41.1.29 (104.41.1.29) 56(84) bytes of data.
+64 bytes from 104.41.1.29: icmp_seq=1 ttl=36 time=333 ms
+64 bytes from 104.41.1.29: icmp_seq=2 ttl=36 time=333 ms
+
+--- 104.41.1.29 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 333.889/333.914/333.939/0.025 ms
+[root@dtn2-daejeon xrootd]# for p in us-west2,51.143.19.250 us-east,40.76.65.99 eu-west,51.144.4.191 ap-Australia,52.187.239.157 ap-Korea,52.141.2.50 sa-Brazil,104.41.1.29; do d=`echo $p |awk '{split($1,a,","); print a[1]}'`; n=`echo $p |awk '{split($1,a,","); print a[2]}'`; echo $d; tracepath $n; done
+us-west2
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.418ms 
+ 1:  gateway                                               0.307ms 
+ 2:  134.75.103.193                                        1.096ms asymm  3 
+ 3:  134.75.103.241                                        1.092ms 
+ 4:  134.75.103.18                                        40.148ms 
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 9000
+     Resume: pmtu 9000 
+us-east
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.409ms 
+ 1:  gateway                                               0.306ms 
+ 2:  134.75.103.193                                        0.778ms asymm  3 
+ 3:  134.75.103.241                                        1.082ms 
+ 4:  134.75.103.18                                        40.083ms 
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 9000
+     Resume: pmtu 9000 
+eu-west
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.384ms 
+ 1:  gateway                                               0.309ms 
+ 2:  134.75.103.193                                        1.105ms asymm  3 
+ 3:  134.75.103.241                                        0.913ms 
+ 4:  134.75.103.18                                        40.161ms 
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 9000
+     Resume: pmtu 9000 
+ap-Australia
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.396ms 
+ 1:  gateway                                               0.303ms 
+ 2:  134.75.103.193                                        1.089ms asymm  3 
+ 3:  134.75.103.241                                        1.113ms 
+ 4:  134.75.103.18                                        40.055ms 
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 9000
+     Resume: pmtu 9000 
+ap-Korea
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.398ms 
+ 1:  gateway                                               0.309ms 
+ 2:  134.75.103.193                                        1.052ms asymm  3 
+ 3:  134.75.103.241                                        0.995ms 
+ 4:  134.75.103.18                                        40.080ms 
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 9000
+     Resume: pmtu 9000 
+sa-Brazil
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  gateway                                               0.391ms 
+ 1:  gateway                                               0.302ms 
+ 2:  134.75.103.193                                        1.088ms asymm  3 
+ 3:  134.75.103.241                                        0.906ms 
+ 4:  134.75.103.18                                        40.066ms 
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 9000
+     Resume: pmtu 9000 
