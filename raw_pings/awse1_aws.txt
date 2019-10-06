@@ -1,0 +1,248 @@
+[centos@ip-172-31-21-145 ~]$ for n in ec2-54-200-23-151.us-west-2.compute.amazonaws.com ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com ec2-18-228-238-48.sa-east-1.compute.amazonaws.com; do echo $n; ping -c 2 $n; echo "============"; done
+ec2-54-200-23-151.us-west-2.compute.amazonaws.com
+PING ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151) 56(84) bytes of data.
+64 bytes from ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151): icmp_seq=1 ttl=30 time=75.2 ms
+64 bytes from ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151): icmp_seq=2 ttl=30 time=75.2 ms
+
+--- ec2-54-200-23-151.us-west-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 75.213/75.218/75.224/0.274 ms
+============
+ec2-35-156-20-84.eu-central-1.compute.amazonaws.com
+PING ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84) 56(84) bytes of data.
+64 bytes from ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84): icmp_seq=1 ttl=38 time=86.1 ms
+64 bytes from ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84): icmp_seq=2 ttl=38 time=86.1 ms
+
+--- ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 86.159/86.163/86.167/0.004 ms
+============
+ec2-34-255-34-240.eu-west-1.compute.amazonaws.com
+PING ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240) 56(84) bytes of data.
+64 bytes from ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240): icmp_seq=1 ttl=31 time=65.8 ms
+64 bytes from ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240): icmp_seq=2 ttl=31 time=65.8 ms
+
+--- ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 65.811/65.811/65.812/0.256 ms
+============
+ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com
+PING ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com (15.164.176.80) 56(84) bytes of data.
+64 bytes from ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com (15.164.176.80): icmp_seq=1 ttl=32 time=176 ms
+64 bytes from ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com (15.164.176.80): icmp_seq=2 ttl=32 time=176 ms
+
+--- ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 176.853/176.853/176.853/0.000 ms
+============
+ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com
+PING ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com (52.65.179.44) 56(84) bytes of data.
+64 bytes from ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com (52.65.179.44): icmp_seq=1 ttl=35 time=196 ms
+64 bytes from ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com (52.65.179.44): icmp_seq=2 ttl=35 time=196 ms
+
+--- ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 196.608/196.623/196.639/0.443 ms
+============
+ec2-18-228-238-48.sa-east-1.compute.amazonaws.com
+PING ec2-18-228-238-48.sa-east-1.compute.amazonaws.com (18.228.238.48) 56(84) bytes of data.
+64 bytes from ec2-18-228-238-48.sa-east-1.compute.amazonaws.com (18.228.238.48): icmp_seq=1 ttl=39 time=120 ms
+64 bytes from ec2-18-228-238-48.sa-east-1.compute.amazonaws.com (18.228.238.48): icmp_seq=2 ttl=39 time=120 ms
+
+--- ec2-18-228-238-48.sa-east-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 120.537/120.551/120.566/0.347 ms
+============
+[centos@ip-172-31-21-145 ~]$ for n in ec2-54-200-23-151.us-west-2.compute.amazonaws.com ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com ec2-18-228-238-48.sa-east-1.compute.amazonaws.com; do echo $n; tracepath $n; echo "============"; done
+ec2-54-200-23-151.us-west-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.041ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.15.161                                         0.612ms asymm  7 
+ 7:  52.93.28.113                                          1.364ms asymm  8 
+ 8:  100.100.6.50                                          0.534ms asymm 13 
+ 9:  100.91.176.236                                       73.498ms asymm 41 
+10:  100.91.164.0                                         78.464ms asymm 35 
+11:  100.91.159.43                                        70.588ms asymm 39 
+12:  100.91.198.138                                       70.520ms asymm 38 
+13:  100.91.168.129                                       76.155ms asymm 32 
+14:  54.239.41.255                                        72.023ms asymm 37 
+15:  100.91.189.100                                       69.939ms asymm 34 
+16:  100.91.189.139                                       70.132ms asymm 33 
+17:  100.91.190.18                                        70.148ms asymm 32 
+18:  100.91.190.55                                        69.428ms asymm 31 
+19:  52.93.12.234                                         77.479ms asymm 30 
+20:  52.93.12.145                                         75.768ms asymm 29 
+21:  54.239.45.119                                        72.790ms asymm 29 
+22:  52.93.12.245                                         79.286ms asymm 26 
+23:  52.93.240.53                                         74.506ms asymm 26 
+24:  52.93.13.6                                           72.130ms asymm 30 
+25:  52.93.12.212                                         75.963ms asymm 27 
+26:  52.93.13.25                                          71.650ms asymm 32 
+27:  52.93.240.61                                         70.235ms 
+28:  ec2-54-200-23-151.us-west-2.compute.amazonaws.com    75.493ms reached
+     Resume: pmtu 1500 hops 28 back 35 
+============
+ec2-35-156-20-84.eu-central-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.029ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.14.97                                          0.244ms asymm  7 
+ 7:  52.93.28.119                                          0.391ms asymm  8 
+ 8:  100.100.8.124                                         0.569ms asymm 13 
+ 9:  100.91.177.114                                       89.970ms asymm 33 
+10:  100.91.164.126                                       86.117ms asymm 32 
+11:  100.91.160.45                                        86.556ms asymm 26 
+12:  100.91.166.118                                       85.599ms asymm 30 
+13:  100.91.163.33                                        86.408ms asymm 24 
+14:  52.93.129.22                                         87.176ms asymm 23 
+15:  100.91.161.0                                         85.572ms asymm 27 
+16:  100.91.161.117                                       88.246ms asymm 26 
+17:  100.91.163.134                                       86.160ms asymm 25 
+18:  100.91.163.101                                       86.405ms asymm 24 
+19:  52.93.111.237                                        87.348ms asymm 26 
+20:  52.93.134.113                                        86.676ms asymm 22 
+21:  100.91.35.101                                        85.714ms asymm 20 
+22:  54.239.106.106                                       92.695ms asymm 24 
+23:  52.93.111.214                                        85.472ms asymm 22 
+24:  no reply
+25:  ec2-35-156-20-84.eu-central-1.compute.amazonaws.com  86.519ms reached
+     Resume: pmtu 1500 hops 25 back 27 
+============
+ec2-34-255-34-240.eu-west-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.029ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.14.209                                         0.275ms asymm  7 
+ 7:  52.93.28.85                                           0.479ms asymm  8 
+ 8:  100.100.8.20                                          1.010ms asymm 13 
+ 9:  100.91.177.96                                        74.363ms asymm 28 
+10:  100.91.159.30                                        66.184ms asymm 35 
+11:  100.91.159.93                                        72.334ms asymm 34 
+12:  100.91.198.64                                        66.482ms asymm 33 
+13:  100.91.198.125                                       65.949ms asymm 32 
+14:  54.240.229.164                                       77.625ms asymm 23 
+15:  100.91.189.8                                         74.441ms asymm 30 
+16:  100.91.189.95                                        66.177ms asymm 29 
+17:  100.91.191.86                                        66.340ms asymm 28 
+18:  100.91.191.121                                       70.055ms asymm 27 
+19:  52.93.129.7                                          72.530ms asymm 26 
+20:  100.91.9.97                                          66.078ms asymm 24 
+21:  100.64.161.9                                         70.585ms asymm 30 
+22:  100.64.164.2                                         72.361ms asymm 28 
+23:  52.93.101.76                                         71.575ms asymm 28 
+24:  52.93.36.163                                         66.311ms asymm 31 
+25:  no reply
+26:  100.64.164.20                                        66.183ms asymm 28 
+27:  no reply
+28:  ec2-34-255-34-240.eu-west-1.compute.amazonaws.com    70.365ms reached
+     Resume: pmtu 1500 hops 28 back 34 
+============
+ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.031ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.14.17                                          1.247ms asymm  7 
+ 7:  52.93.28.77                                           4.199ms asymm  8 
+ 8:  100.100.8.46                                          0.333ms asymm 13 
+ 9:  100.91.177.56                                       177.983ms asymm 44 
+10:  100.91.164.126                                      190.157ms asymm 40 
+11:  100.91.159.87                                       176.731ms asymm 42 
+12:  100.91.198.16                                       185.622ms asymm 43 
+13:  100.91.199.107                                      184.496ms asymm 37 
+14:  52.93.132.63                                        189.539ms asymm 36 
+15:  54.239.46.120                                       198.645ms asymm 35 
+16:  52.93.131.222                                       193.637ms asymm 34 
+17:  100.91.190.22                                       186.241ms asymm 38 
+18:  54.239.46.230                                       180.802ms asymm 32 
+19:  52.93.132.13                                        192.490ms asymm 36 
+20:  52.93.134.1                                         189.845ms asymm 29 
+21:  54.239.123.42                                       203.803ms asymm 33 
+22:  52.93.248.240                                       189.997ms asymm 31 
+23:  100.91.150.64                                       187.399ms asymm 32 
+24:  54.239.45.184                                       178.152ms asymm 28 
+25:  52.93.134.3                                         186.967ms asymm 29 
+26:  54.239.122.28                                       184.711ms asymm 29 
+27:  52.93.248.245                                       200.982ms asymm 32 
+28:  54.239.123.31                                       176.386ms asymm 31 
+29:  ec2-15-164-176-80.ap-northeast-2.compute.amazonaws.com 185.041ms reached
+     Resume: pmtu 1500 hops 29 back 33 
+============
+ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.028ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.13.225                                         0.586ms asymm  7 
+ 7:  52.93.28.131                                          2.449ms asymm  8 
+ 8:  100.100.8.118                                         0.917ms asymm 13 
+ 9:  100.91.176.158                                      197.261ms asymm 34 
+10:  100.91.164.30                                       196.797ms asymm 33 
+11:  100.91.165.17                                       195.908ms asymm 32 
+12:  100.91.198.70                                       198.401ms asymm 31 
+13:  100.91.198.49                                       197.691ms asymm 30 
+14:  54.240.229.174                                      195.871ms asymm 29 
+15:  54.239.46.9                                         199.539ms asymm 28 
+16:  54.239.44.58                                        209.891ms asymm 27 
+17:  54.239.43.191                                       198.347ms asymm 26 
+18:  52.95.37.52                                         197.375ms asymm 25 
+19:  52.95.38.84                                         196.559ms asymm 24 
+20:  54.240.203.187                                      201.909ms asymm 27 
+21:  52.95.37.25                                         197.133ms asymm 25 
+22:  52.95.38.218                                        196.562ms asymm 24 
+23:  no reply
+24:  no reply
+25:  no reply
+26:  ec2-52-65-179-44.ap-southeast-2.compute.amazonaws.com 196.421ms reached
+     Resume: pmtu 1500 hops 26 back 31 
+============
+ec2-18-228-238-48.sa-east-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-16-1.ec2.internal                           0.028ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  100.65.14.241                                         0.270ms asymm  7 
+ 7:  52.93.28.93                                           0.413ms asymm  8 
+ 8:  100.100.6.16                                          0.516ms asymm 13 
+ 9:  100.91.177.204                                      118.025ms asymm 30 
+10:  100.91.165.8                                        117.258ms asymm 29 
+11:  100.91.159.133                                      118.097ms asymm 33 
+12:  100.91.199.112                                      117.135ms asymm 27 
+13:  100.91.198.105                                      117.662ms asymm 31 
+14:  52.93.128.190                                       120.662ms asymm 30 
+15:  100.91.189.0                                        118.316ms asymm 29 
+16:  100.91.189.111                                      117.554ms asymm 28 
+17:  100.91.191.108                                      117.875ms asymm 27 
+18:  100.91.191.9                                        117.704ms asymm 26 
+19:  52.93.128.114                                       124.913ms asymm 25 
+20:  150.222.70.94                                       127.184ms asymm 25 
+21:  52.93.44.25                                         120.884ms asymm 24 
+22:  177.72.240.193                                      120.994ms 
+23:  52.93.146.137                                       119.131ms asymm 24 
+24:  150.222.70.89                                       117.779ms asymm 23 
+25:  150.222.70.98                                       128.074ms 
+26:  ec2-18-228-238-48.sa-east-1.compute.amazonaws.com   120.631ms reached
+     Resume: pmtu 1500 hops 26 back 26 
+============
