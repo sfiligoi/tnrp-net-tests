@@ -1,0 +1,280 @@
+[root@stashcache xrootd]# hostname
+stashcache.t2.ucsd.edu
+[root@stashcache ~]# for n in ec2-18-207-84-134.compute-1.amazonaws.com ec2-54-200-23-151.us-west-2.compute.amazonaws.com ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com ec2-18-231-109-157.sa-east-1.compute.amazonaws.com; do echo $n; ping -c 2 $n; echo "============"; done
+ec2-18-207-84-134.compute-1.amazonaws.com
+PING ec2-18-207-84-134.compute-1.amazonaws.com (18.207.84.134) 56(84) bytes of data.
+64 bytes from ec2-18-207-84-134.compute-1.amazonaws.com (18.207.84.134): icmp_seq=1 ttl=37 time=62.6 ms
+64 bytes from ec2-18-207-84-134.compute-1.amazonaws.com (18.207.84.134): icmp_seq=2 ttl=37 time=62.5 ms
+
+--- ec2-18-207-84-134.compute-1.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 62.592/62.622/62.653/0.252 ms
+============
+ec2-54-200-23-151.us-west-2.compute.amazonaws.com
+PING ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151) 56(84) bytes of data.
+64 bytes from ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151): icmp_seq=1 ttl=46 time=35.0 ms
+64 bytes from ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151): icmp_seq=2 ttl=46 time=34.9 ms
+
+--- ec2-54-200-23-151.us-west-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 34.907/34.958/35.009/0.051 ms
+============
+ec2-35-156-20-84.eu-central-1.compute.amazonaws.com
+PING ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84) 56(84) bytes of data.
+64 bytes from ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84): icmp_seq=1 ttl=46 time=157 ms
+64 bytes from ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84): icmp_seq=2 ttl=46 time=157 ms
+
+--- ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 157.599/157.611/157.624/0.397 ms
+============
+ec2-34-255-34-240.eu-west-1.compute.amazonaws.com
+PING ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240) 56(84) bytes of data.
+64 bytes from ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240): icmp_seq=1 ttl=33 time=168 ms
+64 bytes from ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240): icmp_seq=2 ttl=33 time=168 ms
+
+--- ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 168.001/168.003/168.006/0.409 ms
+============
+ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com
+PING ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com (15.164.182.233) 56(84) bytes of data.
+64 bytes from ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com (15.164.182.233): icmp_seq=1 ttl=40 time=135 ms
+64 bytes from ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com (15.164.182.233): icmp_seq=2 ttl=40 time=137 ms
+
+--- ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 135.335/136.309/137.284/1.042 ms
+============
+ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com
+PING ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com (13.236.121.89) 56(84) bytes of data.
+64 bytes from ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com (13.236.121.89): icmp_seq=1 ttl=41 time=159 ms
+64 bytes from ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com (13.236.121.89): icmp_seq=2 ttl=41 time=159 ms
+
+--- ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 159.817/159.828/159.840/0.399 ms
+============
+ec2-18-231-109-157.sa-east-1.compute.amazonaws.com
+PING ec2-18-231-109-157.sa-east-1.compute.amazonaws.com (18.231.109.157) 56(84) bytes of data.
+64 bytes from ec2-18-231-109-157.sa-east-1.compute.amazonaws.com (18.231.109.157): icmp_seq=1 ttl=47 time=169 ms
+64 bytes from ec2-18-231-109-157.sa-east-1.compute.amazonaws.com (18.231.109.157): icmp_seq=2 ttl=47 time=169 ms
+
+--- ec2-18-231-109-157.sa-east-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 169.207/169.237/169.268/0.412 ms
+===
+============
+[root@stashcache ~]# for n in ec2-18-207-84-134.compute-1.amazonaws.com ec2-54-200-23-151.us-west-2.compute.amazonaws.com ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com ec2-18-231-109-157.sa-east-1.compute.amazonaws.com; do echo $n; tracepath $n; echo "============"; done
+ec2-18-207-84-134.compute-1.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.835ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.803ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.144ms 
+ 3:  192.12.207.45                                         0.833ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.646ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.663ms 
+ 6:  dc-lax-agg6--tus-agg3-100ge-2.cenic.net               2.954ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-1.cenic.net               3.890ms 
+ 8:  99.82.179.203                                         6.359ms pmtu 1500
+ 8:  99.82.179.202                                         3.186ms asymm  9 
+ 9:  no reply
+10:  no reply
+11:  54.239.44.55                                         62.276ms asymm 28 
+12:  54.239.46.4                                          62.789ms asymm 27 
+13:  54.240.229.185                                       60.623ms asymm 26 
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  52.93.28.94                                          62.703ms asymm 25 
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  ec2-18-207-84-134.compute-1.amazonaws.com            61.616ms reached
+     Resume: pmtu 1500 hops 30 back 28 
+============
+ec2-54-200-23-151.us-west-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         4.331ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         1.420ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.166ms 
+ 3:  192.12.207.45                                         0.600ms 
+ 4:  192.12.207.45                                         0.907ms pmtu 1500
+ 4:  72.21.221.4                                          27.365ms 
+ 5:  52.95.52.224                                         28.860ms asymm  8 
+ 6:  52.95.52.227                                         28.159ms 
+ 7:  52.95.53.164                                         34.076ms asymm 13 
+ 8:  52.93.131.243                                        59.966ms asymm 11 
+ 9:  54.239.46.106                                        36.155ms asymm 11 
+10:  52.93.12.48                                          35.032ms asymm 14 
+11:  52.93.12.42                                          37.031ms asymm 14 
+12:  52.93.12.54                                          37.698ms asymm 14 
+13:  52.93.12.36                                          41.149ms asymm 17 
+14:  52.93.246.115                                        35.134ms asymm 13 
+15:  no reply
+16:  52.93.246.25                                         36.292ms asymm 13 
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  ec2-54-200-23-151.us-west-2.compute.amazonaws.com    34.968ms reached
+     Resume: pmtu 1500 hops 21 back 19 
+============
+ec2-35-156-20-84.eu-central-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.726ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.679ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.177ms 
+ 3:  192.12.207.45                                         0.472ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.664ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.759ms 
+ 6:  137.164.11.60                                         3.070ms 
+ 7:  CENIC.ear1.LosAngeles1.Level3.net                     3.528ms pmtu 1500
+ 7:  8-1-1-90.ear1.LosAngeles1.Level3.net                  2.955ms 
+ 8:  no reply
+ 9:  212.73.243.150                                      142.416ms asymm 12 
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  54.239.4.216                                        152.097ms asymm 17 
+20:  no reply
+21:  no reply
+22:  no reply
+23:  ec2-35-156-20-84.eu-central-1.compute.amazonaws.com 157.819ms reached
+     Resume: pmtu 1500 hops 23 back 19 
+============
+ec2-34-255-34-240.eu-west-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         1.716ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         1.289ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.598ms 
+ 3:  192.12.207.45                                         0.545ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.835ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  4.511ms 
+ 6:  dc-lax-agg6--tus-agg3-100ge-2.cenic.net               3.009ms 
+ 7:  CENIC.ear1.LosAngeles1.Level3.net                     3.605ms pmtu 1500
+ 7:  8-1-1-90.ear1.LosAngeles1.Level3.net                  3.123ms 
+ 8:  no reply
+ 9:  212.73.243.158                                      142.643ms asymm 13 
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  176.32.106.239                                      177.824ms asymm 24 
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  ec2-34-255-34-240.eu-west-1.compute.amazonaws.com   167.432ms reached
+     Resume: pmtu 1500 hops 27 back 27 
+============
+ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.713ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.685ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.178ms 
+ 3:  192.12.207.45                                         0.521ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.739ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.657ms 
+ 6:  dc-lax-agg6--tus-agg3-100ge-2.cenic.net               2.974ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-4.cenic.net               4.788ms 
+ 8:  64.57.20.83                                          11.818ms pmtu 1500
+ 8:  et-1-0-2.0.rtsw.losa.net.internet2.edu                2.920ms 
+ 9:  lo-0.8.rtsw.wilc.net.internet2.edu                    3.185ms 
+10:  no reply
+11:  TenGE0-0-0-7.br01.tok13.pccwbtn.net                 109.200ms asymm 16 
+12:  TenGE0-0-0-9.br01.tok13.pccwbtn.net                 108.732ms asymm 16 
+13:  63-222-57-90.static.pccwglobal.net                  104.281ms asymm 15 
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  52.93.248.194                                       142.647ms asymm 20 
+22:  52.93.248.245                                       160.528ms asymm 24 
+23:  54.239.123.97                                       151.763ms 
+24:  52.93.248.207                                       144.705ms 
+25:  54.239.123.9                                        152.790ms asymm 23 
+26:  54.239.122.22                                       143.896ms asymm 21 
+27:  no reply
+28:  ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com 146.177ms reached
+     Resume: pmtu 1500 hops 28 back 25 
+============
+ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.784ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.712ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.147ms 
+ 3:  192.12.207.45                                         0.516ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.611ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.710ms 
+ 6:  dc-lax-agg6--tus-agg3-100ge-1.cenic.net               3.004ms 
+ 7:  dc-lax-agg8--lax-agg6-100ge-3.cenic.net               3.628ms 
+ 8:  64.57.20.83                                          10.833ms pmtu 1500
+ 8:  et-1-0-2.0.rtsw.losa.net.internet2.edu                2.969ms 
+ 9:  gi1--1.wil04.net.telstraglobal.net                    3.536ms 
+10:  i-91.tlot-core02.telstraglobal.net                   15.262ms asymm 13 
+11:  i-25.sydp-core04.telstraglobal.net                  149.791ms asymm 13 
+12:  21459.tauc01.cu.telstraglobal.net                   151.335ms asymm 14 
+13:  unknown.telstraglobal.net                           149.429ms asymm 15 
+14:  no reply
+15:  no reply
+16:  52.95.37.181                                        155.791ms asymm 19 
+17:  52.95.36.47                                         149.900ms 
+18:  52.95.38.160                                        159.797ms asymm 17 
+19:  ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com 160.392ms reached
+     Resume: pmtu 1500 hops 19 back 24 
+============
+ec2-18-231-109-157.sa-east-1.compute.amazonaws.com
+1?: [LOCALHOST]                                         pmtu 9000
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         3.433ms 
+ 1:  prp-k8s-gw.sdsc.optiputer.net                         0.845ms 
+ 2:  medusa-mx960.sdsc.edu                                 1.171ms 
+ 3:  192.12.207.45                                         0.511ms 
+ 4:  dc-sdg-agg4--sdsc-100ge.cenic.net                     0.660ms 
+ 5:  tus-agg8--sdg-agg4-3x100ge.cenic.net                  3.728ms 
+ 6:  137.164.11.60                                         2.995ms 
+ 7:  CENIC.ear1.LosAngeles1.Level3.net                     3.304ms pmtu 1500
+ 7:  8-1-1-90.ear1.LosAngeles1.Level3.net                  3.008ms 
+ 8:  no reply
+ 9:  no reply
+10:  64.209.11.186                                       164.382ms asymm 12 
+11:  amazon-com.xe-5-2-1.ar4.gru1.gblx.net               165.312ms asymm 12 
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  54.240.244.74                                       169.309ms asymm 14 
+19:  no reply
+20:  no reply
+21:  no reply
+22:  ec2-18-231-109-157.sa-east-1.compute.amazonaws.com  169.401ms reached
+     Resume: pmtu 1500 hops 22 back 18 
+============

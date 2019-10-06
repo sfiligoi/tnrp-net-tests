@@ -1,0 +1,259 @@
+[root@fiona-r-uva xrootd]# hostname
+fiona-r-uva.vlan7.uvalight.net
+[root@fiona-r-uva xrootd]# for n in ec2-18-207-84-134.compute-1.amazonaws.com ec2-54-200-23-151.us-west-2.compute.amazonaws.com ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com ec2-18-231-109-157.sa-east-1.compute.amazonaws.com; do echo $n; ping -c 2 $n; echo "============"; done
+ec2-18-207-84-134.compute-1.amazonaws.com
+PING ec2-18-207-84-134.compute-1.amazonaws.com (18.207.84.134) 56(84) bytes of data.
+64 bytes from ec2-18-207-84-134.compute-1.amazonaws.com (18.207.84.134): icmp_seq=1 ttl=46 time=93.8 ms
+64 bytes from ec2-18-207-84-134.compute-1.amazonaws.com (18.207.84.134): icmp_seq=2 ttl=46 time=93.7 ms
+
+--- ec2-18-207-84-134.compute-1.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 93.776/93.797/93.819/0.307 ms
+============
+ec2-54-200-23-151.us-west-2.compute.amazonaws.com
+PING ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151) 56(84) bytes of data.
+64 bytes from ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151): icmp_seq=1 ttl=35 time=166 ms
+64 bytes from ec2-54-200-23-151.us-west-2.compute.amazonaws.com (54.200.23.151): icmp_seq=2 ttl=35 time=166 ms
+
+--- ec2-54-200-23-151.us-west-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 166.318/166.359/166.401/0.409 ms
+============
+ec2-35-156-20-84.eu-central-1.compute.amazonaws.com
+PING ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84) 56(84) bytes of data.
+64 bytes from ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84): icmp_seq=1 ttl=45 time=7.48 ms
+64 bytes from ec2-35-156-20-84.eu-central-1.compute.amazonaws.com (35.156.20.84): icmp_seq=2 ttl=45 time=7.32 ms
+
+--- ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 7.322/7.403/7.485/0.118 ms
+============
+ec2-34-255-34-240.eu-west-1.compute.amazonaws.com
+PING ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240) 56(84) bytes of data.
+64 bytes from ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240): icmp_seq=1 ttl=45 time=16.7 ms
+64 bytes from ec2-34-255-34-240.eu-west-1.compute.amazonaws.com (34.255.34.240): icmp_seq=2 ttl=45 time=16.6 ms
+
+--- ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 16.669/16.695/16.722/0.131 ms
+============
+ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com
+PING ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com (15.164.182.233) 56(84) bytes of data.
+64 bytes from ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com (15.164.182.233): icmp_seq=1 ttl=43 time=262 ms
+64 bytes from ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com (15.164.182.233): icmp_seq=2 ttl=43 time=262 ms
+
+--- ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 262.037/262.117/262.197/0.080 ms
+============
+ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com
+PING ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com (13.236.121.89) 56(84) bytes of data.
+64 bytes from ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com (13.236.121.89): icmp_seq=1 ttl=43 time=320 ms
+64 bytes from ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com (13.236.121.89): icmp_seq=2 ttl=43 time=320 ms
+
+--- ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 320.093/320.139/320.186/0.567 ms
+============
+ec2-18-231-109-157.sa-east-1.compute.amazonaws.com
+PING ec2-18-231-109-157.sa-east-1.compute.amazonaws.com (18.231.109.157) 56(84) bytes of data.
+64 bytes from ec2-18-231-109-157.sa-east-1.compute.amazonaws.com (18.231.109.157): icmp_seq=1 ttl=51 time=206 ms
+64 bytes from ec2-18-231-109-157.sa-east-1.compute.amazonaws.com (18.231.109.157): icmp_seq=2 ttl=51 time=206 ms
+
+--- ec2-18-231-109-157.sa-east-1.compute.amazonaws.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 206.582/206.622/206.662/0.040 ms
+============
+[root@fiona-r-uva xrootd]# for n in ec2-18-207-84-134.compute-1.amazonaws.com ec2-54-200-23-151.us-west-2.compute.amazonaws.com ec2-35-156-20-84.eu-central-1.compute.amazonaws.com ec2-34-255-34-240.eu-west-1.compute.amazonaws.com ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com ec2-18-231-109-157.sa-east-1.compute.amazonaws.com; do echo $n; tracepath $n; echo "============"; done
+ec2-18-207-84-134.compute-1.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.560ms 
+ 3:  nl-sar.nordu.net                                      1.273ms 
+ 4:  us-man.nordu.net                                     87.336ms 
+ 5:  us-man.nordu.net                                     86.467ms pmtu 1500
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  54.240.229.219                                       90.399ms asymm 23 
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  ec2-18-207-84-134.compute-1.amazonaws.com            93.981ms reached
+     Resume: pmtu 1500 hops 30 back 19 
+============
+ec2-54-200-23-151.us-west-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.529ms 
+ 3:  lo0-2.asd002a-jnx-01-sn7-internet.surf.net            1.249ms 
+ 4:  surfnet-cls.lon.uk.geant.net                          0.758ms pmtu 1500
+ 4:  ae21.cr6-ams1.ip4.gtt.net                             0.922ms asymm  6 
+ 5:  et-1-0-35.cr5-sea2.ip4.gtt.net                      145.646ms asymm 10 
+ 6:  ip4.gtt.net                                         141.777ms asymm 10 
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  ec2-54-200-23-151.us-west-2.compute.amazonaws.com   165.808ms reached
+     Resume: pmtu 1500 hops 22 back 25 
+============
+ec2-35-156-20-84.eu-central-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.506ms 
+ 3:  ae3-1125.asd001b-jnx-01.surf.net                      0.520ms pmtu 1500
+ 3:  amsix02-ams1.amazon.com                               0.808ms asymm  4 
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  54.239.4.216                                          7.417ms asymm 15 
+18:  no reply
+19:  no reply
+20:  no reply
+21:  ec2-35-156-20-84.eu-central-1.compute.amazonaws.com   7.518ms reached
+     Resume: pmtu 1500 hops 21 back 20 
+============
+ec2-34-255-34-240.eu-west-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      9.777ms 
+ 3:  ae3-1125.asd001b-jnx-01.surf.net                      0.518ms pmtu 1500
+ 3:  amsix02-ams1.amazon.com                               0.684ms asymm  4 
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  176.32.106.237                                       24.835ms asymm 11 
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  ec2-34-255-34-240.eu-west-1.compute.amazonaws.com    16.161ms reached
+     Resume: pmtu 1500 hops 20 back 21 
+============
+ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.547ms 
+ 3:  nl-sar.nordu.net                                      1.269ms 
+ 4:  uk-hex.nordu.net                                      6.062ms 
+ 5:  uk-hex.nordu.net                                      6.184ms pmtu 1500
+ 5:  te7-5.br03.ldn01.pccwbtn.net                          5.976ms 
+ 6:  TenGE0-0-0-1.br01.tok13.pccwbtn.net                 250.426ms asymm  9 
+ 7:  TenGE0-0-0-8.br01.tok13.pccwbtn.net                 239.523ms asymm  9 
+ 8:  63-222-57-90.static.pccwglobal.net                  236.931ms asymm  9 
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  54.239.123.24                                       271.234ms asymm 18 
+18:  no reply
+19:  54.239.122.22                                       256.570ms asymm 18 
+20:  54.239.123.31                                       255.360ms 
+21:  54.239.122.22                                       255.642ms asymm 18 
+22:  no reply
+23:  ec2-15-164-182-233.ap-northeast-2.compute.amazonaws.com 266.903ms reached
+     Resume: pmtu 1500 hops 23 back 22 
+============
+ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.510ms 
+ 3:  nl-sar.nordu.net                                      1.318ms 
+ 4:  uk-hex.nordu.net                                      6.121ms 
+ 5:  uk-hex.nordu.net                                      6.356ms pmtu 1500
+ 5:  te7-5.br03.ldn01.pccwbtn.net                          5.926ms 
+ 6:  TenGE0-0-0-7.br01.tok13.pccwbtn.net                 243.176ms asymm  9 
+ 7:  TenGE0-0-0-11.br01.tok13.pccwbtn.net                242.888ms asymm  9 
+ 8:  63-222-57-30.static.pccwglobal.net                  233.924ms asymm  9 
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  54.240.192.255                                      332.368ms asymm 12 
+22:  no reply
+23:  ec2-13-236-121-89.ap-southeast-2.compute.amazonaws.com 327.761ms reached
+     Resume: pmtu 1500 hops 23 back 19 
+============
+ec2-18-231-109-157.sa-east-1.compute.amazonaws.com
+ 1?: [LOCALHOST]                                         pmtu 9000
+ 1:  no reply
+ 2:  ae3-1125.asd001b-jnx-01.surf.net                      0.806ms 
+ 3:  nl-sar.nordu.net                                      1.300ms 
+ 4:  uk-hex.nordu.net                                      6.177ms 
+ 5:  uk-hex.nordu.net                                      6.182ms pmtu 1500
+ 5:  linx.lon.seabone.net                                  5.974ms 
+ 6:  no reply
+ 7:  amazon.sanpaolo8.spa.seabone.net                    205.037ms asymm  9 
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  54.240.244.169                                      207.530ms asymm 12 
+14:  54.240.244.62                                       202.650ms asymm 10 
+15:  no reply
+16:  no reply
+17:  no reply
+18:  ec2-18-231-109-157.sa-east-1.compute.amazonaws.com  201.623ms reached
+     Resume: pmtu 1500 hops 18 back 14 
+============
