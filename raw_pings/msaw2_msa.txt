@@ -1,0 +1,227 @@
+[centos@exa-ccb-west2 ~]$ for p in us-west2,51.143.19.250 us-east,40.76.65.99 eu-west,51.144.4.191 ap-Australia,52.187.239.157 ap-Korea,52.141.2.50 sa-Brazil,104.41.1.29; do d=`echo $p |awk '{split($1,a,","); print a[1]}'`; n=`echo $p |awk '{split($1,a,","); print a[2]}'`; echo $d; ping -c 2 $n; done
+us-west2
+PING 51.143.19.250 (51.143.19.250) 56(84) bytes of data.
+64 bytes from 51.143.19.250: icmp_seq=1 ttl=55 time=5.33 ms
+64 bytes from 51.143.19.250: icmp_seq=2 ttl=55 time=2.05 ms
+
+--- 51.143.19.250 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 2.052/3.692/5.333/1.641 ms
+us-east
+PING 40.76.65.99 (40.76.65.99) 56(84) bytes of data.
+64 bytes from 40.76.65.99: icmp_seq=1 ttl=48 time=69.9 ms
+64 bytes from 40.76.65.99: icmp_seq=2 ttl=48 time=69.9 ms
+
+--- 40.76.65.99 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 69.910/69.919/69.929/0.264 ms
+eu-west
+PING 51.144.4.191 (51.144.4.191) 56(84) bytes of data.
+64 bytes from 51.144.4.191: icmp_seq=1 ttl=42 time=139 ms
+64 bytes from 51.144.4.191: icmp_seq=2 ttl=42 time=139 ms
+
+--- 51.144.4.191 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 139.939/139.967/139.995/0.028 ms
+ap-Australia
+PING 52.187.239.157 (52.187.239.157) 56(84) bytes of data.
+64 bytes from 52.187.239.157: icmp_seq=1 ttl=46 time=177 ms
+64 bytes from 52.187.239.157: icmp_seq=2 ttl=46 time=177 ms
+
+--- 52.187.239.157 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 177.338/177.417/177.497/0.428 ms
+ap-Korea
+PING 52.141.2.50 (52.141.2.50) 56(84) bytes of data.
+64 bytes from 52.141.2.50: icmp_seq=1 ttl=48 time=122 ms
+64 bytes from 52.141.2.50: icmp_seq=2 ttl=48 time=121 ms
+
+--- 52.141.2.50 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 121.925/122.159/122.394/0.420 ms
+sa-Brazil
+PING 104.41.1.29 (104.41.1.29) 56(84) bytes of data.
+64 bytes from 104.41.1.29: icmp_seq=1 ttl=43 time=180 ms
+64 bytes from 104.41.1.29: icmp_seq=2 ttl=43 time=181 ms
+
+--- 104.41.1.29 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 180.815/180.971/181.127/0.156 ms
+[centos@exa-ccb-west2 ~]$ for p in us-west2,51.143.19.250 us-east,40.76.65.99 eu-west,51.144.4.191 ap-Australia,52.187.239.157 ap-Korea,52.141.2.50 sa-Brazil,104.41.1.29; do d=`echo $p |awk '{split($1,a,","); print a[1]}'`; n=`echo $p |awk '{split($1,a,","); print a[2]}'`; echo $d; tracepath $n; done
+us-west2
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  51.143.19.250                                         1.198ms reached
+     Resume: pmtu 1500 hops 19 back 10 
+us-east
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  13.106.81.23                                         68.648ms asymm 16 
+10:  13.106.164.138                                       70.633ms asymm 15 
+11:  13.106.165.145                                       65.843ms asymm 12 
+12:  13.106.162.225                                       68.825ms asymm 13 
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  40.76.65.99                                          68.433ms reached
+     Resume: pmtu 1500 hops 25 back 17 
+eu-west
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  13.106.81.7                                         145.352ms asymm 25 
+10:  13.106.162.194                                      143.288ms asymm 24 
+11:  13.106.165.143                                      141.615ms asymm 24 
+12:  13.106.163.205                                      139.848ms asymm 24 
+13:  13.106.162.220                                      150.608ms asymm 19 
+14:  13.106.163.157                                      143.011ms asymm 20 
+15:  13.106.163.155                                      139.851ms asymm 21 
+16:  13.106.163.144                                      141.633ms asymm 20 
+17:  13.106.166.93                                       144.858ms asymm 16 
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  51.144.4.191                                        150.641ms reached
+     Resume: pmtu 1500 hops 30 back 21 
+ap-Australia
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  be-162-0.ibr04.mwh01.ntwk.msn.net                   177.923ms asymm 19 
+10:  be-4-0.ibr01.pdx30.ntwk.msn.net                     177.380ms asymm 18 
+11:  be-3-0.ibr04.by21.ntwk.msn.net                      177.884ms asymm 17 
+12:  be-2-0.ibr04.by4.ntwk.msn.net                       177.597ms asymm 16 
+13:  be-3-0.ibr01.lax03.ntwk.msn.net                     178.841ms asymm 15 
+14:  be-7-0.ibr01.syd03.ntwk.msn.net                     178.480ms 
+15:  ae100-0.icr01.syd03.ntwk.msn.net                    177.645ms asymm 13 
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  52.187.239.157                                      177.992ms reached
+     Resume: pmtu 1500 hops 28 back 19 
+ap-Korea
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  be-140-0.ibr03.mwh01.ntwk.msn.net                   122.817ms asymm 15 
+10:  be-4-0.ibr01.pdx30.ntwk.msn.net                     122.355ms asymm 14 
+11:  be-5-0.ibr02.tyo79.ntwk.msn.net                     122.508ms asymm 13 
+12:  104.44.19.95                                        122.284ms 
+13:  ae120-0.icr01.sel20.ntwk.msn.net                    122.549ms asymm 11 
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  52.141.2.50                                         121.938ms reached
+     Resume: pmtu 1500 hops 26 back 17 
+sa-Brazil
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  be-100-0.ibr01.mwh01.ntwk.msn.net                   181.638ms asymm 25 
+10:  be-7-0.ibr02.cys04.ntwk.msn.net                     180.861ms asymm 24 
+11:  be-5-0.ibr01.dsm05.ntwk.msn.net                     181.864ms asymm 23 
+12:  be-7-0.ibr01.ch2.ntwk.msn.net                       181.528ms asymm 22 
+13:  be-1-0.ibr02.ch4.ntwk.msn.net                       180.790ms asymm 21 
+14:  be-3-0.ibr01.cle30.ntwk.msn.net                     181.407ms asymm 20 
+15:  104.44.7.95                                         181.378ms asymm 19 
+16:  be-6-0.ibr01.gru30.ntwk.msn.net                     181.462ms asymm 18 
+17:  be-4-0.ibr01.cpq20.ntwk.msn.net                     181.405ms 
+18:  ae100-0.icr01.cpq20.ntwk.msn.net                    181.097ms asymm 16 
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 

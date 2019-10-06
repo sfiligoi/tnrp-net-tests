@@ -1,0 +1,226 @@
+[centos@ccb-eu-west ~]$ for p in us-west2,51.143.19.250 us-east,40.76.65.99 eu-west,51.144.4.191 ap-Australia,52.187.239.157 ap-Korea,52.141.2.50 sa-Brazil,104.41.1.29; do d=`echo $p |awk '{split($1,a,","); print a[1]}'`; n=`echo $p |awk '{split($1,a,","); print a[2]}'`; echo $d; ping -c 2 $n; done
+us-west2
+PING 51.143.19.250 (51.143.19.250) 56(84) bytes of data.
+64 bytes from 51.143.19.250: icmp_seq=1 ttl=40 time=139 ms
+64 bytes from 51.143.19.250: icmp_seq=2 ttl=40 time=140 ms
+
+--- 51.143.19.250 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 139.994/140.100/140.206/0.106 ms
+us-east
+PING 40.76.65.99 (40.76.65.99) 56(84) bytes of data.
+64 bytes from 40.76.65.99: icmp_seq=1 ttl=47 time=81.3 ms
+64 bytes from 40.76.65.99: icmp_seq=2 ttl=47 time=81.4 ms
+
+--- 40.76.65.99 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 81.395/81.433/81.472/0.287 ms
+eu-west
+PING 51.144.4.191 (51.144.4.191) 56(84) bytes of data.
+64 bytes from 51.144.4.191: icmp_seq=1 ttl=57 time=0.481 ms
+64 bytes from 51.144.4.191: icmp_seq=2 ttl=57 time=0.784 ms
+
+--- 51.144.4.191 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 0.481/0.632/0.784/0.153 ms
+ap-Australia
+PING 52.187.239.157 (52.187.239.157) 56(84) bytes of data.
+64 bytes from 52.187.239.157: icmp_seq=1 ttl=40 time=283 ms
+64 bytes from 52.187.239.157: icmp_seq=2 ttl=40 time=283 ms
+
+--- 52.187.239.157 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 283.306/283.453/283.600/0.147 ms
+ap-Korea
+PING 52.141.2.50 (52.141.2.50) 56(84) bytes of data.
+64 bytes from 52.141.2.50: icmp_seq=1 ttl=42 time=229 ms
+64 bytes from 52.141.2.50: icmp_seq=2 ttl=42 time=228 ms
+
+--- 52.141.2.50 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 228.927/228.993/229.060/0.483 ms
+sa-Brazil
+PING 104.41.1.29 (104.41.1.29) 56(84) bytes of data.
+64 bytes from 104.41.1.29: icmp_seq=1 ttl=45 time=187 ms
+64 bytes from 104.41.1.29: icmp_seq=2 ttl=45 time=187 ms
+
+--- 104.41.1.29 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 187.365/187.524/187.684/0.461 ms
+[centos@ccb-eu-west ~]$ for p in us-west2,51.143.19.250 us-east,40.76.65.99 eu-west,51.144.4.191 ap-Australia,52.187.239.157 ap-Korea,52.141.2.50 sa-Brazil,104.41.1.29; do d=`echo $p |awk '{split($1,a,","); print a[1]}'`; n=`echo $p |awk '{split($1,a,","); print a[2]}'`; echo $d; tracepath $n; done
+us-west2
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  13.106.80.146                                       148.394ms asymm 24 
+ 8:  13.106.163.82                                       149.707ms asymm 24 
+ 9:  13.106.163.145                                      148.022ms asymm 22 
+10:  13.106.163.145                                      139.740ms asymm 25 
+11:  13.106.162.165                                      149.963ms asymm 21 
+12:  13.106.162.224                                      144.809ms asymm 21 
+13:  13.106.162.246                                      148.153ms asymm 18 
+14:  13.106.163.206                                      139.984ms asymm 21 
+15:  13.106.165.142                                      143.744ms asymm 19 
+16:  13.106.80.241                                       139.835ms asymm 19 
+17:  13.106.81.50                                        143.484ms asymm 16 
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+us-east
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  13.106.164.229                                       81.661ms asymm 17 
+ 8:  13.106.163.82                                        81.568ms asymm 16 
+ 9:  13.106.166.96                                        80.654ms asymm 16 
+10:  13.106.163.145                                       80.898ms asymm 17 
+11:  13.106.163.156                                       80.733ms asymm 13 
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  40.76.65.99                                          81.728ms reached
+     Resume: pmtu 1500 hops 24 back 18 
+eu-west
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  51.144.4.191                                          1.068ms reached
+     Resume: pmtu 1500 hops 15 back 8 
+ap-Australia
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  be-121-0.ibr04.ams06.ntwk.msn.net                   284.141ms asymm 31 
+ 8:  be-3-0.ibr02.ams30.ntwk.msn.net                     283.726ms asymm 30 
+ 9:  be-7-0.ibr01.dub07.ntwk.msn.net                     283.136ms asymm 29 
+10:  be-5-0.ibr01.sxl71.ntwk.msn.net                     283.442ms asymm 28 
+11:  be-4-0.ibr01.ewr30.ntwk.msn.net                     283.666ms asymm 27 
+12:  be-7-0.ibr04.bl7.ntwk.msn.net                       283.770ms asymm 26 
+13:  be-2-0.ibr03.bn6.ntwk.msn.net                       283.497ms asymm 25 
+14:  be-4-0.ibr02.atl31.ntwk.msn.net                     283.640ms asymm 24 
+15:  be-6-0.ibr02.atl30.ntwk.msn.net                     283.463ms asymm 23 
+16:  be-1-0.ibr02.sn1.ntwk.msn.net                       284.031ms asymm 22 
+17:  be-5-0.ibr02.lax03.ntwk.msn.net                     285.036ms asymm 21 
+18:  be-7-0.ibr02.syd03.ntwk.msn.net                     283.686ms asymm 20 
+19:  ae120-0.icr01.syd03.ntwk.msn.net                    282.984ms 
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+ap-Korea
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  be-120-0.ibr04.ams06.ntwk.msn.net                   230.648ms asymm 28 
+ 8:  be-3-0.ibr02.ams30.ntwk.msn.net                     249.734ms asymm 28 
+ 9:  be-9-0.ibr02.fra21.ntwk.msn.net                     229.980ms asymm 27 
+10:  be-6-0.ibr02.zrh20.ntwk.msn.net                     249.773ms asymm 26 
+11:  be-4-0.ibr02.gva20.ntwk.msn.net                     249.645ms asymm 26 
+12:  be-13-0.ibr02.mrs20.ntwk.msn.net                    249.883ms asymm 24 
+13:  be-11-0.ibr01.bom30.ntwk.msn.net                    228.609ms asymm 22 
+14:  be-4-0.ibr02.maa30.ntwk.msn.net                     229.758ms asymm 22 
+15:  be-9-0.ibr01.sg3.ntwk.msn.net                       229.355ms asymm 20 
+16:  be-14-0.ibr02.sel20.ntwk.msn.net                    229.531ms asymm 19 
+17:  ae123-0.icr02.sel21.ntwk.msn.net                    230.140ms 
+18:  ae120-0.icr01.sel20.ntwk.msn.net                    229.604ms asymm 17 
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  52.141.2.50                                         230.152ms reached
+     Resume: pmtu 1500 hops 30 back 23 
+sa-Brazil
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  be-140-0.ibr03.ams06.ntwk.msn.net                   188.312ms asymm 21 
+ 8:  be-3-0.ibr02.ams30.ntwk.msn.net                     187.917ms asymm 20 
+ 9:  be-7-0.ibr01.dub07.ntwk.msn.net                     187.622ms asymm 19 
+10:  be-6-0.ibr02.sxl71.ntwk.msn.net                     187.862ms asymm 18 
+11:  be-4-0.ibr02.ewr30.ntwk.msn.net                     187.846ms asymm 17 
+12:  be-6-0.ibr02.gru30.ntwk.msn.net                     188.136ms asymm 16 
+13:  be-4-0.ibr01.cpq20.ntwk.msn.net                     188.014ms asymm 15 
+14:  ae102-0.icr02.cpq20.ntwk.msn.net                    187.383ms 
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  104.41.1.29                                         187.815ms reached
+     Resume: pmtu 1500 hops 27 back 20 
