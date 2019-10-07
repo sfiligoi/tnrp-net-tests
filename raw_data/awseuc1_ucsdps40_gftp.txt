@@ -1,0 +1,232 @@
+[root@ip-172-31-34-66 centos]# hostname
+ip-172-31-34-66.eu-central-1.compute.internal
+[root@ip-172-31-34-66 centos]# ping ps-40g-gridftp.calit2.optiputer.net
+PING ps-40g-gridftp.calit2.optiputer.net (67.58.50.66) 56(84) bytes of data.
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=1 ttl=43 time=160 ms
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=2 ttl=43 time=160 ms
+[root@ip-172-31-34-66 centos]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 9001
+ 1:  ip-172-31-32-1.eu-central-1.compute.internal          0.049ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  100.65.0.65                                           0.361ms 
+ 5:  52.93.23.127                                          1.693ms asymm  6 
+ 6:  54.239.106.28                                        23.313ms asymm 10 
+ 7:  52.93.244.102                                         1.528ms asymm 10 
+ 8:  no reply
+ 9:  no reply
+10:  CENIC.ear1.SanJose1.Level3.net                      153.875ms asymm 26 
+11:  dc-svl-agg8--svl-agg4-100ge-2.cenic.net             154.594ms asymm 26 
+12:  dc-lax-agg8--svl-agg8--100ge--2.cenic.net           156.275ms asymm 20 
+13:  dc-lax-agg6--lax-agg8-100ge-1.cenic.net             156.201ms asymm 20 
+14:  137.164.11.61                                       157.108ms asymm 20 
+15:  sdg-agg4--tus-agg8-3x100ge.cenic.net                158.673ms asymm 20 
+16:  dc-ucsd-100ge--sdg-agg4.cenic.net                   160.280ms asymm 20 
+17:  mx0-router.optiputer.net                            159.736ms asymm 21 
+18:  ps-40g-gridftp.calit2.optiputer.net                 159.179ms !H
+     Resume: pmtu 1500 
+#
+# Note: Due to slow speed transfer only 1G
+[root@ip-172-31-34-66 centos]# time globus-url-copy -vb -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat  ->  1G.dat
+
+    986710016 bytes         9.05 MB/sec avg         9.50 MB/sec inst
+
+real	1m45.299s
+user	0m0.126s
+sys	0m1.320s
+#
+# Back to 10G
+[root@ip-172-31-34-66 centos]# for i in 0 1 2 3 4 5 6 7 8 9; do time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat& done; time wait
+[1] 3948
+[2] 3949
+[3] 3950
+[4] 3952
+[5] 3954
+[6] 3956
+[7] 3958
+[8] 3960
+[9] 3962
+[10] 3964
+
+real	1m44.351s
+user	0m0.143s
+sys	0m1.386s
+[1]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+
+real	1m44.619s
+user	0m0.114s
+sys	0m1.367s
+[2]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+
+real	1m44.773s
+user	0m0.152s
+sys	0m1.432s
+
+real	1m44.924s
+user	0m0.111s
+sys	0m1.437s
+
+real	1m45.127s
+user	0m0.142s
+sys	0m1.429s
+
+real	1m45.497s
+user	0m0.129s
+sys	0m1.452s
+
+real	1m47.374s
+user	0m0.142s
+sys	0m1.582s
+
+real	1m47.527s
+user	0m0.157s
+sys	0m1.439s
+
+real	1m48.317s
+user	0m0.181s
+sys	0m1.446s
+
+real	1m48.375s
+user	0m0.138s
+sys	0m1.290s
+[3]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+[4]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+[5]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+[6]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+[7]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+[8]   Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+[9]-  Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+[10]+  Done                    time globus-url-copy -len 1000000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/1G_$i.dat
+
+real	1m48.375s
+user	0m1.413s
+sys	0m14.260s
+[root@ip-172-31-34-66 centos]# for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ; do time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat& done; time wait
+[1] 3993
+[2] 3994
+[3] 3995
+[4] 3997
+[5] 4000
+[6] 4001
+[7] 4003
+[8] 4005
+[9] 4007
+[10] 4009
+[11] 4011
+[12] 4012
+[13] 4015
+[14] 4017
+[15] 4019
+[16] 4021
+[17] 4023
+[18] 4025
+[19] 4027
+[20] 4028
+
+real	0m53.006s
+user	0m0.064s
+sys	0m0.665s
+
+real	0m53.815s
+user	0m0.067s
+sys	0m0.790s
+
+real	0m53.828s
+user	0m0.074s
+sys	0m0.772s
+
+real	0m53.824s
+user	0m0.051s
+sys	0m0.759s
+
+real	0m53.861s
+user	0m0.079s
+sys	0m0.763s
+
+real	0m53.866s
+user	0m0.067s
+sys	0m0.752s
+
+real	0m53.875s
+user	0m0.067s
+sys	0m0.728s
+
+real	0m53.885s
+user	0m0.062s
+sys	0m0.782s
+
+real	0m53.902s
+user	0m0.077s
+sys	0m0.843s
+
+real	0m53.989s
+user	0m0.070s
+sys	0m0.772s
+
+real	0m54.034s
+user	0m0.073s
+sys	0m0.727s
+[1]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[5]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[6]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[10]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[11]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[13]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[14]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[15]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[16]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[17]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[19]-  Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+
+real	0m54.068s
+user	0m0.059s
+sys	0m0.791s
+
+real	0m54.074s
+user	0m0.086s
+sys	0m0.854s
+
+real	0m54.154s
+user	0m0.057s
+sys	0m0.733s
+[2]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[7]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[8]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+
+real	0m54.195s
+user	0m0.072s
+sys	0m0.866s
+
+real	0m54.208s
+user	0m0.090s
+sys	0m0.712s
+
+real	0m54.234s
+user	0m0.079s
+sys	0m0.722s
+[3]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[4]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[9]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+
+real	0m54.539s
+user	0m0.074s
+sys	0m0.796s
+
+real	0m54.549s
+user	0m0.076s
+sys	0m0.760s
+[12]   Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+[18]-  Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+
+real	0m54.837s
+user	0m0.081s
+sys	0m0.824s
+[20]+  Done                    time globus-url-copy -len 500000000 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/0.5G_${i}.dat
+
+real	0m54.837s
+user	0m1.428s
+sys	0m15.414s
