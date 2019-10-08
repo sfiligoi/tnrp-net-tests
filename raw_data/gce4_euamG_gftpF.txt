@@ -1,0 +1,40 @@
+[root@gc-east isfiligoi]# hostname
+gc-east
+[root@gc-east isfiligoi]# ping -c 2 fiona-r-uva.vlan7.uvalight.net
+PING fiona-r-uva.vlan7.uvalight.net (145.146.100.30) 56(84) bytes of data.
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=1 ttl=50 time=91.4 ms
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=2 ttl=50 time=90.9 ms
+
+--- fiona-r-uva.vlan7.uvalight.net ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 90.959/91.215/91.471/0.256 ms
+[root@gc-east isfiligoi]# time globus-url-copy -vb -fast -p 16 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9119465472 bytes       483.15 MB/sec avg       540.86 MB/sec inst
+
+real	0m19.576s
+user	0m0.969s
+sys	0m13.538s
+[root@gc-east isfiligoi]# time globus-url-copy -vb -fast -p 32 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9700114432 bytes       660.76 MB/sec avg       788.56 MB/sec inst
+
+real	0m14.398s
+user	0m0.639s
+sys	0m12.245s
+[root@gc-east isfiligoi]# time globus-url-copy -vb -fast -p 64 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9009627136 bytes       613.72 MB/sec avg       705.31 MB/sec inst
+
+real	0m15.426s
+user	0m1.273s
+sys	0m12.631s
