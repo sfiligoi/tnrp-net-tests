@@ -1,0 +1,52 @@
+[root@wn-eu-west centos]# export GLOBUS_FTP_CLIENT_DATA_IP=52.233.249.163
+[root@wn-eu-west centos]# ping -c 2 fiona-r-uva.vlan7.uvalight.net
+PING fiona-r-uva.vlan7.uvalight.net (145.146.100.30) 56(84) bytes of data.
+64 bytes from fiona-r-uva.vlan7.uvalight.net (145.146.100.30): icmp_seq=1 ttl=52 time=2.76 ms
+64 bytes from fiona-r-uva.vlan7.uvalight.net (145.146.100.30): icmp_seq=2 ttl=52 time=3.03 ms
+
+--- fiona-r-uva.vlan7.uvalight.net ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 2.768/2.899/3.030/0.131 ms
+[root@wn-eu-west centos]# tracepath fiona-r-uva.vlan7.uvalight.net
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  ae23-0.ams-96c-1b.ntwk.msn.net                        2.223ms asymm 10 
+ 8:  ae2.jnr02.Asd001A.surf.net                            2.536ms asymm 11 
+ 9:  lo0-2.asd001b-jnx-01-sn7-internet.surf.net            2.726ms asymm 11 
+10:  no reply
+11:  no reply
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 16 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9756475392 bytes       664.59 MB/sec avg       697.60 MB/sec inst
+
+real	0m14.794s
+user	0m1.001s
+sys	0m12.793s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 32 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8730181632 bytes       693.78 MB/sec avg       764.58 MB/sec inst
+
+real	0m13.567s
+user	0m1.223s
+sys	0m12.306s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 64 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9412280320 bytes       641.14 MB/sec avg       707.70 MB/sec inst
+
+real	0m14.777s
+user	0m1.567s
+sys	0m13.174s

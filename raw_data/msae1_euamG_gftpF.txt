@@ -1,0 +1,59 @@
+[root@node-us-east centos]# hostname
+node-us-east
+[root@node-us-east centos]#  ping -c 2 fiona-r-uva.vlan7.uvalight.net
+PING fiona-r-uva.vlan7.uvalight.net (145.146.100.30) 56(84) bytes of data.
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=1 ttl=49 time=80.6 ms
+64 bytes from 145.146.100.30 (145.146.100.30): icmp_seq=2 ttl=49 time=80.5 ms
+
+--- fiona-r-uva.vlan7.uvalight.net ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 80.572/80.608/80.644/0.036 ms
+[root@node-us-east centos]# tracepath fiona-r-uva.vlan7.uvalight.net
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  be-142-0.ibr03.bl7.ntwk.msn.net                      81.243ms asymm 19 
+ 8:  be-3-0.ibr04.bl7.ntwk.msn.net                        81.737ms asymm 19 
+ 9:  be-7-0.ibr01.ewr30.ntwk.msn.net                      81.118ms asymm 18 
+10:  be-6-0.ibr02.dub07.ntwk.msn.net                      80.920ms asymm 16 
+11:  be-7-0.ibr01.ams30.ntwk.msn.net                      81.315ms asymm 15 
+12:  ae122-0.icr02.ams30.ntwk.msn.net                     80.400ms asymm 13 
+13:  ae102-0.icr02.ams30.ntwk.msn.net                     80.401ms 
+14:  ae22-0.ier01.ams31.ntwk.msn.net                      80.917ms 
+15:  no reply
+16:  no reply
+17:  no reply
+[root@node-us-east centos]# time globus-url-copy -vb -fast -p 16 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9695133696 bytes       513.66 MB/sec avg       573.71 MB/sec inst
+
+real	0m18.647s
+user	0m1.757s
+sys	0m13.800s
+[root@node-us-east centos]# time globus-url-copy -vb -fast -p 32 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9634578432 bytes       765.68 MB/sec avg      1013.54 MB/sec inst
+
+real	0m12.378s
+user	0m1.168s
+sys	0m9.872s
+[root@node-us-east centos]# time globus-url-copy -vb -fast -p 64 ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://fiona-r-uva.vlan7.uvalight.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9397600256 bytes       560.13 MB/sec avg       643.94 MB/sec inst
+
+real	0m16.771s
+user	0m2.190s
+sys	0m13.362s
