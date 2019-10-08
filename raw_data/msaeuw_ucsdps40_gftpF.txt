@@ -1,0 +1,77 @@
+[root@wn-eu-west centos]# ping -c 2 ps-40g-gridftp.calit2.optiputer.net
+PING ps-40g-gridftp.calit2.optiputer.net (67.58.50.66) 56(84) bytes of data.
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=1 ttl=40 time=138 ms
+64 bytes from ps-40g-gridftp.calit2.optiputer.net (67.58.50.66): icmp_seq=2 ttl=40 time=138 ms
+
+--- ps-40g-gridftp.calit2.optiputer.net ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 138.002/138.120/138.239/0.390 ms
+[root@wn-eu-west centos]# tracepath ps-40g-gridftp.calit2.optiputer.net
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  be-100-0.ibr01.ams30.ntwk.msn.net                   136.391ms asymm 28 
+ 8:  be-1-0.ibr01.ams30.ntwk.msn.net                     136.445ms asymm 28 
+ 9:  be-7-0.ibr01.dub07.ntwk.msn.net                     136.528ms asymm 27 
+10:  be-5-0.ibr01.sxl71.ntwk.msn.net                     136.356ms asymm 26 
+11:  be-7-0.ibr03.bl7.ntwk.msn.net                       136.323ms asymm 24 
+12:  be-7-0.ibr03.bl7.ntwk.msn.net                       136.207ms asymm 24 
+13:  be-2-0.ibr03.bn6.ntwk.msn.net                       136.502ms asymm 23 
+14:  be-2-0.ibr01.bn6.ntwk.msn.net                       136.298ms asymm 22 
+15:  be-2-0.ibr01.atl30.ntwk.msn.net                     136.425ms asymm 21 
+16:  be-10-0.ibr01.sn1.ntwk.msn.net                      136.211ms asymm 20 
+17:  be-6-0.ibr02.lax03.ntwk.msn.net                     138.065ms asymm 19 
+18:  ae71-0.lax-96cbe-1a.ntwk.msn.net                    135.891ms 
+19:  cenic.lax-96cbe-1a.ntwk.msn.net                     136.606ms 
+20:  dc-tus-agg3--lax-agg6-100ge-2.cenic.net             138.118ms asymm 21 
+21:  sdg-agg4--tus-agg8-3x100ge.cenic.net                138.322ms asymm 22 
+22:  sdg-agg4--tus-agg8-3x100ge.cenic.net                138.266ms 
+23:  mx0-router.optiputer.net                            138.082ms asymm 24 
+24:  mx0-router.optiputer.net                            138.073ms 
+25:  ps-40g-gridftp.calit2.optiputer.net                 138.003ms !H
+     Resume: pmtu 1500 
+[root@wn-eu-west centos]# export GLOBUS_FTP_CLIENT_DATA_IP=52.233.249.163
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9467330560 bytes       300.96 MB/sec avg       339.01 MB/sec inst
+
+real	0m31.635s
+user	0m1.636s
+sys	0m16.259s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 32 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9264168960 bytes       490.82 MB/sec avg       608.45 MB/sec inst
+
+real	0m19.271s
+user	0m1.385s
+sys	0m15.196s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 64 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9997378560 bytes       529.68 MB/sec avg       640.68 MB/sec inst
+
+real	0m18.166s
+user	0m1.642s
+sys	0m13.276s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 96 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8552448000 bytes       509.76 MB/sec avg       724.36 MB/sec inst
+
+real	0m17.932s
+user	0m1.607s
+sys	0m13.728s
