@@ -1,0 +1,89 @@
+[root@wn-eu-west centos]# ping osg.newy32aoa.nrp.internet2.edu
+PING osg.newy32aoa.nrp.internet2.edu (163.253.72.2) 56(84) bytes of data.
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=1 ttl=46 time=148 ms
+64 bytes from osg.newy32aoa.nrp.internet2.edu (163.253.72.2): icmp_seq=2 ttl=46 time=148 ms
+[root@wn-eu-west centos]# tracepath osg.newy32aoa.nrp.internet2.edu
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  be-100-0.ibr01.ams30.ntwk.msn.net                   149.099ms asymm 30 
+ 8:  be-1-0.ibr01.ams30.ntwk.msn.net                     149.137ms asymm 30 
+ 9:  be-6-0.ibr02.sxl71.ntwk.msn.net                     148.505ms asymm 28 
+10:  be-4-0.ibr02.ewr30.ntwk.msn.net                     148.594ms asymm 27 
+11:  be-4-0.ibr02.ewr30.ntwk.msn.net                     148.496ms asymm 27 
+12:  104.44.7.98                                         148.103ms asymm 26 
+13:  be-3-0.ibr01.ch4.ntwk.msn.net                       149.454ms asymm 25 
+14:  be-7-0.ibr01.dsm05.ntwk.msn.net                     148.590ms asymm 23 
+15:  be-8-0.ibr02.cys04.ntwk.msn.net                     148.469ms asymm 22 
+16:  be-7-0.ibr02.mwh01.ntwk.msn.net                     148.428ms asymm 21 
+17:  be-5-0.ibr01.stb.ntwk.msn.net                       149.773ms asymm 20 
+18:  be-5-0.ibr01.stb.ntwk.msn.net                       148.802ms asymm 20 
+19:  abilene-1-lo-jmb-706.sttlwa.pacificwave.net         154.365ms asymm 23 
+20:  et-4-0-0.4079.rtsw.miss2.net.internet2.edu          164.351ms asymm 24 
+21:  et-4-0-0.4079.rtsw.miss2.net.internet2.edu          165.150ms asymm 24 
+22:  et-4-0-0.4079.rtsw.minn.net.internet2.edu           146.316ms asymm 17 
+23:  et-1-1-5.4079.rtsw.eqch.net.internet2.edu           146.438ms asymm 16 
+24:  ae-1.4079.rtsw.clev.net.internet2.edu               154.780ms asymm 17 
+25:  ae-1.4079.rtsw.clev.net.internet2.edu               155.175ms asymm 17 
+26:  ae-0.4079.rtsw.ashb.net.internet2.edu               145.442ms asymm 15 
+27:  ae-2.4079.rtsw.wash.net.internet2.edu               144.481ms asymm 17 
+28:  ae-5.4079.rtsw.newy32aoa.net.internet2.edu          149.017ms asymm 18 
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500 
+[root@wn-eu-west centos]# export GLOBUS_FTP_CLIENT_DATA_IP=52.233.249.163
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 16 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9382133760 bytes       279.61 MB/sec avg       314.36 MB/sec inst
+
+real	0m34.028s
+user	0m1.582s
+sys	0m16.507s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 32 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9783214080 bytes       466.49 MB/sec avg       612.58 MB/sec inst
+
+real	0m20.652s
+user	0m1.210s
+sys	0m16.045s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 64 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9183428608 bytes       486.55 MB/sec avg       616.88 MB/sec inst
+
+real	0m19.410s
+user	0m1.572s
+sys	0m15.054s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 96 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9014083584 bytes       537.28 MB/sec avg       721.47 MB/sec inst
+
+real	0m17.434s
+user	0m1.808s
+sys	0m13.094s
+[root@wn-eu-west centos]# time globus-url-copy -vb -fast -p 128 ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://osg.newy32aoa.nrp.internet2.edu:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9089581056 bytes       541.77 MB/sec avg       734.89 MB/sec inst
+
+real	0m17.468s
+user	0m1.826s
+sys	0m12.939s
