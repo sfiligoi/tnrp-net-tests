@@ -1,0 +1,51 @@
+[root@instance-jp centos]# export export GLOBUS_FTP_CLIENT_DATA_IP=34.85.75.69 
+[root@instance-jp centos]# time globus-url-copy -vb -fast -p 16 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9627500544 bytes       417.33 MB/sec avg       468.75 MB/sec inst
+
+real	0m23.015s
+user	0m1.290s
+sys	0m15.678s
+[root@instance-jp centos]# time globus-url-copy -vb -fast -p 32 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9458679808 bytes       563.78 MB/sec avg       683.48 MB/sec inst
+
+real	0m16.770s
+user	0m0.814s
+sys	0m13.861s
+[root@instance-jp centos]# time globus-url-copy -vb -fast -p 64 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9868935168 bytes       588.23 MB/sec avg       726.90 MB/sec inst
+
+real	0m16.317s
+user	0m1.150s
+sys	0m13.340s
+[root@instance-jp centos]# time globus-url-copy -vb -fast -p 96 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   8780251136 bytes       598.10 MB/sec avg       651.57 MB/sec inst
+
+real	0m15.719s
+user	0m1.208s
+sys	0m12.886s
+[root@instance-jp centos]# time globus-url-copy -vb -fast -p 128 ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/10G.dat file:///dev/shm/10G.dat
+Source: ftp://ps-40g-gridftp.calit2.optiputer.net:2811/export/data/
+Dest:   file:///dev/shm/
+  10G.dat
+
+   9484107776 bytes       646.04 MB/sec avg       857.46 MB/sec inst
+
+real	0m14.513s
+user	0m1.336s
+sys	0m11.517s
