@@ -13,6 +13,12 @@ yum -y install epel-release yum-plugin-priorities
 yum install -y condor
 yum install -y osg-wn-client aria2
 
+# IceCube Dependencies
+yum -y groupinstall "Compatibility Libraries" \
+                        "Development Tools" \
+                        "Scientific Support"
+yum install -y freetype
+
 # AWS
 #yum install -y python2-pip && pip install awscli
 
@@ -20,16 +26,21 @@ yum install -y osg-wn-client aria2
 # wget https://aka.ms/downloadazcopy-v10-linux && tar -xvzf downloadazcopy-v10-linux && mv azcopy_linux_amd64_10.2.1/azcopy /usr/bin/
 
 download /etc/condor/passwords.d/POOL
-download /etc/condor/config.d/98-wn-deamons.config
-download /etc/condor/config.d/90-tune-wn.config 
-download /etc/condor/config.d/90-cloud_attrs.config
+download /etc/condor/config.d/*.config
+download /etc/condor/scripts/*.config.sh
+
+# AWS
+# Download config and stripts from aws subdir
+
+# Azure
+# Download config fron ccb dir
 
 # Customize as appropriate
 echo "CLOUD_HEAD = <IP>" > /etc/condor/config.d/90_cloud_head.config
 echo -e 'CLOUD_Provider = "AWS/Azure/Google"\nCLOUD_Region = "AWSUSEast1"\nGEO_Region ="USEast"' > /etc/condor/config.d/90_cloud_id.config
 echo "DEFAULT_DOMAIN_NAME = us-west-2.azure" > /etc/condor/config.d/95_cloud_domain.config
 
-# Azuire, not really needed anymore: Edit file, add to After and Requires
+# Azure: Edit file, add to After and Requires
 #vi /usr/lib/systemd/system/condor.service
 #
 #[Unit]
