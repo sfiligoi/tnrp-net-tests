@@ -3,11 +3,6 @@ reboot
 
 groupadd -g 2000 condor && useradd -u 2000 -g 2000 -s /sbin/nologin condor
 
-# Not needed anymore
-#groupadd -g 3000 cuser && useradd -u 3000 -g 3000 -s /sbin/nologin cuser
-#for n in 1 2 3 4 5 6 7 8 9; do useradd -u 300${n} -g 3000 -s /sbin/nologin cuser${n}; done
-#for n in 0 1 2 3 4 5 6 7 8 9; do useradd -u 301${n} -g 3000 -s /sbin/nologin cuser1${n}; done
-
 yum -y install https://repo.opensciencegrid.org/osg/3.5/osg-3.5-el7-release-latest.rpm
 yum -y install epel-release yum-plugin-priorities
 yum install -y condor
@@ -33,7 +28,7 @@ download /etc/condor/scripts/*.config.sh
 # Download config and stripts from aws subdir
 
 # Azure
-# Download config fron ccb dir
+# Download config and stripts from azure subdir
 
 # Customize as appropriate
 echo "CLOUD_HEAD = <IP>" > /etc/condor/config.d/90_cloud_head.config
@@ -48,6 +43,9 @@ echo "DEFAULT_DOMAIN_NAME = us-west-2.azure" > /etc/condor/config.d/95_cloud_dom
 #After=network-online.target sshd.service waagent.service nslcd.service ypbind.service time-sync.target nfs.client.target autofs.service
 #Wants=network-online.target
 #Requires=sshd.service waagent.service
+
+# Follow instructions in
+#   exa_cloud/install.sh
 
 
 systemctl enable condor
