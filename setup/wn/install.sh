@@ -40,6 +40,8 @@ yum clean all
 yum -y install nvidia-driver-latest-dkms
 yum -y install cuda-drivers
 
+reboot
+
 yum -y install clinfo
 
 yum install -y condor
@@ -67,7 +69,7 @@ yum install -y freetype
 #Requires=sshd.service waagent.service
 
 mkdir -p /opt/exa_scripts/
-mkdir -p /etc/exa_cloud
+mkdir -p /etc/exa_cloud/regions
 
 download /opt/exa_scripts/exa* from exa_cloud/
 download /opt/exa_scripts/exa* from exa_cloud/<cloud>/
@@ -79,21 +81,21 @@ ln -s /opt/exa_scripts/exa_cloud_download        /usr/bin/exa_cloud_download
 ln -s /opt/exa_scripts/exa_cloud_upload          /usr/bin/exa_cloud_upload
 ln -s /opt/exa_scripts/exa_cloud_download_local  /usr/bin/exa_cloud_download_local
 
+mkdir -p /etc/condor/regions
+mkdir -p /etc/condor/scripts
 
 download /etc/condor/passwords.d/POOL
-download /etc/condor/config.d/*.config
 download /etc/condor/scripts/*.config.sh
+download /etc/condor/scripts/*.config.sh from <cloud>/
 
-# AWS
-# Download config and stripts from aws subdir
+download /etc/condor/regions/*local.config from <cloud>/regions/
 
-# Azure
-# Download config and stripts from azure subdir
+download /etc/condor/config.d/*.config
+download /etc/condor/config.d/*.config from <cloud>/
 
-# Customize as appropriate
-echo "CLOUD_HEAD = <IP>" > /etc/condor/config.d/90_cloud_head.config
-echo -e 'CLOUD_Provider = "AWS/Azure/Google"\nCLOUD_Region = "AWSUSEast1"\nGEO_Region ="USEast"' > /etc/condor/config.d/90_cloud_id.config
-echo "DEFAULT_DOMAIN_NAME = us-west-2.azure" > /etc/condor/config.d/95_cloud_domain.config
+
+# if upgrading remove
+# rm /etc/condor/config.d/90_cloud_head.config /etc/condor/config.d/90_cloud_id.config /etc/condor/config.d/95_cloud_domain.config
 
 # Follow instructions in
 #   exa_cloud/install.sh

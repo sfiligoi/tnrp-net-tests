@@ -10,16 +10,16 @@ import sys,os
 # First read config file
 #
 
-if os.path.isfile("/etc/exa_cloud/storage_downloads.conf"):
+if os.path.isfile("/dev/shm/exa_cloud_storage_downloads.conf"):
   try:
-    with open("/etc/exa_cloud/storage_downloads.conf","r") as fd:
+    with open("/dev/shm/exa_cloud_storage_downloads.conf","r") as fd:
       config_lines=fd.readlines()
   except:
     print("error://missing_config_file")
     sys.exit(1)
 else: # if no separate download config, assume downloading from local storage
   try:
-    with open("/etc/exa_cloud/storage.conf","r") as fd:
+    with open("/dev/shm/exa_cloud_storage.conf","r") as fd:
       config_lines=fd.readlines()
   except:
     print("error://missing_config_file")

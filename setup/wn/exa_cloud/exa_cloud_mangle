@@ -11,7 +11,7 @@ import sys,os
 #
 
 try:
-  with open("/etc/exa_cloud/storage.conf","r") as fd:
+  with open("/dev/shm/exa_cloud_storage.conf","r") as fd:
     config_lines=fd.readlines()
 except:
   print("error://missing_config_file")
