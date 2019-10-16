@@ -1,0 +1,19 @@
+universe = vanilla
+
+# Files
+executable = aria1mW.sh
+arguments = $(process)
+output = out/data.$(cluster).$(process).out
+error = err/data.$(cluster).$(process).err
+log = bench.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+#requirements=TRUE
+requirements=(CLOUD_Region =?= "PRPNewYork")
+
+# Run job once
+queue 32
