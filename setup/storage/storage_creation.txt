@@ -1,0 +1,96 @@
+# US-West2
+# create storage accounts
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage account create -n exawestp${n} -g exa -l westus2 --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+# remember id
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exawestp${n} -n exa-west; done
+
+az role definition list --name "Storage Blob Data Contributor"
+az identity list
+# llok for clientId
+
+# Authorize "id-us-west2
+#for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exawestp${n}" --assignee "61609c14-7eb2-415b-9702-89815ca8a4a5"; done
+
+
+$ Authorize "blob-writer"
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exawestp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+
+# US-East
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exaeastp${n} -g exa -l eastus --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exaeastp${n} -n exa-east; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exaeastp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+
+# Europe West
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exaeuwestp${n} -g exa -l westeurope --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exaeuwestp${n} -n exa-eu-west; done
+
+#for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exaeuwestp${n}" --assignee "7fa9363c-fe64-4b9e-8e2c-d9de388714d0"; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exaeuwestp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+# Europe North
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exaeunorthp${n} -g exa -l northeurope --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exaeunorthp${n} -n exa-eu-north; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exaeunorthp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+# UK South
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exauksouthp${n} -g exa -l uksouth --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exauksouthp${n} -n exa-uk-south; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exauksouthp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+# US NorthCentral
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exausncp${n} -g exa -l northcentralus --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exausncp${n} -n exa-nc; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exausncp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+
+# US SouthCentral
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exausscp${n} -g exa -l southcentralus --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exausscp${n} -n exa-sc; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exausscp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+# Canada Central
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exacanadap${n} -g exa -l canadacentral --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exacanadap${n} -n exa-canada; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exacanadap${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+
+# SouthEast Asia (Singapore)
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exaasiasep${n} -g exa -l southeastasia --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exaasiasep${n} -n exa-asia-se; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exaasiasep${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+# Japan East
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exajapanp${n} -g exa -l japaneast --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exajapanp${n} -n exa-japan; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exajapanp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+# Korea Central
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exakoreap${n} -g exa -l koreacentral --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exakoreap${n} -n exa-korea; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exakoreap${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
+
+
+# Australia East
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exaaustraliap${n} -g exa -l australiaeast --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exaaustraliap${n} -n exa-australia; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exajapanp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
