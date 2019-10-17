@@ -84,6 +84,9 @@ ln -s /opt/exa_scripts/exa_cloud_download_local  /usr/bin/exa_cloud_download_loc
 mkdir -p /etc/condor/regions
 mkdir -p /etc/condor/scripts
 
+# will /dev/shm/cvmfs will be created at condor startup
+ln -s /dev/shm/cvmfs /cvmfs
+
 download /etc/condor/passwords.d/POOL
 download /etc/condor/scripts/*.config.sh
 download /etc/condor/scripts/*.config.sh from <cloud>/
