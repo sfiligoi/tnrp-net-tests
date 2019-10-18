@@ -35,9 +35,9 @@ done
 
 if [ ${istemplate} -eq 0 ]; then
   now=`date +%s`
-  mkdir -p /tmp/avmssc0_${now}
-  cd /tmp/avmssc0_${now}
-  echo Logs in /tmp/avmssc0_${now}
+  mkdir -p /tmp/avmsscn_${now}
+  cd /tmp/avmsscn_${now}
+  echo Logs in /tmp/avmsscn_${now}
 else
   echo "INFO: Generating template"
 fi
