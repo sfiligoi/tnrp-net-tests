@@ -1,0 +1,44 @@
+#!/bin/bash
+
+export AZ_SSH="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIi6sHuPqcx4J0pLiXSnLGRSlnILReeaff9gGCm0zKiqHVeZ6RPo2gbYKDBzVgDJcqOftjp/Mcg30YIDX1ei42W2WRHx/ewuK+09qejjAuo389ySByS6mI/emu2HhdvYMb07nhycdyK45xXYM6wla6hfQIrNccAKfPCWGdlc/FNxW5ffBFrm7AM9yMCXc95XkuRBto1oaySTYEr3FGYw2U8FfRmmnL/U7xI7zKR4OeWRn8KlaQyABybQ8h5a6T6ISjxmUoSL1MIWPlfNuxZ5djEoCIrtuhPeXW5dxlPrJCdSiBHQcAhsqQD1oyCIz60QCj9xJOjdx4ENXqlkFLPBw9 isfiligoi@wireless-169-228-82-29.ucsd.edu"
+
+export AZ_SUB=/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft
+
+export AZ_STD_ARGS="--admin-username centos --authentication-type ssh --ssh-key-values \"${AZ_SSH}\"
+                   --priority low --public-ip-per-vm --upgrade-policy-mode manual --lb \"\"
+                   --disable-overprovision --eviction-policy delete --max-billing -1
+                   --assign-identity ${AZ_SUB}.ManagedIdentity/userAssignedIdentities/blob-writer
+                   --image ${AZ_SUB}.Compute/galleries/galery_uswest2/images/wn-wgpu-v7"
+
+eval az vmss create --resource-group exa --name exav7nc2ussc \
+               --location southcentralus \
+               --vm-sku "Standard_NC6s_v2" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/nc-sc-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-sc-64k/subnets/subnet-us-sc-64k \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+eval az vmss create --resource-group exa --name exav7nc3ussc \
+               --location southcentralus \
+               --vm-sku "Standard_NC6s_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/nc-sc-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-sc-64k/subnets/subnet-us-sc-64k \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+
+
+eval az vmss create --resource-group exa --name exav7c2euwest \
+               --location westeurope \
+               --vm-sku "Standard_NC6s_v2" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/eu-west-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-eu-west-64k/subnets/subnet-eu-west-64k \
+               --single-placement-group false --zones 1 2 \
+               ${AZ_STD_ARGS} --instance-count 1 
+
+eval az vmss create --resource-group exa --name exav7ncv3apau \
+               --location australiaeast \
+               --vm-sku "Standard_NC6s_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-au-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-au-64k/subnets/subnet-ap-au-64k \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+
