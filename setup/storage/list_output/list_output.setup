@@ -1,0 +1,86 @@
+universe = vanilla
+
+# Files
+executable = list_output.sh
+
+# Single argument, the path you want to query
+# IMPORTANT: Must NOT be / terminated
+# e.g.
+#arguments = /igor_test/test_data
+
+arguments = YOUR_DIR_HERE
+
+output = data.$(cluster).$(process).out
+error = data.$(cluster).$(process).err
+log = run.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+requirements = TRUE
+
+requirements = CLOUD_Region=="AWSAPNorthEast1"
+queue
+
+requirements = CLOUD_Region=="AWSAPSouthEast1"
+queue
+
+requirements = CLOUD_Region=="AWSAPSouthEast2"
+queue
+
+requirements = CLOUD_Region=="AWSEUCentral1"
+queue
+
+requirements = CLOUD_Region=="AWSEUWest1"
+queue
+
+requirements = CLOUD_Region=="AWSUSEast1"
+queue
+
+requirements = CLOUD_Region=="AWSUSEast2"
+queue
+
+requirements = CLOUD_Region=="AWSUSWest1"
+queue
+
+requirements = CLOUD_Region=="AWSUSWest2"
+queue
+
+requirements = CLOUD_Region=="AzureAsiaSouthEast"
+queue
+
+requirements = CLOUD_Region=="AzureAustraliaEast"
+queue
+
+requirements = CLOUD_Region=="AzureCanadaCentral"
+queue
+
+requirements = CLOUD_Region=="AzureEUNorth"
+queue
+
+requirements = CLOUD_Region=="AzureEUWest"
+queue
+
+requirements = CLOUD_Region=="AzureJapanEast"
+queue
+
+requirements = CLOUD_Region=="AzureKoreaCentral"
+queue
+
+requirements = CLOUD_Region=="AzureUKSouth"
+queue
+
+requirements = CLOUD_Region=="AzureUSEast1"
+queue
+
+requirements = CLOUD_Region=="AzureUSNorthCentral"
+queue
+
+requirements = CLOUD_Region=="AzureUSSouthCentral"
+queue
+
+requirements = CLOUD_Region=="AzureUSWest2"
+queue
+
+
