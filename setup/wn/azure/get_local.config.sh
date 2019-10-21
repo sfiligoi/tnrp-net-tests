@@ -30,7 +30,7 @@ if [ ! -f /dev/shm/exa_cloud_storage.conf ]; then
 
   # IceCube CVMFS
   date >/dev/shm/download_cvmfs.log
-  exa_cloud_download_local /setup/cvmfs.tar.gz /dev/shm/cvmfs.tar.gz 2>&1 >>/dev/shm/download_cvmfs.log
+  exa_cloud_download_local_replicated /setup/cvmfs.tar.gz /dev/shm/cvmfs.tar.gz 2>&1 >>/dev/shm/download_cvmfs.log
   rc=$?
   if [ $rc -eq 0 ]; then
     (cd /dev/shm && tar --no-same-owner -xzvf /dev/shm/cvmfs.tar.gz) 2>&1 >> /dev/shm/download_cvmfs.log

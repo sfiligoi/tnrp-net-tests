@@ -16,5 +16,26 @@ fi
 s3_path=`echo "${cloud_path}" | sed 's/http.*:/s3:/' | sed 's/..3.amazonaws.com//'`
 
 echo "INFO: Uploading to ${s3_path} (${cloud_path})"
-aws s3 cp --acl public-read --only-show-errors "$1" "${s3_path}"
+errstr=`aws s3 cp --acl public-read --only-show-errors "$1" "${s3_path}" 2>&1`
+rc=$?
+if [ $rc -ne 0 ]; then
+  sleep 1
+  echo "INFO: Retrying upload"
+  errstr=`aws s3 cp --acl public-read --only-show-errors "$1" "${s3_path}" 2>&1`
+  rc=$?
+fi
+if [ $rc -ne 0 ]; then
+  sleep 5
+  echo "INFO: Retrying upload"
+  errstr=`aws s3 cp --acl public-read --only-show-errors "$1" "${s3_path}" 2>&1`
+  rc=$?
+fi
+
+if [ ${rc} -ne 0 ]; then
+  echo "ERROR: Upload failed"
+  echo "ERROR: Upload failed" 1>&2
+  echo "$errstr" 1>&2
+  exit 1
+fi
+exit 0
 

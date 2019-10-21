@@ -18,7 +18,9 @@ if [ ${rc} -ne 0 ]; then
   errstr=`azcopy login --identity 2>&1`
   rc=$?
   if [ ${rc} -ne 0 ]; then
-    echo "$errstr"
+    echo "ERROR: Upload failed"
+    echo "ERROR: Upload failed" 1>&2
+    echo "$errstr"  1>&2
     exit 1
   fi
 fi 
@@ -29,12 +31,22 @@ errstr=`azcopy cp --no-guess-mime-type --log-level=ERROR "$1" "${cloud_path}"`
 rc=$?
 if [ ${rc} -ne 0 ]; then
   sleep 1
+  echo "INFO: Retrying upload"
   errstr=`azcopy cp --no-guess-mime-type --log-level=ERROR "$1" "${cloud_path}"`
   rc=$?
-  if [ ${rc} -ne 0 ]; then
-    echo "$errstr"
-    exit 1
-  fi
+fi
+if [ ${rc} -ne 0 ]; then
+  sleep 5
+  echo "INFO: Retrying upload"
+  errstr=`azcopy cp --no-guess-mime-type --log-level=ERROR "$1" "${cloud_path}"`
+  rc=$?
+fi
+
+if [ ${rc} -ne 0 ]; then
+  echo "ERROR: Upload failed"
+  echo "ERROR: Upload failed" 1>&2
+  echo "$errstr" 1>&2
+  exit 1
 fi
 exit 0
 

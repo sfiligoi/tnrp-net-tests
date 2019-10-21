@@ -1,19 +1,12 @@
 #!/bin/bash 
 
 #
-# Download a file from the local cloud storage
+# Download a file from the local cloud storage, assume it was replicated
 #
 
 if [ $# -ne 2 ]; then
   echo "ERROR: Missing arguments" 1>&2
-  echo "Usage: exa_cloud_download_local cloudpath localfile" 1>&2
-  exit 1
-fi
-
-# Use the upload mangle, which is always local
-cloud_path=`exa_cloud_mangle "$1"`
-if [ $? -ne 0 ]; then
-  echo "ERROR: Failed parsing cloudpath: ${cloud_path}" 1>&2
+  echo "Usage: exa_cloud_download_local_replicated cloudpath localfile" 1>&2
   exit 1
 fi
 
@@ -21,11 +14,20 @@ apath="$(realpath $2)"
 dpath="$(dirname $apath)"
 lpath="$(basename $apath)"
 
+
+cloud_path=`exa_cloud_replica_path RANDOM "$1"`
+if [ $? -ne 0 ]; then
+  echo "ERROR: Failed parsing cloudpath: ${cloud_path}" 1>&2
+  exit 1
+fi
+
 rm -f "${apath}"
 aria2c --max-tries=32 --retry-wait=1 -q -d "${dpath}" -o "${lpath}" "${cloud_path}"
 rc=$?
 if [ $rc -ne 0 ]; then
   # saw DNS problems before... try with less agressive setup
+  # also try a diffferent replica
+  cloud_path=`exa_cloud_replica_path RANDOM "$1"`
   rm -f "${apath}"
   aria2c --max-tries=32 --retry-wait=1 --async-dns=false -q -d "${dpath}" -o "${lpath}" "${cloud_path}"
   rc=$?
@@ -33,6 +35,8 @@ fi
 if [ $rc -ne 0 ]; then
   # ok, the storage may be quite overloaded... wait a tiny bit, and retry
   sleep 5
+  # also try a different replica
+  cloud_path=`exa_cloud_replica_path RANDOM "$1"`
   rm -f "${apath}"
   aria2c --max-tries=32 --retry-wait=1 --async-dns=false -q -d "${dpath}" -o "${lpath}" "${cloud_path}"
   rc=$?

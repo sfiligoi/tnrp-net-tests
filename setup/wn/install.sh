@@ -81,6 +81,12 @@ ln -s /opt/exa_scripts/exa_cloud_download        /usr/bin/exa_cloud_download
 ln -s /opt/exa_scripts/exa_cloud_upload          /usr/bin/exa_cloud_upload
 ln -s /opt/exa_scripts/exa_cloud_download_local  /usr/bin/exa_cloud_download_local
 
+# for Azure only
+ln -s /opt/exa_scripts/exa_cloud_replica_path               /usr/bin/exa_cloud_replica_path
+ln -s /opt/exa_scripts/exa_cloud_upload_replicated          /usr/bin/exa_cloud_upload_replicated
+ln -s /opt/exa_scripts/exa_cloud_download_local_replicated  /usr/bin/exa_cloud_download_local_replicated
+# end Azure
+
 mkdir -p /etc/condor/regions
 mkdir -p /etc/condor/scripts
 
