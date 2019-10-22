@@ -34,12 +34,18 @@ if [ ! -f /dev/shm/exa_cloud_storage.conf ]; then
   exa_cloud_download_local /setup/cvmfs.tar.gz /dev/shm/cvmfs.tar.gz 2>&1 >>/dev/shm/download_cvmfs.log
   rc=$?
   if [ $rc -eq 0 ]; then
-    (cd /dev/shm && tar --no-same-owner -xzvf /dev/shm/cvmfs.tar.gz) 2>&1 >> /dev/shm/download_cvmfs.log
+    rm -f /tmp/cvmfs.tar.gz
+    mv /dev/shm/cvmfs.tar.gz /tmp/cvmfs.tar.gz
+    (cd /dev/shm && tar --no-same-owner -xzvf /tmp/cvmfs.tar.gz) 2>&1 >> /dev/shm/download_cvmfs.log
+    rc=$?
+    echo "RC=$?" >>/dev/shm/download_cvmfs.log
     date >>/dev/shm/download_cvmfs.log
-    rm -f /dev/shm/cvmfs.tar.gz
+    rm -f /tmp/cvmfs.tar.gz
 
-    echo 'STARTD_EXPRS = $(STARTD_EXPRS) HAS_CVMFS' >> /dev/shm/my_local.config
-    echo 'HAS_CVMFS = true' >> /dev/shm/my_local.config
+    if [ $rc -eq 0 ]; then
+      echo 'STARTD_EXPRS = $(STARTD_EXPRS) HAS_CVMFS' >> /dev/shm/my_local.config
+      echo 'HAS_CVMFS = true' >> /dev/shm/my_local.config
+    fi
 
   fi
   mv -f /dev/shm/download_cvmfs.log /var/log/download_cvmfs.log
