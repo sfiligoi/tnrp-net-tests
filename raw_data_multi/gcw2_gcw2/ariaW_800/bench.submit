@@ -1,0 +1,19 @@
+universe = vanilla
+
+# Files
+executable = aria3.sh
+arguments = $(process)
+output = out/data.$(cluster).$(process).out
+error = err/data.$(cluster).$(process).err
+log = bench.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <5)
+#requirements=TRUE
+requirements=(CLOUD_Region =?= "GCPUSWest1")
+
+# Run job once
+queue 800

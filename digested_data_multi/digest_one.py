@@ -54,6 +54,9 @@ for cluster in jobs.keys():
          if line.find("centos")>=0:
             #print("DEBUG: Skipping, ls %s"%line)
             continue # ls output
+         if line.startswith("INFO"):
+            #print("DEBUG: Skipping, %s"%line)
+            continue # INFO output
          linearr=line.split(":")
          if (len(linearr)!=3):
             #print("DEBUG: Skipping, not date %s"%line)
@@ -87,6 +90,9 @@ for cluster in jobs.keys():
          if nl==nlines:
             break # end of file
          line = lines[nl]
+         if line.startswith("INFO"): # ignore info lines
+           nl+=1
+           line = lines[nl]
          if not line.startswith("RC "):
             print("WARN: Found date not followed by RC (%i,%s)"%(nl,line))
             rcprev=1
