@@ -15,7 +15,7 @@ if [ $rc -ne 0 ]; then
   exit 2
 fi
 
-CLOUD_Provider=`grep -i CLOUD_Provider ${_CONDOR_MACHINE_AD} | awk '{print $3}'`
+CLOUD_Provider=`grep -i CLOUD_Provider "${_CONDOR_MACHINE_AD}" | awk '{print $3}'`
 
 if [ "x${CLOUD_Provider:1:3}" == "xAWS" ]; then
   # AWS wants it / terminated
@@ -39,6 +39,15 @@ elif [ "x${CLOUD_Provider:1:3}" == "xAzu" ]; then
   for i in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do
     endpoint=`echo "${endpoint_tmpl}" | sed "s/%s/${i}/"`
     azcopy list "${endpoint}${subdir}" --output-type text | awk "/Content Size:/{split(\$2,a,\";\"); print \"${endpoint}${subdir}/\" a[1]}"
+  done
+
+elif [ "x${CLOUD_Provider:1:3}" == "xGoo" ]; then
+
+  for i in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do
+    endpoint=`echo "${endpoint_tmpl}" | sed "s/%s/${i}/"`
+    gcp_endpoint=`echo "${endpoint}" | sed 's#https://storage.googleapis.com/#gs://#'`
+    
+    gsutil ls "${gcp_endpoint}${subdir}/*" | sed 's#gs://#https://storage.googleapis.com/#'
   done
 
 else
