@@ -1,0 +1,20 @@
+universe = vanilla
+
+# Files
+executable = aria3.sh
+arguments = $(process)
+output = out/data.$(cluster).$(process).out
+error = err/data.$(cluster).$(process).err
+log = bench.log
+
+# File transfer behavior
+transfer_input_files = my_bins.tgz
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <5)
+#requirements=TRUE
+requirements=(CLOUD_Region =?= "GCPEUWest4")
+
+# Run job once
+queue 32
