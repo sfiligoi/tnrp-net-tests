@@ -42,6 +42,8 @@ elif [ "x${CLOUD_Provider:1:3}" == "xAzu" ]; then
   done
 
 elif [ "x${CLOUD_Provider:1:3}" == "xGoo" ]; then
+  # explicit path needed by gsutil
+  export PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
   for i in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do
     endpoint=`echo "${endpoint_tmpl}" | sed "s/%s/${i}/"`
