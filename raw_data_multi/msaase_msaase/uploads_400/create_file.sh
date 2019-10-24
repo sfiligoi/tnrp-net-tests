@@ -1,0 +1,13 @@
+#!/bin/bash
+cd /dev/shm
+pwd
+
+# we need space, and don't care about cvmfs
+sudo /bin/rm -fr cvmfs
+
+rm -f 1G.dat
+dd if=/dev/urandom of=/dev/shm/1G.dat bs=100000 count=10000
+echo "File crearted"
+date
+date 1>&2
+
