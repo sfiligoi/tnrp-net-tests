@@ -15,7 +15,11 @@ else
 fi
 
 # base one per Region
-vvs="exav7nc2ussc exav7nc3ussc exav7c2euwest exav7ncv3apau"
+vvs="exav7ncuswest2 exav7nc2uswest2 exav7nc3uswest2 exav7nduseast1 exav7nc2useast1 exav7nc3useast1"
+vvs="${vvs} exav7nc2ussc exav7nc3ussc exav7ncusnc exav7nvusnc"
+vvs="${vvs} exav7ndeuwest exav7c2euwest"
+vvs="${vvs} exav7nvapse exav7ndapse exav7ncv3apau"
+
 
 if [ ${istemplate} -eq 0 ]; then
   now=`date +%s`
