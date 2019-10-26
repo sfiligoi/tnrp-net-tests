@@ -297,6 +297,16 @@ eval az vmss create --resource-group exa --name exav7d2apjp \
                --single-placement-group false --zones 1 2 3 \
                ${AZ_STD_ARGS} --instance-count 1
 
+for i in 1 2 3 4 5 6 7 8 9; do
+  eval az vmss create --resource-group exa --name exav7d2apjpi${i} \
+               --location japaneast \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-jp-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-jp-64k/subnets/subnet-ap-jp-64k \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+done
+
 eval az vmss create --resource-group exa --name exav7d1apjp \
                --location japaneast \
                --vm-sku "Standard_D2_v2" \
@@ -312,6 +322,15 @@ eval az vmss create --resource-group exa --name exav7d2apau \
                --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-au-all \
                --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-au-64k/subnets/subnet-ap-au-64k \
                ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+for i in 1 2 3 4 5 6 7 8 9; do
+  eval az vmss create --resource-group exa --name exav7d2apaui${i} \
+               --location australiaeast \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-au-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-au-64k/subnets/subnet-ap-au-64k \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+done
 
 eval az vmss create --resource-group exa --name exav7d1apau \
                --location australiaeast \
@@ -335,9 +354,38 @@ az vmss create --resource-group exa --name exav7d2apko \
                --instance-count 1 # no zones
 
 
+az vmss create --resource-group exa --name exav7d1apko \
+               --location koreacentral \
+               --vm-sku "Standard_D2_v2" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-ko-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-ko-64k/subnets/subnet-ap-ko-64k \
+                   --admin-username centos --authentication-type ssh --ssh-key-values "${AZ_SSH}" \
+                   --priority low --public-ip-per-vm --upgrade-policy-mode manual --lb "" \
+                   --disable-overprovision --eviction-policy delete \
+                   --assign-identity ${AZ_SUB}.ManagedIdentity/userAssignedIdentities/blob-writer \
+                   --image ${AZ_SUB}.Compute/galleries/galery_uswest2/images/wn-wgpu-v7 \
+               --instance-count 1 # no zones
+
+
 eval az vmss create --resource-group exa --name exav7d2canada \
                --location canadacentral \
                --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/canada-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-canada-64k/subnets/subnet-canada-64k \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+for i in 1 2 3 4; do
+  eval az vmss create --resource-group exa --name exav7d2canadai${i} \
+               --location canadacentral \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/canada-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-canada-64k/subnets/subnet-canada-64k \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+done
+
+eval az vmss create --resource-group exa --name exav7d1canada \
+               --location canadacentral \
+               --vm-sku "Standard_D2_v2" \
                --nsg ${AZ_SUB}.Network/networkSecurityGroups/canada-all \
                --subnet ${AZ_SUB}.Network/virtualNetworks/net-canada-64k/subnets/subnet-canada-64k \
                ${AZ_STD_ARGS} --instance-count 1 # no zones
