@@ -26,6 +26,16 @@ for i in 1 2 3 4 5 6 7 8 9; do
                ${AZ_STD_ARGS} --instance-count 1
 done
 
+for i in a b c d e f g; do
+  eval az vmss create --resource-group exa --name exav7d2uswest2i${i} \
+               --location westus2 \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-west2-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-west2-64k/subnets/subnet-us-west2-64k \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+done
+
 eval az vmss create --resource-group exa --name exav7d1uswest2 \
                --location westus2 \
                --vm-sku "Standard_D2_v2" \
@@ -53,6 +63,16 @@ for i in 1 2 3 4 5 6 7 8 9 a b; do
                ${AZ_STD_ARGS} --instance-count 1
 done
 
+for i in c d e f g; do
+  eval az vmss create --resource-group exa --name exav7d2useast1i${i} \
+               --location eastus \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+done
+
 eval az vmss create --resource-group exa --name exav7d1useast1 \
                --location eastus \
                --vm-sku "Standard_D2_v2" \
@@ -61,6 +81,15 @@ eval az vmss create --resource-group exa --name exav7d1useast1 \
                --single-placement-group false --zones 1 2 3 \
                ${AZ_STD_ARGS} --instance-count 1
 
+for i in 1 2 3 4 5 6 7 8 9 a b c d e f g; do
+  eval az vmss create --resource-group exa --name exav7d1useast1i${i} \
+               --location eastus \
+               --vm-sku "Standard_D2_v2" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+done
 
 eval az vmss create --resource-group exa --name exav7d2ussc \
                --location southcentralus \
@@ -76,6 +105,14 @@ eval az vmss create --resource-group exa --name exav7d1ussc \
                --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-sc-64k/subnets/subnet-us-sc-64k \
                ${AZ_STD_ARGS} --instance-count 1 # no zones
 
+for i in 1 2 3 4 5 6 7 8 9 a b c d e f g; do
+  eval az vmss create --resource-group exa --name exav7d1ussc${i} \
+               --location southcentralus \
+               --vm-sku "Standard_D2_v2" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/nc-sc-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-sc-64k/subnets/subnet-us-sc-64k \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+done
 
 eval az vmss create --resource-group exa --name exav7d2usnc \
                --location northcentralus \
@@ -92,6 +129,16 @@ for i in 1 2 3; do
                --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-nc-64k/subnets/subnet-us-nc-64k \
                ${AZ_STD_ARGS} --instance-count 1 # no zones
 done
+
+for i in 4; do
+  eval az vmss create --resource-group exa --name exav7d2usnci${i} \
+               --location northcentralus \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-nc-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-nc-64k/subnets/subnet-us-nc-64k \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+done
+
 
 eval az vmss create --resource-group exa --name exav7d1usnc \
                --location northcentralus \
@@ -110,6 +157,16 @@ eval az vmss create --resource-group exa --name exav7d2euwest \
                ${AZ_STD_ARGS} --instance-count 1 
 
 for i in 1 2 3 4 5 6 7 8 9 a b; do
+  eval az vmss create --resource-group exa --name exav7d2euwesti${i} \
+               --location westeurope \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/eu-west-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-eu-west-64k/subnets/subnet-eu-west-64k \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+done
+
+for i in c d e f g; do
   eval az vmss create --resource-group exa --name exav7d2euwesti${i} \
                --location westeurope \
                --vm-sku "Standard_D2_v3" \
@@ -146,6 +203,16 @@ for i in 1 2 3; do
                ${AZ_STD_ARGS} --instance-count 1 
 done
 
+for i in 4 5 6 7 8 9; do
+  eval az vmss create --resource-group exa --name exav7d2eunorthi${i} \
+               --location northeurope \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/eu-north-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-eu-north-64k/subnets/subnet-eu-north-64k \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+done
+
 eval az vmss create --resource-group exa --name exav7d1eunorth \
                --location northeurope \
                --vm-sku "Standard_D2_v2" \
@@ -173,6 +240,17 @@ for i in 1 2 3; do
                ${AZ_STD_ARGS} --instance-count 1
 done
 
+for i in 4 5 6 7 8 9; do
+  eval az vmss create --resource-group exa --name exav7d2uksouthi${i} \
+               --location uksouth \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/uk-south-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-uk-south-64k/subnets/subnet-uk-south-64k \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+done
+
+
 eval az vmss create --resource-group exa --name exav7d2apse \
                --location southeastasia \
                --vm-sku "Standard_D2_v3" \
@@ -190,6 +268,17 @@ for i in 1 2 3; do
                --single-placement-group false --zones 1 2 3 \
                ${AZ_STD_ARGS} --instance-count 1
 done
+
+for i in 4 5 6 7 8 9; do
+  eval az vmss create --resource-group exa --name exav7d2apsei${i} \
+               --location southeastasia \
+               --vm-sku "Standard_D2_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-se-all \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-se-64k/subnets/subnet-ap-se-64k \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+done
+
 
 eval az vmss create --resource-group exa --name exav7d1apse \
                --location southeastasia \
