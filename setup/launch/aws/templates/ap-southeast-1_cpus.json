@@ -8,286 +8,7 @@
   "TerminateInstancesWithExpiration": true,
   "LaunchSpecifications": [
     {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c5.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.098",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-4b0bef03",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c5.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.098",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-5b0aa902",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c5.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.098",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-c3a156a5",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c4.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.115",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-4b0bef03",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c4.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.115",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-5b0aa902",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c4.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.115",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-c3a156a5",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "m3.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.196",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-4b0bef03",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "m3.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.196",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-5b0aa902",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "m3.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.196",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-c3a156a5",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
+      "ImageId": "ami-03a68cbb63d45e21c",
       "InstanceType": "m4.large",
       "KeyName": "exa-ap-se",
       "SpotPrice": "0.125",
@@ -301,7 +22,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
@@ -318,7 +39,7 @@
       ]
     },
     {
-      "ImageId": "ami-06031c80ad6e31d44",
+      "ImageId": "ami-03a68cbb63d45e21c",
       "InstanceType": "m4.large",
       "KeyName": "exa-ap-se",
       "SpotPrice": "0.125",
@@ -332,7 +53,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
@@ -349,7 +70,7 @@
       ]
     },
     {
-      "ImageId": "ami-06031c80ad6e31d44",
+      "ImageId": "ami-03a68cbb63d45e21c",
       "InstanceType": "m4.large",
       "KeyName": "exa-ap-se",
       "SpotPrice": "0.125",
@@ -363,7 +84,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
@@ -380,10 +101,10 @@
       ]
     },
     {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c5n.large",
+      "ImageId": "ami-03a68cbb63d45e21c",
+      "InstanceType": "m5a.large",
       "KeyName": "exa-ap-se",
-      "SpotPrice": "0.124",
+      "SpotPrice": "0.108",
       "IamInstanceProfile": {
         "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
       },
@@ -394,7 +115,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
@@ -411,10 +132,10 @@
       ]
     },
     {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c5n.large",
+      "ImageId": "ami-03a68cbb63d45e21c",
+      "InstanceType": "m5a.large",
       "KeyName": "exa-ap-se",
-      "SpotPrice": "0.124",
+      "SpotPrice": "0.108",
       "IamInstanceProfile": {
         "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
       },
@@ -425,7 +146,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
@@ -442,10 +163,10 @@
       ]
     },
     {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "c5n.large",
+      "ImageId": "ami-03a68cbb63d45e21c",
+      "InstanceType": "m5a.large",
       "KeyName": "exa-ap-se",
-      "SpotPrice": "0.124",
+      "SpotPrice": "0.108",
       "IamInstanceProfile": {
         "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
       },
@@ -456,7 +177,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
@@ -473,10 +194,10 @@
       ]
     },
     {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "m5a.large",
+      "ImageId": "ami-03a68cbb63d45e21c",
+      "InstanceType": "m5.large",
       "KeyName": "exa-ap-se",
-      "SpotPrice": "0.108",
+      "SpotPrice": "0.12",
       "IamInstanceProfile": {
         "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
       },
@@ -487,7 +208,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
@@ -504,10 +225,10 @@
       ]
     },
     {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "m5a.large",
+      "ImageId": "ami-03a68cbb63d45e21c",
+      "InstanceType": "m5.large",
       "KeyName": "exa-ap-se",
-      "SpotPrice": "0.108",
+      "SpotPrice": "0.12",
       "IamInstanceProfile": {
         "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
       },
@@ -518,7 +239,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
@@ -535,38 +256,7 @@
       ]
     },
     {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "m5a.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.108",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-c3a156a5",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
+      "ImageId": "ami-03a68cbb63d45e21c",
       "InstanceType": "m5.large",
       "KeyName": "exa-ap-se",
       "SpotPrice": "0.12",
@@ -580,69 +270,7 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-4b0bef03",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "m5.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.12",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
-          }
-        }
-      ],
-      "NetworkInterfaces": [
-        {
-          "DeviceIndex": 0,
-          "SubnetId": "subnet-5b0aa902",
-          "DeleteOnTermination": true,
-          "Groups": [
-            "sg-0906073444f13c72b"
-          ],
-          "AssociatePublicIpAddress": true
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-06031c80ad6e31d44",
-      "InstanceType": "m5.large",
-      "KeyName": "exa-ap-se",
-      "SpotPrice": "0.12",
-      "IamInstanceProfile": {
-        "Arn": "arn:aws:iam::552407176635:instance-profile/aws-s3-all"
-      },
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 20,
-            "SnapshotId": "snap-08572e58dcc3d4b5f"
+            "SnapshotId": "snap-07d40342a94a5016e"
           }
         }
       ],
