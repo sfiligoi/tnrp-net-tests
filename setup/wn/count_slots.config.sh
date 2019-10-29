@@ -16,6 +16,11 @@ if [ ! -f "/dev/shm/count_slots.config" ]; then
     leftcpus=${maxcpus}
   fi
 
+  # cannot afford too many CPU slots, or we will run out of disk space
+  if [ ${leftcpus} -gt 8 ]; then
+    leftcpus=8
+  fi
+
   echo "NUM_SLOTS_TYPE_1 = ${ngpus}"    >  ${fname}
   echo "NUM_SLOTS_TYPE_2 = ${leftcpus}" >> ${fname}
   mv ${fname} /dev/shm/count_slots.config

@@ -19,7 +19,22 @@ if [ ! -f "/dev/shm/condor_public_ip.config" ]; then
     echo "START = FALSE" > ${fname}
   else
     echo "TCP_FORWARDING_HOST = ${myip}" > ${fname}
+    echo "CLOUD_NAT_IP = \"${myip}\"" >> ${fname}
+    echo 'STARTD_EXPRS = $(STARTD_EXPRS) CLOUD_NAT_IP' >> ${fname}
   fi
+
+  # The following are optional
+  vmname=`curl -s -H 'Metadata-Flavor: Google' http://metadata.google.internal/computeMetadata/v1/instance/name`
+  if [ $? -eq 0 ]; then
+    echo "GCP_VM_NAME = \"${vmname}\"" >> ${fname}
+    echo 'STARTD_EXPRS = $(STARTD_EXPRS) GCP_VM_NAME' >> ${fname}
+  fi
+  itype=`curl -s -H 'Metadata-Flavor: Google' http://metadata.google.internal/computeMetadata/v1/instance/machine-type|awk '{split($0,a,"/"); print a[4]}'`
+  if [ $? -eq 0 ]; then
+    echo "GCP_TYPE = \"${itype}\"" >> ${fname}
+    echo 'STARTD_EXPRS = $(STARTD_EXPRS) GCP_TYPE' >> ${fname}
+  fi
+
   mv ${fname} /dev/shm/condor_public_ip.config
 fi
 
