@@ -25,23 +25,6 @@ if [ ! -f /dev/shm/exa_cloud_storage.conf ]; then
   if [ -f /etc/exa_cloud/regions/${myregion}_storage_downloads.conf ]; then
     ln -s /etc/exa_cloud/regions/${myregion}_storage_downloads.conf /dev/shm/exa_cloud_storage_downloads.conf
   fi 
-
-  # also setup any additional machine config
-
-  # IceCube CVMFS
-  date >/dev/shm/download_cvmfs.log
-  exa_cloud_download_local_replicated /setup/cvmfs.tar.gz /dev/shm/cvmfs.tar.gz 2>&1 >>/dev/shm/download_cvmfs.log
-  rc=$?
-  if [ $rc -eq 0 ]; then
-    (cd /dev/shm && tar --no-same-owner -xzvf /dev/shm/cvmfs.tar.gz) 2>&1 >> /dev/shm/download_cvmfs.log
-    date >>/dev/shm/download_cvmfs.log
-    rm -f /dev/shm/cvmfs.tar.gz
-
-    echo 'STARTD_EXPRS = $(STARTD_EXPRS) HAS_CVMFS' >> /dev/shm/my_local.config
-    echo 'HAS_CVMFS = true' >> /dev/shm/my_local.config
-
-  fi
-  mv -f /dev/shm/download_cvmfs.log /var/log/download_cvmfs.log
 fi
 
 cat /dev/shm/my_local.config
