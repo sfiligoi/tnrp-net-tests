@@ -1,19 +1,37 @@
 ssh_str=ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQDIi6sHuPqcx4J0pLiXSnLGRSlnILReeaff9gGCm0zKiqHVeZ6RPo2gbYKDBzVgDJcqOftjp/Mcg30YIDX1ei42W2WRHx/ewuK\+09qejjAuo389ySByS6mI/emu2HhdvYMb07nhycdyK45xXYM6wla6hfQIrNccAKfPCWGdlc/FNxW5ffBFrm7AM9yMCXc95XkuRBto1oaySTYEr3FGYw2U8FfRmmnL/U7xI7zKR4OeWRn8KlaQyABybQ8h5a6T6ISjxmUoSL1MIWPlfNuxZ5djEoCIrtuhPeXW5dxlPrJCdSiBHQcAhsqQD1oyCIz60QCj9xJOjdx4ENXqlkFLPBw9\ centos
 
-common_args="--network=projects/exa-demo/global/networks/default --network-tier=PREMIUM --no-restart-on-failure --maintenance-policy=TERMINATE --preemptible --service-account=946319310608-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server --image-project=exa-demo --boot-disk-size=20GB --boot-disk-type=pd-standard --reservation-affinity=any"
+common_args="--network=projects/exa-demo/global/networks/default --network-tier=PREMIUM --no-restart-on-failure --maintenance-policy=TERMINATE --preemptible --service-account=946319310608-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server --image-project=exa-demo --boot-disk-size=30GB --boot-disk-type=pd-standard --reservation-affinity=any"
 
-gcloud beta compute images create wn-wgpu-v7d-us --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v7d --storage-location=us
-gcloud beta compute --project=exa-demo instance-templates create it-us-v7d-n2 --machine-type=n1-standard-2 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v7d-us --boot-disk-device-name=it-us-v7d-n2 \
+# Deprecated
+#gcloud beta compute images create wn-wgpu-v7d-us --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v7d --storage-location=us
+#gcloud beta compute --project=exa-demo instance-templates create it-us-v7d-n2 --machine-type=n1-standard-2 \
+#         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v7d-us --boot-disk-device-name=it-us-v7d-n2 \
+#         ${common_args}
+#
+#gcloud beta compute images create wn-wgpu-v7d-eu --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v7d --storage-location=eu
+#gcloud beta compute --project=exa-demo instance-templates create it-eu-v7d-n2 --machine-type=n1-standard-2 \
+#         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v7d-eu --boot-disk-device-name=it-eu-v7d-n2 \
+#         ${common_args}
+#
+#gcloud beta compute images create wn-wgpu-v7d-ap --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v7d --storage-location=asia
+#gcloud beta compute --project=exa-demo instance-templates create it-ap-v7d-n2 --machine-type=n1-standard-2 \
+#         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v7d-ap --boot-disk-device-name=it-ap-v7d-n2 \
+#         ${common_args}
+
+
+gcloud beta compute images create wn-wgpu-v74-us --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v74 --storage-location=us
+gcloud beta compute --project=exa-demo instance-templates create it-us-v74-n2 --machine-type=n1-standard-2 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v74-us --boot-disk-device-name=it-us-v74-n2 \
          ${common_args}
 
-gcloud beta compute images create wn-wgpu-v7d-eu --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v7d --storage-location=eu
-gcloud beta compute --project=exa-demo instance-templates create it-eu-v7d-n2 --machine-type=n1-standard-2 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v7d-eu --boot-disk-device-name=it-eu-v7d-n2 \
+gcloud beta compute images create wn-wgpu-v74-eu --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v74 --storage-location=eu
+gcloud beta compute --project=exa-demo instance-templates create it-eu-v74-n2 --machine-type=n1-standard-2 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v74-eu --boot-disk-device-name=it-eu-v74-n2 \
          ${common_args}
 
-gcloud beta compute images create wn-wgpu-v7d-ap --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v7d --storage-location=asia
-gcloud beta compute --project=exa-demo instance-templates create it-ap-v7d-n2 --machine-type=n1-standard-2 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v7d-ap --boot-disk-device-name=it-ap-v7d-n2 \
+gcloud beta compute images create wn-wgpu-v74-ap --project=exa-demo --source-snapshot=snapshot-wn-wgpu-v74 --storage-location=asia
+gcloud beta compute --project=exa-demo instance-templates create it-ap-v74-n2 --machine-type=n1-standard-2 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v74-ap --boot-disk-device-name=it-ap-v74-n2 \
          ${common_args}
+
 

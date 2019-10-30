@@ -1,0 +1,66 @@
+gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-us-west1-n2 \
+                    --template=it-us-v74-n2 \
+                    --region=us-west1
+
+for i in 1 2 3 4; do 
+  gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-us-west1-n2i${i} \
+                      --template=it-us-v74-n2 \
+                      --region=us-west1
+done
+
+gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-us-central1-n2 \
+                    --template=it-us-v74-n2 \
+                    --region=us-central1
+
+for i in 1 2 3; do          
+  gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-us-central1-n2i${i} \
+                      --template=it-us-v74-n2 \
+                      --region=us-central1
+done
+
+gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-us-east1-n2 \
+                    --template=it-us-v74-n2 \
+                    --region=us-east1
+
+for i in 1 2 3; do
+  gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-us-east1-n2i${i} \
+                      --template=it-us-v74-n2 \
+                      --region=us-east1
+
+done
+
+gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-eu-west1-n2 \
+                    --template=it-eu-v74-n2 \
+                    --region=europe-west1
+
+for i in 1 2 3 4; do
+  gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-eu-west1-n2i${i} \
+                      --template=it-eu-v74-n2 \
+                      --region=europe-west1
+done
+
+gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-eu-west4-n2 \
+                    --template=it-eu-v74-n2 \
+                    --region=europe-west4
+
+for i in 1 2 3; do
+  gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-eu-west4-n2i${i} \
+                      --template=it-eu-v74-n2 \
+                      --region=europe-west4
+done
+
+gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-ap-east1-n2 \
+                    --template=it-ap-v74-n2 \
+                    --region=asia-east1
+
+for i in 1 2; do
+  gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-ap-east1-n2i${i} \
+                      --template=it-ap-v74-n2 \
+                      --region=asia-east1
+done
+
+gcloud beta compute --project=exa-demo instance-groups managed set-instance-template ig-ap-se1-n2 \
+                    --template=it-ap-v74-n2 \
+                    --region=asia-southeast1
+
+
