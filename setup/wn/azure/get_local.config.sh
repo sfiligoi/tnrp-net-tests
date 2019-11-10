@@ -2,7 +2,17 @@
 
 if [ ! -f "/dev/shm/region.config" ]; then
   fname=`mktemp -p /dev/shm --suffix=.config crcXXXX`
-  myregion=`curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/location?api-version=2017-08-01&format=text"`
+  myregion=`curl -s -H Metadata:true "http://169.254.169.254/metadata/instance/compute/location?api-version=2017-08-01&format=text"`
+  if [ ! -f /etc/condor/regions/${myregion}_local.config ]; then
+    # something went wrong, retry
+    sleep 5
+    myregion=`curl -s -H Metadata:true "http://169.254.169.254/metadata/instance/compute/location?api-version=2017-08-01&format=text"`
+  fi
+  if [ ! -f /etc/condor/regions/${myregion}_local.config ]; then
+    # something went wrong, retry again
+    sleep 30
+    myregion=`curl -s -H Metadata:true "http://169.254.169.254/metadata/instance/compute/location?api-version=2017-08-01&format=text"`
+  fi
   echo "${myregion}" > ${fname}
   mv ${fname} /dev/shm/region.config
 else
