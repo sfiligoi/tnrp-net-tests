@@ -16,6 +16,24 @@ if [ ! -f "/dev/shm/count_slots.config" ]; then
     leftcpus=${maxcpus}
   fi
 
+  # just protect
+  if [ ${leftcpus} -lt 0 ]; then
+    leftcpus=0
+  fi
+
+  # will count max slots in relation to GPUs
+  # but allow for 0 gpus for testing purposes
+  ncgpus=${ngpus}
+  if [ ${ncgpus} -lt 1 ]; then 
+    ncgpus=1
+  fi
+
+  # max 2 CPU slots per GPU slot
+  let maxcpus=${ncgpus}*2
+  if [ ${leftcpus} -gt ${maxcpus} ]; then
+    leftcpus=${maxcpus}
+  fi
+
   # cannot afford too many CPU slots, or we will run out of disk space
   if [ ${leftcpus} -gt 8 ]; then
     leftcpus=8
