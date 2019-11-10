@@ -15,6 +15,12 @@ az identity list
 $ Authorize "blob-writer"
 for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exawestp${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
 
+# US-West
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage account create -n exawest1p${n} -g exa -l westus --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az storage container create --public-access blob --account-name exawest1p${n} -n exa-west; done
+
+for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do az role assignment create --role "Storage Blob Data Contributor" --scope "/subscriptions/1b46e70e-9c7a-463d-8bce-6450c0cd15a3/resourceGroups/exa/providers/Microsoft.Storage/storageAccounts/exawest1p${n}" --assignee "c541b3ac-5180-4a46-be7e-1ef5f8f9876f"; done
+
 
 # US-East
 for n in 0 1 2 3 4 5 6 7 8 9 a b c d e f ; do az storage account create -n exaeastp${n} -g exa -l eastus --sku Premium_LRS --kind BlockBlobStorage --https-only false; done
