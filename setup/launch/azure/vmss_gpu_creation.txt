@@ -34,6 +34,58 @@ eval az vmss create --resource-group exa --name exav7nc3uswest2 \
                --single-placement-group false \
                ${AZ_STD_ARGS} --instance-count 1 # nozones
 
+###
+
+eval az vmss create --resource-group exa --name exav7nvuseast1 \
+               --location eastus \
+               --vm-sku "Standard_NV6" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+eval az vmss create --resource-group exa --name exav7nvuseast1-i2 \
+               --location eastus \
+               --vm-sku "Standard_NV6" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+eval az vmss create --resource-group exa --name exav7nvuseast1-i3 \
+               --location eastus \
+               --vm-sku "Standard_NV6" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+
+eval az vmss create --resource-group exa --name exav7nv3useast1 \
+               --location eastus \
+               --vm-sku "Standard_NV12s_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+eval az vmss create --resource-group exa --name exav7nv3useast1-i2 \
+               --location eastus \
+               --vm-sku "Standard_NV12s_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+eval az vmss create --resource-group exa --name exav7nv3useast1-i3 \
+               --location eastus \
+               --vm-sku "Standard_NV12s_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+
 eval az vmss create --resource-group exa --name exav7nduseast1 \
                --location eastus \
                --vm-sku "Standard_ND6s" \
@@ -41,6 +93,32 @@ eval az vmss create --resource-group exa --name exav7nduseast1 \
                --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
                --single-placement-group false \
                ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+eval az vmss create --resource-group exa --name exav7nduseast1-i2 \
+               --location eastus \
+               --vm-sku "Standard_ND6s" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+
+eval az vmss create --resource-group exa --name exav7ncuseast1 \
+               --location eastus \
+               --vm-sku "Standard_NC6" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+eval az vmss create --resource-group exa --name exav7ncuseast1-i2 \
+               --location eastus \
+               --vm-sku "Standard_NC6" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
 
 eval az vmss create --resource-group exa --name exav7nc2useast1 \
                --location eastus \
@@ -50,6 +128,15 @@ eval az vmss create --resource-group exa --name exav7nc2useast1 \
                --single-placement-group false \
                ${AZ_STD_ARGS} --instance-count 1 # no zones
 
+eval az vmss create --resource-group exa --name exav7nc2useast1-i2 \
+               --location eastus \
+               --vm-sku "Standard_NC6s_v2" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east1-all-in \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east1-64k/subnets/subnet-us-east1-64k \
+               --single-placement-group false \
+               ${AZ_STD_ARGS} --instance-count 1 # no zones
+
+# quota around 30?
 eval az vmss create --resource-group exa --name exav7nc3useast1 \
                --location eastus \
                --vm-sku "Standard_NC6s_v3" \
@@ -58,6 +145,8 @@ eval az vmss create --resource-group exa --name exav7nc3useast1 \
                --single-placement-group false \
                ${AZ_STD_ARGS} --instance-count 1 # no zones
 
+
+###
 
 eval az vmss create --resource-group exa --name exav7nc2ussc \
                --location southcentralus \
