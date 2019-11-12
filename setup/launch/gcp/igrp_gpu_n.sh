@@ -8,14 +8,20 @@ fi
 capacity=$1
 
 igs=""
-for i in t4 v100 p100 k80; do 
- igs="${igs} ig-us-west1-${i},us-west1"
+for i in v100 p100 k80; do 
+ igs="${igs} ig-us-west1-v75-${i},us-west1"
 done
 for i in t4 v100 p100 k80 p4; do
- igs="${igs} ig-us-central1-${i},us-central1"
+ igs="${igs} ig-us-central1-v75-${i},us-central1"
 done
-for i in k80 t4 p100; do
- igs="${igs} ig-us-east1-${i},us-east1"
+for i in v100 p100 ; do
+ igs="${igs} ig-us-central1-v75-${i}-i2,us-central1"
+ igs="${igs} ig-us-central1-v75-${i}-i3,us-central1"
+ igs="${igs} ig-us-central1-v75-${i}-i4,us-central1"
+done
+
+for i in k80 p100; do
+ igs="${igs} ig-us-east1-v75-${i},us-east1"
 done
 
 now=`date +%s`
