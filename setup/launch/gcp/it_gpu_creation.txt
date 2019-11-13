@@ -6,63 +6,63 @@ common_args="--network=projects/exa-demo/global/networks/default --network-tier=
 # Note: Uses the same image as the CPU templates
 #
 
-gcloud beta compute --project=exa-demo instance-templates create it-us-v75-k80 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-k80,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-us --boot-disk-device-name=it-us-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-us-v76-k80 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-k80,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-us --boot-disk-device-name=it-us-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-eu-v75-k80 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-k80,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-eu --boot-disk-device-name=it-eu-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-eu-v76-k80 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-k80,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-eu --boot-disk-device-name=it-eu-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-ap-v75-k80 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-k80,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-ap --boot-disk-device-name=it-ap-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-ap-v76-k80 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-k80,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-ap --boot-disk-device-name=it-ap-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-us-v75-p4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p4,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-us --boot-disk-device-name=it-us-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-us-v76-p4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p4,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-us --boot-disk-device-name=it-us-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-eu-v75-p4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p4,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-eu --boot-disk-device-name=it-eu-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-eu-v76-p4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p4,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-eu --boot-disk-device-name=it-eu-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-ap-v75-p4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p4,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-ap --boot-disk-device-name=it-ap-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-ap-v76-p4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p4,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-ap --boot-disk-device-name=it-ap-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-us-v75-t4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-t4,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-us --boot-disk-device-name=it-us-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-us-v76-t4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-t4,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-us --boot-disk-device-name=it-us-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-eu-v75-t4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-t4,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-eu --boot-disk-device-name=it-eu-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-eu-v76-t4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-t4,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-eu --boot-disk-device-name=it-eu-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-ap-v75-t4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-t4,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-ap --boot-disk-device-name=it-ap-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-ap-v76-t4 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-t4,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-ap --boot-disk-device-name=it-ap-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-us-v75-p100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p100,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-us --boot-disk-device-name=it-us-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-us-v76-p100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p100,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-us --boot-disk-device-name=it-us-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-eu-v75-p100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p100,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-eu --boot-disk-device-name=it-eu-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-eu-v76-p100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p100,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-eu --boot-disk-device-name=it-eu-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-ap-v75-p100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p100,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-ap --boot-disk-device-name=it-ap-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-ap-v76-p100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-p100,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-ap --boot-disk-device-name=it-ap-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-us-v75-v100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-v100,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-us --boot-disk-device-name=it-us-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-us-v76-v100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-v100,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-us --boot-disk-device-name=it-us-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-eu-v75-v100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-v100,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-eu --boot-disk-device-name=it-eu-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-eu-v76-v100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-v100,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-eu --boot-disk-device-name=it-eu-v76-n2 \
          ${common_args}
 
-gcloud beta compute --project=exa-demo instance-templates create it-ap-v75-v100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-v100,count=1 \
-         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v75-ap --boot-disk-device-name=it-ap-v75-n2 \
+gcloud beta compute --project=exa-demo instance-templates create it-ap-v76-v100 --machine-type=n1-highmem-2 --accelerator=type=nvidia-tesla-v100,count=1 \
+         "--metadata=ssh-keys=centos:${ssh_str}"  --image=wn-wgpu-v76-ap --boot-disk-device-name=it-ap-v76-n2 \
          ${common_args}
 
