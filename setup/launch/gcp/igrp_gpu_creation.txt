@@ -24,13 +24,13 @@ for n in 1 2 3 4 5; do
 
   for i in t4; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-us-central1-v76-${i}${nstr} \
-                        --base-instance-name=ig-us-central1-${i} --template=it-us-v76-${i} --size=1 \
+                        --base-instance-name=ig-us-central1-${i} --template=it-us-v76-${i} --size=0 \
                         --zones=us-central1-a,us-central1-b --instance-redistribution-type=NONE
   done
 
   for i in k80; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-us-central1-v76-${i}${nstr} \
-                        --base-instance-name=ig-us-central1-${i} --template=it-us-v76-${i} --size=1 \
+                        --base-instance-name=ig-us-central1-${i} --template=it-us-v76-${i} --size=0 \
                         --zones=us-central1-a,us-central1-c --instance-redistribution-type=NONE
   done
 
@@ -63,7 +63,7 @@ for n in 1 2 3 4 5; do
 
   for i in k80; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-asia-east1-v76-${i}${nstr} \
-                        --base-instance-name=ig-asia-east1-${i} --template=it-ap-v76-${i} --size=1 \
+                        --base-instance-name=ig-asia-east1-${i} --template=it-ap-v76-${i} --size=0 \
                         --zones=asia-east1-a,asia-east1-b --instance-redistribution-type=NONE
   done
 
@@ -84,7 +84,7 @@ for n in 1 2 3 4 5; do
   for i in k80; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-europe-west1-v76-${i}${nstr} \
                         --base-instance-name=ig-europe-west1-${i} --template=it-eu-v76-${i} --size=0 \
-                        --zones=europe-west1-b,urope-west1-d --instance-redistribution-type=NONE
+                        --zones=europe-west1-b,europe-west1-d --instance-redistribution-type=NONE
   done
 
   for i in p100; do
@@ -97,7 +97,7 @@ for n in 1 2 3 4 5; do
 
   for i in t4; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-europe-west4-v76-${i}${nstr} \
-                        --base-instance-name=ig-europe-west4-${i} --template=it-eu-v76-${i} --size=1 \
+                        --base-instance-name=ig-europe-west4-${i} --template=it-eu-v76-${i} --size=0 \
                         --zones=europe-west4-b,europe-west4-c --instance-redistribution-type=NONE
   done
 
@@ -121,7 +121,7 @@ done
 # us-central
   for i in p4; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-us-central1-v76-${i} \
-                        --base-instance-name=ig-us-central1-${i} --template=it-us-v76-${i} --size=1 \
+                        --base-instance-name=ig-us-central1-${i} --template=it-us-v76-${i} --size=0 \
                         --zones=us-central1-a,us-central1-c --instance-redistribution-type=NONE
   done
 
@@ -129,27 +129,21 @@ done
 
   for i in t4; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-asia-northeast1-v76-${i} \
-                        --base-instance-name=ig-asia-northeast1-${i} --template=it-ap-v76-${i} --size=1 \
+                        --base-instance-name=ig-asia-northeast1-${i} --template=it-ap-v76-${i} --size=0 \
                         --zones=asia-northeast1-a --instance-redistribution-type=NONE
   done
 
   # asia-southeast1
 
   for i in t4; do
-    gcloud beta compute --project=exa-demo instance-groups managed create ig-asia-northeast1-v76-${i} \
-                        --base-instance-name=ig-asia-northeast1-${i} --template=it-ap-v76-${i} --size=1 \
-                        --zones=asia-northeast1-a --instance-redistribution-type=NONE
-  done
-
-  for i in t4; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-asia-southeast1-v76-${i} \
-                        --base-instance-name=ig-asia-southeast1-${i} --template=it-ap-v76-${i} --size=1 \
+                        --base-instance-name=ig-asia-southeast1-${i} --template=it-ap-v76-${i} --size=0 \
                         --zones=asia-southeast1-b --instance-redistribution-type=NONE
   done
 
   for i in p4; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-asia-southeast1-v76-${i} \
-                        --base-instance-name=ig-asia-southeast1-${i} --template=it-ap-v76-${i} --size=1 \
+                        --base-instance-name=ig-asia-southeast1-${i} --template=it-ap-v76-${i} --size=0 \
                         --zones=asia-southeast1-b,asia-southeast1-c --instance-redistribution-type=NONE
   done
 
