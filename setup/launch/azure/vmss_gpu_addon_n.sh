@@ -1,11 +1,12 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then 
-  echo "ERROR: Usage: vmss_gpu_n.sh <i_per_vmss>|t[emplate]"
+if [ $# -ne 2 ]; then 
+  echo "ERROR: Usage: vmss_gpu_addon_n.sh <addon> <i_per_vmss>|t[emplate]"
   exit 1
 fi
 
-capacity=$1
+addon=$1
+capacity=$2
 
 if [ "${capacity:0:1}" == "t" ]; then
   istemplate=1
@@ -32,13 +33,21 @@ else
   echo "INFO: Generating template"
 fi
 
-for n in ${vvs}; do 
-  echo "az vmss scale  --resource-group exa --name ${n}  --new-capacity ${capacity}"
-  if [ ${istemplate} -eq 0 ]; then
-    az vmss scale  --resource-group exa --name ${n}  --new-capacity ${capacity} > ${n}.log &
-    # sleep a bit in between so not to overwhelm the system
-    sleep 1
+for n in ${addon}; do
+  if [ $n -eq 1 ]; then
+   nstr=""
+  else
+   nstr="-i${n}"
   fi
+
+  for n in ${vvs}; do 
+    echo "az vmss scale  --resource-group exa --name ${n}${nstr}  --new-capacity ${capacity}"
+    if [ ${istemplate} -eq 0 ]; then
+      az vmss scale  --resource-group exa --name ${n}${nstr}  --new-capacity ${capacity} > ${n}${nstr}.log &
+      # sleep a bit in between so not to overwhelm the system
+      sleep 1
+    fi
+  done
 done
 if [ ${istemplate} -eq 0 ]; then
  echo "Waiting for completion"
