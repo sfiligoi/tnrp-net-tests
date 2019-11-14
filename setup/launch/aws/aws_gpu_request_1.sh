@@ -3,23 +3,23 @@
 
 tmpl=""
 
-for r in eu-central-1; do
+for r in eu-central-1 ap-northeast-1; do
   tmpl="${tmpl} ${r}_gpuod_g4,${r}"
 done
 
-for r in eu-central-1; do
+for r in eu-central-1 ap-northeast-1; do
   tmpl="${tmpl} ${r}_gpuod_p3,${r}"
 done
 
-for r in eu-central-1; do
+for r in eu-central-1 ap-northeast-1; do
   tmpl="${tmpl} ${r}_gpuod_g2,${r}"
 done
 
-for r in eu-central-1; do
+for r in eu-central-1 ap-northeast-1; do
   tmpl="${tmpl} ${r}_gpuod_p2,${r}"
 done
 
-for r in eu-central-1; do
+for r in eu-central-1 ap-northeast-1; do
   tmpl="${tmpl} ${r}_gpuod_g3,${r}"
 done
 
