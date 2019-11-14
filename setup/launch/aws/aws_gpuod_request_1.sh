@@ -5,23 +5,23 @@
 
 tmpl=""
 
-for r in us-east-1 us-west-2 us-east-2 us-west-1; do
+for r in us-east-1 us-west-2 us-east-2 us-west-1 eu-west-1; do
   tmpl="${tmpl} ${r}_gpuod_g4,${r}"
 done
 
-for r in us-east-1 us-west-2 us-east-2; do
+for r in us-east-1 us-west-2 us-east-2 eu-west-1; do
   tmpl="${tmpl} ${r}_gpuod_p3,${r}"
 done
 
-for r in us-east-1 us-west-2 us-west-1; do
+for r in us-east-1 us-west-2 us-west-1 eu-west-1; do
   tmpl="${tmpl} ${r}_gpuod_g2,${r}"
 done
 
-for r in us-east-1 us-west-2 us-east-2; do
+for r in us-east-1 us-west-2 us-east-2 eu-west-1; do
   tmpl="${tmpl} ${r}_gpuod_p2,${r}"
 done
 
-for r in us-east-1 us-west-2 us-east-2 us-west-1; do
+for r in us-east-1 us-west-2 us-east-2 us-west-1 eu-west-1; do
   tmpl="${tmpl} ${r}_gpuod_g3,${r}"
 done
 
