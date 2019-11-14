@@ -12,6 +12,12 @@ fi
 if [ ! -f "/dev/shm/my_local.config" ]; then
   if [ -f /etc/condor/regions/${myregion}_local.config ]; then
     cp /etc/condor/regions/${myregion}_local.config /dev/shm/my_local.config
+
+    kgpus=`clinfo -l |grep Device |grep -e 'K80' -e 'K520'`
+    if [ "x${kgpus}" != "x" ]; then 
+      echo 'CLOUD_DataRegion = strcat("G2",$(CLOUD_DataRegion))' >> /dev/shm/my_local.config
+    fi
+
   else
     cp /etc/condor/regions/invalid_local.config /dev/shm/my_local.config
   fi
