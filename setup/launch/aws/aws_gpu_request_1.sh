@@ -4,23 +4,23 @@
 tmpl=""
 
 for r in eu-central-1 ap-northeast-1 ap-southeast-2; do
-  tmpl="${tmpl} ${r}_gpuod_g4,${r}"
+  tmpl="${tmpl} ${r}_gpu_g4,${r}"
 done
 
 for r in eu-central-1 ap-northeast-1 ap-southeast-2; do
-  tmpl="${tmpl} ${r}_gpuod_p3,${r}"
+  tmpl="${tmpl} ${r}_gpu_p3,${r}"
 done
 
 for r in eu-central-1 ap-northeast-1 ap-southeast-2; do
-  tmpl="${tmpl} ${r}_gpuod_g2,${r}"
+  tmpl="${tmpl} ${r}_gpu_g2,${r}"
 done
 
 for r in eu-central-1 ap-northeast-1 ap-southeast-2; do
-  tmpl="${tmpl} ${r}_gpuod_p2,${r}"
+  tmpl="${tmpl} ${r}_gpu_p2,${r}"
 done
 
 for r in eu-central-1 ap-northeast-1 ap-southeast-2; do
-  tmpl="${tmpl} ${r}_gpuod_g3,${r}"
+  tmpl="${tmpl} ${r}_gpu_g3,${r}"
 done
 
 now=`date +%s`
