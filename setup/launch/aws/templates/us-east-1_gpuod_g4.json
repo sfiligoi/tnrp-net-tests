@@ -1,0 +1,51 @@
+{
+  "IamFleetRole": "arn:aws:iam::552407176635:role/aws-ec2-spot-fleet-tagging-role",
+  "AllocationStrategy": "capacityOptimized",
+  "TargetCapacity": 2,
+  "ValidFrom": "2019-11-12T23:05:56Z",
+  "ValidUntil": "2020-11-12T23:05:56Z",
+  "TerminateInstancesWithExpiration": true,
+  "LaunchSpecifications": [],
+  "Type": "request",
+  "OnDemandTargetCapacity": 2,
+  "LaunchTemplateConfigs": [
+    {
+      "LaunchTemplateSpecification": {
+        "LaunchTemplateId": "lt-0d0fb2dd7bc6bf8d7",
+        "Version": "1"
+      },
+      "Overrides": [
+        {
+          "InstanceType": "g4dn.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-8586b6ab"
+        },
+        {
+          "InstanceType": "g4dn.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-73374f4d"
+        },
+        {
+          "InstanceType": "g4dn.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-8b85b3d7"
+        },
+        {
+          "InstanceType": "g4dn.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-8a678884"
+        },
+        {
+          "InstanceType": "g4dn.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-eb66a3a6"
+        },
+        {
+          "InstanceType": "g4dn.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-e4033683"
+        }
+      ]
+    }
+  ]
+}
