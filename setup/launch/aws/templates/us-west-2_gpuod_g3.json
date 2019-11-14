@@ -1,0 +1,41 @@
+{
+  "IamFleetRole": "arn:aws:iam::552407176635:role/aws-ec2-spot-fleet-tagging-role",
+  "AllocationStrategy": "capacityOptimized",
+  "TargetCapacity": 2,
+  "ValidFrom": "2019-11-14T01:32:20Z",
+  "ValidUntil": "2020-11-14T01:32:20Z",
+  "TerminateInstancesWithExpiration": true,
+  "LaunchSpecifications": [],
+  "Type": "request",
+  "OnDemandTargetCapacity": 2,
+  "LaunchTemplateConfigs": [
+    {
+      "LaunchTemplateSpecification": {
+        "LaunchTemplateId": "lt-03293b9f9f353e884",
+        "Version": "1"
+      },
+      "Overrides": [
+        {
+          "InstanceType": "g3s.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-20866a7d"
+        },
+        {
+          "InstanceType": "g3s.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-8db3d7a6"
+        },
+        {
+          "InstanceType": "g3s.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-af8496d6"
+        },
+        {
+          "InstanceType": "g3s.xlarge",
+          "WeightedCapacity": 1,
+          "SubnetId": "subnet-80f4cbcb"
+        }
+      ]
+    }
+  ]
+}

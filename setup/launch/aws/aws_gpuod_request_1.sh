@@ -5,13 +5,25 @@
 
 tmpl=""
 
-for g in p3 g4 g2 g3 p2; do
-  tmpl="${tmpl} us-east-1_gpuod_${g},us-east-1"
-done
-for g in p3 g4 g3 p2; do
-  tmpl="${tmpl} us-east-2_gpuod_${n},us-east-2"
+for r in us-east-1 us-west-2 us-east-2; do
+  tmpl="${tmpl} ${r}_gpuod_g4,${r}"
 done
 
+for r in us-east-1 us-west-2 us-east-2; do
+  tmpl="${tmpl} ${r}_gpuod_p3,${r}"
+done
+
+for r in us-east-1 us-west-2; do
+  tmpl="${tmpl} ${r}_gpuod_g2,${r}"
+done
+
+for r in us-east-1 us-west-2 us-east-2; do
+  tmpl="${tmpl} ${r}_gpuod_p2,${r}"
+done
+
+for r in us-east-1 us-west-2 us-east-2; do
+  tmpl="${tmpl} ${r}_gpuod_g3,${r}"
+done
 
 now=`date +%s`
 mkdir -p /tmp/afrg0_${now}
