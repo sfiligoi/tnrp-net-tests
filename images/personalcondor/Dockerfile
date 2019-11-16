@@ -7,7 +7,7 @@ RUN groupadd -g 2000 condor && useradd -u 2000 -g 2000 -s /sbin/nologin condor
 RUN yum -y install https://repo.opensciencegrid.org/osg/3.5/osg-3.5-el7-release-latest.rpm
 RUN yum -y install epel-release yum-plugin-priorities
 RUN yum install -y condor
-RUN yum install -y osg-wn-client aria2
+RUN yum install -y osg-wn-client aria2 openssh-clients
 RUN yum -y install supervisor
 
 RUN yum clean all
