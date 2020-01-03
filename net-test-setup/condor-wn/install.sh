@@ -8,6 +8,8 @@ yum clean all
 yum install -y condor
 yum install -y docker
 
+yum install -y wget aria2
+
 # must be the same as on condor-head
 download /etc/condor/passwords.d/POOL
 
