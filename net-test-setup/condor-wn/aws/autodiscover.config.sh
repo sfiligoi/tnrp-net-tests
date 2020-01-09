@@ -4,6 +4,10 @@ if [ ! -f "/dev/shm/region.config" ]; then
   fname=`mktemp -p /dev/shm --suffix=.config crcXXXX`
   myname=`curl -s http://169.254.169.254/latest/meta-data/hostname`
   myregion=`echo ${myname} | awk '{split($1,a,"."); print a[2]}'`
+  if [ "${myregion}" == "ec2" ]; then
+    myregion=us-east-1
+  fi
+
   echo "${myregion}" > ${fname}
   mv ${fname} /dev/shm/region.config
 else
