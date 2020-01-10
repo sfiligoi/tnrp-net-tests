@@ -1,0 +1,25 @@
+export AZ_SSH="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIi6sHuPqcx4J0pLiXSnLGRSlnILReeaff9gGCm0zKiqHVeZ6RPo2gbYKDBzVgDJcqOftjp/Mcg30YIDX1ei42W2WRHx/ewuK+09qejjAuo389ySByS6mI/emu2HhdvYMb07nhycdyK45xXYM6wla6hfQIrNccAKfPCWGdlc/FNxW5ffBFrm7AM9yMCXc95XkuRBto1oaySTYEr3FGYw2U8FfRmmnL/U7xI7zKR4OeWRn8KlaQyABybQ8h5a6T6ISjxmUoSL1MIWPlfNuxZ5djEoCIrtuhPeXW5dxlPrJCdSiBHQcAhsqQD1oyCIz60QCj9xJOjdx4ENXqlkFLPBw9 isfiligoi@wireless-169-228-82-29.ucsd.edu"
+
+export AZ_SUB=/subscriptions/3b526279-9aab-4ce5-972a-0c0cdb315d84/resourceGroups/test-net/providers/Microsoft
+
+export AZ_STD_ARGS="--admin-username centos --authentication-type ssh --ssh-key-values \"${AZ_SSH}\" 
+                   --priority spot --public-ip-per-vm --upgrade-policy-mode manual --lb \"\" 
+                   --disable-overprovision --eviction-policy delete
+                   --image ${AZ_SUB}.Compute/galleries/prp_condor_wn/images/prp_htcondor_wn"
+
+eval az vmss create --resource-group test-net --name prp-condor-wn-uswest2 \
+               --location westus2 \
+               --vm-sku "Standard_D16_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-west2-all-upper \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-wset2/subnets/subnet-us-west2 \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+
+eval az vmss create --resource-group test-net --name prp-condor-wn-useast \
+               --location eastus \
+               --vm-sku "Standard_D16_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/us-east-all-upper \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-east/subnets/subnet-us-east \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+
