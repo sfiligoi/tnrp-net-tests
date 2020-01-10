@@ -1,8 +1,8 @@
 universe = vanilla
 
 # Files
-output = out/data.$(cloud_region).$(cluster).us.$(process).out
-error = err/data.$(cloud_region).$(cluster).us.$(process).err
+output = out/data.$(cloud_region).$(cluster).aws.$(process).out
+error = err/data.$(cloud_region).$(cluster).aws.$(process).err
 log = condor.log
 
 # File transfer behavior
@@ -16,13 +16,8 @@ executable = stash_test.sh
 #
 # arguments = server-region nmax
 
-arguments = uswest 24
+arguments = awsuswest 24
 queue
-
-arguments = useast 24
-queue
-arguments = uscentral 24
-queue
-arguments = usmidwest 24
+arguments = awsuseast 24
 queue
 

@@ -1,0 +1,19 @@
+universe = vanilla
+
+# Files
+output = out/data.$(cloud_region).$(cluster).usI2.$(process).out
+error = err/data.$(cloud_region).$(cluster).usI2.$(process).err
+log = condor.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+requirements=(CLOUD_Region =?= "$(cloud_region)")
+
+executable = stash_test_i2.sh
+# arguments = nmax
+arguments = 8
+queue
+

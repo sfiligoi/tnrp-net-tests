@@ -13,6 +13,10 @@ elif [ "$1" == "uscentral" ]; then
   url=http://osg.chic.nrp.internet2.edu:9001/user/dweitzel/public/chep/file.cvmfs.1000
 elif [ "$1" == "usmidwest" ]; then
   url=http://osg.kans.nrp.internet2.edu:9001/user/dweitzel/public/chep/file.cvmfs.1000
+elif [ "$1" == "awsuswest" ]; then
+  url=http://prp-test-us-west2.s3-us-west-2.amazonaws.com/test/data/1G.dat
+elif [ "$1" == "awsuseast" ]; then
+  url=http://prp-test-us-east1.s3.amazonaws.com/test/data/1G.dat
 else
   echo "Unknown region $1"
   exit 1

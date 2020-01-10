@@ -56,19 +56,17 @@ if [ $rc -ne 0 ]; then
   exit 1
 fi
 
-idrange=`condor_submit -terse "cloud_region=AWS-${r}" submit_stash_us.condor`
+./submit_wait.sh submit_stash_us.condor "AWS-${r}" 1800
 rc=$?
 
-# give it 20 minutes to complete
 if [ $rc -eq 0 ]; then
-  id=`echo "$idrange" | awk '{split($1,a,"."); print a[1]}'`
-  echo "AWS-${r} job: $id"
-  condor_wait -wait 1200 condor.log "$id"
-  rc2=$?
-  if [ $rc2 -ne 0 ]; then
-    echo "WARNING: Job not completed, removing $id"
-    condor_rm "$id"
-  fi
+  ./submit_wait.sh submit_stash_I2us.condor "AWS-${r}" 600
+  rc=$?
+fi
+
+if [ $rc -eq 0 ]; then
+  ./submit_wait.sh submit_stash_awsus.condor "AWS-${r}" 1200
+  rc=$?
 fi
 
 
