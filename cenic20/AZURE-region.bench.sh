@@ -49,7 +49,7 @@ if [ $rc -ne 0 ]; then
   exit 1
 fi
 
-./submit_wait.sh submit_stash_us.condor "AZURE-${r}" 1200
+./submit_wait.sh submit_stash_us.condor "AZURE-${r}" 1800
 rc=$?
 
 if [ $rc -eq 0 ]; then
