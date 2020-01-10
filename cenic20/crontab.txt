@@ -1,0 +1,5 @@
+0 4,12,20 * * * cd /home/centos/tnrp-net-tests/cenic20 && ./AWS-us-west-2.bench.sh 2>&1 >> AWS-us-west-2.cron.log </dev/null
+20 3,11,19 * * * cd /home/centos/tnrp-net-tests/cenic20 && ./AZURE-westus2.bench.sh 2>&1 >> AZURE-westus2.cron.log </dev/null
+0 1,9,17 * * * cd /home/centos/tnrp-net-tests/cenic20 && ./AWS-us-east-1.bench.sh 2>&1 >> AWS-us-east-1.cron.log </dev/null
+40 1,9,17 * * * cd /home/centos/tnrp-net-tests/cenic20 && ./AWS-eastus.bench.sh 2>&1 >> AZURE-eastus.cron.log </dev/null
+20 2,10,18 * * * cd /home/centos/tnrp-net-tests/cenic20 && ./AWS-southcentralus.bench.sh 2>&1 >> AZURE-southcentralus.cron.log </dev/null
