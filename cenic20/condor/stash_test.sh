@@ -34,7 +34,8 @@ date
 rm -f out.dat
 t1=`date +%s`
 time aria2c --header='Want-Digest: ' -q -j 80 -x 16 ${url} -o out.dat
-echo "RC: $?"
+rc=$?
+echo "RC: ${rc}"
 t2=`date +%s`
 let dt=$t2-$t1
 echo "elapsed: ${dt}" 
@@ -45,6 +46,12 @@ fsize=`ls -l out.dat |awk '{print $5}'`
 let bps=${fsize}/${dt}/1000000
 echo "MiBps: ${bps}"
 date
+
+if [ $rc -ne 0 ]; then
+  # no point in testing if warmup failed
+  echo "ERROR during warmup, aborting"
+  exit 1
+fi
 
 echo "========== Single curl"
 date
