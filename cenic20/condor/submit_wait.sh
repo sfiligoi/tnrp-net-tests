@@ -8,8 +8,13 @@ f=$1
 r=$2
 t=$3
 
-idrange=`condor_submit -terse "cloud_region=${r}" ${f}`
-rc=$?
+if [ "x$4" == "x" ]; then
+ idrange=`condor_submit -terse "cloud_region=${r}" ${f}`
+ rc=$?
+else
+ idrange=`condor_submit -terse "cloud_region=${r}" "nmax=$4" ${f}`
+ rc=$?
+fi
 
 # give it ${t} seconds to complete
 if [ $rc -eq 0 ]; then
