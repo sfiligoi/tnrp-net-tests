@@ -1,0 +1,22 @@
+universe = vanilla
+
+# Files
+output = out/data.$(cloud_region).$(cluster).icecube.multi.$(process).out
+error = err/data.$(cloud_region).$(cluster).icecube.multi.$(process).err
+log = condor.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+requirements=(CLOUD_Region =?= "$(cloud_region)")
+
+executable = icecube_test.sh
+transfer_input_files = icecube_in_list.txt
+#
+# arguments = server-region nmax
+
+arguments = direct-multi 24
+queue $(nmax)
+
