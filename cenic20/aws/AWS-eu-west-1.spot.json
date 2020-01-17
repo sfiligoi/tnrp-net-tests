@@ -1,0 +1,96 @@
+{
+  "IamFleetRole": "arn:aws:iam::371881160940:role/aws-ec2-spot-fleet-tagging-role",
+  "AllocationStrategy": "capacityOptimized",
+  "TargetCapacity": 1,
+  "SpotPrice": "1.064",
+  "ValidFrom": "2020-01-17T00:19:25Z",
+  "ValidUntil": "2021-01-17T00:19:25Z",
+  "TerminateInstancesWithExpiration": true,
+  "LaunchSpecifications": [
+    {
+      "ImageId": "ami-0b08dd2edf366786f",
+      "InstanceType": "m5n.4xlarge",
+      "KeyName": "aws-eu-west-1",
+      "SpotPrice": "1.064",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-0c2d10ca4c42451d7"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-ff991aa5",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-039dde5df169eda34"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0b08dd2edf366786f",
+      "InstanceType": "m5n.4xlarge",
+      "KeyName": "aws-eu-west-1",
+      "SpotPrice": "1.064",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-0c2d10ca4c42451d7"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-a46b3aec",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-039dde5df169eda34"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0b08dd2edf366786f",
+      "InstanceType": "m5n.4xlarge",
+      "KeyName": "aws-eu-west-1",
+      "SpotPrice": "1.064",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-0c2d10ca4c42451d7"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-54da9c32",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-039dde5df169eda34"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    }
+  ],
+  "Type": "maintain"
+}
