@@ -58,10 +58,10 @@ rc=$?
 #  rc=$?
 #fi
 
-#if [ $rc -eq 0 ]; then
-#  ./submit_wait.sh submit_stash_azureus.condor "AZURE-${r}" 1200
-#  rc=$?
-#fi
+if [ $rc -eq 0 ]; then
+  ./submit_wait.sh submit_stash_azureus.condor "AZURE-${r}" 1800
+  rc=$?
+fi
 
 #
 # Phase 3: Request more instances

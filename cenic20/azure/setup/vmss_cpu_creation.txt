@@ -30,3 +30,50 @@ eval az vmss create --resource-group test-net --name prp-condor-wn-ussouthcentra
                --subnet ${AZ_SUB}.Network/virtualNetworks/net-us-southcentral/subnets/subnet-us-southcentral \
                ${AZ_STD_ARGS} --instance-count 1
 
+eval az vmss create --resource-group test-net --name prp-condor-wn-euwest \
+               --location westeurope \
+               --vm-sku "Standard_D16_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/eu-west-all-upper \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-eu-west/subnets/subnet-eu-west \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+
+eval az vmss create --resource-group test-net --name prp-condor-wn-ca \
+               --location canadacentral \
+               --vm-sku "Standard_D16_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ca-all-upper \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ca/subnets/subnet-ca \
+               ${AZ_STD_ARGS} --instance-count 1
+
+eval az vmss create --resource-group test-net --name prp-condor-wn-apse \
+               --location southeastasia \
+               --vm-sku "Standard_D16_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-se-all-upper \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-se/subnets/subnet-ap-se \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+
+eval az vmss create --resource-group test-net --name prp-condor-wn-apjp \
+               --location japaneast \
+               --vm-sku "Standard_D16_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-jp-all-upper \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-jp/subnets/subnet-ap-jp \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+
+eval az vmss create --resource-group test-net --name prp-condor-wn-apau \
+               --location australiaeast \
+               --vm-sku "Standard_D16_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/ap-au-east-all-upper \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-ap-au-east/subnets/subnet-ap-au-east \
+               ${AZ_STD_ARGS} --instance-count 1
+
+eval az vmss create --resource-group test-net --name prp-condor-wn-euuk \
+               --location uksouth \
+               --vm-sku "Standard_D16_v3" \
+               --nsg ${AZ_SUB}.Network/networkSecurityGroups/eu-uk-all-upper \
+               --subnet ${AZ_SUB}.Network/virtualNetworks/net-eu-uk/subnets/subnet-eu-uk \
+               --single-placement-group false --zones 1 2 3 \
+               ${AZ_STD_ARGS} --instance-count 1
+
+

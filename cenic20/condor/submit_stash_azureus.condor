@@ -1,8 +1,8 @@
 universe = vanilla
 
 # Files
-output = out/data.$(cloud_region).$(cluster).icecube.$(process).out
-error = err/data.$(cloud_region).$(cluster).icecube.$(process).err
+output = out/data.$(cloud_region).$(cluster).azure.$(process).out
+error = err/data.$(cloud_region).$(cluster).azure.$(process).err
 log = condor.log
 
 # File transfer behavior
@@ -12,12 +12,14 @@ WhenToTransferOutput = ON_EXIT
 #requirements = (SlotID <6)
 requirements=(CLOUD_Region =?= "$(cloud_region)")
 
-executable = icecube_test.sh
-transfer_input_files = icecube_in_list.txt
+executable = stash_test.sh
 #
 # arguments = server-region nmax
 
-arguments = direct 24
+arguments = azureuswest 24
 queue
-#arguments = chicsquid 24
+arguments = azureuseast 24
+queue
+#arguments = azureussouth 24
 #queue
+

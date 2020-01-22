@@ -58,10 +58,10 @@ rc=$?
 #  rc=$?
 #fi
 
-#if [ $rc -eq 0 ]; then
-#  ./submit_wait.sh submit_stash_gcpus.condor "GCP-${r}" 1200
-#  rc=$?
-#fi
+if [ $rc -eq 0 ]; then
+  ./submit_wait.sh submit_stash_gcpus.condor "GCP-${r}" 1200
+  rc=$?
+fi
 
 #
 # Phase 3: Request more instances

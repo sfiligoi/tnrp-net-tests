@@ -17,6 +17,18 @@ elif [ "$1" == "awsuswest" ]; then
   url=http://prp-test-us-west2.s3-us-west-2.amazonaws.com/test/data/1G.dat
 elif [ "$1" == "awsuseast" ]; then
   url=http://prp-test-us-east1.s3.amazonaws.com/test/data/1G.dat
+elif [ "$1" == "azureuseast" ]; then
+  url=http://prpeast1p0.blob.core.windows.net/prp-test/data/1G.dat
+elif [ "$1" == "azureuswest" ]; then
+  url=http://prpwest2p0.blob.core.windows.net/prp-test/data/1G.dat
+elif [ "$1" == "azureussouth" ]; then
+  url=http://prpsoutp0.blob.core.windows.net/prp-test/data/1G.dat
+elif [ "$1" == "gcpuseast" ]; then
+  url=https://storage.googleapis.com/tnrp-test-us-east1/test/data/1G.dat
+elif [ "$1" == "gcpuswest" ]; then
+  url=https://storage.googleapis.com/tnrp-test-us-west1/test/data/1G.dat
+elif [ "$1" == "gcpuscentral" ]; then
+  url=https://storage.googleapis.com/tnrp-test-us-central1/test/data/1G.dat
 else
   echo "Unknown region $1"
   exit 1

@@ -9,6 +9,14 @@ if [ "$1" == "direct" ]; then
   wantwarmup=1
 elif [ "$1" == "direct-multi" ]; then
   wantwarmup=0
+elif [ "$1" == "chicsquid" ]; then
+  wantwarmup=1
+  export http_proxy=http://163.253.70.2:50011
+  echo "Using squid: 163.253.70.2:50011"
+elif [ "$1" == "chicsquid-multi" ]; then
+  wantwarmup=0
+  export http_proxy=http://163.253.70.2:50011
+  echo "Using squid: 163.253.70.2:50011"
 else
   echo "Unknown setuo $1"
   exit 1
@@ -104,3 +112,5 @@ echo "========= tracepath xdm.icecube.wisc.edu"
 tracepath xdm.icecube.wisc.edu
 
 
+echo "========= tracepath 163.253.70.2"
+tracepath 163.253.70.2

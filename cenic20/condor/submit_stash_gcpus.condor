@@ -1,0 +1,25 @@
+universe = vanilla
+
+# Files
+output = out/data.$(cloud_region).$(cluster).gcp.$(process).out
+error = err/data.$(cloud_region).$(cluster).gcp.$(process).err
+log = condor.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+requirements=(CLOUD_Region =?= "$(cloud_region)")
+
+executable = stash_test.sh
+#
+# arguments = server-region nmax
+
+arguments = gcpuswest 24
+queue
+arguments = gcpuseast 24
+queue
+arguments = gcpuscentral 24
+queue
+
