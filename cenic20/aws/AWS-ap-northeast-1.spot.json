@@ -2,17 +2,17 @@
   "IamFleetRole": "arn:aws:iam::371881160940:role/aws-ec2-spot-fleet-tagging-role",
   "AllocationStrategy": "capacityOptimized",
   "TargetCapacity": 1,
-  "SpotPrice": "1.064",
-  "ValidFrom": "2020-01-22T22:26:23Z",
-  "ValidUntil": "2021-01-22T22:26:23Z",
+  "SpotPrice": "1.4",
+  "ValidFrom": "2020-01-22T22:24:07Z",
+  "ValidUntil": "2021-01-22T22:24:07Z",
   "TerminateInstancesWithExpiration": true,
   "LaunchSpecifications": [
     {
-      "ImageId": "ami-0b08dd2edf366786f",
+      "ImageId": "ami-0c596c16db6e2df65",
       "InstanceType": "m5n.4xlarge",
-      "SubnetId": "subnet-ff991aa5, subnet-a46b3aec, subnet-54da9c32",
-      "KeyName": "aws-eu-west-1",
-      "SpotPrice": "1.064",
+      "SubnetId": "subnet-0d96a556, subnet-3071b078, subnet-1f7fb734",
+      "KeyName": "igor",
+      "SpotPrice": "1.224",
       "BlockDeviceMappings": [
         {
           "DeviceName": "/dev/sda1",
@@ -20,22 +20,45 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 40,
-            "SnapshotId": "snap-0c2d10ca4c42451d7"
+            "SnapshotId": "snap-0cf56c35571edeb1b"
           }
         }
       ],
       "SecurityGroups": [
         {
-          "GroupId": "sg-039dde5df169eda34"
+          "GroupId": "sg-05801d78bfba23169"
         }
       ]
     },
     {
-      "ImageId": "ami-0b08dd2edf366786f",
+      "ImageId": "ami-0c596c16db6e2df65",
+      "InstanceType": "m5dn.4xlarge",
+      "SubnetId": "subnet-0d96a556, subnet-3071b078, subnet-1f7fb734",
+      "KeyName": "igor",
+      "SpotPrice": "1.4",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-0cf56c35571edeb1b"
+          }
+        }
+      ],
+      "SecurityGroups": [
+        {
+          "GroupId": "sg-05801d78bfba23169"
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0c596c16db6e2df65",
       "InstanceType": "m5.4xlarge",
-      "SubnetId": "subnet-ff991aa5, subnet-a46b3aec, subnet-54da9c32",
-      "KeyName": "aws-eu-west-1",
-      "SpotPrice": "0.856",
+      "SubnetId": "subnet-0d96a556, subnet-3071b078, subnet-1f7fb734",
+      "KeyName": "igor",
+      "SpotPrice": "0.992",
       "BlockDeviceMappings": [
         {
           "DeviceName": "/dev/sda1",
@@ -43,36 +66,13 @@
             "DeleteOnTermination": true,
             "VolumeType": "gp2",
             "VolumeSize": 40,
-            "SnapshotId": "snap-0c2d10ca4c42451d7"
+            "SnapshotId": "snap-0cf56c35571edeb1b"
           }
         }
       ],
       "SecurityGroups": [
         {
-          "GroupId": "sg-039dde5df169eda34"
-        }
-      ]
-    },
-    {
-      "ImageId": "ami-0b08dd2edf366786f",
-      "InstanceType": "m5ad.4xlarge",
-      "SubnetId": "subnet-ff991aa5, subnet-a46b3aec, subnet-54da9c32",
-      "KeyName": "aws-eu-west-1",
-      "SpotPrice": "0.92",
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "VolumeType": "gp2",
-            "VolumeSize": 40,
-            "SnapshotId": "snap-0c2d10ca4c42451d7"
-          }
-        }
-      ],
-      "SecurityGroups": [
-        {
-          "GroupId": "sg-039dde5df169eda34"
+          "GroupId": "sg-05801d78bfba23169"
         }
       ]
     }

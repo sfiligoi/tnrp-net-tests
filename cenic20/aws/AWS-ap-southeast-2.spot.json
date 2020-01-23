@@ -1,0 +1,180 @@
+{
+  "IamFleetRole": "arn:aws:iam::371881160940:role/aws-ec2-spot-fleet-tagging-role",
+  "AllocationStrategy": "capacityOptimized",
+  "TargetCapacity": 1,
+  "SpotPrice": "1.136",
+  "ValidFrom": "2020-01-22T22:38:38Z",
+  "ValidUntil": "2021-01-22T22:38:38Z",
+  "TerminateInstancesWithExpiration": true,
+  "LaunchSpecifications": [
+    {
+      "ImageId": "ami-0c5e33dc5b1766a16",
+      "InstanceType": "m5.4xlarge",
+      "KeyName": "prp-aws-sydney",
+      "SpotPrice": "0.96",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-024f7e8edd9c39814"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-2f0f8077",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-07f4e0d76206f1b14"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0c5e33dc5b1766a16",
+      "InstanceType": "m5.4xlarge",
+      "KeyName": "prp-aws-sydney",
+      "SpotPrice": "0.96",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-024f7e8edd9c39814"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-73dbc714",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-07f4e0d76206f1b14"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0c5e33dc5b1766a16",
+      "InstanceType": "m5.4xlarge",
+      "KeyName": "prp-aws-sydney",
+      "SpotPrice": "0.96",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-024f7e8edd9c39814"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-d06e6799",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-07f4e0d76206f1b14"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0c5e33dc5b1766a16",
+      "InstanceType": "m5d.4xlarge",
+      "KeyName": "prp-aws-sydney",
+      "SpotPrice": "1.136",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-024f7e8edd9c39814"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-2f0f8077",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-07f4e0d76206f1b14"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0c5e33dc5b1766a16",
+      "InstanceType": "m5d.4xlarge",
+      "KeyName": "prp-aws-sydney",
+      "SpotPrice": "1.136",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-024f7e8edd9c39814"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-73dbc714",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-07f4e0d76206f1b14"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0c5e33dc5b1766a16",
+      "InstanceType": "m5d.4xlarge",
+      "KeyName": "prp-aws-sydney",
+      "SpotPrice": "1.136",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-024f7e8edd9c39814"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-d06e6799",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-07f4e0d76206f1b14"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    }
+  ],
+  "Type": "request"
+}

@@ -1,0 +1,180 @@
+{
+  "IamFleetRole": "arn:aws:iam::371881160940:role/aws-ec2-spot-fleet-tagging-role",
+  "AllocationStrategy": "capacityOptimized",
+  "TargetCapacity": 1,
+  "SpotPrice": "1.168",
+  "ValidFrom": "2020-01-23T01:25:23Z",
+  "ValidUntil": "2021-01-23T01:25:23Z",
+  "TerminateInstancesWithExpiration": true,
+  "LaunchSpecifications": [
+    {
+      "ImageId": "ami-0a6c8f0b33d429e9b",
+      "InstanceType": "m5n.4xlarge",
+      "KeyName": "igor",
+      "SpotPrice": "1.168",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-062963f531b97accb"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-b7b717ee",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-0ec416495ba9a3415"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0a6c8f0b33d429e9b",
+      "InstanceType": "m5n.4xlarge",
+      "KeyName": "igor",
+      "SpotPrice": "1.168",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-062963f531b97accb"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-b7bd58ff",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-0ec416495ba9a3415"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0a6c8f0b33d429e9b",
+      "InstanceType": "m5n.4xlarge",
+      "KeyName": "igor",
+      "SpotPrice": "1.168",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-062963f531b97accb"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-76cb3e10",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-0ec416495ba9a3415"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0a6c8f0b33d429e9b",
+      "InstanceType": "m5.4xlarge",
+      "KeyName": "igor",
+      "SpotPrice": "0.96",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-062963f531b97accb"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-b7b717ee",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-0ec416495ba9a3415"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0a6c8f0b33d429e9b",
+      "InstanceType": "m5.4xlarge",
+      "KeyName": "igor",
+      "SpotPrice": "0.96",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-062963f531b97accb"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-b7bd58ff",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-0ec416495ba9a3415"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0a6c8f0b33d429e9b",
+      "InstanceType": "m5.4xlarge",
+      "KeyName": "igor",
+      "SpotPrice": "0.96",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-062963f531b97accb"
+          }
+        }
+      ],
+      "NetworkInterfaces": [
+        {
+          "DeviceIndex": 0,
+          "SubnetId": "subnet-76cb3e10",
+          "DeleteOnTermination": true,
+          "Groups": [
+            "sg-0ec416495ba9a3415"
+          ],
+          "AssociatePublicIpAddress": true
+        }
+      ]
+    }
+  ],
+  "Type": "maintain"
+}
