@@ -1,0 +1,469 @@
+INFO: CLOUD_REGION = "AWS-us-west-2"
+INFO: Server region awsuseast
+INFO: Parallelism 24
+INFO: URL http://prp-test-us-east1.s3.amazonaws.com/test/data/1G.dat
+========== Warmup
+Thu Jan 16 03:04:04 UTC 2020
+RC: 0
+elapsed: 12
+Thu Jan 16 03:04:16 UTC 2020
+-rw-r--r-- 1 nobody nobody 1000000000 Jan 16 03:04 out.dat
+c287bac9a4b3e8e4e08ce5d11da34020  out.dat
+MiBps: 83
+Thu Jan 16 03:04:18 UTC 2020
+========== Single curl
+Thu Jan 16 03:04:18 UTC 2020
+RC: 0
+elapsed: 46
+Thu Jan 16 03:05:04 UTC 2020
+-rw-r--r-- 1 nobody nobody 1000000000 Jan 16 03:05 out.dat
+c287bac9a4b3e8e4e08ce5d11da34020  out.dat
+MiBps: 21
+Thu Jan 16 03:05:06 UTC 2020
+========== Single aria2c
+Thu Jan 16 03:05:06 UTC 2020
+RC: 0
+elaped: 12
+-rw-r--r-- 1 nobody nobody 1000000000 Jan 16 03:05 out.dat
+c287bac9a4b3e8e4e08ce5d11da34020  out.dat
+MiBps: 83
+Thu Jan 16 03:05:20 UTC 2020
+========== Multiple aria2c: 24
+Thu Jan 16 03:05:20 UTC 2020
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+elaped: 81
+MiBps: 1777
+Thu Jan 16 03:06:41 UTC 2020
+========= Start detailed log =======
+2020-01-16 03:05:20.171887 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.439353 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_0/out.dat
+2020-01-16 03:05:32.593820 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:45.357799 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_0/out.dat
+2020-01-16 03:05:45.501855 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.914001 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_0/out.dat
+2020-01-16 03:05:57.082384 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.672825 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_0/out.dat
+2020-01-16 03:06:08.848492 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:19.860113 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_0/out.dat
+2020-01-16 03:06:20.007593 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:31.820280 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_0/out.dat
+2020-01-16 03:05:20.172535 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.145300 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_1/out.dat
+2020-01-16 03:05:32.309511 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.235769 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_1/out.dat
+2020-01-16 03:05:44.419044 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.645190 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_1/out.dat
+2020-01-16 03:05:56.889046 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.998027 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_1/out.dat
+2020-01-16 03:06:09.183426 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:21.598009 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_1/out.dat
+2020-01-16 03:06:21.743022 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:33.983986 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_1/out.dat
+2020-01-16 03:05:20.172502 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.202422 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_2/out.dat
+2020-01-16 03:05:32.391192 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:43.721336 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_2/out.dat
+2020-01-16 03:05:43.892997 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.580485 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_2/out.dat
+2020-01-16 03:05:56.851085 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.614004 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_2/out.dat
+2020-01-16 03:06:08.748544 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.133593 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_2/out.dat
+2020-01-16 03:06:20.316976 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:31.914088 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_2/out.dat
+2020-01-16 03:05:20.172258 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.842940 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_3/out.dat
+2020-01-16 03:05:33.150054 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.874834 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_3/out.dat
+2020-01-16 03:05:45.079715 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:57.384484 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_3/out.dat
+2020-01-16 03:05:57.582133 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:09.399238 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_3/out.dat
+2020-01-16 03:06:09.528345 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:21.409322 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_3/out.dat
+2020-01-16 03:06:21.566216 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:34.120784 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_3/out.dat
+2020-01-16 03:05:20.172535 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.675825 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_4/out.dat
+2020-01-16 03:05:33.015359 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:45.075098 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_4/out.dat
+2020-01-16 03:05:45.201705 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:57.131940 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_4/out.dat
+2020-01-16 03:05:57.311586 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.336544 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_4/out.dat
+2020-01-16 03:06:08.488800 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:19.586889 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_4/out.dat
+2020-01-16 03:06:19.770002 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:31.328040 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_4/out.dat
+2020-01-16 03:05:20.172488 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.544897 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_5/out.dat
+2020-01-16 03:05:32.778227 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.245216 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_5/out.dat
+2020-01-16 03:05:44.388612 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.548864 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_5/out.dat
+2020-01-16 03:05:56.752383 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.926216 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_5/out.dat
+2020-01-16 03:06:09.147168 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:21.193458 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_5/out.dat
+2020-01-16 03:06:21.375293 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.913732 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_5/out.dat
+2020-01-16 03:05:20.173138 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.087929 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_6/out.dat
+2020-01-16 03:05:32.218044 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:43.451516 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_6/out.dat
+2020-01-16 03:05:43.623340 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:55.666385 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_6/out.dat
+2020-01-16 03:05:55.856728 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:07.721735 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_6/out.dat
+2020-01-16 03:06:07.871685 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:19.763060 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_6/out.dat
+2020-01-16 03:06:19.945417 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:31.492211 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_6/out.dat
+2020-01-16 03:05:20.173494 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.554188 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_7/out.dat
+2020-01-16 03:05:32.788294 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:43.854721 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_7/out.dat
+2020-01-16 03:05:43.979689 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.484209 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_7/out.dat
+2020-01-16 03:05:56.635191 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:07.724282 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_7/out.dat
+2020-01-16 03:06:07.934466 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:19.923305 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_7/out.dat
+2020-01-16 03:06:20.129036 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:31.943833 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_7/out.dat
+2020-01-16 03:05:20.173140 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.706705 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_8/out.dat
+2020-01-16 03:05:33.060588 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:45.121758 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_8/out.dat
+2020-01-16 03:05:45.244078 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.758140 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_8/out.dat
+2020-01-16 03:05:56.932711 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:09.310285 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_8/out.dat
+2020-01-16 03:06:09.477850 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:21.397256 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_8/out.dat
+2020-01-16 03:06:21.545269 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:33.224250 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_8/out.dat
+2020-01-16 03:05:20.184039 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.328969 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_9/out.dat
+2020-01-16 03:05:32.490776 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.502025 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_9/out.dat
+2020-01-16 03:05:44.651048 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:57.184590 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_9/out.dat
+2020-01-16 03:05:57.396521 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.415009 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_9/out.dat
+2020-01-16 03:06:08.566281 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.415927 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_9/out.dat
+2020-01-16 03:06:20.571202 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.721162 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_9/out.dat
+2020-01-16 03:05:20.185126 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.172708 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_10/out.dat
+2020-01-16 03:05:32.358031 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.314093 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_10/out.dat
+2020-01-16 03:05:44.509614 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.123894 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_10/out.dat
+2020-01-16 03:05:56.299872 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.188930 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_10/out.dat
+2020-01-16 03:06:08.384292 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.188287 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_10/out.dat
+2020-01-16 03:06:20.389381 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.439989 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_10/out.dat
+2020-01-16 03:05:20.187086 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.506930 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_11/out.dat
+2020-01-16 03:05:32.703755 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:46.746016 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_11/out.dat
+2020-01-16 03:05:46.947641 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:58.591498 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_11/out.dat
+2020-01-16 03:05:58.750445 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:10.811734 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_11/out.dat
+2020-01-16 03:06:11.003054 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:22.969425 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_11/out.dat
+2020-01-16 03:06:23.149703 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:35.403345 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_11/out.dat
+2020-01-16 03:05:20.173990 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:31.521871 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_12/out.dat
+2020-01-16 03:05:31.663244 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:42.707524 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_12/out.dat
+2020-01-16 03:05:42.897989 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:53.878855 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_12/out.dat
+2020-01-16 03:05:54.072908 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:06.170741 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_12/out.dat
+2020-01-16 03:06:06.393493 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:17.470896 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_12/out.dat
+2020-01-16 03:06:17.692461 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:29.408838 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_12/out.dat
+2020-01-16 03:05:20.173855 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.199432 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_13/out.dat
+2020-01-16 03:05:32.371309 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.397285 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_13/out.dat
+2020-01-16 03:05:44.555549 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.919567 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_13/out.dat
+2020-01-16 03:05:57.100527 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:09.116469 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_13/out.dat
+2020-01-16 03:06:09.258175 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.793579 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_13/out.dat
+2020-01-16 03:06:20.921361 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.869829 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_13/out.dat
+2020-01-16 03:05:20.175814 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.578723 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_14/out.dat
+2020-01-16 03:05:32.848214 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.764496 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_14/out.dat
+2020-01-16 03:05:44.962679 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.784475 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_14/out.dat
+2020-01-16 03:05:56.997723 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.780828 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_14/out.dat
+2020-01-16 03:06:08.984366 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:21.193607 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_14/out.dat
+2020-01-16 03:06:21.371773 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:33.826617 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_14/out.dat
+2020-01-16 03:05:20.173991 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.262596 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_15/out.dat
+2020-01-16 03:05:32.434461 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.464370 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_15/out.dat
+2020-01-16 03:05:44.621472 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.651360 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_15/out.dat
+2020-01-16 03:05:56.866625 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.771608 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_15/out.dat
+2020-01-16 03:06:08.981066 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.623346 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_15/out.dat
+2020-01-16 03:06:20.787913 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.323737 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_15/out.dat
+2020-01-16 03:05:20.174347 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:31.856988 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_16/out.dat
+2020-01-16 03:05:31.975067 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.219031 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_16/out.dat
+2020-01-16 03:05:44.393811 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:55.492660 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_16/out.dat
+2020-01-16 03:05:55.695586 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:07.339162 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_16/out.dat
+2020-01-16 03:06:07.515128 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:19.491197 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_16/out.dat
+2020-01-16 03:06:19.675851 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:31.677607 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_16/out.dat
+2020-01-16 03:05:20.174564 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.567162 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_17/out.dat
+2020-01-16 03:05:32.826857 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.716694 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_17/out.dat
+2020-01-16 03:05:44.909872 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.271625 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_17/out.dat
+2020-01-16 03:05:56.418241 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.316491 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_17/out.dat
+2020-01-16 03:06:08.548741 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.092201 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_17/out.dat
+2020-01-16 03:06:20.296074 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.661807 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_17/out.dat
+2020-01-16 03:05:20.206209 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.747779 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_18/out.dat
+2020-01-16 03:05:33.085672 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.157368 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_18/out.dat
+2020-01-16 03:05:44.281719 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:57.304673 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_18/out.dat
+2020-01-16 03:05:57.541616 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:09.203646 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_18/out.dat
+2020-01-16 03:06:09.342300 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:21.476051 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_18/out.dat
+2020-01-16 03:06:21.615515 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:33.407897 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_18/out.dat
+2020-01-16 03:05:20.200119 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:40.255084 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_19/out.dat
+2020-01-16 03:05:40.460406 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:52.407621 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_19/out.dat
+2020-01-16 03:05:52.633141 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:04.530836 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_19/out.dat
+2020-01-16 03:06:04.714082 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:17.026301 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_19/out.dat
+2020-01-16 03:06:17.217644 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:29.025964 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_19/out.dat
+2020-01-16 03:06:29.234777 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:41.447449 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_19/out.dat
+2020-01-16 03:05:20.199122 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.417140 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_20/out.dat
+2020-01-16 03:05:32.582784 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.717158 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_20/out.dat
+2020-01-16 03:05:44.958713 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.554905 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_20/out.dat
+2020-01-16 03:05:56.730189 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.296210 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_20/out.dat
+2020-01-16 03:06:08.494323 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.449389 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_20/out.dat
+2020-01-16 03:06:20.608155 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.663825 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_20/out.dat
+2020-01-16 03:05:20.175293 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.244335 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_21/out.dat
+2020-01-16 03:05:32.428578 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.419135 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_21/out.dat
+2020-01-16 03:05:44.597374 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.231316 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_21/out.dat
+2020-01-16 03:05:56.391740 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.389488 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_21/out.dat
+2020-01-16 03:06:08.562776 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.651733 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_21/out.dat
+2020-01-16 03:06:20.822441 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.011770 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_21/out.dat
+2020-01-16 03:05:20.220298 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.880595 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_22/out.dat
+2020-01-16 03:05:33.168315 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:48.276455 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_22/out.dat
+2020-01-16 03:05:48.442772 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:59.906457 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_22/out.dat
+2020-01-16 03:06:00.070407 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:12.424723 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_22/out.dat
+2020-01-16 03:06:12.625039 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:24.551962 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_22/out.dat
+2020-01-16 03:06:24.743100 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:36.713823 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_22/out.dat
+2020-01-16 03:05:20.192239 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:32.185502 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_23/out.dat
+2020-01-16 03:05:32.359935 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:44.685768 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_23/out.dat
+2020-01-16 03:05:44.875002 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:05:56.810727 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_23/out.dat
+2020-01-16 03:05:57.000932 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:08.696862 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_23/out.dat
+2020-01-16 03:06:08.880380 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:20.849900 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_23/out.dat
+2020-01-16 03:06:21.004343 [NOTICE] [Context.cc:311] Downloading 1 item(s)
+2020-01-16 03:06:32.880826 [NOTICE] [RequestGroup.cc:1216] Download complete: /dev/shm/dir_4869/tmp/subdir_23/out.dat
+=========  End detailed log  =======

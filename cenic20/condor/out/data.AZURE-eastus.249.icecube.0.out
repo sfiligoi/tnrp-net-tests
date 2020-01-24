@@ -1,0 +1,193 @@
+INFO: CLOUD_REGION = "AZURE-eastus"
+INFO: Setup direct
+INFO: Parallelism 24
+========== Warmup
+Thu Jan 16 01:43:25 UTC 2020
+RC: 0
+elapsed: 4
+Thu Jan 16 01:43:29 UTC 2020
+Downloaded: 1147864337
+MiBps: 286
+Thu Jan 16 01:43:29 UTC 2020
+========== Single aria2c
+Thu Jan 16 01:43:29 UTC 2020
+RC: 0
+elapsed: 2
+Thu Jan 16 01:43:31 UTC 2020
+Downloaded: 1147864337
+MiBps: 573
+Thu Jan 16 01:43:31 UTC 2020
+========== Multiple aria2c: 24
+Thu Jan 16 01:43:31 UTC 2020
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+RC: 0
+elaped: 128
+MiBps: 1291
+Thu Jan 16 01:45:39 UTC 2020
+========= Start detailed log =======
+=========  End detailed log  =======
+========= ping -c 2 xdm.icecube.wisc.edu
+PING xdm.icecube.wisc.edu (128.104.8.75) 56(84) bytes of data.
+64 bytes from xdm-5.icecube.wisc.edu (128.104.8.75): icmp_seq=1 ttl=49 time=25.8 ms
+64 bytes from xdm-5.icecube.wisc.edu (128.104.8.75): icmp_seq=2 ttl=49 time=25.8 ms
+
+--- xdm.icecube.wisc.edu ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 25.807/25.849/25.892/0.166 ms
+========= tracepath xdm.icecube.wisc.edu
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+ 6:  no reply
+ 7:  ae55-0.ash-96cbe-1b.ntwk.msn.net                      1.984ms 
+ 8:  ae160-0.icr01.bl7.ntwk.msn.net                        2.604ms asymm  6 
+ 9:  ae-6.4079.rtsw.chic.net.internet2.edu                20.674ms asymm 13 
+10:  ae-3.4079.rtsw3.eqch.net.internet2.edu               18.146ms asymm 12 
+11:  ae-20.4079.rtsw.clev.net.internet2.edu               18.242ms asymm 13 
+12:  xdm-1.icecube.wisc.edu                               22.853ms reached
+     Resume: pmtu 1500 hops 12 back 15 
