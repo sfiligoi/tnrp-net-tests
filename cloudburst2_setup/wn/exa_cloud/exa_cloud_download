@@ -1,0 +1,43 @@
+#!/bin/bash 
+
+#
+# Download a file from UW
+#
+
+if [ $# -ne 2 ]; then
+  echo "ERROR: Missing arguments" 1>&2
+  echo "Usage: exa_cloud_download cloudpath localfile" 1>&2
+  exit 1
+fi
+
+cloud_path=`echo "$1" |sed 's#/gpu_input/#http://icecube:skua@xdm.icecube.wisc.edu/data/sim/IceCube/2016/generated/CORSIKA-in-ice/#g'`
+
+apath="$(realpath $2)"
+dpath="$(dirname $apath)"
+lpath="$(basename $apath)"
+
+rm -f "${apath}"
+aria2c --max-tries=32 --retry-wait=1 -q -d "${dpath}" -o "${lpath}" "${cloud_path}"
+rc=$?
+if [ $rc -ne 0 ]; then
+  # saw DNS problems before... try with less agressive setup
+  rm -f "${apath}"
+  aria2c --max-tries=32 --retry-wait=1 --async-dns=false -q -d "${dpath}" -o "${lpath}" "${cloud_path}"
+  rc=$?
+fi
+if [ $rc -ne 0 ]; then
+  # ok, the storage may be quite overloaded... wait a tiny bit, and retry
+  sleep 5
+  rm -f "${apath}"
+  aria2c --max-tries=32 --retry-wait=1 --async-dns=false -q -d "${dpath}" -o "${lpath}" "${cloud_path}"
+  rc=$?
+fi
+if [ $rc -ne 0 ]; then
+  # we have to give up, eventually
+  echo "ERROR: Download of ${cloud_path} failed." 2>&1
+  echo "ERROR: Download of ${cloud_path} failed." 1>&2
+else
+  echo "INFO: Downloaded ${cloud_path} into ${apath}" 
+fi
+exit $rc
+

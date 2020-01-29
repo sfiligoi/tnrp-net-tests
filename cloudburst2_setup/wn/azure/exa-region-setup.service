@@ -1,0 +1,9 @@
+[Unit]
+Description=Setup Region
+After=network-online.target waagent.service
+Before=autofs.service
+Wants=network-online.target waagent.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/exa_cloud/exa_region_setup.sh

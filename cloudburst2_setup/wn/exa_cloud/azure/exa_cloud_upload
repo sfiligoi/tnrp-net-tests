@@ -1,0 +1,52 @@
+#!/bin/bash
+if [ $# -ne 2 ]; then
+  echo "ERROR: Missing arguments" 1>&2
+  echo "Usage: exa_cloud_upload localfile cloudpath" 1>&2
+  exit 1
+fi
+
+cloud_path=`exa_cloud_mangle "$2"`
+if [ $? -ne 0 ]; then
+  echo "ERROR: Failed parsing cloudpath: ${cloud_path}" 1>&2
+  exit 1
+fi
+
+errstr=`azcopy login --identity 2>&1`
+rc=$?
+if [ ${rc} -ne 0 ]; then
+  sleep 1
+  errstr=`azcopy login --identity 2>&1`
+  rc=$?
+  if [ ${rc} -ne 0 ]; then
+    echo "ERROR: Upload failed"
+    echo "ERROR: Upload failed" 1>&2
+    echo "$errstr"  1>&2
+    exit 1
+  fi
+fi 
+
+
+echo "INFO: Uploading to ${cloud_path}"
+errstr=`azcopy cp --no-guess-mime-type --log-level=ERROR "$1" "${cloud_path}"`
+rc=$?
+if [ ${rc} -ne 0 ]; then
+  sleep 1
+  echo "INFO: Retrying upload"
+  errstr=`azcopy cp --no-guess-mime-type --log-level=ERROR "$1" "${cloud_path}"`
+  rc=$?
+fi
+if [ ${rc} -ne 0 ]; then
+  sleep 5
+  echo "INFO: Retrying upload"
+  errstr=`azcopy cp --no-guess-mime-type --log-level=ERROR "$1" "${cloud_path}"`
+  rc=$?
+fi
+
+if [ ${rc} -ne 0 ]; then
+  echo "ERROR: Upload failed"
+  echo "ERROR: Upload failed" 1>&2
+  echo "$errstr" 1>&2
+  exit 1
+fi
+exit 0
+

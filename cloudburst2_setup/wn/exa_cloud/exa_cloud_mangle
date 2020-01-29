@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+
+#
+# Mangle filename into local storage url
+#
+
+import sys,os
+
+#
+# First read config file
+#
+
+try:
+  with open("/dev/shm/exa_cloud_storage.conf","r") as fd:
+    config_lines=fd.readlines()
+except:
+  print("error://missing_config_file")
+  sys.exit(1)
+
+storage_url_base=""
+
+for cline in config_lines:
+  cline = cline.strip()
+  if cline.startswith("#"):
+    continue
+  if len(cline)==0:
+    continue
+  storage_url_base=cline
+  break
+
+if len(storage_url_base)<5:
+  print("error://invalid_config_file")
+  sys.exit(1) 
+
+#
+# Get the input argument
+#
+
+if len(sys.argv)!=2:
+   print("error://missing_argument")
+   sys.exit(1)
+
+fname=os.path.normpath(sys.argv[1])
+
+#
+# Now we can mangle
+#
+
+phash = abs(hash(fname))
+# get a single hex char
+hchar="%x"%(phash%16)
+
+hashed_base_url=storage_url_base%hchar
+
+# and we are ready to return the hashed value
+print("%s%s"%(hashed_base_url,fname))
+

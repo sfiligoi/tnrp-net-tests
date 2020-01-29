@@ -28,20 +28,21 @@ if [ ! -f "/dev/shm/count_slots.config" ]; then
     ncgpus=1
   fi
 
-  # max 2 CPU slots per GPU slot
-  let maxcpus=${ncgpus}*2
+  # max 4 CPU slots per GPU slot
+  let maxcpus=${ncgpus}*4
   if [ ${leftcpus} -gt ${maxcpus} ]; then
     leftcpus=${maxcpus}
   fi
 
   # cannot afford too many CPU slots, or we will run out of disk space
-  if [ ${leftcpus} -gt 8 ]; then
-    leftcpus=8
+  if [ ${leftcpus} -gt 10 ]; then
+    leftcpus=10
   fi
 
   echo "NUM_SLOTS_TYPE_1 = ${ngpus}"    >  ${fname}
   echo "NUM_SLOTS_TYPE_2 = ${leftcpus}" >> ${fname}
   mv ${fname} /dev/shm/count_slots.config
+  chmod a+r /dev/shm/count_slots.config
 fi
 
 cat /dev/shm/count_slots.config
