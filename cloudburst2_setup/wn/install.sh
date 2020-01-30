@@ -65,7 +65,7 @@ yum install -y freetype
 #yum install -y python2-pip && pip install awscli
 
 # Azure
-# wget https://aka.ms/downloadazcopy-v10-linux && tar -xvzf downloadazcopy-v10-linux && mv azcopy_linux_amd64_*/azcopy /usr/bin/
+# wget https://aka.ms/downloadazcopy-v10-linux && tar -xvzf downloadazcopy-v10-linux && mv azcopy_linux_amd64_*/azcopy /usr/bin/ && chmod a+rx /usr/bin/azcopy
 
 # Azure: Edit file, add to After and Requires
 #vi /usr/lib/systemd/system/condor.service
@@ -79,6 +79,9 @@ yum install -y freetype
 mkdir -p /opt/exa_scripts/
 mkdir -p /opt/exa_cloud
 mkdir -p /etc/exa_cloud/regions
+
+download /etc/exa_cloud/regions/*storage*conf & *cvmfs.conf from <cloud>/regions/
+
 
 download /opt/exa_scripts/exa* from exa_cloud/
 download /opt/exa_scripts/exa* from exa_cloud/<cloud>/
