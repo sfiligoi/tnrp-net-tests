@@ -24,15 +24,18 @@ fi
 
 nmax=$2
 
+
 mkdir -p tmp
 cd tmp
+
+ln -s "../$3" icecube_in_list.txt
 
 if [ "${wantwarmup}" == "1" ]; then
 
 echo "========== Warmup"
 date
 t1=`date +%s`
-time aria2c -q -j 80 -x 16 -i ../icecube_in_list.txt
+time aria2c -q -j 80 -x 16 -i icecube_in_list.txt
 rc=$?
 echo "RC: ${rc}"
 t2=`date +%s`
@@ -57,7 +60,7 @@ echo "========== Single aria2c"
 date
 
 t1=`date +%s`
-time aria2c -q -j 80 -x 16 -i ../icecube_in_list.txt
+time aria2c -q -j 80 -x 16 -i icecube_in_list.txt
 rc=$?
 echo "RC: ${rc}"
 t2=`date +%s`
@@ -81,11 +84,11 @@ date
 for ((i=0; $i<${nmax}; i=$i+1)); do mkdir -p subdir_$i; done
 
 t1=`date +%s`
-for ((i=1; $i<${nmax}; i=$i+1)); do (cd subdir_$i; for ((j=0; $j<6; j=$j+1)); do aria2c -q --log-level=notice -l out.log -j 80 -x 16 -i ../../icecube_in_list.txt; echo "RC: $?"; rm -f corsika* ; done ) & done
+for ((i=1; $i<${nmax}; i=$i+1)); do (cd subdir_$i; for ((j=0; $j<6; j=$j+1)); do aria2c -q --log-level=notice -l out.log -j 80 -x 16 -i ../icecube_in_list.txt; echo "RC: $?"; rm -f corsika* ; done ) & done
 i=0
 cd subdir_$i
   for ((j=0; $j<6; j=$j+1)); do 
-    aria2c -q --log-level=notice -l out.log -j 80 -x 16 -i ../../icecube_in_list.txt; 
+    aria2c -q --log-level=notice -l out.log -j 80 -x 16 -i ../icecube_in_list.txt; 
     echo "RC: $?"; 
     fsize=`ls -l corsika* |awk '{a=a+$5}END{print a}'`
     rm -f corsika*
