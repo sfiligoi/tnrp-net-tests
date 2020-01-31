@@ -33,6 +33,7 @@ for ig in $igs; do
    csize=`echo "$out" |awk '/none/{print $2}'`
    tsize=`echo "$out" |awk '/^targetSize/{print $2}'`
 
+   echo "# ${ig} ${csize}/${tsize}"
    if [ "$csize" != "$tsize" ]; then
      echo "gcloud compute instance-groups managed resize ${ig} --region=${r} --size=${csize}"
      gcloud compute instance-groups managed resize ${ig} --region=${r} --size="${csize}" >> /opt/gcp_cmds/tmp/${ig}.log
