@@ -1,14 +1,16 @@
 #!/bin/bash
 
-for j in 373 382; do
- if [ ! -f data_multi/all-regions.multi-max.all.${j}.out ]; then
-   echo all-regions.multi-max.all.${j}.out
-   ./parse_icecube_multi.py ../condor/out/all-regions.multi-max.${j}/data.*multi* >data_multi/all-regions.multi-max.all.${j}.out
+for i in max.373 max.382 world-s3usc.769 world-s3usc.791 world-gsusc.821 world-gsusc.843; do
+ t=`echo $i | awk '{split($0,a,"."); print a[1]}'`
+ j=`echo $i | awk '{split($0,a,"."); print a[2]}'`
+ if [ ! -f data_multi/all-regions.multi-${t}.all.${j}.out ]; then
+   echo all-regions.multi-${t}.all.${j}.out
+   ./parse_icecube_multi.py ../condor/out/all-regions.multi-${t}.${j}/data.*multi* >data_multi/all-regions.multi-${t}.all.${j}.out
  fi
  for c in AWS AZURE GCP; do
-   if [ ! -f data_multi/all-regions.multi-max.${c}.${j}.out ]; then
-     echo all-regions.multi-max.${c}.${j}.out
-     ./parse_icecube_multi.py ../condor/out/all-regions.multi-max.${j}/data.${c}*multi* >data_multi/all-regions.multi-max.${c}.${j}.out
+   if [ ! -f data_multi/all-regions.multi-${t}.${c}.${j}.out ]; then
+     echo all-regions.multi-${t}.${c}.${j}.out
+     ./parse_icecube_multi.py ../condor/out/all-regions.multi-${t}.${j}/data.${c}*multi* >data_multi/all-regions.multi-${t}.${c}.${j}.out
    fi
  done
 done
