@@ -13,6 +13,6 @@ t="${zn}_gpu_${it}"
 
 sedmattchstr='TargetCapacity":'
 
-cat /opt/aws_cmds/templates/${t}.json | sed "s/${sedmattchstr} 2,/${sedmattchstr} ${capacity},/" > ${t}.json
-echo "aws ec2 request-spot-fleet --region ${zn} --spot-fleet-request-config file://$PWD/${t}.json # capacity=${capacity}"
-aws ec2 request-spot-fleet --region ${zn} --spot-fleet-request-config file://$PWD/${t}.json > ${t}.id &
+cat /opt/aws_cmds/templates/${t}.json | sed "s/${sedmattchstr} 2,/${sedmattchstr} ${capacity},/" > /opt/aws_cmds/tmp/${t}-${capacity}.json
+#echo "aws ec2 request-spot-fleet --region ${zn} --spot-fleet-request-config file:///opt/aws_cmds/tmp/${t}-${capacity}.json # capacity=${capacity}"
+aws ec2 request-spot-fleet --region ${zn} --spot-fleet-request-config file:///opt/aws_cmds/tmp/${t}-${capacity}.json >> /opt/aws_cmds/tmp/${t}.id &
