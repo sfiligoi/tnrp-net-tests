@@ -1,8 +1,8 @@
 universe = vanilla
 
 # Files
-output = out/data.$(cloud_region).$(cluster).icecube.long.$(process).out
-error = err/data.$(cloud_region).$(cluster).icecube.long.$(process).err
+output = out/data.$(cloud_region).$(cluster).icecube_gsusc.long.$(process).out
+error = err/data.$(cloud_region).$(cluster).icecube_gsusc.long.$(process).err
 log = condor.log
 
 # File transfer behavior
@@ -13,10 +13,10 @@ WhenToTransferOutput = ON_EXIT
 requirements=(CLOUD_Region =?= "$(cloud_region)")
 
 executable = icecube_test_long.sh
-transfer_input_files = icecube_in_list_long.txt.gz
+transfer_input_files = icecube_in_list_long_gsusc.txt.gz
 #
 # arguments = server-region nmax
 
-arguments = direct-multi 24 icecube_in_list_long.txt.gz
+arguments = direct-multi 24 icecube_in_list_long_gsusc.txt.gz
 queue $(nmax)
 

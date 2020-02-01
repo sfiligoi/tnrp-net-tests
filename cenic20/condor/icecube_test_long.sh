@@ -18,7 +18,7 @@ nmax=$2
 
 mkdir -p tmp
 cd tmp
-mv ../icecube_in_list_long.txt.gz .
+mv ../$3 icecube_in_list_long.txt.gz
 gunzip icecube_in_list_long.txt.gz
 
 
@@ -64,6 +64,3 @@ ping -c 2 xdm.icecube.wisc.edu
 echo "========= tracepath xdm.icecube.wisc.edu"
 tracepath xdm.icecube.wisc.edu
 
-
-echo "========= tracepath 163.253.70.2"
-tracepath 163.253.70.2
