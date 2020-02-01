@@ -60,15 +60,21 @@ for fname in fnames:
     fsize=fsizes[fname]  
     #print(ftime,iftime,fname,fsize)
 
-    fsizedt=fsize*1.0/(iftime-iftime_start)
-    #print(ftime,iftime_start,iftime,fname,fsize,fsizedt)
+    if iftime_start!=iftime:
+      fsizedt=fsize*1.0/(iftime-iftime_start)
+      #print(ftime,iftime_start,iftime,fname,fsize,fsizedt)
 
-    for t in range(iftime_start+1,iftime+1):
+      for t in range(iftime_start+1,iftime+1):
+        if t not in completed.keys():
+          completed[t]=0.0
+        completed[t] += fsizedt
+    else:
+      # within the second, count as a second
+      sizedt=fsize*1.0
+      t=iftime
       if t not in completed.keys():
         completed[t]=0.0
       completed[t] += fsizedt
-
-
 
 #
 # Now put in buckets
