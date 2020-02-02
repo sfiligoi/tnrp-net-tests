@@ -1,7 +1,7 @@
-FROM nvidia/cuda:10.2-runtime-centos7
+FROM nvidia/cuda:10.0-runtime-centos7
 
 # Needed to get the recently deprecated libcudart.so symlink in place
-RUN yum -y install cuda-cudart-dev-10-2
+RUN yum -y install cuda-cudart-dev-10-0
 
 # OSG RPMs
 
