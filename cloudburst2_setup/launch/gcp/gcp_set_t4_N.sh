@@ -19,6 +19,10 @@ for z in b c; do
     igs="$igs ig-asia-southeast1-${z}-t4-v8"
 done
 
+for z in c d; do
+    igs="$igs ig-us-east1-${z}-t4-v8"
+done
+
 for ig in $igs; do
    echo ./gcp_set_ig_N.sh ${ig} $1" 
    ./gcp_set_ig_N.sh "${ig}" "$1" 

@@ -19,6 +19,10 @@ for z in b c; do
     igs="$igs ig-asia-southeast1-${z}-t4-v8"
 done
 
+for z in c d; do
+    igs="$igs ig-us-east1-${z}-t4-v8"
+done
+
 idles=`condor_status -const '(CLOUD_Provider == "Google")&&(SlotId==1)&&(Activity=="Idle")&&((CurrentTime-LastHeardFrom)<301)' -af GCP_VM_NAME `
 
 #echo "$idles"
