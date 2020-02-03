@@ -99,6 +99,7 @@ mkdir -p /etc/condor/scripts
 download /etc/condor/passwords.d/POOL
 download /etc/condor/scripts/*.config.sh
 download /etc/condor/scripts/*.config.sh from <cloud>/
+download /etc/condor/scripts/validate_cvmfs.sh
 
 download /etc/condor/regions/*local.config from <cloud>/regions/
 
