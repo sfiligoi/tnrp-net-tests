@@ -20,8 +20,7 @@ for z in b c; do
 done
 
 for ig in $igs; do
-   r=`echo $ig | awk '{split($1,a,"-"); print a[2] "-" a[3]}'`
-   echo "gcloud compute instance-groups managed resize ${ig} --region=${r} --size=$1"
-   gcloud compute instance-groups managed resize ${ig} --region=${r} --size="$1" >> /opt/gcp_cmds/tmp/${ig}.log
+   echo ./gcp_set_ig_N.sh ${ig} $1" 
+   ./gcp_set_ig_N.sh "${ig}" "$1" 
 done
 
