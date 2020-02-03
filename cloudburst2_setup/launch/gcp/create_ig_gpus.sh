@@ -26,6 +26,13 @@ for z in b c; do
                         --zones=asia-southeast1-${z} --instance-redistribution-type=NONE
 done
 
+for z in a b; do
+    gcloud beta compute --project=exa-demo instance-groups managed create ig-us-west1-${z}-t4-v8 \
+                        --base-instance-name=ig-us-west1-${z}-t4 --template=it-us-t4-v8-a3 --size=0 \
+                        --zones=us-west1-${z} --instance-redistribution-type=NONE
+done
+
+
 for z in c d; do
     gcloud beta compute --project=exa-demo instance-groups managed create ig-us-east1-${z}-t4-v8 \
                         --base-instance-name=ig-us-east1-${z}-t4 --template=it-us-t4-v8-a3 --size=0 \

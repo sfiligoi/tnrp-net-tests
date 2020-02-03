@@ -15,6 +15,10 @@ for z in a c; do
     igs="$igs ig-asia-northeast1-${z}-t4-v8"
 done
 
+for z in a b; do
+    igs="$igs ig-us-west1-${z}-t4-v8"
+done
+
 for z in b c; do
     igs="$igs ig-asia-southeast1-${z}-t4-v8"
 done
