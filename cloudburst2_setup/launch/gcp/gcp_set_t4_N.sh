@@ -28,7 +28,7 @@ for z in c d; do
 done
 
 for ig in $igs; do
-   echo ./gcp_set_ig_N.sh ${ig} $1" 
+   echo "./gcp_set_ig_N.sh ${ig} $1" 
    ./gcp_set_ig_N.sh "${ig}" "$1" 
 done
 
