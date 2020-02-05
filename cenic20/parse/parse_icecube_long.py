@@ -2,9 +2,9 @@
 
 import sys
 
-bucket=30
+bucket=int(sys.argv[1])
 
-fnames=sys.argv[1:]
+fnames=sys.argv[2:]
 
 
 #
