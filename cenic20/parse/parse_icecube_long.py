@@ -31,6 +31,7 @@ for fname in fnames:
 # Parse logs to get the list of files, in timeseries
 #
 completed={}
+clients={}
 
 for fname in fnames:
   with open(fname,"r") as fd:
@@ -68,6 +69,9 @@ for fname in fnames:
         if t not in completed.keys():
           completed[t]=0.0
         completed[t] += fsizedt
+        if t not in clients.keys():
+          clients[t]=0
+        clients[t] += 1
     else:
       # within the second, count as a second
       sizedt=fsize*1.0
@@ -75,12 +79,16 @@ for fname in fnames:
       if t not in completed.keys():
         completed[t]=0.0
       completed[t] += fsizedt
+      if t not in clients.keys():
+        clients[t]=0
+      clients[t] += 1
 
 #
 # Now put in buckets
 #
 
 compsize={}
+clisize={}
 
 for t in completed.keys():
     # insert into buckets
@@ -88,6 +96,9 @@ for t in completed.keys():
     if iftimeb not in compsize.keys():
       compsize[iftimeb]=0.0
     compsize[iftimeb] += completed[t]/bucket
+    if iftimeb not in clisize.keys():
+      clisize[iftimeb]=0.0
+    clisize[iftimeb] += clients[t]*1.0/bucket
 
 
 tkeys=list(compsize.keys())
@@ -114,7 +125,7 @@ tkeys=list(compsize.keys())
 tkeys.sort()
 t0=tkeys[0]
 for t in tkeys:
-  print("t: %5i %6i"%(t-t0,compsize[t]))
+  print("t: %5i %6i %i"%(t-t0,compsize[t],clisize[t]))
 
 top5=list(compsize.values())
 top5.sort(reverse=True)
