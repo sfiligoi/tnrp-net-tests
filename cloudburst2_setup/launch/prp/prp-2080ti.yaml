@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exa-wn-2080ti-reg
+  namespace: isfiligoi
+  labels: 
+    k8s-app: exa-wn-2080ti
+spec:
+  replicas: 24
+  selector:
+    matchLabels:
+      k8s-app: exa-wn-2080ti
+  template:
+    metadata: 
+      labels:
+        k8s-app: exa-wn-2080ti
+    spec:
+      nodeSelector:
+        nautilus.io/latency: ucsd-b
+        gpu-type: 2080Ti
+      containers:
+      - name: main
+        image: sfiligoi/tnrp-net-tests:cloudburst2-wn
+        imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        resources:
+           limits:
+             nvidia.com/gpu: 1
+             memory: 20Gi
+             cpu: 2
+           requests:
+             nvidia.com/gpu: 1
+             memory: 15Gi
+             cpu: 2
+        volumeMounts:
+        - name: configpasswd
+          mountPath: /etc/condor/passwords.d/POOL
+          subPath: POOL
+          readOnly: true
+        - name: configs3
+          mountPath: /home/centos/.s3cfg
+          subPath: .s3cfg
+          readOnly: true
+      volumes:
+      - name: configpasswd
+        secret:
+          secretName: exa-pool-secret
+          items:
+             - key: POOL
+               path: POOL
+          defaultMode: 256
+      - name: configs3
+        secret:
+          secretName: exa-s3
+          items:
+             - key: .s3cfg
+               path: .s3cfg
+          defaultMode: 292 # all read is OK for this use case
+
