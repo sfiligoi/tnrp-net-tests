@@ -15,7 +15,7 @@ download /etc/condor/passwords.d/POOL
 
 
 download /etc/condor/config.d/90-security.config
-download /etc/condor/config.d/90-myself.config
+download /etc/condor/config.d/70-myself.config
 
 download /etc/condor/config.d/80-autodiscover.config
 download /etc/condor/scripts/autodiscover.config.sh
