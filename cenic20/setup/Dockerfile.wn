@@ -1,0 +1,33 @@
+FROM centos:centos7
+
+
+# OSG RPMs
+
+RUN yum -y install epel-release yum-plugin-priorities
+RUN yum -y install https://repo.opensciencegrid.org/osg/3.5/osg-3.5-el7-release-latest.rpm
+
+RUN yum install -y condor
+RUN yum install -y wget aria2 
+
+RUN yum -y install supervisor
+
+RUN yum clean all
+
+
+#
+# Configure condor
+#
+
+ADD condor-wn/*config /etc/condor/config.d/
+ADD condor-wn/prp/*sh /etc/condor/scripts/
+
+#
+#Supervisor section that replaces systemd
+#
+
+ADD docker/supervisord.conf /etc/
+
+RUN mkdir -p /var/log/supervisor 
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+
