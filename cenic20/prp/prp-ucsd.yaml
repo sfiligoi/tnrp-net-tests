@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cenic20-wn-ucsd
+  namespace: isfiligoi
+  labels: 
+    k8s-app: cenic20-wn-ucsd
+spec:
+  replicas: 15
+  selector:
+    matchLabels:
+      k8s-app: cenic20-wn-ucsd
+  template:
+    metadata: 
+      labels:
+        k8s-app: cenic20-wn-ucsd
+    spec:
+      nodeSelector:
+        nautilus.io/latency: ucsd-b
+      containers:
+      - name: main
+        image: sfiligoi/tnrp-net-tests:cenic20-wn
+        imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        resources:
+           limits:
+             memory: 30Gi
+             cpu: 16
+           requests:
+             memory: 20Gi
+             cpu: 16
+        volumeMounts:
+        - name: configpasswd
+          mountPath: /etc/condor/passwords.d/POOL
+          subPath: POOL
+          readOnly: true
+        - mountPath: /dev/shm
+          name: dshm
+      volumes:
+      - name: configpasswd
+        secret:
+          secretName: cenic20-pool-secret
+          items:
+             - key: POOL
+               path: POOL
+          defaultMode: 256
+      - name: dshm
+        emptyDir:
+          medium: Memory
