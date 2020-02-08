@@ -40,24 +40,17 @@ for f in $els; do
   fi
 done
 
-els=`(cd ../condor/out && ls -1 data.*icecube_gsusc.multi.0.out)`
-for f in $els; do
-  p=`echo $f | awk '{split($0,a,".icecube_gsusc.multi"); print a[1]}'`
-  #echo $p
-  if [ ! -f data_multi/${p}.gsusc.out ]; then
-    echo ${p}.out
-    ./parse_icecube_multi.py 30 ../condor/out/${p}.*icecube_gsusc.multi* >data_multi/${p}.gsusc.out
-  fi
-done
+for g in gsusc gsusw s3usc s3usw azusc azusw; do
 
-els=`(cd ../condor/out && ls -1 data.*icecube_s3usc.multi.0.out)`
-for f in $els; do
-  p=`echo $f | awk '{split($0,a,".icecube_s3usc.multi"); print a[1]}'`
-  #echo $p
-  if [ ! -f data_multi/${p}.s3usc.out ]; then
-    echo ${p}.out
-    ./parse_icecube_multi.py 30 ../condor/out/${p}.*icecube_s3usc.multi* >data_multi/${p}.s3usc.out
-  fi
+  els=`(cd ../condor/out && ls -1 data.*icecube_${g}.multi.0.out)`
+  for f in $els; do
+    p=`echo $f | awk '{split($0,a,".icecube_"); print a[1]}'`
+    #echo $p
+    if [ ! -f data_multi/${p}.${g}.out ]; then
+      echo ${p}.${g}.out
+      ./parse_icecube_multi.py 30 ../condor/out/${p}.*icecube_${g}.multi* >data_multi/${p}.${g}.out
+    fi
+  done
 done
 
 for gt in standard; do

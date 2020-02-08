@@ -30,3 +30,16 @@ for i in world-long.676 world-long-gsusc.892 world-long-gsusc.914; do
  done
 done
 
+for g in gsusc gsusw s3usc s3usw azusc azusw; do
+
+  els=`(cd ../condor/out && ls -1 data.*icecube_${g}.multi.0.out)`
+  for f in $els; do
+    p=`echo $f | awk '{split($0,a,".icecube_"); print a[1]}'`
+    #echo $p
+    if [ ! -f data_multi/${p}.${g}.out10 ]; then
+      echo ${p}.${g}.out10
+      ./parse_icecube_multi.py 10 ../condor/out/${p}.*icecube_${g}.multi* >data_multi/${p}.${g}.out10
+    fi
+  done
+done
+

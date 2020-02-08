@@ -1,0 +1,45 @@
+(base) Igors-MacBook-Pro:prp isfiligoi$ kubectl get pods -n isfiligoi -o wide |head -50 |grep Run |grep cenic 
+cenic20-wn-la-69f99c9d9d-c66vh     1/1     Running   0          56m     10.244.112.15    fiona8-2.calit2.uci.edu              <none>           <none>
+cenic20-wn-la-69f99c9d9d-gn8rp     1/1     Running   0          56m     10.244.111.28    fiona8-1.calit2.uci.edu              <none>           <none>
+cenic20-wn-la-69f99c9d9d-v58s8     1/1     Running   0          56m     10.244.112.12    fiona8-2.calit2.uci.edu              <none>           <none>
+cenic20-wn-sdsu-66df44dbff-4xvd4   1/1     Running   0          50m     10.244.14.13     ps-100g.sdsu.edu                     <none>           <none>
+cenic20-wn-ucsc-5bd9fd76fc-7d2sj   1/1     Running   0          38m     10.244.79.32     fiona8.ucsc.edu                      <none>           <none>
+cenic20-wn-ucsc-5bd9fd76fc-gzdh9   1/1     Running   0          38m     10.244.79.43     fiona8.ucsc.edu                      <none>           <none>
+cenic20-wn-ucsc-5bd9fd76fc-nbcct   1/1     Running   0          38m     10.244.17.37     k8s-gpu-2.ucsc.edu                   <none>           <none>
+cenic20-wn-ucsc-5bd9fd76fc-smtc6   1/1     Running   0          38m     10.244.8.37      k8s-gpu-1.ucsc.edu                   <none>           <none>
+cenic20-wn-ucsd-749564ddc4-7zmgz   1/1     Running   0          98m     10.244.20.32     k8s-gpu-03.sdsc.optiputer.net        <none>           <none>
+cenic20-wn-ucsd-749564ddc4-bwrl9   1/1     Running   0          98m     10.244.20.58     k8s-gpu-03.sdsc.optiputer.net        <none>           <none>
+cenic20-wn-ucsd-749564ddc4-drt5h   1/1     Running   0          98m     10.244.39.40     prp-gpu-6.t2.ucsd.edu                <none>           <none>
+cenic20-wn-ucsd-749564ddc4-hcnnm   1/1     Running   0          98m     10.244.179.122   k8s-ravi-01.calit2.optiputer.net     <none>           <none>
+cenic20-wn-ucsd-749564ddc4-hnfzb   1/1     Running   0          98m     10.244.78.37     patternlab.calit2.optiputer.net      <none>           <none>
+cenic20-wn-ucsd-749564ddc4-hnth6   1/1     Running   0          98m     10.244.46.11     prp-gpu-2.t2.ucsd.edu                <none>           <none>
+cenic20-wn-ucsd-749564ddc4-m7vqr   1/1     Running   0          98m     10.244.37.38     prp-gpu-4.t2.ucsd.edu                <none>           <none>
+cenic20-wn-ucsd-749564ddc4-n5fhc   1/1     Running   0          98m     10.244.99.27     k8s-bharadia-02.sdsc.optiputer.net   <none>           <none>
+cenic20-wn-ucsd-749564ddc4-pqblc   1/1     Running   0          98m     10.244.102.36    k8s-bharadia-01.sdsc.optiputer.net   <none>           <none>
+cenic20-wn-ucsd-749564ddc4-rvgqv   1/1     Running   0          98m     10.244.40.229    edex.calit2.optiputer.net            <none>           <none>
+cenic20-wn-ucsd-749564ddc4-sdxdl   1/1     Running   0          98m     10.244.150.116   prp-gpu-5.t2.ucsd.edu                <none>           <none>
+cenic20-wn-ucsd-749564ddc4-sn6xm   1/1     Running   0          98m     10.244.100.57    k8s-bharadia-03.sdsc.optiputer.net   <none>           <none>
+cenic20-wn-ucsd-749564ddc4-tvkdd   1/1     Running   0          98m     10.244.3.60      k8s-gpu-01.calit2.optiputer.net      <none>           <none>
+cenic20-wn-ucsd-749564ddc4-v2rnw   1/1     Running   0          98m     10.244.101.17    k8s-bharadia-04.sdsc.optiputer.net   <none>           <none>
+cenic20-wn-ucsd-749564ddc4-zdq6r   1/1     Running   0          131m    10.244.6.22      knuron.calit2.optiputer.net          <none>           <none>
+(base) Igors-MacBook-Pro:prp isfiligoi$ kubectl get pods -n isfiligoi -o wide |head -50 |grep Run |grep cenic |awk '{print $7}' |sort |uniq -c
+   1 edex.calit2.optiputer.net
+   1 fiona8-1.calit2.uci.edu
+   2 fiona8-2.calit2.uci.edu
+   2 fiona8.ucsc.edu
+   1 k8s-bharadia-01.sdsc.optiputer.net
+   1 k8s-bharadia-02.sdsc.optiputer.net
+   1 k8s-bharadia-03.sdsc.optiputer.net
+   1 k8s-bharadia-04.sdsc.optiputer.net
+   1 k8s-gpu-01.calit2.optiputer.net
+   2 k8s-gpu-03.sdsc.optiputer.net
+   1 k8s-gpu-1.ucsc.edu
+   1 k8s-gpu-2.ucsc.edu
+   1 k8s-ravi-01.calit2.optiputer.net
+   1 knuron.calit2.optiputer.net
+   1 patternlab.calit2.optiputer.net
+   1 prp-gpu-2.t2.ucsd.edu
+   1 prp-gpu-4.t2.ucsd.edu
+   1 prp-gpu-5.t2.ucsd.edu
+   1 prp-gpu-6.t2.ucsd.edu
+   1 ps-100g.sdsu.edu
