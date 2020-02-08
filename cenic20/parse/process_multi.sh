@@ -30,13 +30,33 @@ for i in max-long.658 max-long.667 world-long.676 world-long-gsusc.892 world-lon
  done
 done
 
-els=`(cd ../condor/out && ls -1 data.*multi.0.out)`
+els=`(cd ../condor/out && ls -1 data.*icecube.multi.0.out)`
 for f in $els; do
   p=`echo $f | awk '{split($0,a,".icecube.multi"); print a[1]}'`
   #echo $p
   if [ ! -f data_multi/${p}.out ]; then
     echo ${p}.out
-    ./parse_icecube_multi.py 30 ../condor/out/${p}.*multi* >data_multi/${p}.out
+    ./parse_icecube_multi.py 30 ../condor/out/${p}.*icecube.multi* >data_multi/${p}.out
+  fi
+done
+
+els=`(cd ../condor/out && ls -1 data.*icecube_gsusc.multi.0.out)`
+for f in $els; do
+  p=`echo $f | awk '{split($0,a,".icecube_gsusc.multi"); print a[1]}'`
+  #echo $p
+  if [ ! -f data_multi/${p}.gsusc.out ]; then
+    echo ${p}.out
+    ./parse_icecube_multi.py 30 ../condor/out/${p}.*icecube_gsusc.multi* >data_multi/${p}.gsusc.out
+  fi
+done
+
+els=`(cd ../condor/out && ls -1 data.*icecube_s3usc.multi.0.out)`
+for f in $els; do
+  p=`echo $f | awk '{split($0,a,".icecube_s3usc.multi"); print a[1]}'`
+  #echo $p
+  if [ ! -f data_multi/${p}.s3usc.out ]; then
+    echo ${p}.out
+    ./parse_icecube_multi.py 30 ../condor/out/${p}.*icecube_s3usc.multi* >data_multi/${p}.s3usc.out
   fi
 done
 
