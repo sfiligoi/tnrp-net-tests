@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in world-s3usc.769 world-s3usc.791 world-gsusc.821 world-gsusc.843; do
+for i in world-s3usc.769 world-s3usc.791 world-gsusc.821 world-gsusc.843 world-azusw.981 world-azusw.1017 world-prpwww.1074 world-prpwww.1096 world-prpwww.1118 world-prpwww.1140; do
  t=`echo $i | awk '{split($0,a,"."); print a[1]}'`
  j=`echo $i | awk '{split($0,a,"."); print a[2]}'`
  if [ ! -f data_multi/all-regions.multi-${t}.all.${j}.out10 ]; then
@@ -26,6 +26,21 @@ for i in world-long.676 world-long-gsusc.892 world-long-gsusc.914; do
    if [ ! -f data_multi/all-regions.multi-${t}.${c}.${j}.out10 ]; then
      echo all-regions.multi-${t}.${c}.${j}.out10
      ./parse_icecube_long.py 10 ../condor/out/all-regions.multi-${t}.${j}/data.${c}*long* >data_multi/all-regions.multi-${t}.${c}.${j}.out10
+   fi
+ done
+done
+
+for i in prp.955 prp.1002 prp.1008 prpwww.1066; do
+ t=`echo $i | awk '{split($0,a,"."); print a[1]}'`
+ j=`echo $i | awk '{split($0,a,"."); print a[2]}'`
+ if [ ! -f data_multi/all-clouds.multi-${t}.all.${j}.out10 ]; then
+   echo all-clouds.multi-${t}.all.${j}.out10
+   ./parse_icecube_multi.py 10 ../condor/out/all-clouds.multi-${t}.${j}/data.*multi* >data_multi/all-clouds.multi-${t}.all.${j}.out10
+ fi
+ for c in AWS AZURE GCP; do
+   if [ ! -f data_multi/all-clouds.multi-${t}.${c}.${j}.out10 ]; then
+     echo all-clouds.multi-${t}.${c}.${j}.out10
+     ./parse_icecube_multi.py 10 ../condor/out/all-clouds.multi-${t}.${j}/data.${c}*multi* >data_multi/all-clouds.multi-${t}.${c}.${j}.out10
    fi
  done
 done

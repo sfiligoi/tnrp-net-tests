@@ -1,0 +1,22 @@
+universe = vanilla
+
+# Files
+output = out/data.$(cloud_region).$(cluster).icecube_prpwww.multi.$(process).out
+error = err/data.$(cloud_region).$(cluster).icecube_prpwww.multi.$(process).err
+log = condor.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+requirements=(CLOUD_Region =?= "$(cloud_region)")
+
+executable = icecube_test_prpwww.sh
+transfer_input_files = finalize_prpwww.sh,icecube_in_list_prpwww.template.txt,prpwww_nodes.txt
+#
+# arguments = server-region nmax
+
+arguments = direct-multi 24 icecube_in_list_prpwww.template.txt prpwww_nodes.txt
+queue $(nmax)
+
