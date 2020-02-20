@@ -39,16 +39,38 @@ done
 for i in world-long.676 world-long-gsusc.892 world-long-gsusc.914; do
  t=`echo $i | awk '{split($0,a,"."); print a[1]}'`
  j=`echo $i | awk '{split($0,a,"."); print a[2]}'`
+
+ dir=../condor/out/all-regions.multi-${t}.${j}
+
  if [ ! -f data_multi/all-regions.multi-${t}.all.${j}.out10 ]; then
    echo all-regions.multi-${t}.all.${j}.out10
-   ./parse_icecube_long.py 10 ../condor/out/all-regions.multi-${t}.${j}/data.*long* >data_multi/all-regions.multi-${t}.all.${j}.out10
+   ./parse_icecube_long.py 10 ${dir}/data.*long* >data_multi/all-regions.multi-${t}.all.${j}.out10
  fi
  for c in AWS AZURE GCP; do
    if [ ! -f data_multi/all-regions.multi-${t}.${c}.${j}.out10 ]; then
      echo all-regions.multi-${t}.${c}.${j}.out10
-     ./parse_icecube_long.py 10 ../condor/out/all-regions.multi-${t}.${j}/data.${c}*long* >data_multi/all-regions.multi-${t}.${c}.${j}.out10
+     ./parse_icecube_long.py 10 ${dir}/data.${c}*long* >data_multi/all-regions.multi-${t}.${c}.${j}.out10
    fi
  done
+
+ c=us
+   if [ ! -f data_multi/all-regions.multi-${t}.${c}.${j}.out10 ]; then
+     echo all-regions.multi-${t}.${c}.${j}.out10
+     ./parse_icecube_long.py 10 ${dir}/data.AWS-us-*long* ${dir}/data.GCP-us-*long* ${dir}/data.AZURE-*us.* ${dir}/data.AZURE-*us2.* ${dir}/data.AZURE-CanadaCentral* >data_multi/all-regions.multi-${t}.${c}.${j}.out10
+   fi
+
+ c=eu
+   if [ ! -f data_multi/all-regions.multi-${t}.${c}.${j}.out10 ]; then
+     echo all-regions.multi-${t}.${c}.${j}.out10
+     ./parse_icecube_long.py 10 ${dir}/data.AWS-eu-*long* ${dir}/data.GCP-eu*long* ${dir}/data.AZURE-*eu* ${dir}/data.AZURE-*uk* >data_multi/all-regions.multi-${t}.${c}.${j}.out10
+   fi
+
+ c=ap
+   if [ ! -f data_multi/all-regions.multi-${t}.${c}.${j}.out10 ]; then
+     echo all-regions.multi-${t}.${c}.${j}.out10
+     ./parse_icecube_long.py 10 ${dir}/data.AWS-ap-*long* ${dir}/data.GCP-asia-*long* ${dir}/data.AZURE-au* ${dir}/data.AZURE-ja* >data_multi/all-regions.multi-${t}.${c}.${j}.out10
+   fi
+
 done
 
 for i in prp.955 prp.1002 prp.1008 prpwww.1066; do
