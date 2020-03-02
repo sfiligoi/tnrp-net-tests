@@ -12,7 +12,7 @@ for n in exa-v8-westeurope-p40 exa-v8-westeurope-v100 exa-v8-eastus-p40 exa-v8-e
     total=0
   fi
   echo "# $n ${cnt}/${total}"
-  if [ "${cnt}" != "${total}" ]; then
+  if [ "${cnt}" -lt "${total}" ]; then
     echo "az vmss scale  --resource-group exa --no-wait --name $n --new-capacity=${cnt}"
     az vmss scale  --resource-group exa --no-wait --name $n --new-capacity=${cnt}
   fi
