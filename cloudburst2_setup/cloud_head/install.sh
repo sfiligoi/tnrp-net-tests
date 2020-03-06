@@ -16,6 +16,7 @@ download /etc/condor/config.d/98-ccb-multi.config
 echo "TCP_FORWARDING_HOST = <IP>" > /etc/condor/config.d/90_nat.config
 
 download /etc/squid/customize.sh
+chmod a+x /etc/squid/customize.sh
 
 systemctl enable frontier-squid
 
