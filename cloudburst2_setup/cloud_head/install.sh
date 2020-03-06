@@ -21,4 +21,8 @@ chmod a+x /etc/squid/customize.sh
 systemctl enable frontier-squid
 
 systemctl enable condor
+
+# if enabled in the Cloud image
+systemctl disable firewalld
+
 reboot

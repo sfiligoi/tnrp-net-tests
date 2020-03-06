@@ -31,6 +31,9 @@ vi /etc/selinux/config
 
 groupadd -g 2000 condor && useradd -u 2000 -g 2000 -s /sbin/nologin condor
 
+# if not already present
+useradd centos
+
 yum -y install https://repo.opensciencegrid.org/osg/3.5/osg-3.5-el7-release-latest.rpm
 yum -y install epel-release yum-plugin-priorities
 
@@ -66,6 +69,9 @@ yum install -y freetype
 
 # Azure
 # wget https://aka.ms/downloadazcopy-v10-linux && tar -xvzf downloadazcopy-v10-linux && mv azcopy_linux_amd64_*/azcopy /usr/bin/ && chmod a+rx /usr/bin/azcopy
+
+# Oracle
+# wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh && chmod a+x install.sh && ./install.sh # iinstall in /usr/bin
 
 # Azure: Edit file, add to After and Requires
 #vi /usr/lib/systemd/system/condor.service
@@ -121,6 +127,10 @@ systemctl daemon-reload
 systemctl enable autofs
 
 
-systemctl enable condor
+systemctl enable condora
+
+# if enabled in the Cloud image
+systemctl disable firewalld
+
 reboot
 

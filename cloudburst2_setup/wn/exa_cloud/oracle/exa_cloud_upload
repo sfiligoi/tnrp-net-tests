@@ -1,0 +1,43 @@
+#!/bin/bash
+if [ $# -ne 2 ]; then
+  echo "ERROR: Missing arguments" 1>&2
+  echo "Usage: exa_cloud_upload localfile cloudpath" 1>&2
+  exit 1
+fi
+
+cloud_path=`exa_cloud_mangle "$2"`
+if [ $? -ne 0 ]; then
+  echo "ERROR: Failed parsing cloudpath: ${cloud_path}" 1>&2
+  exit 1
+fi
+
+# Oracle specific
+# convert from http[s] to opc notation
+# Note: Assumes that there is no /o/ or /b/ in the user file path
+opc_bname=`echo "${cloud_path}" | awk '{split($0,a,"/b/"); split(a[2],b,"/o/"); print b[1]}'`
+opc_fname=`echo "${cloud_path}" | awk '{split($0,a,"/o/"); print a[2]}'`
+
+echo "INFO: Uploading to opc:${opc_bname}:${opc_fname} (${cloud_path})"
+errstr=`oci os object put --auth instance_principal --file  "$1" --bucket-name "${opc_bname}" --name "${opc_fname}" 2>&1`
+rc=$?
+if [ $rc -ne 0 ]; then
+  sleep 1
+  echo "INFO: Retrying upload"
+  errstr=`oci os object put --auth instance_principal --file  "$1" --bucket-name "${opc_bname}" --name "${opc_fname}" 2>&1`
+  rc=$?
+fi
+if [ $rc -ne 0 ]; then
+  sleep 5
+  echo "INFO: Retrying upload"
+  errstr=`oci os object put --auth instance_principal --file  "$1" --bucket-name "${opc_bname}" --name "${opc_fname}" 2>&1`
+  rc=$?
+fi
+
+if [ ${rc} -ne 0 ]; then
+  echo "ERROR: Upload failed"
+  echo "ERROR: Upload failed" 1>&2
+  echo "$errstr" 1>&2
+  exit 1
+fi
+exit 0
+
