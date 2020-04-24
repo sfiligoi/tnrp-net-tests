@@ -36,6 +36,11 @@ RUN yum -y install supervisor
 
 RUN yum clean all
 
+
+# A couple tweaks to get users to see the AMD GPUs
+RUN ln -s /lib64/libOpenCL.so.1 /lib64/libOpenCL.so
+RUN usermod -a -G video centos; usermod -a -G video condor
+
 #
 # Configure condor
 #
