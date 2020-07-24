@@ -1,0 +1,19 @@
+universe = vanilla
+
+# Files
+output = out/test.$(cluster).$(process).out
+error = err/test.$(cluster).$(process).err
+log = condor.log
+
+# File transfer behavior
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_EXIT
+
+#requirements = (SlotID <6)
+#requirements=(CLOUD_Region =?= "$(cloud_region)")
+
+executable = one_xdm_test.sh
+transfer_input_files = ucsdci.proxy,upload_file.sh,upload_many.sh,upload_parallel.sh
+arguments = ucsdci.proxy tst_$(cluster)_$(process) 16
+queue 4
+

@@ -1,0 +1,35 @@
+{
+  "IamFleetRole": "arn:aws:iam::371881160940:role/aws-ec2-spot-fleet-tagging-role",
+  "AllocationStrategy": "capacityOptimized",
+  "TargetCapacity": 1,
+  "SpotPrice": "0.952",
+  "ValidFrom": "2020-01-09T03:06:48Z",
+  "ValidUntil": "2021-01-09T03:06:48Z",
+  "TerminateInstancesWithExpiration": true,
+  "LaunchSpecifications": [
+    {
+      "ImageId": "ami-0765fdc199a3917ab",
+      "InstanceType": "m5n.4xlarge",
+      "SubnetId": "subnet-b0795dfb, subnet-fd033884, subnet-03890428, subnet-53aaa009",
+      "KeyName": "prp-aws-west2",
+      "SpotPrice": "0.952",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-0fec69e8db5340e9c"
+          }
+        }
+      ],
+      "SecurityGroups": [
+        {
+          "GroupId": "sg-0e8999e22b89be080"
+        }
+      ]
+    }
+  ],
+  "Type": "maintain"
+}

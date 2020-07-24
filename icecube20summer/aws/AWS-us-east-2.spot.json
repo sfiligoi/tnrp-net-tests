@@ -1,0 +1,58 @@
+{
+  "IamFleetRole": "arn:aws:iam::371881160940:role/aws-ec2-spot-fleet-tagging-role",
+  "AllocationStrategy": "capacityOptimized",
+  "TargetCapacity": 1,
+  "SpotPrice": "0.952",
+  "ValidFrom": "2020-01-22T04:38:58Z",
+  "ValidUntil": "2021-01-22T04:38:58Z",
+  "TerminateInstancesWithExpiration": true,
+  "LaunchSpecifications": [
+    {
+      "ImageId": "ami-0e4ca14997d2178fb",
+      "InstanceType": "m5n.4xlarge",
+      "SubnetId": "subnet-be8c8bd6, subnet-1f903453, subnet-a02c50da",
+      "KeyName": "prp-aws-1",
+      "SpotPrice": "0.952",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-000fc0f9987bb0ff9"
+          }
+        }
+      ],
+      "SecurityGroups": [
+        {
+          "GroupId": "sg-07f3c012fad3dac48"
+        }
+      ]
+    },
+    {
+      "ImageId": "ami-0e4ca14997d2178fb",
+      "InstanceType": "m5.4xlarge",
+      "SubnetId": "subnet-be8c8bd6, subnet-1f903453, subnet-a02c50da",
+      "KeyName": "prp-aws-1",
+      "SpotPrice": "0.768",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "VolumeType": "gp2",
+            "VolumeSize": 40,
+            "SnapshotId": "snap-000fc0f9987bb0ff9"
+          }
+        }
+      ],
+      "SecurityGroups": [
+        {
+          "GroupId": "sg-07f3c012fad3dac48"
+        }
+      ]
+    }
+  ],
+  "Type": "maintain"
+}
