@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfsicecubesdsc14
+  namespace: isfiligoi
+  labels:
+    nfslabel: nfsicecubesdsc14
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 132.249.108.154
+    path: "/icecube-test"

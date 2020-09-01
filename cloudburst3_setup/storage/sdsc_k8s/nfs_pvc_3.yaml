@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfsicecubesdsc3
+  namespace: isfiligoi
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  selector:
+    matchLabels:
+      nfslabel: "nfsicecubesdsc3"
+  resources:
+    requests:
+      storage: 1Mi

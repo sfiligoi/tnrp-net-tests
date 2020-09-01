@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gftp5
+  namespace: isfiligoi
+  labels: 
+    k8s-app: gftp5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: gftp5
+  template:
+    metadata: 
+      labels:
+        k8s-app: gftp5
+    spec:
+      hostNetwork: true
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - k8s-gen4-08.calit2.optiputer.net
+      containers:
+      - name: main
+        image: sfiligoi/osg-gridftp:latest
+        #imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        resources:
+           limits:
+             memory: 6Gi
+             cpu: 20
+           requests:
+             memory: 4Gi
+             cpu: 10
+        volumeMounts:
+        - name: hostcert
+          mountPath: /etc/grid-security/hostcert.pem
+          subPath: hostcert.pem
+          readOnly: true
+        - name: hostkey
+          mountPath: /etc/grid-security/hostkey.pem
+          subPath: hostkey.pem
+          readOnly: true
+        - name: configgridmap
+          mountPath: /etc/grid-security/grid-mapfile
+          subPath: grid-mapfile
+        - name: configinit
+          mountPath: /etc/osg/image-config.d/80_pod_init.sh
+          subPath: 80_pod_init.sh
+          readOnly: true
+        - name: nfs1
+          mountPath: /n1
+        - name: nfs2
+          mountPath: /n2
+        - name: nfs3
+          mountPath: /n3
+        - name: nfs4
+          mountPath: /n4
+        - name: nfs5
+          mountPath: /n5
+        - mountPath: /dev/shm
+          name: dshm
+      volumes:
+      - name: hostcert
+        secret:
+          secretName: gftp
+          items:
+             - key: hostcert.pem
+               path: hostcert.pem
+          defaultMode: 256
+      - name: hostkey
+        secret:
+          secretName: gftp
+          items:
+             - key: hostkey.pem
+               path: hostkey.pem
+          defaultMode: 256
+      - name: configgridmap
+        secret:
+          secretName: gftp
+          items:
+             - key: grid-mapfile
+               path: grid-mapfile
+          defaultMode: 292
+      - name: configinit
+        secret:
+          secretName: gftp
+          items: 
+             - key: 80_pod_init.sh
+               path: 80_pod_init.sh
+          defaultMode: 365
+      - name: dshm
+        emptyDir:
+          medium: Memory
+      - name: nfs1
+        persistentVolumeClaim:
+          claimName: nfsicecubesdsc2
+      - name: nfs2
+        persistentVolumeClaim:
+          claimName: nfsicecubesdsc7
+      - name: nfs3
+        persistentVolumeClaim:
+          claimName: nfsicecubesdsc12
+      - name: nfs4
+        persistentVolumeClaim:
+          claimName: nfsicecubesdsc14
+      - name: nfs5
+        persistentVolumeClaim:
+          claimName: nfsicecubesdsc17
+
