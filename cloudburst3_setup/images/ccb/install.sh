@@ -14,7 +14,7 @@ echo "CONDOR_HOST = ${HEADIP}" > /etc/condor/config.d/90_head_address.config
 
 # adjust as needed
 EXTIP=<MYIP>
-echo "TCP_FORWARDING_HOST = ${EXIP}" > /etc/condor/config.d/90_nat.config
+echo "TCP_FORWARDING_HOST = ${EXTIP}" > /etc/condor/config.d/90_nat.config
 
 download /etc/squid/customize.sh
 chmod a+x /etc/squid/customize.sh
