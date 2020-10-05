@@ -2,7 +2,7 @@
 
 if [ ! -f "/dev/shm/count_slots.config" ]; then
   fname=`mktemp -p /dev/shm --suffix=.config cpiXXXX`
-  ngpus=`clinfo -l |grep Device |wc -l`
+  ngpus=`/usr/libexec/condor/condor_gpu_discovery -properties |grep DevicePciBusId |wc -l`
   ncpus=`grep '^processor' /proc/cpuinfo |wc -l`
 
   allmem=`free -m |awk '/^Mem:/{print $2}'`
