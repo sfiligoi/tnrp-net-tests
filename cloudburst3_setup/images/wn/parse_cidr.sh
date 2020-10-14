@@ -12,16 +12,16 @@ ip=sys.argv[2]
 # convert a.b.c.d to uint32
 def ipstr2num(s):
   sarr=s.split(".")
-  iarr=[int(e) for e in sarr]
-  return ((iarr[0]*0xff+iarr[1])*0xff+iarr[2])*0xff+iarr[3]
+  iarr=[long(e) for e in sarr]
+  return ((iarr[0]*0x100+iarr[1])*0x100+iarr[2])*0x100+iarr[3]
 
 # convert d into /d mask (e.g. 8 -> 0xff << 24)
 def bits2mask(d):
   m=0
   for r in range(d):
-    m = m*2+1
+    m = m*2L+1
   for r in range(32-d):
-    m = m*2
+    m = m*2L
   return m
 
 ipn=ipstr2num(ip)
