@@ -7,7 +7,7 @@ if [ ! -f "/dev/shm/count_slots.config" ]; then
 
   allmem=`free -m |awk '/^Mem:/{print $2}'`
 
-  let leftcpus="${ncpus} - 2 * ${ngpus}"
+  let leftcpus="${ncpus} - 4 * ${ngpus}"
 
   # Condor will fail is there is not enough memory per slot, better tune down
   let cpumem=${allmem}-${ngpus}*10000
