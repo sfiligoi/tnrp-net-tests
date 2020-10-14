@@ -20,9 +20,6 @@ blacklist nouveau
 options nouveau modeset=0
 EOF
 
-# use only in extreme cases
-#dracut --force
-
 reboot
 # end disable noveou
 
