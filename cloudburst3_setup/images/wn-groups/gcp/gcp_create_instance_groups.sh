@@ -1,9 +1,9 @@
 #!/bin/bash -x
 
 #for z in a b f; do
-#    gcloud beta compute --project=exa-demo instance-groups managed create ig-us-central1-${z}-t4-v8 \
-#                        --base-instance-name=ig-us-central1-${z}-t4 --template=it-us-t4-v8-a2 --size=0 \
-#                        --zones=us-central1-${z} --instance-redistribution-type=NONE
+#    gcloud compute --project=exa-demo instance-groups managed create ig-exa3-us-central1-${z}-t4 \
+#                   --base-instance-name=ig-exa3-us-central1-${z}-t4 --template=it-exa3-us-t4-v1 --size=0 \
+#                   --zones=us-central1-${z} --instance-redistribution-type=NONE
 #done
 
 
