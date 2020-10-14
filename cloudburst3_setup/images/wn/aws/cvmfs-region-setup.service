@@ -1,0 +1,9 @@
+[Unit]
+Description=Setup Region
+After=network-online.target
+Before=autofs.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/condor/scripts/cvmfs_region_setup.sh
