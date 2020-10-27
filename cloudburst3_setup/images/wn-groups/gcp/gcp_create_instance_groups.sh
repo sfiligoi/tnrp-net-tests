@@ -10,6 +10,10 @@ gcloud compute --project=exa-demo instance-groups managed create ig-exa3-us-cent
                --base-instance-name=ig-exa3-us-central-1-v100 --template=it-exa3-us-central-1-v100-v2 --size=0 \
                --zones=us-central1-a,us-central1-b,us-central1-c,us-central1-f --instance-redistribution-type=NONE
 
+gcloud compute --project=exa-demo instance-groups managed create ig-exa3-us-central-1-p100 \
+               --base-instance-name=ig-exa3-us-central-1-p100 --template=it-exa3-us-central-1-p100-v2 --size=0 \
+               --zones=us-central1-c,us-central1-f --instance-redistribution-type=NONE
+
 #z2
 gcloud compute --project=exa-demo instance-groups managed create ig-exa3b-us-central-1-t4 \
                --base-instance-name=ig-exa3b-us-central-1-t4 --template=it-exa3b-us-central-1-t4-v2 --size=0 \
@@ -19,6 +23,9 @@ gcloud compute --project=exa-demo instance-groups managed create ig-exa3b-us-cen
                --base-instance-name=ig-exa3b-us-central-1-v100 --template=it-exa3b-us-central-1-v100-v2 --size=0 \
                --zones=us-central1-a,us-central1-b,us-central1-c,us-central1-f --instance-redistribution-type=NONE
 
+gcloud compute --project=exa-demo instance-groups managed create ig-exa3b-us-central-1-p100 \
+               --base-instance-name=ig-exa3b-us-central-1-p100 --template=it-exa3b-us-central-1-p100-v2 --size=0 \
+               --zones=us-central1-c,us-central1-f --instance-redistribution-type=NONE
 
 #z3
 
@@ -29,6 +36,10 @@ gcloud compute --project=exa-demo instance-groups managed create ig-exa3c-us-cen
 gcloud compute --project=exa-demo instance-groups managed create ig-exa3c-us-central-1-v100 \
                --base-instance-name=ig-exa3c-us-central-1-v100 --template=it-exa3c-us-central-1-v100-v2 --size=0 \
                --zones=us-central1-a,us-central1-b,us-central1-c,us-central1-f --instance-redistribution-type=NONE
+
+gcloud compute --project=exa-demo instance-groups managed create ig-exa3c-us-central-1-p100 \
+               --base-instance-name=ig-exa3c-us-central-1-p100 --template=it-exa3c-us-central-1-p100-v2 --size=0 \
+               --zones=us-central1-c,us-central1-f --instance-redistribution-type=NONE
 
 
 # US West

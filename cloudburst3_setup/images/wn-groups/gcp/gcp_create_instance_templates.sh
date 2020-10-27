@@ -30,6 +30,10 @@ gcloud compute --project=exa-demo instance-templates create it-exa3-us-central-1
     --region=us-central1 --subnet=projects/exa-demo/regions/us-central1/subnetworks/exa3-us-central-1 \
     --accelerator=type=nvidia-tesla-v100,count=1
 
+gcloud compute --project=exa-demo instance-templates create it-exa3-us-central-1-p100-v2 $IMAGE "$SSHKEY" \
+    --min-cpu-platform="Intel Broadwell" \
+    --region=us-central1 --subnet=projects/exa-demo/regions/us-central1/subnetworks/exa3-us-central-1 \
+    --accelerator=type=nvidia-tesla-p100,count=1
 
 # z2
 gcloud compute --project=exa-demo instance-templates create it-exa3b-us-central-1-t4-v2 $IMAGE "$SSHKEY" \
@@ -42,6 +46,11 @@ gcloud compute --project=exa-demo instance-templates create it-exa3b-us-central-
     --region=us-central1 --subnet=projects/exa-demo/regions/us-central1/subnetworks/exa3b-us-central-1 \
     --accelerator=type=nvidia-tesla-v100,count=1
 
+gcloud compute --project=exa-demo instance-templates create it-exa3b-us-central-1-p100-v2 $IMAGE "$SSHKEY" \
+    --min-cpu-platform="Intel Broadwell" \
+    --region=us-central1 --subnet=projects/exa-demo/regions/us-central1/subnetworks/exa3b-us-central-1 \
+    --accelerator=type=nvidia-tesla-p100,count=1
+
 # z3
 gcloud compute --project=exa-demo instance-templates create it-exa3c-us-central-1-t4-v2 $IMAGE "$SSHKEY" \
     --min-cpu-platform="Intel Broadwell" \
@@ -52,4 +61,9 @@ gcloud compute --project=exa-demo instance-templates create it-exa3c-us-central-
     --min-cpu-platform="Intel Broadwell" \
     --region=us-central1 --subnet=projects/exa-demo/regions/us-central1/subnetworks/exa3c-us-central-1 \
     --accelerator=type=nvidia-tesla-v100,count=1
+
+gcloud compute --project=exa-demo instance-templates create it-exa3c-us-central-1-p100-v2 $IMAGE "$SSHKEY" \
+    --min-cpu-platform="Intel Broadwell" \
+    --region=us-central1 --subnet=projects/exa-demo/regions/us-central1/subnetworks/exa3c-us-central-1 \
+    --accelerator=type=nvidia-tesla-p100,count=1
 
