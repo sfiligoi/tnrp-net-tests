@@ -19,6 +19,26 @@ for z in a b c d e f ; do
   let IPel=IPel+4
 done
 
+#vpc-exa3c-east-1
+aws --region us-east-1 ec2 create-vpc --cidr-block 10.250.192.0/19  "--tag-specifications=ResourceType=vpc,Tags=[{Key=Name,Value=vpc-exa3c-east-1},{Key=ClouddConnect,Value=True}]"
+VPC=vpc-0d19714f0583970e0
+IPel=192
+for z in a b c d e f ; do
+  aws --region us-east-1 ec2 create-subnet --vpc-id=${VPC} --cidr-block=10.250.${IPel}.0/22 --availability-zone=us-east-1${z} "--tag-specifications=ResourceType=subnet,Tags=[{Key=Name,Value=sn-exa3c-east-1${z}},{Key=ClouddConnect,Value=True}]"
+  let IPel=IPel+4
+done
+
+#vpc-exa3d-east-1
+aws --region us-east-1 ec2 create-vpc --cidr-block 10.250.224.0/19  "--tag-specifications=ResourceType=vpc,Tags=[{Key=Name,Value=vpc-exa3d-east-1},{Key=ClouddConnect,Value=True}]"
+VPC=vpc-000c91dbac6f3a277
+IPel=224
+for z in a b c d e f ; do
+  aws --region us-east-1 ec2 create-subnet --vpc-id=${VPC} --cidr-block=10.250.${IPel}.0/22 --availability-zone=us-east-1${z} "--tag-specifications=ResourceType=subnet,Tags=[{Key=Name,Value=sn-exa3d-east-1${z}},{Key=ClouddConnect,Value=True}]"
+  let IPel=IPel+4
+done
+
+
+
 #vpc-exa3-east-2
 aws --region us-east-2 ec2 create-vpc --cidr-block 10.250.64.0/20  "--tag-specifications=ResourceType=vpc,Tags=[{Key=Name,Value=vpc-exa3-east-2},{Key=ClouddConnect,Value=True}]"
 VPC=vpc-0f7643aae771bfcb6
