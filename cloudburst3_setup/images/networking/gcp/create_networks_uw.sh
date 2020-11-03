@@ -32,7 +32,7 @@ gcloud compute firewall-rules create exa3c-all-in --network exa3c --allow tcp:10
 gcloud compute firewall-rules create exa3c-ssh --network exa3c --allow tcp:22 --source-ranges 0.0.0.0/0
 
 # exa3d
-gcloud compute networks create exa3d --project=exa-demo "--description=Exa3 instance 4" --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
+gcloud compute networks create exa3d --project=exa-demo "--description=Exa3 instance 4" --subnet-mode=custom --mtu=1460 --bgp-routing-mode=global
 
 gcloud compute networks subnets create exa3d-us-central-1 --project=exa-demo --range=10.249.48.0/20 --network=exa3d --region=us-central1
 gcloud compute networks subnets create exa3d-us-east1 --project=exa-demo --range=10.249.112.0/20 --network=exa3d --region=us-east1
@@ -41,3 +41,4 @@ gcloud compute networks subnets create exa3d-us-west1 --project=exa-demo --range
 gcloud compute firewall-rules create exa3d-all-in --network exa3d --allow tcp:1024-65535,udp:1024-65535,icmp --source-ranges 0.0.0.0/0
 gcloud compute firewall-rules create exa3d-ssh --network exa3d --allow tcp:22 --source-ranges 0.0.0.0/0
 
+# VPC network peering between default and the above netowrks created by hand
