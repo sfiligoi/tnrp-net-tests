@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount scratch
+After=network.service
+Before=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/mount_scratch.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
