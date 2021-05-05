@@ -1,0 +1,14 @@
+[Unit]
+Description=Set squid location
+After=network.service sshd.service waagent.service
+Before=condor.service
+Requires=sshd.service waagent.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/set_local_squid.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target condor.service
+

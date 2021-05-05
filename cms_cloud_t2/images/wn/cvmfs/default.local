@@ -1,0 +1,4 @@
+CVMFS_REPOSITORIES="`echo $((echo oasis.opensciencegrid.org;echo cms.cern.ch;ls /cvmfs)|sort -u)|tr ' ' ,`"
+CVMFS_QUOTA_LIMIT=10000
+CVMFS_HTTP_PROXY="http://local-squid.local:3128"
+
