@@ -4,6 +4,7 @@ vi /etc/selinux/config
 
 reboot
 groupadd -g 2000 condor && useradd -u 2000 -g 2000 -s /sbin/nologin condor
+groupadd -g 2001 squid && useradd -u 2001 -g 2001 -s /sbin/nologin squid
 
 groupadd -g 3001 osg && useradd -u 3001 -g 3001 -s /usr/bin/bash osg
 groupadd -g 3006 fermigli && useradd -u 3006 -g 3006 -s /usr/bin/bash fermigli
@@ -20,6 +21,7 @@ yum -y install https://repo.opensciencegrid.org/osg/3.5/osg-3.5-el7-release-late
 yum -y install epel-release yum-plugin-priorities
 yum clean all
 yum -y install condor
+yum -y install frontier-squid
 yum install -y osg-wn-client
 yum install -y osg-ca-certs-updater
 
@@ -39,6 +41,15 @@ yum install -y singularity
 #Requires=sshd.service waagent.service
 
 systemctl daemon-reload
+
+chown squid:squid customize.sh 
+chmod a+x customize.sh
+download /etc/squid/customize.sh
+
+rmdir /var/log/squid
+ln -s /mnt/resource/squid/log /var/log/squid
+rmdir /var/cache/squid
+ln -s /mnt/resource/squid/cache /var/cache/squid
 
 rmdir /var/lib/condor/execute
 ln -s /mnt/resource/execute /var/lib/condor/execute
@@ -69,6 +80,7 @@ echo "CONDOR_HOST = 20.83.210.204" > /etc/condor/config.d/90_head_address.config
 systemctl enable fetch-crl-boot
 systemctl enable fetch-crl-cron
 systemctl enable autofs
+systemctl enable frontier-squid
 reboot
 
 mkdir -p /etc/cvmfs/SITECONF/T3_US_SDSC
@@ -77,7 +89,7 @@ mkdir -p /etc/cvmfs/SITECONF/T3_US_SDSC
 #vi /etc/cvmfs/SITECONF/T3_US_SDSC/JobConfig/site-local-config.xml
 # replace
 #     <frontier-connect>
-#       <proxy url="http://local-squid.local:3128"/>
+#       <proxy url="http://127.0.0.1:3128"/>
 
 
 systemctl enable osg-ca-certs-updater-cron

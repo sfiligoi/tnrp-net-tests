@@ -1,7 +1,7 @@
 [Unit]
 Description=Mount scratch
 After=network.service sshd.service waagent.service
-Before=condor.service
+Before=condor.service frontier-squid.service
 Requires=sshd.service waagent.service
 
 [Service]
@@ -10,5 +10,5 @@ ExecStart=/usr/sbin/mount_scratch.sh
 RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target condor.service
+WantedBy=multi-user.target condor.service frontier-squid.service
 
