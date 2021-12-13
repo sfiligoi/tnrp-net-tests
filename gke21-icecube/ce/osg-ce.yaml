@@ -1,0 +1,121 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: osg-ce-gke
+  labels:
+    app: osg-ce-gke
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: osg-ce
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: osg-ce
+  labels: 
+    app: osg-ce
+spec:
+  serviceName: "osg-ce-ss"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: osg-ce
+  template:
+    metadata: 
+      labels:
+        app: osg-ce
+    spec:
+      containers:
+      - name: osg-head
+        image: sfiligoi/prp-osg-head
+        imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        resources:
+          limits:
+            cpu: "4"
+            memory: 16Gi
+          requests:
+            cpu: "1"
+            memory: 4Gi
+        volumeMounts:
+        #- name: hostcert
+        #  mountPath: /etc/grid-security/hostcert.pem
+        #- name: hostkey
+        #  mountPath: /etc/grid-security/hostkey.pem
+        - name: condordata
+          mountPath: /var/lib/condor
+        - name: condorcedata
+          mountPath: /var/lib/condor-ce
+        - name: homedata
+          mountPath: /home
+        - name: configpasswd
+          mountPath: /var/lock/condor/pool_password
+          subPath: pool_password
+          readOnly: true
+        - name: configinit
+          mountPath: /etc/osg/image-config.d/80_pod_init.sh
+          subPath: 80_pod_init.sh
+          readOnly: true
+        - name: configosg10
+          mountPath: /etc/osg/config.d/01-squid.ini
+          subPath: 01-squid.ini 
+        - name: configosg30
+          mountPath: /etc/osg/config.d/30-gip.ini
+          subPath: 30-gip.ini
+        - name: configosg40
+          mountPath: /etc/osg/config.d/40-siteinfo.ini
+          subPath: 40-siteinfo.ini
+      volumes:
+      #- name : hostcert
+      #  hostPath:
+      #     path: /etc/grid-security/hostcert.pem
+      #     type: File
+      #- name : hostkey
+      #  hostPath:
+      #     path: /etc/grid-security/hostkey.pem
+      #     type: File
+      - name: condordata
+        persistentVolumeClaim:
+          claimName: osg-condor
+      - name: condorcedata
+        persistentVolumeClaim:
+          claimName: osg-ce-condor
+      - name: homedata
+        persistentVolumeClaim:
+          claimName: osg-home
+      - name: configpasswd
+        secret:
+          secretName: osg-pool-config
+          items:
+             - key: pool_password
+               path: pool_password
+          defaultMode: 256
+      - name: configinit
+        configMap:
+          name: osg-ce-config
+          items:
+             - key: 80_pod_init.sh
+               path: 80_pod_init.sh
+      - name: configosg10
+        configMap:
+          name: osg-ce-config
+          items:
+             - key: 01-squid.ini
+               path: 01-squid.ini
+      - name: configosg30
+        configMap:
+          name: osg-ce-config
+          items:
+             - key: 30-gip.ini
+               path: 30-gip.ini
+      - name: configosg40
+        configMap:
+          name: osg-ce-config
+          items:
+             - key: 40-siteinfo.ini
+               path: 40-siteinfo.ini
+
