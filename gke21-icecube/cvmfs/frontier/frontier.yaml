@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontier-squid
+  namespace: cvmfs
+  labels:
+    k8s-app: frontier-squid
+spec:
+  selector:
+    matchLabels:
+      k8s-app: frontier-squid
+  template:
+    metadata: 
+      labels:
+        k8s-app: frontier-squid
+    spec:
+      containers:
+      - name: frontier-squid
+        image: opensciencegrid/frontier-squid:fresh
+        imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        resources:
+           limits:
+             memory: 16Gi
+             cpu: 1
+           requests:
+             memory: 2Gi
+             cpu: 1
+        env:
+        - name: SQUID_IPRANGE
+          value: "0.0.0.0/0"
+        ports:
+        - containerPort: 3128
+
