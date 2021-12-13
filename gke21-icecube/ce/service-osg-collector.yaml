@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: osg-collector
+  name: osg-collector
+spec:
+  ports:
+  - port: 9618
+    protocol: TCP
+    targetPort: 9618
+  selector:
+    app: osg-collector
+  sessionAffinity: None
+  type: LoadBalancer

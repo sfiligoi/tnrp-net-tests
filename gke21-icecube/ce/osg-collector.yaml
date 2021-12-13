@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: osg-collector
+  labels:
+    app: osg-collector
+spec:
+  selector:
+    matchLabels:
+      app: osg-collector
+  template:
+    metadata: 
+      labels:
+        app: osg-collector
+    spec:
+      containers:
+      - name: osg-collector-prp
+        image: sfiligoi/prp-osg-pool:collector
+        imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        resources:
+           limits:
+             memory: 2Gi
+             cpu: 1.5
+           requests:
+             memory: 0.2Gi
+             cpu: 0.1
+        ports:
+        - containerPort: 9618
+        volumeMounts:
+        - name: configpasswd
+          mountPath: /etc/condor/secret/pool_password
+          subPath: pool_password
+          readOnly: true
+      volumes:
+      - name: configpasswd
+        secret:
+          secretName: osg-pool-config
+          items:
+             - key: pool_password
+               path: pool_password
+          defaultMode: 256
+

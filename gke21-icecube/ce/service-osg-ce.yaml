@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: osg-ce
+  name: osg-ce
+spec:
+  ports:
+  - name: condor
+    port: 9618
+    protocol: TCP
+    targetPort: 9618
+  - name: condorce
+    port: 9619
+    protocol: TCP
+    targetPort: 9619
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  selector:
+    app: osg-ce
+  type: LoadBalancer
