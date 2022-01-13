@@ -6,6 +6,10 @@ secret_pool: pool_password
 	#kubectl delete secret osg-pool-config
 	kubectl create secret generic osg-pool-config --from-file=pool_password
 
+secret_x509: hostcert.pem hostkey.pem
+	#kubectl delete secret osg-x509-config
+	kubectl create secret generic osg-x509-config --from-file=hostcert.pem --from-file=hostkey.pem
+
 configmap:
 	-kubectl delete configmap osg-ce-config 
 	kubectl create configmap osg-ce-config --from-file=01-squid.ini=config/01-squid.ini --from-file=10-storage.ini=config/10-storage.ini --from-file=20-condor.ini=config/20-condor.ini \
