@@ -42,10 +42,12 @@ spec:
             cpu: "1"
             memory: 4Gi
         volumeMounts:
-        #- name: hostcert
-        #  mountPath: /etc/grid-security/hostcert.pem
-        #- name: hostkey
-        #  mountPath: /etc/grid-security/hostkey.pem
+        - mountPath: /etc/grid-security/hostcert.pem
+          name: hostcert
+          subPath: hostcert.pem
+        - mountPath: /etc/grid-security/hostkey.pem
+          name: hostkey
+          subPath: hostkey.pem
         - name: condordata
           mountPath: /var/lib/condor
         - name: condorcedata
@@ -70,14 +72,20 @@ spec:
           mountPath: /etc/osg/config.d/40-siteinfo.ini
           subPath: 40-siteinfo.ini
       volumes:
-      #- name : hostcert
-      #  hostPath:
-      #     path: /etc/grid-security/hostcert.pem
-      #     type: File
-      #- name : hostkey
-      #  hostPath:
-      #     path: /etc/grid-security/hostkey.pem
-      #     type: File
+      - name: hostcert
+        secret:
+          secretName: osg-x509-config
+          items:
+             - key: hostcert.pem
+               path: hostcert.pem
+          defaultMode: 256
+      - name: hostkey
+        secret:
+          secretName: osg-x509-config
+          items:
+             - key: hostkey.pem
+               path: hostkey.pem
+          defaultMode: 256
       - name: condordata
         persistentVolumeClaim:
           claimName: osg-condor
