@@ -11,6 +11,10 @@ echo 'HOST_ALIAS = icecube-cloud-t4-ce.t2.ucsd.edu' >> /etc/condor/config.d/90_n
 echo "TCP_FORWARDING_HOST = ${EXTIP}" > /etc/condor-ce/config.d/90_nat.config
 echo 'HOST_ALIAS = icecube-cloud-t4-ce.t2.ucsd.edu' >> /etc/condor-ce/config.d/90_nat.config
 
+# The default CE config does does work nicely with NAT-ed setups
+# Must relax the security to allow commands that seem to come from the NAT host
+echo "ALLOW_DAEMON = condor@daemon.htcondor.org/10.* condor@child/10.*" > /etc/condor-ce/config.d/98_security.config
+
 
 # If this is the first use of the persistent disk areas, create the necessary dirs
 # This dirs are normally created by the RPM in the base image
