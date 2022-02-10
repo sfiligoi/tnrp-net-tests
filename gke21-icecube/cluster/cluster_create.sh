@@ -2,3 +2,7 @@
 
 gcloud beta container clusters create "icecube" --zone "us-central1-c" --cluster-version "1.21.5-gke.1302" --release-channel "regular" --spot
 
+# this will be needed by the gpu nodes
+kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/cmd/nvidia_gpu/device-plugin.yaml
+kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-nvidia-mig.yaml
+
