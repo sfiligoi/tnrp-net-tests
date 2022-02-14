@@ -34,14 +34,15 @@ def get_pods():
        cntr += 1
   return (cntr, cntp)
 
-while true:
+while True:
   try:
     (cntn, cntg) = get_nodes()
     (cntr, cntp) = get_pods()
 
-    with open(/var/log/provisioner/logs/monitor/gke.log."+time.strftime("%Y%m%d"),"a") as fd:
+    with open("/var/log/provisioner/logs/monitor/gke.log."+time.strftime("%Y%m%d"),"a") as fd:
       fd.write("%s (%i) Nodes: %i (gpus: %i ) Pods running: %i pending: %i\n"%(time.ctime(), time.time(), cntn, cntg, cntr, cntp))
   except:
     print("Moonitoring excpetion!")
-    time.sleep(60)
+  # sleep a bit
+  time.sleep(60)
 
