@@ -1,0 +1,11 @@
+Note: Relies on
+https://github.com/sfiligoi/prp-htcondor-portal
+
+For each supported namespace:
+1) deploy service account
+kubectl create -f prp-htcondor-portal/provisioner/k8s/prp-htcondor-provisioner-account.yaml
+kubectl create -f monitoring-account.yaml
+
+2) needs CE shared secret
+
+

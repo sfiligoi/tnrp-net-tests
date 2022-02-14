@@ -1,0 +1,23 @@
+apiVersion: v1
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prp-htcondor-provisioner-nodes
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "list", "watch" ]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prp-htcondor-provisioner-nodes
+subjects:
+- kind: ServiceAccount
+  name: prp-htcondor-provisioner
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: prp-htcondor-provisioner-nodes # this must match the name of the ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
+
