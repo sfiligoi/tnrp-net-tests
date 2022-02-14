@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: osg-provisioner-icecube
+  labels:
+    k8s-app: osg-provisioner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: osg-provisioner
+  template:
+    metadata: 
+      labels:
+        k8s-app: osg-provisioner
+    spec:
+      serviceAccountName: prp-htcondor-provisioner
+      restartPolicy: Always
+      containers:
+      - name: provisioner
+        image: sfiligoi/prp-osg-pool:provisioner
+        imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        env:
+        - name: K8S_NAMESPACE
+          value: "default"
+        - name: CVMFS_MOUNTS
+          value: "icecube"
+        resources:
+           limits:
+             memory: 2Gi
+             cpu: 1
+           requests:
+             memory: 0.5Gi
+             cpu: 0.1
+        volumeMounts:
+        - name: configpasswd
+          mountPath: /etc/condor/secret/pool_password
+          subPath: pool_password
+          readOnly: true
+        - name: sscript
+          mountPath: /opt/provisioner/provisioner_startup.sh
+          subPath: provisioner_startup.sh
+        - name: ppy
+          mountPath: /opt/provisioner/prp-osg-pool/provisioner/python/osg_provisioner/provisioner_k8s.py
+          subPath: provisioner_k8s.py
+        - name: log-pvc
+          mountPath: /var/log/provisioner
+      volumes:
+      - name: configpasswd
+        secret:
+          secretName: osg-pool-config
+          items:
+             - key: pool_password
+               path: pool_password
+          # allow access by any user in the pod, single purpose
+          defaultMode: 292
+      - name: sscript
+        configMap:
+          defaultMode: 493
+          items:
+          - key: provisioner_startup.sh
+            path: provisioner_startup.sh
+          name: osg-provisioner-config
+      - name: ppy
+        configMap:
+          defaultMode: 420
+          items:
+          - key: provisioner_k8s.py
+            path: provisioner_k8s.py
+          name: osg-provisioner-config
+      - name: log-pvc
+        persistentVolumeClaim:
+          claimName: osg-provisioner-log
+
