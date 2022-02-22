@@ -1,0 +1,10 @@
+Note: Relies on
+https://github.com/sfiligoi/prp-htcondor-portal
+
+For each supported namespace:
+1) deploy service account
+kubectl create -n gke-icecube -f prp-htcondor-portal/provisioner/k8s/prp-htcondor-provisioner-account.yaml
+
+2) needs token in prp-wn-gke-icecube.token
+kubectl create secret generic prp-htcondor-wn-secret -n gke-icecube --from-file=prp-wn.token=prp-wn-gke-icecube.token
+
