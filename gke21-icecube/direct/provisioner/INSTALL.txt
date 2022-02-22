@@ -8,3 +8,6 @@ kubectl create -n gke-icecube -f prp-htcondor-portal/provisioner/k8s/prp-htcondo
 2) needs token in prp-wn-gke-icecube.token
 kubectl create secret generic prp-htcondor-wn-secret -n gke-icecube --from-file=prp-wn.token=prp-wn-gke-icecube.token
 
+3) create config file
+kubectl create configmap osg-provisioner-config -n gke-icecube --from-file=osg_provisioner.conf=osg_provisioner.conf
+
