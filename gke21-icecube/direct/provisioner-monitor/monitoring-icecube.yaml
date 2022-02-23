@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gke-monitor-icecube
+  namespace: gke-icecube
+  labels:
+    k8s-app: gke-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: gke-monitor
+  template:
+    metadata: 
+      labels:
+        k8s-app: gke-monitor
+    spec:
+      serviceAccountName: prp-htcondor-provisioner
+      restartPolicy: Always
+      containers:
+      - name: monitor
+        image: sfiligoi/prp-osg-pool:provisioner-direct
+        imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        env:
+        - name: CONDOR_HOST
+          value: "dummy"
+        - name: K8S_NAMESPACE
+          value: "gke-icecube"
+        - name: CVMFS_MOUNTS
+          value: "icecube"
+        resources:
+           limits:
+             memory: 2Gi
+             cpu: 1
+           requests:
+             memory: 0.5Gi
+             cpu: 0.1
+        volumeMounts:
+        - name: ppy
+          mountPath: /home/provisioner/provisioner_main.py
+          subPath: provisioner_main.py
+        - name: log-pvc
+          mountPath: /var/log/provisioner
+      volumes:
+      - name: ppy
+        configMap:
+          defaultMode: 420
+          items:
+          - key: provisioner_main.py
+            path: provisioner_main.py
+          name: gke-monitor-config
+      - name: log-pvc
+        persistentVolumeClaim:
+          claimName: osg-provisioner-log
+
