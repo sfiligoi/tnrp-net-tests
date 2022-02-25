@@ -11,3 +11,6 @@ kubectl create secret generic prp-htcondor-wn-secret -n gke-icecube --from-file=
 3) create config file
 kubectl create configmap osg-provisioner-config -n gke-icecube --from-file=osg_provisioner.conf=osg_provisioner.conf
 
+4) Launch yamls
+kubectl create -f pvc-provisioner-logs.yaml
+kubectl create -f provisioner-icecube.yaml
