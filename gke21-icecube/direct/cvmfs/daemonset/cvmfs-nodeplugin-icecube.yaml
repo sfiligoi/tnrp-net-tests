@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cvmfs-nodeplugin-icecube
+  namespace: cvmfs
+  labels: 
+    k8s-app: cvmfs-nodeplugin-icecube
+spec:
+  selector:
+    matchLabels:
+      k8s-app: cvmfs-nodeplugin-icecube
+  template:
+    metadata: 
+      labels:
+        k8s-app: cvmfs-nodeplugin-icecube
+    spec:
+      serviceAccount: cvmfs-nodeplugin
+      tolerations:
+      - operator: "Exists"
+      containers:
+      - name: cvmfs-icecube
+        image: sfiligoi/prp-osg-cvmfs:nodeplugin
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+          capabilities:
+            add: ["SYS_ADMIN"]
+          allowPrivilegeEscalation: true
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/usr/local/sbin/unmount-and-terminate.sh"]
+        env:
+        - name: DEP_REPOS
+          value: "config-osg.opensciencegrid.org"
+        - name: MOUNT_REPOS
+          value: "icecube.opensciencegrid.org"
+        - name: SQUID_URI
+          value: "http://10.24.1.50:3128"
+        - name: CVMFS_REMOUNT
+          value: "N"
+        resources:
+           limits:
+             memory: 8Gi
+             cpu: 1
+           requests:
+             memory: 100Mi
+             cpu: 0.05
+        volumeMounts:
+        - mountPath: /cvmfs
+          name:  cvmfs-base
+          mountPropagation: Bidirectional
+      volumes:
+      - name: cvmfs-base
+        hostPath:
+          path: /var/lib/cvmfs-k8s
+          type: DirectoryOrCreate
+
