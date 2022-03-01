@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: direct-provisioner-icecube
+  namespace: osg-icecube
+  labels:
+    k8s-app: direct-provisioner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: direct-provisioner
+  template:
+    metadata: 
+      labels:
+        k8s-app: direct-provisioner
+    spec:
+      serviceAccountName: prp-htcondor-provisioner
+      restartPolicy: Always
+      containers:
+      - name: provisioner
+        image: sfiligoi/prp-osg-pool:provisioner-direct
+        imagePullPolicy: Always
+        #command: ["sh", "-c", "sleep infinity"]
+        env:
+        - name: CONDOR_HOST
+          value: "glidein-cm.icecube.wisc.edu"
+        - name: K8S_NAMESPACE
+          value: "osg-icecube"
+        - name: CVMFS_MOUNTS
+          value: "icecube"
+        resources:
+           limits:
+             memory: 2Gi
+             cpu: 1
+           requests:
+             memory: 0.5Gi
+             cpu: 0.1
+        volumeMounts:
+        - name: configpasswd
+          mountPath: /etc/condor/tokens.d/prp-wn.token
+          subPath: prp-wn.token
+          readOnly: true
+        - name: kconf
+          mountPath: /home/provisioner/osg_provisioner.conf
+          subPath: osg_provisioner.conf
+        - name: log-pvc
+          mountPath: /var/log/provisioner
+      volumes:
+      - name: configpasswd
+        secret:
+          secretName: prp-htcondor-wn-secret
+          items:
+             - key: prp-wn.token
+               path: prp-wn.token
+          defaultMode: 256
+      - name: kconf
+        configMap:
+          items:
+          - key: osg_provisioner.conf
+            path: osg_provisioner.conf
+          name: direct-provisioner-config
+      - name: log-pvc
+        persistentVolumeClaim:
+          claimName: direct-provisioner-log-pvc
+

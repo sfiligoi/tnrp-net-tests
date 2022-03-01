@@ -1,0 +1,12 @@
+Note: Assuming the basic provisioning setup was already in place
+
+1) needs token in prp-wn-gke-icecube.token
+# used by both provisioner and WNs
+kubectl create secret generic prp-htcondor-wn-secret -n osg-icecube --from-file=prp-wn.token=prp-wn-gke-icecube.token
+
+2) create config file
+kubectl create configmap direct-provisioner-config -n osg-icecube --from-file=osg_provisioner.conf=osg_provisioner.conf
+
+3) Launch yamls
+kubectl create -f pvc-provisioner-logs.yaml
+kubectl create -f provisioner-icecube.yaml
