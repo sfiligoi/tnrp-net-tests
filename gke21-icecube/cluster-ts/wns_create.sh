@@ -14,7 +14,7 @@ gcloud beta container node-pools create pt4t3-16 --impersonate-service-account "
 gcloud beta container node-pools create pt4t2-16 --impersonate-service-account "${SA_FULL_NAME?}" --cluster=icecube-ts --zone us-central1-c --node-taints=osglimit=gpu:PreferNoSchedule--node-labels=osgclass=gpu,gputype=t4 --machine-type "n1-standard-16" --accelerator "type=nvidia-tesla-t4,count=2,max-time-shared-clients-per-gpu=2" --num-nodes=1 --spot
 gcloud beta container node-pools create pv100t2-16 --impersonate-service-account "${SA_FULL_NAME?}" --cluster=icecube-ts --zone us-central1-c --node-taints=osglimit=gpu:PreferNoSchedule --node-labels=osgclass=gpu,gputype=t4 --machine-type "n1-standard-16" --accelerator "type=nvidia-tesla-v100,count=2,max-time-shared-clients-per-gpu=2" --num-nodes=1 --spot
 gcloud beta container node-pools create pa100t4 --impersonate-service-account "${SA_FULL_NAME?}" --cluster=icecube-ts --zone us-central1-c --node-taints=osglimit=gpu:PreferNoSchedule --node-labels=osgclass=gpu,gputype=a100 --accelerator type=nvidia-tesla-a100,count=1,max-time-shared-clients-per-gpu=4 --machine-type=a2-highgpu-1g --num-nodes=1 --spot
-  501  history |grep create
-:wq
+gcloud beta container node-pools create pa100t3 --impersonate-service-account "${SA_FULL_NAME?}" --cluster=icecube-ts --zone us-central1-c --node-taints=osglimit=gpu:PreferNoSchedule --node-labels=osgclass=gpu,gputype=a100 --accelerator type=nvidia-tesla-a100,count=1,max-time-shared-clients-per-gpu=3 --machine-type=a2-highgpu-1g --num-nodes=1 --spot
+gcloud beta container node-pools create pa100t2 --impersonate-service-account "${SA_FULL_NAME?}" --cluster=icecube-ts --zone us-central1-c --node-taints=osglimit=gpu:PreferNoSchedule --node-labels=osgclass=gpu,gputype=a100 --accelerator type=nvidia-tesla-a100,count=1,max-time-shared-clients-per-gpu=2 --machine-type=a2-highgpu-1g --num-nodes=1 --spot
 
 
