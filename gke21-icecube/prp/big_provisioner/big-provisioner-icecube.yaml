@@ -41,9 +41,6 @@ spec:
           mountPath: /etc/condor/tokens.d/prp-wn.token
           subPath: prp-wn.token
           readOnly: true
-        - name: py
-          mountPath: /opt/provisioner/prp-htcondor-portal/provisioner/python/prp_provisioner/provisioner_k8s.py
-          subPath: provisioner_k8s.py
         - name: kconf
           mountPath: /home/provisioner/osg_provisioner.conf
           subPath: osg_provisioner.conf
@@ -62,12 +59,6 @@ spec:
           items:
           - key: osg_provisioner.conf
             path: osg_provisioner.conf
-          name: big-provisioner-config
-      - name: py
-        configMap:
-          items:
-          - key: provisioner_k8s.py
-            path: provisioner_k8s.py
           name: big-provisioner-config
       - name: log-pvc
         persistentVolumeClaim:
