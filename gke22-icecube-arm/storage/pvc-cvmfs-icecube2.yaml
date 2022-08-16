@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cvmfs-icecube2
+  namespace: icecube
+spec:
+  dataSource:
+    name: cvmfs-icecube
+    kind: PersistentVolumeClaim
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 100Gi
