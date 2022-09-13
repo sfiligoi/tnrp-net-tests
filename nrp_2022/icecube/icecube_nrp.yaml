@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: icecube-nrp-test
+spec:
+  template:
+    spec:
+      containers:
+      - name: test
+        image: sfiligoi/prp-osg-pool:wn-d2202
+        command:
+        - "/bin/bash"
+        args:
+        - "-c"
+        - "source /root/run_test.sh"
+        resources:
+          limits:
+            memory: 8Gi
+            cpu: "4"
+            nvidia.com/gpu: "1"
+            ephemeral-storage: 10Gi
+          requests:
+            memory: 8Gi
+            cpu: "4"
+            nvidia.com/gpu: "1"
+            ephemeral-storage: 10Gi
+        volumeMounts:
+        - name: icecube-nrp-script
+          mountPath: /root/run_test.sh
+          subPath: run_test.sh
+        - mountPath: /cvmfs/config-osg.opensciencegrid.org
+          name: cvmfs-config-osg
+        - mountPath: /cvmfs/icecube.opensciencegrid.org
+          name: cvmfs-icecube
+      restartPolicy: Never
+      volumes:
+      - name: icecube-nrp-script
+        configMap:
+          items:
+          - key: run_test.sh
+            path: run_test.sh
+          name: icecube-nrp-script
+      - name: cvmfs-config-osg
+        persistentVolumeClaim:
+          claimName: cvmfs-config-osg
+      - name: cvmfs-icecube
+        persistentVolumeClaim:
+          claimName: cvmfs-icecube
