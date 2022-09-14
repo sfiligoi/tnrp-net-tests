@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ligo-nrp-test
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-A40
+                - NVIDIA-GeForce-RTX-3090
+      containers:
+      - name: test
+        image: jclarkastro/rift-benchmark-cuda112:latest
+        command:
+        - "/bin/bash"
+        args:
+        - "-c"
+        - "source /root/run_test.sh"
+        resources:
+          limits:
+            memory: 16Gi
+            cpu: "4"
+            nvidia.com/gpu: "1"
+            ephemeral-storage: 10Gi
+          requests:
+            memory: 16Gi
+            cpu: "4"
+            nvidia.com/gpu: "1"
+            ephemeral-storage: 10Gi
+        volumeMounts:
+        - name: ligo-nrp-script
+          mountPath: /root/run_test.sh
+          subPath: run_test.sh
+      restartPolicy: Never
+      volumes:
+      - name: ligo-nrp-script
+        configMap:
+          items:
+          - key: run_test.sh
+            path: run_test.sh
+          name: ligo-nrp-script
