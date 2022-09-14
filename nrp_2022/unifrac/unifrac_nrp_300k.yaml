@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: unifrac-nrp-300k
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-A40
+      containers:
+      - name: test
+        image: sfiligoi/unifrac
+        command:
+        - "/bin/bash"
+        args:
+        - "-l"
+        - "-c"
+        - "source /root/run_300k.sh"
+        resources:
+          limits:
+            memory: 72Gi
+            cpu: "8"
+            nvidia.com/gpu: "1"
+            ephemeral-storage: 40Gi
+          requests:
+            memory: 64Gi
+            cpu: "8"
+            nvidia.com/gpu: "1"
+            ephemeral-storage: 40Gi
+        volumeMounts:
+        - name: unifrac-nrp-script
+          mountPath: /root/run_300k.sh
+          subPath: run_300k.sh
+      restartPolicy: Never
+      volumes:
+      - name: unifrac-nrp-script
+        configMap:
+          items:
+          - key: run_300k.sh
+            path: run_300k.sh
+          name: unifrac-nrp-script
