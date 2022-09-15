@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rose-ml-nrp-test
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-A40
+      containers:
+      - name: test
+        image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp:latest
+        command:
+        - "/bin/bash"
+        args:
+        - "-l"
+        - "-c"
+        - "source /home/jovyan/run_test.sh"
+        resources:
+          limits:
+            memory: 128Gi
+            cpu: "16"
+            nvidia.com/gpu: "4"
+            ephemeral-storage: 100Gi
+          requests:
+            memory: 64Gi
+            cpu: "8"
+            nvidia.com/gpu: "4"
+            ephemeral-storage: 100Gi
+        volumeMounts:
+        - name: rose-nrp-script
+          mountPath: /home/jovyan/run_test.sh
+          subPath: run_test.sh
+        - mountPath: /home/suxingyu98
+          name: ceph
+          readOnly: true
+        - mountPath: /dev/shm
+          name: dshm
+      restartPolicy: Never
+      volumes:
+      - name: rose-nrp-script
+        configMap:
+          items:
+          - key: run_test.sh
+            path: run_test.sh
+          name: rose-nrp-script
+      - name: ceph
+        persistentVolumeClaim:
+          claimName: robin
+          readOnly: true
+      - name: dshm
+        emptyDir:
+          medium: Memory
+
