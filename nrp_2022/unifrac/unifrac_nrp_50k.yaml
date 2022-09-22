@@ -5,6 +5,7 @@ metadata:
 spec:
   template:
     spec:
+    spec:
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -13,8 +14,15 @@ spec:
               - key: nvidia.com/gpu.product
                 operator: In
                 values:
-                - NVIDIA-A40
-                - NVIDIA-GeForce-RTX-3090
+                - NVIDIA-A10
+              - key: env
+                operator: In
+                values:
+                - nrp
+      tolerations:
+      - effect: NoSchedule
+        key:  nautilus.io/nrp-testing
+        operator: Exists
       containers:
       - name: test
         image: sfiligoi/unifrac
