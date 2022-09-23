@@ -13,7 +13,7 @@ spec:
               - key: nvidia.com/gpu.product
                 operator: In
                 values:
-                - NVIDIA-A10
+                - NVIDIA-A100
               - key: env
                 operator: In
                 values:
@@ -46,6 +46,9 @@ spec:
         - name: unifrac-nrp-script
           mountPath: /root/run_300k.sh
           subPath: run_300k.sh
+        - name: unifrac-nrp-script2
+          mountPath: /root/run_300k_support.sh
+          subPath: run_300k_support.sh
       restartPolicy: Never
       volumes:
       - name: unifrac-nrp-script
@@ -53,4 +56,10 @@ spec:
           items:
           - key: run_300k.sh
             path: run_300k.sh
+          name: unifrac-nrp-script
+      - name: unifrac-nrp-script2
+        configMap:
+          items:
+          - key: run_300k_support.sh
+            path: run_300k_support.sh
           name: unifrac-nrp-script

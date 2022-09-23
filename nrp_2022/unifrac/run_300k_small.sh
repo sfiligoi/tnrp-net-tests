@@ -12,7 +12,7 @@ export UNIFRAC_GPU_INFO=Y
 export OMP_NUM_THREADS=8
 export ISTART=0
 export IEND=153619
-export ISTEP=9632
+export ISTEP=6416
 date
 echo "NRP TEST Start: `date +%s`"
 source /root/run_300k_support.sh 

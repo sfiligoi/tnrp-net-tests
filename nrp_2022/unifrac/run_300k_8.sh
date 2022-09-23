@@ -10,24 +10,36 @@ wget -q http://uaf-10.t2.ucsd.edu/~sfiligoi/unifrac_inputs/300k/x_merged.withpla
 wget -q http://uaf-10.t2.ucsd.edu/~sfiligoi/unifrac_inputs/300k/archive-redbiom-070920-insertion_tree.relabelled.tre
 export UNIFRAC_GPU_INFO=Y
 export OMP_NUM_THREADS=8
+export ISTEP=9632
+
 date
 echo "NRP TEST Start: `date +%s`"
-for ((i=19264; $i<38528; i=$i+9632)); do 
-  let j=$i+9632; if [ $j -gt 153619 ]; then j=153619; fi
-  echo $i $j
-  time ssu -m unweighted_fp32 -i x_merged.withplacement_even500.anonymized.biom -t archive-redbiom-070920-insertion_tree.relabelled.tre -f --mode partial --start $i --stop $j -o a.p${i}
-  echo "rc: " $?
-  ls -l a.p${i}
-  rm -f a.p${i}
-done
-date
-echo "NRP TEST Start: `date +%s`"
-for ((i=115584; $i<134848; i=$i+9632)); do 
-  let j=$i+9632; if [ $j -gt 153619 ]; then j=153619; fi
-  echo $i $j
-  time ssu -m unweighted_fp32 -i x_merged.withplacement_even500.anonymized.biom -t archive-redbiom-070920-insertion_tree.relabelled.tre -f --mode partial --start $i --stop $j -o a.p${i}
-  echo "rc: " $?
-  ls -l a.p${i}
-  rm -f a.p${i}
-done
+t1=`date +%s`
+a=0
+for ((n=0; $n<153619; n=$n+19264)); do 
+  let m=$n+19264; if [ $m -gt 153619 ]; then m=153619; fi
+  (export ACC_DEVICE_NUM=$a; export ISTART=$n; export IEND=$m; source /root/run_300k_support.sh) &
+  let a=$a+1
+done 
+wait
+t2=`date +%s`
 echo "NRP TEST End: `date +%s`"
+let t3=${t2}-${t1}
+echo "Total runtime: ${t3}"
+
+date
+echo "NRP TEST Start: `date +%s`"
+t1=`date +%s`
+a=0
+for ((n=0; $n<153619; n=$n+19264)); do 
+  let m=$n+19264; if [ $m -gt 153619 ]; then m=153619; fi
+  (export ACC_DEVICE_NUM=$a; export ISTART=$n; export IEND=$m; source /root/run_300k_support.sh) &
+  let a=$a+1
+done 
+wait
+t2=`date +%s`
+echo "NRP TEST End: `date +%s`"
+let t3=${t2}-${t1}
+echo "Total runtime: ${t3}"
+
+

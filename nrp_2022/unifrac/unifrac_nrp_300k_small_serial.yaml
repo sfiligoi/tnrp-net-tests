@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: unifrac-nrp-300k-8
+  name: unifrac-nrp-300ks
 spec:
   template:
     spec:
@@ -13,7 +13,7 @@ spec:
               - key: nvidia.com/gpu.product
                 operator: In
                 values:
-                - NVIDIA-A100
+                - NVIDIA-A10
               - key: env
                 operator: In
                 values:
@@ -30,22 +30,22 @@ spec:
         args:
         - "-l"
         - "-c"
-        - "source /root/run_300k_8.sh"
+        - "source /root/run_300k_small.sh"
         resources:
           limits:
-            memory: 512Gi
-            cpu: 64
-            nvidia.com/gpu: 8
-            ephemeral-storage: 320Gi
+            memory: 64Gi
+            cpu: "8"
+            nvidia.com/gpu: "1"
+            ephemeral-storage: 40Gi
           requests:
-            memory: 300Gi
-            cpu: 30
-            nvidia.com/gpu: 8
+            memory: 48Gi
+            cpu: "6"
+            nvidia.com/gpu: "1"
             ephemeral-storage: 30Gi
         volumeMounts:
         - name: unifrac-nrp-script
-          mountPath: /root/run_300k_8.sh
-          subPath: run_300k_8.sh
+          mountPath: /root/run_300k_small.sh
+          subPath: run_300k_small.sh
         - name: unifrac-nrp-script2
           mountPath: /root/run_300k_support.sh
           subPath: run_300k_support.sh
@@ -54,8 +54,8 @@ spec:
       - name: unifrac-nrp-script
         configMap:
           items:
-          - key: run_300k_8.sh
-            path: run_300k_8.sh
+          - key: run_300k_small.sh
+            path: run_300k_small.sh
           name: unifrac-nrp-script
       - name: unifrac-nrp-script2
         configMap:
