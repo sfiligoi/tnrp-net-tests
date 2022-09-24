@@ -1,0 +1,450 @@
+GPU 0: NVIDIA A10 (UUID: GPU-bc067ad9-b75c-08c4-545b-46b524d2b52a)
+=======================================
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   43 bits physical, 48 bits virtual
+CPU(s):                          128
+On-line CPU(s) list:             0-127
+Thread(s) per core:              2
+Core(s) per socket:              32
+Socket(s):                       2
+NUMA node(s):                    2
+Vendor ID:                       AuthenticAMD
+CPU family:                      23
+Model:                           49
+Model name:                      AMD EPYC 7502 32-Core Processor
+Stepping:                        0
+Frequency boost:                 enabled
+CPU MHz:                         1538.920
+CPU max MHz:                     2500.0000
+CPU min MHz:                     1500.0000
+BogoMIPS:                        5000.10
+Virtualization:                  AMD-V
+L1d cache:                       2 MiB
+L1i cache:                       2 MiB
+L2 cache:                        32 MiB
+L3 cache:                        256 MiB
+NUMA node0 CPU(s):               0-31,64-95
+NUMA node1 CPU(s):               32-63,96-127
+Vulnerability Itlb multihit:     Not affected
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Not affected
+Vulnerability Meltdown:          Not affected
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Full AMD retpoline, IBPB conditional, IBRS_FW, STIBP conditional, RSB filling
+Vulnerability Tsx async abort:   Not affected
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate sme ssbd mba sev ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip rdpid overflow_recov succor smca
+=======================================
+Fri Sep 23 20:21:13 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 510.54       Driver Version: 510.54       CUDA Version: 11.6     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A10          Off  | 00000000:C1:00.0 Off |                    0 |
+|  0%   30C    P8    21W / 150W |      0MiB / 23028MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+=======================================
+Fri Sep 23 20:21:23 UTC 2022
+NRP TEST Start: 1663964483
+0 6416
+INFO (unifrac): Using GPU
+
+real	7m58.893s
+user	14m12.469s
+sys	0m30.999s
+rc:  0
+-rw------- 1 root root 10993645380 Sep 23 20:29 a.p0
+6416 12832
+INFO (unifrac): Using GPU
+
+real	7m55.374s
+user	14m10.490s
+rc:  0
+sys	0m28.706s
+-rw------- 1 root root 10993705590 Sep 23 20:37 a.p6416
+12832 19248
+INFO (unifrac): Using GPU
+
+real	7m56.267s
+user	14m11.412s
+rc:  0
+sys	0m30.625s
+-rw------- 1 root root 10993671610 Sep 23 20:45 a.p12832
+19248 25664
+INFO (unifrac): Using GPU
+
+real	8m1.630s
+user	14m5.309s
+sys	0m39.133s
+rc:  0
+-rw------- 1 root root 10993673368 Sep 23 20:53 a.p19248
+25664 32080
+INFO (unifrac): Using GPU
+
+real	8m1.918s
+rc:  0
+user	14m14.198s
+sys	0m35.634s
+-rw------- 1 root root 10993629694 Sep 23 21:01 a.p25664
+32080 38496
+INFO (unifrac): Using GPU
+
+real	8m0.673s
+user	14m10.609s
+sys	0m38.487s
+rc:  0
+-rw------- 1 root root 10993701486 Sep 23 21:09 a.p32080
+38496 44912
+INFO (unifrac): Using GPU
+
+real	7m58.493s
+user	14m4.578s
+sys	0m36.850s
+rc:  0
+-rw------- 1 root root 10993670482 Sep 23 21:17 a.p38496
+44912 51328
+INFO (unifrac): Using GPU
+
+real	7m58.089s
+user	14m12.014s
+sys	0m33.815s
+rc:  0
+-rw------- 1 root root 10993674220 Sep 23 21:25 a.p44912
+51328 57744
+INFO (unifrac): Using GPU
+
+real	7m54.518s
+user	14m11.595s
+sys	0m25.884s
+rc:  0
+-rw------- 1 root root 10993613323 Sep 23 21:33 a.p51328
+57744 64160
+INFO (unifrac): Using GPU
+
+rc:  0
+real	7m54.640s
+user	14m10.341s
+sys	0m27.662s
+-rw------- 1 root root 10993617436 Sep 23 21:41 a.p57744
+64160 70576
+INFO (unifrac): Using GPU
+
+real	7m56.621s
+user	14m10.961s
+sys	0m25.863s
+rc:  0
+-rw------- 1 root root 10993648335 Sep 23 21:49 a.p64160
+70576 76992
+INFO (unifrac): Using GPU
+
+real	7m57.076s
+user	14m11.931s
+sys	0m29.692s
+rc:  0
+-rw------- 1 root root 10993685198 Sep 23 21:57 a.p70576
+76992 83408
+INFO (unifrac): Using GPU
+
+real	7m58.517s
+user	14m12.951s
+sys	0m32.106s
+rc:  0
+-rw------- 1 root root 10993667488 Sep 23 22:05 a.p76992
+83408 89824
+INFO (unifrac): Using GPU
+
+real	7m58.196s
+user	14m15.093s
+sys	0m31.885s
+rc:  0
+-rw------- 1 root root 10993679169 Sep 23 22:13 a.p83408
+89824 96240
+INFO (unifrac): Using GPU
+
+real	8m2.665s
+user	14m9.816s
+sys	0m40.684s
+rc:  0
+-rw------- 1 root root 10993662896 Sep 23 22:21 a.p89824
+96240 102656
+INFO (unifrac): Using GPU
+
+real	7m58.100s
+user	14m16.522s
+sys	0m30.434s
+rc:  0
+-rw------- 1 root root 10993649541 Sep 23 22:29 a.p96240
+102656 109072
+INFO (unifrac): Using GPU
+
+real	7m55.558s
+user	14m4.813s
+sys	0m31.749s
+rc:  0
+-rw------- 1 root root 10993652723 Sep 23 22:36 a.p102656
+109072 115488
+INFO (unifrac): Using GPU
+rc:  0
+
+real	7m58.583s
+user	14m9.400s
+sys	0m36.704s
+-rw------- 1 root root 10993710813 Sep 23 22:44 a.p109072
+115488 121904
+INFO (unifrac): Using GPU
+rc:  0
+
+real	7m58.004s
+user	14m15.441s
+sys	0m27.767s
+-rw------- 1 root root 10993693713 Sep 23 22:52 a.p115488
+121904 128320
+INFO (unifrac): Using GPU
+
+real	7m58.941s
+user	14m12.166s
+sys	0m27.575s
+rc:  0
+-rw------- 1 root root 10993637406 Sep 23 23:00 a.p121904
+128320 134736
+INFO (unifrac): Using GPU
+
+real	8m9.285s
+user	14m13.048s
+sys	0m44.835s
+rc:  0
+-rw------- 1 root root 10993662263 Sep 23 23:09 a.p128320
+134736 141152
+INFO (unifrac): Using GPU
+
+real	8m1.470s
+user	14m4.158s
+sys	0m38.226s
+rc:  0
+-rw------- 1 root root 10993660816 Sep 23 23:17 a.p134736
+141152 147568
+INFO (unifrac): Using GPU
+
+real	7m59.222s
+user	14m13.985s
+rc:  0
+sys	0m34.349s
+-rw------- 1 root root 10993659146 Sep 23 23:25 a.p141152
+147568 153619
+INFO (unifrac): Using GPU
+rc:  0
+
+real	7m28.781s
+user	13m44.688s
+sys	0m27.848s
+-rw------- 1 root root 10368432972 Sep 23 23:32 a.p147568
+NRP TEST End: 1663975959
+Fri Sep 23 23:32:39 UTC 2022
+NRP TEST Start: 1663975959
+0 6416
+INFO (unifrac): Using GPU
+
+real	7m54.480s
+user	14m12.494s
+sys	0m26.326s
+rc:  0
+-rw------- 1 root root 10993645380 Sep 23 23:40 a.p0
+6416 12832
+INFO (unifrac): Using GPU
+
+real	7m58.543s
+rc:  0
+user	14m6.423s
+sys	0m37.538s
+-rw------- 1 root root 10993705590 Sep 23 23:48 a.p6416
+12832 19248
+INFO (unifrac): Using GPU
+
+real	7m58.867s
+user	14m12.998s
+sys	0m29.344s
+rc:  0
+-rw------- 1 root root 10993671610 Sep 23 23:56 a.p12832
+19248 25664
+INFO (unifrac): Using GPU
+rc:  0
+
+real	8m6.282s
+user	14m12.128s
+sys	0m41.738s
+-rw------- 1 root root 10993673368 Sep 24 00:04 a.p19248
+25664 32080
+INFO (unifrac): Using GPU
+rc:  0
+
+real	7m56.999s
+user	14m14.977s
+sys	0m30.831s
+-rw------- 1 root root 10993629694 Sep 24 00:12 a.p25664
+32080 38496
+INFO (unifrac): Using GPU
+
+real	7m52.699s
+user	14m11.677s
+sys	0m25.403s
+rc:  0
+-rw------- 1 root root 10993701486 Sep 24 00:20 a.p32080
+38496 44912
+INFO (unifrac): Using GPU
+
+real	7m56.850s
+user	14m11.181s
+sys	0m31.607s
+rc:  0
+-rw------- 1 root root 10993670482 Sep 24 00:28 a.p38496
+44912 51328
+INFO (unifrac): Using GPU
+
+rc:  0
+real	7m57.370s
+user	14m12.400s
+sys	0m30.210s
+-rw------- 1 root root 10993674220 Sep 24 00:36 a.p44912
+51328 57744
+INFO (unifrac): Using GPU
+
+real	7m56.965s
+user	14m14.078s
+sys	0m30.439s
+rc:  0
+-rw------- 1 root root 10993613323 Sep 24 00:44 a.p51328
+57744 64160
+INFO (unifrac): Using GPU
+
+real	8m0.854s
+user	14m12.041s
+rc:  0
+sys	0m35.659s
+-rw------- 1 root root 10993617436 Sep 24 00:52 a.p57744
+64160 70576
+INFO (unifrac): Using GPU
+
+real	8m0.721s
+user	14m11.227s
+sys	0m33.918s
+rc:  0
+-rw------- 1 root root 10993648335 Sep 24 01:00 a.p64160
+70576 76992
+INFO (unifrac): Using GPU
+
+real	7m53.616s
+user	14m10.312s
+sys	0m25.988s
+rc:  0
+-rw------- 1 root root 10993685198 Sep 24 01:08 a.p70576
+76992 83408
+INFO (unifrac): Using GPU
+
+real	7m59.982s
+user	14m12.401s
+sys	0m33.945s
+rc:  0
+-rw------- 1 root root 10993667488 Sep 24 01:16 a.p76992
+83408 89824
+INFO (unifrac): Using GPU
+
+rc:  0
+real	7m51.736s
+user	14m8.479s
+sys	0m26.147s
+-rw------- 1 root root 10993679169 Sep 24 01:24 a.p83408
+89824 96240
+INFO (unifrac): Using GPU
+rc:  0
+
+real	7m58.098s
+user	14m11.962s
+sys	0m31.626s
+-rw------- 1 root root 10993662896 Sep 24 01:32 a.p89824
+96240 102656
+INFO (unifrac): Using GPU
+
+real	7m55.164s
+user	14m8.202s
+sys	0m31.959s
+rc:  0
+-rw------- 1 root root 10993649541 Sep 24 01:40 a.p96240
+102656 109072
+INFO (unifrac): Using GPU
+rc:  0
+
+real	7m52.059s
+user	14m8.976s
+sys	0m24.919s
+-rw------- 1 root root 10993652723 Sep 24 01:47 a.p102656
+109072 115488
+INFO (unifrac): Using GPU
+
+real	8m11.609s
+user	14m9.858s
+sys	0m49.374s
+rc:  0
+-rw------- 1 root root 10993710813 Sep 24 01:56 a.p109072
+115488 121904
+INFO (unifrac): Using GPU
+
+real	7m55.686s
+rc:  0
+user	14m10.151s
+sys	0m29.781s
+-rw------- 1 root root 10993693713 Sep 24 02:04 a.p115488
+121904 128320
+INFO (unifrac): Using GPU
+
+real	7m55.395s
+user	14m9.896s
+sys	0m31.482s
+rc:  0
+-rw------- 1 root root 10993637406 Sep 24 02:12 a.p121904
+128320 134736
+INFO (unifrac): Using GPU
+
+real	8m5.266s
+rc:  0
+user	14m12.399s
+sys	0m38.059s
+-rw------- 1 root root 10993662263 Sep 24 02:20 a.p128320
+134736 141152
+INFO (unifrac): Using GPU
+
+real	8m1.072s
+user	14m6.444s
+sys	0m38.333s
+rc:  0
+-rw------- 1 root root 10993660816 Sep 24 02:28 a.p134736
+141152 147568
+INFO (unifrac): Using GPU
+rc:  0
+
+real	7m59.848s
+user	14m6.057s
+sys	0m37.122s
+-rw------- 1 root root 10993659146 Sep 24 02:36 a.p141152
+147568 153619
+INFO (unifrac): Using GPU
+
+real	7m28.692s
+user	13m44.119s
+sys	0m30.885s
+rc:  0
+-rw------- 1 root root 10368432972 Sep 24 02:43 a.p147568
+NRP TEST End: 1663987423
