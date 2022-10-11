@@ -1,0 +1,73 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rose-ml-nrp-test8n
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-A10
+              - key: env
+                operator: In
+                values:
+                - nrp
+      tolerations:
+      - effect: NoSchedule
+        key:  nautilus.io/nrp-testing
+        operator: Exists
+      containers:
+      - name: test
+        image: nvcr.io/nvidia/pytorch:22.05-py3
+        command:
+        - "/bin/bash"
+        args:
+        - "-l"
+        - "-c"
+        - "source /home/jovyan/run_test.sh"
+        resources:
+          limits:
+            memory: 512Gi
+            cpu: "64"
+            nvidia.com/gpu: "8"
+            ephemeral-storage: 800Gi
+          requests:
+            memory: 128Gi
+            cpu: "16"
+            nvidia.com/gpu: "8"
+            ephemeral-storage: 100Gi
+        volumeMounts:
+        - name: rose-nrp-script
+          mountPath: /home/jovyan/run_test.sh
+          subPath: run_test.sh
+        - mountPath: /home/suxingyu98
+          name: scratch
+        - mountPath: /data
+          name: ceph
+          readOnly: true
+        - mountPath: /dev/shm
+          name: dshm
+      restartPolicy: Never
+      volumes:
+      - name: scratch
+        emptyDir: {}
+      - name: rose-nrp-script
+        configMap:
+          items:
+          - key: run_test.sh
+            path: run_test.sh
+          name: rose-nrp-script
+      - name: ceph
+        persistentVolumeClaim:
+          claimName: robin
+          readOnly: true
+      - name: dshm
+        emptyDir:
+          medium: Memory
+

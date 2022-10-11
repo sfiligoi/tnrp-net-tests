@@ -4,7 +4,11 @@ lscpu
 echo "======================================="
 nvidia-smi
 echo "======================================="
-unzip /home/suxingyu98/VD_TF_clean.zip 
+cd /home/suxingyu98 
+
+tar -xf /data/512_075.tar
+
+unzip /data/VD_TF_clean.zip 
 cd VD_TF/
 t1=`date +%s`
 echo "NRP TEST Start: `date +%s`"
@@ -16,7 +20,7 @@ echo "Elapsed time: $dt"
 
 cd ..
 rm -fr VD_TF
-unzip /home/suxingyu98/VD_TF_clean.zip
+unzip /data/VD_TF_clean.zip
 cd VD_TF/
 t1=`date +%s`
 echo "NRP TEST Start: `date +%s`"
