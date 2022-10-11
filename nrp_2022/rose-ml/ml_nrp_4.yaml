@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: rose-ml-nrp-test
+  name: rose-ml-nrp-test4
 spec:
   template:
     spec:
@@ -13,7 +13,15 @@ spec:
               - key: nvidia.com/gpu.product
                 operator: In
                 values:
-                - NVIDIA-A40
+                - NVIDIA-A10
+              - key: env
+                operator: In
+                values:
+                - nrp
+      tolerations:
+      - effect: NoSchedule
+        key:  nautilus.io/nrp-testing
+        operator: Exists
       containers:
       - name: test
         image: gitlab-registry.nrp-nautilus.io/prp/jupyter-stack/prp:latest
@@ -25,26 +33,30 @@ spec:
         - "source /home/jovyan/run_test.sh"
         resources:
           limits:
+            memory: 512Gi
+            cpu: "64"
+            nvidia.com/gpu: 4
+            ephemeral-storage: 800Gi
+          requests:
             memory: 128Gi
             cpu: "16"
-            nvidia.com/gpu: "4"
-            ephemeral-storage: 100Gi
-          requests:
-            memory: 64Gi
-            cpu: "8"
-            nvidia.com/gpu: "4"
+            nvidia.com/gpu: 4
             ephemeral-storage: 100Gi
         volumeMounts:
         - name: rose-nrp-script
           mountPath: /home/jovyan/run_test.sh
           subPath: run_test.sh
         - mountPath: /home/suxingyu98
+          name: scratch
+        - mountPath: /data
           name: ceph
           readOnly: true
         - mountPath: /dev/shm
           name: dshm
       restartPolicy: Never
       volumes:
+      - name: scratch
+        emptyDir: {}
       - name: rose-nrp-script
         configMap:
           items:
