@@ -1,0 +1,145 @@
+GPU 0: NVIDIA A10 (UUID: GPU-1238cd53-4d80-72df-aacc-7b6a66a2b87e)
+GPU 1: NVIDIA A10 (UUID: GPU-f801504f-5715-6abb-cb55-ebbb02c974f8)
+=======================================
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   43 bits physical, 48 bits virtual
+CPU(s):                          128
+On-line CPU(s) list:             0-127
+Thread(s) per core:              2
+Core(s) per socket:              32
+Socket(s):                       2
+NUMA node(s):                    2
+Vendor ID:                       AuthenticAMD
+CPU family:                      23
+Model:                           49
+Model name:                      AMD EPYC 7502 32-Core Processor
+Stepping:                        0
+Frequency boost:                 enabled
+CPU MHz:                         1495.239
+CPU max MHz:                     2500.0000
+CPU min MHz:                     1500.0000
+BogoMIPS:                        5000.28
+Virtualization:                  AMD-V
+L1d cache:                       2 MiB
+L1i cache:                       2 MiB
+L2 cache:                        32 MiB
+L3 cache:                        256 MiB
+NUMA node0 CPU(s):               0-31,64-95
+NUMA node1 CPU(s):               32-63,96-127
+Vulnerability Itlb multihit:     Not affected
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Not affected
+Vulnerability Meltdown:          Not affected
+Vulnerability Mmio stale data:   Not affected
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Retpolines, IBPB conditional, IBRS_FW, STIBP conditional, RSB filling, PBRSB-eIBRS Not affected
+Vulnerability Srbds:             Not affected
+Vulnerability Tsx async abort:   Not affected
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate sme ssbd mba sev ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip rdpid overflow_recov succor smca
+=======================================
+Tue Oct 11 22:15:47 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 510.54       Driver Version: 510.54       CUDA Version: 11.6     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A10          Off  | 00000000:A1:00.0 Off |                    0 |
+|  0%   32C    P8    20W / 150W |      0MiB / 23028MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A10          Off  | 00000000:E1:00.0 Off |                    0 |
+|  0%   33C    P8    21W / 150W |      0MiB / 23028MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+=======================================
+Archive:  /data/VD_TF_clean.zip
+   creating: VD_TF/
+  inflating: VD_TF/both_train.py     
+   creating: VD_TF/checkpoint/
+  inflating: VD_TF/Favre.py          
+  inflating: VD_TF/model_train.py    
+  inflating: VD_TF/model_utils.py    
+  inflating: VD_TF/readme.txt        
+  inflating: VD_TF/run.sh            
+  inflating: VD_TF/run_model.sh      
+  inflating: VD_TF/run_warp.sh       
+  inflating: VD_TF/utils.py          
+  inflating: VD_TF/warp.py           
+  inflating: VD_TF/warp_train.py     
+  inflating: VD_TF/warp_utils.py     
+NRP TEST Start: 1665530311
+initializing
+done
+0.50529 0.03024 5.29383
+0.05747 0.02131 5.08309
+0.04127 0.01822 5.05538
+0.03667 0.01798 4.99024
+0.03269 0.01662 5.0972
+0.02846 0.01524 5.04799
+0.02551 0.01492 4.97116
+0.02339 0.01345 4.96264
+0.02147 0.01435 4.96944
+0.02007 0.01359 4.92417
+0.01884 0.0145 4.94177
+0.01782 0.01523 4.92834
+0.01696 0.01416 4.89226
+0.0165 0.01787 4.91352
+0.01575 0.02107 4.88269
+
+real	75m4.541s
+user	107m25.501s
+sys	227m48.334s
+NRP TEST End: 1665534815
+Elapsed time: 4504
+Archive:  /data/VD_TF_clean.zip
+   creating: VD_TF/
+  inflating: VD_TF/both_train.py     
+   creating: VD_TF/checkpoint/
+  inflating: VD_TF/Favre.py          
+  inflating: VD_TF/model_train.py    
+  inflating: VD_TF/model_utils.py    
+  inflating: VD_TF/readme.txt        
+  inflating: VD_TF/run.sh            
+  inflating: VD_TF/run_model.sh      
+  inflating: VD_TF/run_warp.sh       
+  inflating: VD_TF/utils.py          
+  inflating: VD_TF/warp.py           
+  inflating: VD_TF/warp_train.py     
+  inflating: VD_TF/warp_utils.py     
+NRP TEST Start: 1665534816
+initializing
+done
+0.46334 0.03036 4.96322
+0.05121 0.0204 4.85202
+0.04174 0.01904 4.95612
+0.03786 0.01724 4.90645
+0.03495 0.01724 4.96676
+0.03307 0.01567 5.23088
+0.03105 0.01436 5.08917
+0.0292 0.01383 5.16589
+0.02769 0.01381 5.08641
+0.02634 0.01194 5.05581
+0.02524 0.01268 5.05078
+0.02436 0.01083 5.21701
+0.02371 0.01282 5.26815
+0.02308 0.01029 5.25973
+0.02208 0.00971 5.24212
+
+real	76m24.251s
+user	115m38.382s
+sys	252m11.969s
+NRP TEST End: 1665539400
+Elapsed time: 4584
