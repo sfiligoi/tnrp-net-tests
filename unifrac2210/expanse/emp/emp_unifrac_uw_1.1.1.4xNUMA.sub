@@ -1,0 +1,102 @@
+#!/bin/bash
+#SBATCH --account=DDP414
+#SBATCH --partition=ind-compute
+#SBATCH -t 45:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=128
+#SBATCH --mem=249325M
+#SBATCH --export=ALL
+hostname
+lscpu
+env
+echo "=============="
+cd /home/sfiligoi/unifrac
+source setup_conda.sh
+conda activate unifrac-1.1.1
+conda list
+echo "=============="
+md5sum emp90.5000_1000_rxbl_placement_pruned75.tog.tre
+md5sum emp.90.min25.deblur.withtax.withtree.even1k.biom
+dc=16
+ds=3144
+smax=12573
+
+export UNIFRAC_TIMING_INFO=Y
+export OMP_NUM_THREADS=${dc}
+
+for ((i=0; $i<4; i=$i+1)); do
+  rm -f u_c1${i}.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<4; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching unweighted_fp32 ${s1} ${s2} using cores ${c1}-${c2}"
+  taskset -c ${c1}-${c2} ssu -f -m unweighted_fp32 -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --mode partial --start ${s1} --stop ${s2} -o ./u_c1${i}.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu took ${dt} seconds"
+
+ls -l u_c1?.out
+md5sum u_c1?.out
+
+for ((i=0; $i<4; i=$i+1)); do
+  rm -f u_c1${i}.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<4; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching unweighted_fp32 ${s1} ${s2} using cores ${c1}-${c2}"
+  taskset -c ${c1}-${c2} ssu -f -m unweighted_fp32 -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --mode partial --start ${s1} --stop ${s2} -o ./u_c1${i}.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu took ${dt} seconds"
+
+ls -l u_c1?.out
+md5sum u_c1?.out
+
+for ((i=0; $i<4; i=$i+1)); do
+  rm -f u_c1${i}.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<4; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching unweighted_fp32 ${s1} ${s2} using cores ${c1}-${c2}"
+  taskset -c ${c1}-${c2} ssu -f -m unweighted_fp32 -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --mode partial --start ${s1} --stop ${s2} -o ./u_c1${i}.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu took ${dt} seconds"
+
+ls -l u_c1?.out
+md5sum u_c1?.out
+

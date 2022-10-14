@@ -1,0 +1,40 @@
+#!/bin/bash
+#SBATCH --account=DDP414
+#SBATCH --partition=ind-gpu
+#SBATCH -t 15:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --gpus=1
+#SBATCH --mem=377393M
+#SBATCH --cpus-per-task=40
+#SBATCH --export=ALL
+hostname
+lscpu
+env
+nvidia-smi
+nvidia-smi topo -m
+echo "=============="
+cd /home/sfiligoi/unifrac
+source setup_conda.sh
+conda activate unifrac-1.1.1
+conda list
+echo "=============="
+md5sum emp90.5000_1000_rxbl_placement_pruned75.tog.tre
+md5sum emp.90.min25.deblur.withtax.withtree.even1k.biom
+export UNIFRAC_TIMING_INFO=Y
+export OMP_NUM_THREADS=20
+rm -f u_c1g.out
+echo "=============="
+time taskset -c 0-19 ssu -f -m unweighted_fp32 -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --pcoa 0  -r hdf5_fp32 -o ./u_c1g.out
+echo "rc=$?"
+md5sum u_c1g.out
+rm -f u_c1g.out
+echo "=============="
+time taskset -c 0-19 ssu -f -m unweighted_fp32 -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --pcoa 0  -r hdf5_fp32 -o ./u_c1g.out
+echo "rc=$?"
+md5sum u_c1g.out
+rm -f u_c1g.out
+echo "=============="
+time taskset -c 0-19 ssu -f -m unweighted_fp32 -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --pcoa 0  -r hdf5_fp32 -o ./u_c1g.out
+echo "rc=$?"
+md5sum u_c1g.out

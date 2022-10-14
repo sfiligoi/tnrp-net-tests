@@ -1,0 +1,236 @@
+exp-15-04
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              128
+On-line CPU(s) list: 0-127
+Thread(s) per core:  1
+Core(s) per socket:  64
+Socket(s):           2
+NUMA node(s):        8
+Vendor ID:           AuthenticAMD
+CPU family:          23
+Model:               49
+Model name:          AMD EPYC 7742 64-Core Processor
+Stepping:            0
+CPU MHz:             2245.919
+BogoMIPS:            4491.83
+Virtualization:      AMD-V
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            512K
+L3 cache:            16384K
+NUMA node0 CPU(s):   0-15
+NUMA node1 CPU(s):   16-31
+NUMA node2 CPU(s):   32-47
+NUMA node3 CPU(s):   48-63
+NUMA node4 CPU(s):   64-79
+NUMA node5 CPU(s):   80-95
+NUMA node6 CPU(s):   96-111
+NUMA node7 CPU(s):   112-127
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl umip rdpid overflow_recov succor smca sme sev sev_es
+LD_LIBRARY_PATH=/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64
+LS_COLORS=rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
+SLURM_NODEID=0
+SLURM_TASK_PID=3483795
+__LMOD_REF_COUNT_PATH=/cm/shared/apps/sdsc/1.0/bin:1;/cm/shared/apps/sdsc/1.0/sbin:1;/cm/shared/apps/slurm/current/sbin:1;/cm/shared/apps/slurm/current/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1
+_ModuleTable002_=Mixwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJjcHUiLH0sc2RzYz17WyJmbiJdPSIvY20vc2hhcmVkL21vZHVsZWZpbGVzL3Nkc2MvMS4wLmx1YSIsWyJmdWxsTmFtZSJdPSJzZHNjLzEuMCIsWyJsb2FkT3JkZXIiXT00LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InNkc2MiLH0sc2hhcmVkPXtbImZuIl09Ii9jbS9sb2NhbC9tb2R1bGVmaWxlcy9zaGFyZWQiLFsiZnVsbE5hbWUiXT0ic2hhcmVkIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ic2hhcmVkIix9LHNs
+SSH_CONNECTION=68.7.99.164 63315 198.202.100.14 22
+SLURM_PRIO_PROCESS=0
+LANG=en_US.UTF-8
+SLURM_SUBMIT_DIR=/home/sfiligoi/unifrac
+HISTCONTROL=ignoredups
+SDSC_BIN=/cm/shared/apps/sdsc/1.0/bin
+HOSTNAME=exp-15-04
+LMOD_SYSTEM_DEFAULT_MODULES=DefaultModules
+OLDPWD=/home/sfiligoi
+__LMOD_REF_COUNT__LMFILES_=/cm/local/modulefiles/shared:1;/usr/share/modulefiles/cpu/0.15.4.lua:1;/cm/local/modulefiles/slurm/expanse/21.08.8:1;/cm/shared/modulefiles/sdsc/1.0.lua:1;/usr/share/modulefiles/DefaultModules.lua:1
+SLURM_CPUS_PER_TASK=128
+ENVIRONMENT=BATCH
+SDSC_DIR=/cm/shared/apps/sdsc/1.0
+SLURM_PROCID=0
+SLURM_JOB_GID=310
+__LMOD_REF_COUNT_LD_LIBRARY_PATH=/cm/shared/apps/slurm/current/lib64/slurm:1;/cm/shared/apps/slurm/current/lib64:1
+SLURMD_NODENAME=exp-15-04
+_ModuleTable004_=aWxlcyIsIi91c3Ivc2hhcmUvTW9kdWxlcy9tb2R1bGVmaWxlcyIsIi9jbS9zaGFyZWQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL2NtL2xvY2FsL21vZHVsZWZpbGVzOi9jbS9zaGFyZWQvYXBwcy9hY2Nlc3MvbW9kdWxlZmlsZXM6L2NtL3NoYXJlZC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9jbS9zaGFyZWQvbW9kdWxlZmlsZXM6L2V0Yy9tb2R1bGVmaWxlczovdXNyL3NoYXJlL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvTW9kdWxlcy9tb2R1bGVmaWxlcyIsfQ==
+SLURM_TASKS_PER_NODE=1
+S_COLORS=auto
+which_declare=declare -f
+XDG_SESSION_ID=619935
+SLURM_NNODES=1
+USER=sfiligoi
+SLURM_NTASKS_PER_NODE=1
+__LMOD_REF_COUNT_MODULEPATH=/cm/shared/apps/spack/cpu/lmod/linux-centos8-x86_64/Core:1;/cm/local/modulefiles:1;/cm/shared/apps/access/modulefiles:1;/cm/shared/apps/xsede/modulefiles:1;/etc/modulefiles:1;/usr/share/modulefiles:1;/usr/share/Modules/modulefiles:1;/cm/shared/modulefiles:2
+__LMOD_REF_COUNT_LOADEDMODULES=shared:1;cpu/0.15.4:1;slurm/expanse/21.08.8:1;sdsc/1.0:1;DefaultModules:1
+PWD=/home/sfiligoi/unifrac
+ENABLE_LMOD=1
+SLURM_JOB_NODELIST=exp-15-04
+HOME=/home/sfiligoi
+SLURM_CLUSTER_NAME=expanse
+LMOD_COLORIZE=yes
+SLURM_NODELIST=exp-15-04
+SSH_CLIENT=68.7.99.164 63315 22
+LMOD_VERSION=8.2.4
+CPATH=/cm/shared/apps/slurm/current/include
+SLURM_NTASKS=1
+LMOD_SETTARG_CMD=:
+SLURM_JOB_CPUS_PER_NODE=128
+BASH_ENV=/usr/share/lmod/lmod/init/bash
+SDSC_SPACK_STACK=cpu
+SLURM_TOPOLOGY_ADDR=exp-15-04
+SLURM_WORKING_CLUSTER=expanse:mgr1:6817:9472:109
+__LMOD_REF_COUNT_LIBRARY_PATH=/cm/shared/apps/slurm/current/lib64/slurm:1;/cm/shared/apps/slurm/current/lib64:1
+SLURM_JOB_NAME=unifrac_1.1.2.sub
+TMPDIR=/tmp
+LIBRARY_PATH=/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64
+LMOD_sys=Linux
+SLURM_JOBID=16989276
+_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtEZWZhdWx0TW9kdWxlcz17WyJmbiJdPSIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0RlZmF1bHRNb2R1bGVzLmx1YSIsWyJmdWxsTmFtZSJdPSJEZWZhdWx0TW9kdWxlcyIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09IkRlZmF1bHRNb2R1bGVzIix9LGNwdT17WyJmbiJdPSIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL2NwdS8wLjE1LjQubHVhIixbImZ1bGxOYW1lIl09ImNwdS8wLjE1LjQiLFsibG9hZE9yZGVyIl09
+SLURM_CONF=/cm/shared/apps/slurm/var/etc/expanse/slurm.conf
+LOADEDMODULES=shared:cpu/0.15.4:slurm/expanse/21.08.8:sdsc/1.0:DefaultModules
+__LMOD_REF_COUNT_MANPATH=/cm/shared/apps/slurm/current/man:1;/usr/share/lmod/lmod/share/man:1
+_ModuleTable003_=dXJtPXtbImZuIl09Ii9jbS9sb2NhbC9tb2R1bGVmaWxlcy9zbHVybS9leHBhbnNlLzIxLjA4LjgiLFsiZnVsbE5hbWUiXT0ic2x1cm0vZXhwYW5zZS8yMS4wOC44IixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ic2x1cm0iLH0sfSxtcGF0aEE9eyIvY20vc2hhcmVkL2FwcHMvc3BhY2svY3B1L2xtb2QvbGludXgtY2VudG9zOC14ODZfNjQvQ29yZSIsIi9jbS9sb2NhbC9tb2R1bGVmaWxlcyIsIi9jbS9zaGFyZWQvYXBwcy9hY2Nlc3MvbW9kdWxlZmlsZXMiLCIvY20vc2hhcmVkL2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvZXRjL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVm
+SLURM_NODE_ALIASES=(null)
+SLURM_JOB_QOS=ind-normal
+LMOD_ROOT=/usr/share/lmod
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+SSH_TTY=/dev/pts/249
+MAIL=/var/spool/mail/sfiligoi
+SLURM_CPUS_ON_NODE=128
+LMOD_arch=x86_64
+SLURM_JOB_NUM_NODES=1
+__Init_Default_Modules=1
+SLURM_MEM_PER_NODE=249325
+CMD_WLM_CLUSTER_NAME=expanse
+SHELL=/bin/bash
+TERM=xterm-256color
+SLURM_JOB_UID=506472
+_ModuleTable_Sz_=4
+__LMOD_REF_COUNT_CPATH=/cm/shared/apps/slurm/current/include:1
+SLURM_JOB_PARTITION=ind-compute
+SDSC_LIB=/cm/shared/apps/sdsc/1.0/lib
+SLURM_JOB_USER=sfiligoi
+SLURM_NPROCS=1
+SHLVL=2
+SLURM_SUBMIT_HOST=login02
+SDSC_SBIN=/cm/shared/apps/sdsc/1.0/sbin
+SLURM_JOB_ACCOUNT=ddp414
+MANPATH=/cm/shared/apps/slurm/current/man:/usr/share/lmod/lmod/share/man::/cm/shared/apps/slurm/current/man:/usr/local/share/man:/usr/share/man:/cm/local/apps/environment-modules/current/share/man
+LMOD_PREPEND_BLOCK=normal
+MODULEPATH=/cm/shared/apps/spack/cpu/lmod/linux-centos8-x86_64/Core:/cm/local/modulefiles:/cm/shared/apps/access/modulefiles:/cm/shared/apps/xsede/modulefiles:/etc/modulefiles:/usr/share/modulefiles:/usr/share/Modules/modulefiles:/cm/shared/modulefiles
+SLURM_GTIDS=0
+LOGNAME=sfiligoi
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/506472/bus
+XDG_RUNTIME_DIR=/run/user/506472
+MODULEPATH_ROOT=/usr/share/modulefiles
+PATH=/home/sfiligoi/.local/bin:/home/sfiligoi/bin:/cm/shared/apps/sdsc/1.0/bin:/cm/shared/apps/sdsc/1.0/sbin:/cm/shared/apps/slurm/current/sbin:/cm/shared/apps/slurm/current/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+SLURM_JOB_ID=16989276
+_LMFILES_=/cm/local/modulefiles/shared:/usr/share/modulefiles/cpu/0.15.4.lua:/cm/local/modulefiles/slurm/expanse/21.08.8:/cm/shared/modulefiles/sdsc/1.0.lua:/usr/share/modulefiles/DefaultModules.lua
+MODULESHOME=/usr/share/lmod/lmod
+LMOD_SETTARG_FULL_SUPPORT=no
+HISTSIZE=1000
+SDSC_INC=/cm/shared/apps/sdsc/1.0/include
+LMOD_PKG=/usr/share/lmod/lmod
+LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
+SLURM_LOCALID=0
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LMOD_FULL_SETTARG_SUPPORT=no
+LMOD_DIR=/usr/share/lmod/lmod/libexec
+BASH_FUNC_which%%=() {  ( alias;
+ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"
+}
+BASH_FUNC_module%%=() {  eval $($LMOD_CMD bash "$@") && eval $(${LMOD_SETTARG_CMD:-:} -s sh)
+}
+BASH_FUNC_ml%%=() {  eval $($LMOD_DIR/ml_cmd "$@")
+}
+_=/usr/bin/env
+==============
+# packages in environment at /home/sfiligoi/unifrac/conda/envs/unifrac-1.1.2:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                 conda_forge    conda-forge
+_openmp_mutex             4.5                       2_gnu    conda-forge
+bzip2                     1.0.8                h7f98852_4    conda-forge
+c-ares                    1.18.1               h7f98852_0    conda-forge
+ca-certificates           2022.9.24            ha878542_0    conda-forge
+hdf5                      1.12.1          nompi_h4df4325_104    conda-forge
+keyutils                  1.6.1                h166bdaf_0    conda-forge
+krb5                      1.19.3               h08a2579_0    conda-forge
+ld_impl_linux-64          2.36.1               hea4e1c9_2    conda-forge
+libblas                   3.9.0           16_linux64_openblas    conda-forge
+libcblas                  3.9.0           16_linux64_openblas    conda-forge
+libcurl                   7.85.0               h2283fc2_0    conda-forge
+libedit                   3.1.20191231         he28a2e2_2    conda-forge
+libev                     4.33                 h516909a_1    conda-forge
+libffi                    3.4.2                h7f98852_5    conda-forge
+libgcc-ng                 12.1.0              h8d9b700_16    conda-forge
+libgfortran-ng            12.1.0              h69a702a_16    conda-forge
+libgfortran5              12.1.0              hdcd56e2_16    conda-forge
+libgomp                   12.1.0              h8d9b700_16    conda-forge
+liblapack                 3.9.0           16_linux64_openblas    conda-forge
+liblapacke                3.9.0           16_linux64_openblas    conda-forge
+libnghttp2                1.47.0               hff17c54_1    conda-forge
+libnsl                    2.0.0                h7f98852_0    conda-forge
+libopenblas               0.3.21          pthreads_h78a6416_3    conda-forge
+libsqlite                 3.39.4               h753d276_0    conda-forge
+libssh2                   1.10.0               hf14f497_3    conda-forge
+libstdcxx-ng              12.1.0              ha89aaad_16    conda-forge
+libuuid                   2.32.1            h7f98852_1000    conda-forge
+libzlib                   1.2.12               h166bdaf_4    conda-forge
+lz4                       4.0.0           py310h5d5e884_2    conda-forge
+lz4-c                     1.9.3                h9c3ff4c_1    conda-forge
+ncurses                   6.3                  h27087fc_1    conda-forge
+openssl                   3.0.5                h166bdaf_2    conda-forge
+pip                       22.2.2             pyhd8ed1ab_0    conda-forge
+python                    3.10.6          ha86cf86_0_cpython    conda-forge
+python_abi                3.10                    2_cp310    conda-forge
+readline                  8.1.2                h0f457ee_0    conda-forge
+setuptools                65.4.1             pyhd8ed1ab_0    conda-forge
+tk                        8.6.12               h27826a3_0    conda-forge
+tzdata                    2022e                h191b570_0    conda-forge
+unifrac-binaries          1.1.2                h73f19ed_0    bioconda
+wheel                     0.37.1             pyhd8ed1ab_0    conda-forge
+xz                        5.2.6                h166bdaf_0    conda-forge
+zlib                      1.2.12               h166bdaf_4    conda-forge
+==============
+44422c5483ee188ee6da60dc0c77a8f2  emp90.5000_1000_rxbl_placement_pruned75.tog.tre
+66f0c6957be53b0c19e733bcd6396d65  emp.90.min25.deblur.withtax.withtree.even1k.biom
+==============
+INFO (unifrac): Starting one_off_matrix_fp32
+INFO (unifrac): dt    6 : Completed one_off_matrix_fp32.load_files
+INFO (unifrac): Starting one_off_matrix_inmem
+INFO (unifrac): dt    0 : Completed one_off_matrix_inmem.sync_tree_table
+INFO (unifrac): dt  421 : Completed one_off_matrix_inmem.process_stripes
+INFO (unifrac): dt    3 : Completed one_off_matrix_inmem.stripes_to_matrix
+
+real	7m17.130s
+user	855m32.588s
+sys	12m5.977s
+rc=0
+6b18ece6edd4b0afce66cfd19dc7b119  a_c2.out
+==============
+INFO (unifrac): Starting one_off_matrix_fp32
+INFO (unifrac): dt    5 : Completed one_off_matrix_fp32.load_files
+INFO (unifrac): Starting one_off_matrix_inmem
+INFO (unifrac): dt    1 : Completed one_off_matrix_inmem.sync_tree_table
+INFO (unifrac): dt  395 : Completed one_off_matrix_inmem.process_stripes
+INFO (unifrac): dt    3 : Completed one_off_matrix_inmem.stripes_to_matrix
+
+real	6m51.402s
+user	806m3.141s
+sys	11m42.564s
+rc=0
+0f2f713eb2bcddccefea14bd71855253  a_c2.out
+==============
+INFO (unifrac): Starting one_off_matrix_fp32
+INFO (unifrac): dt    6 : Completed one_off_matrix_fp32.load_files
+INFO (unifrac): Starting one_off_matrix_inmem
+INFO (unifrac): dt    1 : Completed one_off_matrix_inmem.sync_tree_table
+INFO (unifrac): dt  471 : Completed one_off_matrix_inmem.process_stripes
+INFO (unifrac): dt    3 : Completed one_off_matrix_inmem.stripes_to_matrix
+
+real	8m7.768s
+user	964m58.669s
+sys	12m27.445s
+rc=0
+5e44764143aa362f113fc2c07dac8cf9  a_c2.out
