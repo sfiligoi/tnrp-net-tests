@@ -1,0 +1,35 @@
+#!/bin/bash
+#SBATCH --exclusive
+#SBATCH -t 45:00
+hostname
+lscpu
+#echo "=============="
+#rm -fr /tmp/igor
+#mkdir -p /tmp/igor
+#cp /projects/wol/release/databases/bowtie2/WoLr1* /tmp/igor/
+#cp /qmounts/qiita_data/per_sample_FASTQ/88388/10317_000065377_S642_L003_R2_001.trimmed.fastq.gz /tmp/igor/
+#ls -l /tmp/igor/
+echo "=============="
+cd /panfs/isfiligoi/t6/batch
+source ../setup_conda.sh
+conda activate unifrac
+conda list
+echo "=============="
+md5sum emp90.5000_1000_rxbl_placement_pruned75.tog.tre
+md5sum emp.90.min25.deblur.withtax.withtree.even1k.biom
+export OMP_NUM_THREADS=32
+rm -f a4_c.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m weighted_normalized -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --pcoa 0  -r hdf5 -o ./a4_c.out
+echo "rc=$?"
+md5sum a4_c.out
+rm -f a4_c.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m weighted_normalized -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --pcoa 0  -r hdf5 -o ./a4_c.out
+echo "rc=$?"
+md5sum a4_c.out
+rm -f a4_c.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m weighted_normalized -i emp.90.min25.deblur.withtax.withtree.even1k.biom -t emp90.5000_1000_rxbl_placement_pruned75.tog.tre --pcoa 0  -r hdf5 -o ./a4_c.out
+echo "rc=$?"
+md5sum a4_c.out
