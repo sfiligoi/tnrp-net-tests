@@ -1,0 +1,50 @@
+#!/bin/bash
+#SBATCH --account=DDP414
+#SBATCH --partition=ind-compute
+#SBATCH -t 16:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=128
+#SBATCH --mem=249325M
+#SBATCH --export=ALL
+hostname
+lscpu
+env
+echo "=============="
+cd /home/sfiligoi/unifrac
+source setup_conda.sh
+conda activate unifrac-0.10.0
+conda list
+echo "=============="
+md5sum ag_emp.tre
+md5sum ag_emp_even500.biom
+dc=64
+ds=6262
+# compute onl 1/8th
+smax=6262
+
+for ((i=0; $i<1; i=$i+1)); do
+  rm -f u_c0.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<1; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching unweighted ${s1} ${s2} using cores ${c1}-${c2}"
+  taskset -c ${c1}-${c2} ssu -n ${dc} -f -m unweighted -i ag_emp_even500.biom -t ag_emp.tre --mode partial --start ${s1} --stop ${s2} -o ./u_0.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu 1/8 took ${dt} seconds"
+
+ls -l u_c0.out
+md5sum u_c0.out
+
