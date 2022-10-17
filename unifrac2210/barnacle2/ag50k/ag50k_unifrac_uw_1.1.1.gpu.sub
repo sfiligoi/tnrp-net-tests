@@ -1,0 +1,37 @@
+#!/bin/bash
+#SBATCH --exclusive
+#SBATCH --partition gpu
+#SBATCH --gres=gpu:1
+#SBATCH -t 15:00
+hostname
+lscpu
+#echo "=============="
+#rm -fr /tmp/igor
+#mkdir -p /tmp/igor
+#cp /projects/wol/release/databases/bowtie2/WoLr1* /tmp/igor/
+#cp /qmounts/qiita_data/per_sample_FASTQ/88388/10317_000065377_S642_L003_R2_001.trimmed.fastq.gz /tmp/igor/
+#ls -l /tmp/igor/
+echo "=============="
+cd /panfs/isfiligoi/t6/batch
+source ../setup_conda.sh
+conda activate unifrac
+conda list
+echo "=============="
+md5sum ag_emp.tre
+md5sum ag_emp_even500.biom
+export OMP_NUM_THREADS=32
+rm -f u_cg.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_cg.out
+echo "rc=$?"
+md5sum u_cg.out
+rm -f u_cg.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_cg.out
+echo "rc=$?"
+md5sum u_cg.out
+rm -f u_cg.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_cg.out
+echo "rc=$?"
+md5sum u_cg.out
