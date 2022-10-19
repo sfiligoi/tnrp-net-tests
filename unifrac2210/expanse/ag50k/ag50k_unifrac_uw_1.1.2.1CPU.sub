@@ -22,16 +22,16 @@ export UNIFRAC_TIMING_INFO=Y
 export OMP_NUM_THREADS=64
 rm -f u_c2f.out
 echo "=============="
-time ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_c2f.out
+time taskset -c 0-63 ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_c2f.out
 echo "rc=$?"
 md5sum u_c2f.out
 rm -f u_c2f.out
 echo "=============="
-time ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_c2f.out
+time taskset -c 0-63 ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_c2f.out
 echo "rc=$?"
 md5sum u_c2f.out
 rm -f u_c2f.out
 echo "=============="
-time ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_c2f.out
+time taskset -c 0-63 ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --pcoa 0  -r hdf5_fp32 -o ./u_c2f.out
 echo "rc=$?"
 md5sum u_c2f.out
