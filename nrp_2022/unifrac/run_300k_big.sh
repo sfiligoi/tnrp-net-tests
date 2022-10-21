@@ -10,10 +10,10 @@ wget -q http://uaf-10.t2.ucsd.edu/~sfiligoi/unifrac_inputs/300k/x_merged.withpla
 wget -q http://uaf-10.t2.ucsd.edu/~sfiligoi/unifrac_inputs/300k/archive-redbiom-070920-insertion_tree.relabelled.tre
 export UNIFRAC_GPU_INFO=Y
 export UNIFRAC_TIMING_INFO=Y
-export OMP_NUM_THREADS=8
+export OMP_NUM_THREADS=16
 export ISTART=0
 export IEND=153619
-export ISTEP=9632
+export ISTEP=25664
 date
 echo "NRP TEST Start: `date +%s`"
 source /root/run_300k_support.sh 

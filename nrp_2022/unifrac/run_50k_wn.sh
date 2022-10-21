@@ -9,6 +9,7 @@ conda activate unifrac
 wget -q http://uaf-10.t2.ucsd.edu/~sfiligoi/unifrac_inputs/50k/ag_emp_even500.biom
 wget -q http://uaf-10.t2.ucsd.edu/~sfiligoi/unifrac_inputs/50k/ag_emp.tre 
 export UNIFRAC_GPU_INFO=Y
+export UNIFRAC_TIMING_INFO=Y
 export OMP_NUM_THREADS=4
 rm -f a.h5
 date
