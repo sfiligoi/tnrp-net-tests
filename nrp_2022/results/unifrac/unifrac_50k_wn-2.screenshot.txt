@@ -1,0 +1,82 @@
+(base) root@unifrac-nrp-50k-wn-xjccx:/# top
+
+top - 17:49:01 up 9 days,  5:01,  0 users,  load average: 85.81, 78.36, 76.76
+Tasks:   4 total,   2 running,   2 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 39.4 us,  2.1 sy,  0.0 ni, 58.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem : 515829.6 total,  72798.6 free, 254336.4 used, 188694.7 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used. 250908.9 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                                                     
+     35 root      20   0   43.6g  28.7g 162664 R 109.7   5.7   3:26.86 ssu                                                                                                                                         
+      1 root      20   0    5852   3488   3124 S   0.0   0.0   0:00.02 bash                                                                                                                                        
+     44 root      20   0    5984   3872   3308 S   0.0   0.0   0:00.01 bash                                                                                                                                        
+     57 root      20   0    8824   3712   3152 R   0.0   0.0   0:00.00 top                                                                                                                                         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(base) root@unifrac-nrp-50k-wn-xjccx:/# nvidia-smi 
+Fri Oct 21 17:49:04 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 510.54       Driver Version: 510.54       CUDA Version: 11.6     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A10          Off  | 00000000:25:00.0 Off |                    0 |
+|  0%   69C    P0   149W / 150W |   9849MiB / 23028MiB |    100%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A   3386064      C                                    9847MiB |
++-----------------------------------------------------------------------------+
+(base) root@unifrac-nrp-50k-wn-xjccx:/# free
+               total        used        free      shared  buff/cache   available
+Mem:       528209552   258280804    76708184     7667024   193220564   259090520
+Swap:              0           0           0
