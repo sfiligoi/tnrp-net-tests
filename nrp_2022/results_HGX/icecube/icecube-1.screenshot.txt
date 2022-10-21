@@ -1,0 +1,81 @@
+[root@icecube-nrp-test-6d8mr /]# top
+
+top - 20:20:11 up  1:59,  0 users,  load average: 23.77, 29.61, 19.15
+Tasks:   8 total,   2 running,   6 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  8.2 us,  1.9 sy,  0.0 ni, 89.7 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st
+KiB Mem : 92456096+total, 86797760+free, 19503608 used, 37079716 buff/cache
+KiB Swap:        0 total,        0 free,        0 used. 89938131+avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                                                                                      
+    309 root      20   0   12.9g   1.7g 211712 R 293.3  0.2   2:17.09 python                                                                                                                                       
+      1 root      20   0   11712   2664   2444 S   0.0  0.0   0:00.01 bash                                                                                                                                         
+     33 root      20   0   11712   2768   2524 S   0.0  0.0   0:00.00 loader.sh                                                                                                                                    
+     95 root      20   0  300248  30088  11084 S   0.0  0.0   0:00.30 python                                                                                                                                       
+    207 root      20   0   11708   2712   2492 S   0.0  0.0   0:00.00 icetray-env                                                                                                                                  
+    305 root      20   0   11708   2788   2528 S   0.0  0.0   0:00.00 env-shell.sh                                                                                                                                 
+    335 root      20   0   11848   2992   2632 S   0.0  0.0   0:00.00 bash                                                                                                                                         
+    349 root      20   0   56204   3936   3352 R   0.0  0.0   0:00.00 top                                                                                                                                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@icecube-nrp-test-6d8mr /]# nvidia-smi   
+Fri Oct 21 20:20:16 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.65.01    Driver Version: 515.65.01    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:46:00.0 Off |                    0 |
+| N/A   48C    P0   217W / 400W |   5456MiB / 81920MiB |    100%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
++-----------------------------------------------------------------------------+
+[root@icecube-nrp-test-6d8mr /]# free
+              total        used        free      shared  buff/cache   available
+Mem:      924560956    19191212   868242724      472044    37127020   899693608
+Swap:             0           0           0
