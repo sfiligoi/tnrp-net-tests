@@ -1,0 +1,103 @@
+#!/bin/bash
+#SBATCH --account=DDP414
+#SBATCH --partition=ind-gpu
+#SBATCH -t 1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --gpus=1
+#SBATCH --mem=377393M
+#SBATCH --cpus-per-task=40
+#SBATCH --export=ALL
+hostname
+lscpu
+env
+echo "=============="
+cd /home/sfiligoi/unifrac
+source setup_conda.sh
+conda activate unifrac-1.1.1
+conda list
+echo "=============="
+md5sum merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre
+md5sum merged_nosingletonsdoubletons_even500_nobloom.biom
+dc=40
+ds=28544
+smax=56861
+
+export UNIFRAC_TIMING_INFO=Y
+export OMP_NUM_THREADS=${dc}
+
+for ((i=0; $i<1; i=$i+1)); do
+  rm -f a_c1gh.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<1; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching weighted_normalized_fp32 ${s1} ${s2} useing cores ${c1}-${c2} GPU ${ACC_DEVICE_NUM}"
+  taskset -c ${c1}-${c2} ssu -f -m weighted_normalized_fp32 -i merged_nosingletonsdoubletons_even500_nobloom.biom -t merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre --mode partial --start ${s1} --stop ${s2} -o ./a_c1gh.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu took ${dt} seconds"
+
+ls -l a_c1g?.out
+md5sum a_c1g?.out
+
+for ((i=0; $i<1; i=$i+1)); do
+  rm -f a_c1gh.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<1; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching weighted_normalized_fp32 ${s1} ${s2} useing cores ${c1}-${c2} GPU ${ACC_DEVICE_NUM}"
+  taskset -c ${c1}-${c2} ssu -f -m weighted_normalized_fp32 -i merged_nosingletonsdoubletons_even500_nobloom.biom -t merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre --mode partial --start ${s1} --stop ${s2} -o ./a_c1gh.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu took ${dt} seconds"
+
+ls -l a_c1g?.out
+md5sum a_c1g?.out
+
+for ((i=0; $i<1; i=$i+1)); do
+  rm -f a_c1gh.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<1; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching weighted_normalized_fp32 ${s1} ${s2} useing cores ${c1}-${c2} GPU ${ACC_DEVICE_NUM}"
+  taskset -c ${c1}-${c2} ssu -f -m weighted_normalized_fp32 -i merged_nosingletonsdoubletons_even500_nobloom.biom -t merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre --mode partial --start ${s1} --stop ${s2} -o ./a_c1gh.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu took ${dt} seconds"
+
+ls -l a_c1g?.out
+md5sum a_c1g?.out
+
