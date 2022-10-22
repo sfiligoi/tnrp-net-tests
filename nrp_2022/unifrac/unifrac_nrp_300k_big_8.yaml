@@ -1,0 +1,65 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: unifrac-nrp-300kb-8
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-A100-SXM4-80GB
+              - key: topology.kubernetes.io/zone
+                operator: In
+                values:
+                - ucsd-nrp
+      tolerations:
+      - effect: NoSchedule
+        key:  nautilus.io/nrp-testing
+        operator: Exists
+      containers:
+      - name: test
+        image: sfiligoi/unifrac
+        command:
+        - "/bin/bash"
+        args:
+        - "-l"
+        - "-c"
+        - "source /root/run_300k_big_8.sh"
+        resources:
+          limits:
+            memory: 1500Gi
+            cpu: 128
+            nvidia.com/gpu: 8
+            ephemeral-storage: 320Gi
+          requests:
+            memory: 600Gi
+            cpu: 60
+            nvidia.com/gpu: 8
+            ephemeral-storage: 100Gi
+        volumeMounts:
+        - name: unifrac-nrp-script
+          mountPath: /root/run_300k_big_8.sh
+          subPath: run_300k_big_8.sh
+        - name: unifrac-nrp-script2
+          mountPath: /root/run_300k_support.sh
+          subPath: run_300k_support.sh
+      restartPolicy: Never
+      volumes:
+      - name: unifrac-nrp-script
+        configMap:
+          items:
+          - key: run_300k_big_8.sh
+            path: run_300k_big_8.sh
+          name: unifrac-nrp-script
+      - name: unifrac-nrp-script2
+        configMap:
+          items:
+          - key: run_300k_support.sh
+            path: run_300k_support.sh
+          name: unifrac-nrp-script
