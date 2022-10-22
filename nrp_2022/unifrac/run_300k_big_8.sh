@@ -10,19 +10,31 @@ wget -q http://uaf-10.t2.ucsd.edu/~sfiligoi/unifrac_inputs/300k/x_merged.withpla
 wget -q http://uaf-10.t2.ucsd.edu/~sfiligoi/unifrac_inputs/300k/archive-redbiom-070920-insertion_tree.relabelled.tre
 export UNIFRAC_GPU_INFO=Y
 export UNIFRAC_TIMING_INFO=Y
-export OMP_NUM_THREADS=16
-export ISTEP=19248
+export OMP_NUM_THREADS=8
+export ISTEP=6416
 
 date
 echo "NRP TEST Start: `date +%s`"
 t1=`date +%s`
+# start the first two chunks serially
 a=0
 for ((n=0; $n<153619; n=$n+19248)); do 
-  let m1=$n+12832; if [ $m1 -gt 153619 ]; then m1=153619; fi
-  let m2=$m1+6416; if [ $m2 -gt 153619 ]; then m2=153619; fi
+  let m=$n+2*$ISTEP; if [ $m -gt 153619 ]; then m=153619; fi
   let cstart=$a*16
   let cend=${cstart}+15
-  (export ACC_DEVICE_NUM=$a; export ICORES=${cstart}-${cend}; export ISTART=$n; export IEND=$m1; export ISTEP=12832; source /root/run_300k_support.sh; export ISTART=$m1; export IEND=$m2; export ISTEP=6416; source /root/run_300k_support.sh) &
+  (export ACC_DEVICE_NUM=$a; export ICORES=${cstart}-${cend}; export ISTART=$n; export IEND=$m; source /root/run_300k_support.sh) &
+  let a=$a+1
+done 
+# wait for the IO part of the first to have finished
+sleep 90
+# then start the last chunk in parallel
+a=0
+for ((n=0; $n<153619; n=$n+19248)); do 
+  let m1=$n+2*$ISTEP
+  let m=$n+19248; if [ $m -gt 153619 ]; then m=153619; fi
+  let cstart=$a*16
+  let cend=${cstart}+15
+  (export ACC_DEVICE_NUM=$a; export ICORES=${cstart}-${cend}; export ISTART=${m1}; export IEND=$m; source /root/run_300k_support.sh) &
   let a=$a+1
 done 
 wait
@@ -34,13 +46,25 @@ echo "Total runtime: ${t3}"
 date
 echo "NRP TEST Start: `date +%s`"
 t1=`date +%s`
+# start the first two chunks serially
 a=0
 for ((n=0; $n<153619; n=$n+19248)); do 
-  let m1=$n+12832; if [ $m1 -gt 153619 ]; then m1=153619; fi
-  let m2=$m1+6416; if [ $m2 -gt 153619 ]; then m2=153619; fi
+  let m=$n+2*$ISTEP; if [ $m -gt 153619 ]; then m=153619; fi
   let cstart=$a*16
   let cend=${cstart}+15
-  (export ACC_DEVICE_NUM=$a; export ICORES=${cstart}-${cend}; export ISTART=$n; export IEND=$m1; export ISTEP=12832; source /root/run_300k_support.sh; export ISTART=$m1; export IEND=$m2; export ISTEP=6416; source /root/run_300k_support.sh) &
+  (export ACC_DEVICE_NUM=$a; export ICORES=${cstart}-${cend}; export ISTART=$n; export IEND=$m; source /root/run_300k_support.sh) &
+  let a=$a+1
+done 
+# wait for the IO part of the first to have finished
+sleep 90
+# then start the last chunk in parallel
+a=0
+for ((n=0; $n<153619; n=$n+19248)); do 
+  let m1=$n+2*$ISTEP
+  let m=$n+19248; if [ $m -gt 153619 ]; then m=153619; fi
+  let cstart=$a*16
+  let cend=${cstart}+15
+  (export ACC_DEVICE_NUM=$a; export ICORES=${cstart}-${cend}; export ISTART=${m1}; export IEND=$m; source /root/run_300k_support.sh) &
   let a=$a+1
 done 
 wait
