@@ -13,7 +13,7 @@ export UNIFRAC_TIMING_INFO=Y
 export OMP_NUM_THREADS=16
 export ISTART=0
 export IEND=153619
-export ISTEP=25664
+export ISTEP=19248
 date
 echo "NRP TEST Start: `date +%s`"
 source /root/run_300k_support.sh 

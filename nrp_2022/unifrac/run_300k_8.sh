@@ -19,7 +19,9 @@ t1=`date +%s`
 a=0
 for ((n=0; $n<153619; n=$n+19264)); do 
   let m=$n+19264; if [ $m -gt 153619 ]; then m=153619; fi
-  (export ACC_DEVICE_NUM=$a; export ISTART=$n; export IEND=$m; source /root/run_300k_support.sh) &
+  let cstart=$a*16
+  let cend=${cstart}+15
+  (export ACC_DEVICE_NUM=$a; export ICORES=${cstart}-${cend}; export ISTART=$n; export IEND=$m; source /root/run_300k_support.sh) &
   let a=$a+1
 done 
 wait
@@ -34,7 +36,9 @@ t1=`date +%s`
 a=0
 for ((n=0; $n<153619; n=$n+19264)); do 
   let m=$n+19264; if [ $m -gt 153619 ]; then m=153619; fi
-  (export ACC_DEVICE_NUM=$a; export ISTART=$n; export IEND=$m; source /root/run_300k_support.sh) &
+  let cstart=$a*16
+  let cend=${cstart}+15
+  (export ACC_DEVICE_NUM=$a; export ICORES=${cstart}-${cend}; export ISTART=$n; export IEND=$m; source /root/run_300k_support.sh) &
   let a=$a+1
 done 
 wait
