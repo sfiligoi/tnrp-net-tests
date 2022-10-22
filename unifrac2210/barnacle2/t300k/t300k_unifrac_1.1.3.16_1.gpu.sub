@@ -1,0 +1,39 @@
+#!/bin/bash
+#SBATCH --exclusive
+#SBATCH --partition gpu
+#SBATCH --gres=gpu:1
+#SBATCH -t 15:00
+hostname
+lscpu
+nvidia-smi
+#echo "=============="
+#rm -fr /tmp/igor
+#mkdir -p /tmp/igor
+#cp /projects/wol/release/databases/bowtie2/WoLr1* /tmp/igor/
+#cp /qmounts/qiita_data/per_sample_FASTQ/88388/10317_000065377_S642_L003_R2_001.trimmed.fastq.gz /tmp/igor/
+#ls -l /tmp/igor/
+echo "=============="
+cd /panfs/isfiligoi/t6/batch
+source ../setup_conda.sh
+conda activate unifrac-1.1.3
+conda list
+echo "=============="
+md5sum archive-redbiom-070920-insertion_tree.relabelled.tre
+md5sum x_merged.withplacement_even500.anonymized.biom
+export UNIFRAC_TIMING_INFO=Y
+export OMP_NUM_THREADS=32
+rm -f a_c3g.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m weighted_normalized_fp32 -i x_merged.withplacement_even500.anonymized.biom -t archive-redbiom-070920-insertion_tree.relabelled.tre --mode partial --start 0 --stop 9632  -o ./a_c3g.out
+echo "rc=$?"
+md5sum a_c3g.out
+rm -f a_c3g.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m weighted_normalized_fp32 -i x_merged.withplacement_even500.anonymized.biom -t archive-redbiom-070920-insertion_tree.relabelled.tre --mode partial --start 0 --stop 9632  -o ./a_c3g.out
+echo "rc=$?"
+md5sum a_c3g.out
+#rm -f a_c3g.out
+#echo "=============="
+#time taskset -c 16-31,48-63 ssu -f -m weighted_normalized_fp32 -i x_merged.withplacement_even500.anonymized.biom -t archive-redbiom-070920-insertion_tree.relabelled.tre --mode partial --start 0 --stop 9632  -o ./a_c3g.out
+#echo "rc=$?"
+#md5sum a_c3g.out
