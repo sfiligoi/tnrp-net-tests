@@ -1,0 +1,38 @@
+#!/bin/bash
+#SBATCH --exclusive
+#SBATCH --partition gpu
+#SBATCH --gres=gpu:1
+#SBATCH -t 55:00
+hostname
+lscpu
+#echo "=============="
+#rm -fr /tmp/igor
+#mkdir -p /tmp/igor
+#cp /projects/wol/release/databases/bowtie2/WoLr1* /tmp/igor/
+#cp /qmounts/qiita_data/per_sample_FASTQ/88388/10317_000065377_S642_L003_R2_001.trimmed.fastq.gz /tmp/igor/
+#ls -l /tmp/igor/
+echo "=============="
+cd /panfs/isfiligoi/t6/batch
+source ../setup_conda.sh
+conda activate unifrac
+conda list
+echo "=============="
+md5sum merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre
+md5sum merged_nosingletonsdoubletons_even500_nobloom.biom
+export UNIFRAC_TIMING_INFO=Y
+export OMP_NUM_THREADS=32
+rm -f u_c1g.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i merged_nosingletonsdoubletons_even500_nobloom.biom -t merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre --mode partial --start 0 --stop 14272  -o ./u_c1g.out
+echo "rc=$?"
+md5sum u_c1g.out
+rm -f u_c1g.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i merged_nosingletonsdoubletons_even500_nobloom.biom -t merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre --mode partial --start 0 --stop 14272  -o ./u_c1g.out
+echo "rc=$?"
+md5sum u_c1g.out
+#rm -f u_c1g.out
+#echo "=============="
+#time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i merged_nosingletonsdoubletons_even500_nobloom.biom -t merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre --mode partial --start 0 --stop 14272  -o ./u_c1g.out
+#echo "rc=$?"
+#md5sum u_c1g.out

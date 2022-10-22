@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH --exclusive
+#SBATCH -t 24:00:00
+hostname
+lscpu
+#echo "=============="
+#rm -fr /tmp/igor
+#mkdir -p /tmp/igor
+#cp /projects/wol/release/databases/bowtie2/WoLr1* /tmp/igor/
+#cp /qmounts/qiita_data/per_sample_FASTQ/88388/10317_000065377_S642_L003_R2_001.trimmed.fastq.gz /tmp/igor/
+#ls -l /tmp/igor/
+echo "=============="
+cd /panfs/isfiligoi/t6/batch
+source ../setup_conda.sh
+conda activate unifrac-old
+conda list
+echo "=============="
+md5sum merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre
+md5sum merged_nosingletonsdoubletons_even500_nobloom.biom
+rm -f a_c0_1.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -n 32 -f -m weighted_normalized -i merged_nosingletonsdoubletons_even500_nobloom.biom -t merged_nosingletonsdoubletons_even500_sepp_nobloom_placement.tog.tre --mode partial --start 0 --stop 448 -o ./a_c0_1.out
+echo "rc=$?"
+ls -l a_c0_1.out
+md5sum a_c0_1.out
+
