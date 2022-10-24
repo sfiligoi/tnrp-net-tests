@@ -1,10 +1,10 @@
-b2-022
+b2-006
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
 Byte Order:            Little Endian
-CPU(s):                32
-On-line CPU(s) list:   0-31
-Thread(s) per core:    1
+CPU(s):                64
+On-line CPU(s) list:   0-63
+Thread(s) per core:    2
 Core(s) per socket:    16
 Socket(s):             2
 NUMA node(s):          2
@@ -16,35 +16,15 @@ Stepping:              0
 CPU MHz:               1500.000
 CPU max MHz:           3000.0000
 CPU min MHz:           1500.0000
-BogoMIPS:              5999.84
+BogoMIPS:              6000.04
 Virtualization:        AMD-V
 L1d cache:             32K
 L1i cache:             32K
 L2 cache:              512K
 L3 cache:              16384K
-NUMA node0 CPU(s):     0-15
-NUMA node1 CPU(s):     16-31
+NUMA node0 CPU(s):     0-15,32-47
+NUMA node1 CPU(s):     16-31,48-63
 Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc art rep_good nopl nonstop_tsc extd_apicid aperfmperf eagerfpu pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_l2 cpb cat_l3 cdp_l3 hw_pstate sme retpoline_amd ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip overflow_recov succor smca
-Fri Oct 21 16:27:24 2022       
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 460.84       Driver Version: 460.84       CUDA Version: 11.2     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  GeForce RTX 3090    Off  | 00000000:44:00.0 Off |                  N/A |
-| 30%   41C    P0     1W / 350W |      0MiB / 24268MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-                                                                               
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|  No running processes found                                                 |
-+-----------------------------------------------------------------------------+
 ==============
 # packages in environment at /panfs/isfiligoi/t6/ana3/envs/unifrac-1.1.3:
 #
@@ -100,38 +80,25 @@ dc78aaebd639400a79763582eaacc9ed  ag_emp_even500.biom
 INFO (unifrac): Starting one_off_matrix_fp32
 INFO (unifrac): dt    6 : Completed one_off_matrix_fp32.load_files
 INFO (unifrac): Starting one_off_matrix_inmem
-INFO (unifrac): dt    0 : Completed one_off_matrix_inmem.sync_tree_table
-INFO (unifrac): dt   47 : Completed one_off_matrix_inmem.process_stripes
+INFO (unifrac): dt    1 : Completed one_off_matrix_inmem.sync_tree_table
+INFO (unifrac): dt 1107 : Completed one_off_matrix_inmem.process_stripes
 INFO (unifrac): dt   12 : Completed one_off_matrix_inmem.stripes_to_matrix
 
-real	1m46.711s
-user	1m32.437s
-sys	0m34.455s
+real	19m21.014s
+user	582m30.276s
+sys	0m33.976s
 rc=0
-8d954e5cc1b8d7cc391fa400c7d7140d  u_c3g.out
+0e3fbf0aa9083ba456aec9eb88d7bfa0  a_c3a.out
 ==============
 INFO (unifrac): Starting one_off_matrix_fp32
 INFO (unifrac): dt    6 : Completed one_off_matrix_fp32.load_files
 INFO (unifrac): Starting one_off_matrix_inmem
 INFO (unifrac): dt    1 : Completed one_off_matrix_inmem.sync_tree_table
-INFO (unifrac): dt   46 : Completed one_off_matrix_inmem.process_stripes
-INFO (unifrac): dt   11 : Completed one_off_matrix_inmem.stripes_to_matrix
-
-real	1m41.917s
-user	1m33.777s
-sys	0m35.433s
-rc=0
-4490b76731f8a20aa60389a0aed0f2b4  u_c3g.out
-==============
-INFO (unifrac): Starting one_off_matrix_fp32
-INFO (unifrac): dt    6 : Completed one_off_matrix_fp32.load_files
-INFO (unifrac): Starting one_off_matrix_inmem
-INFO (unifrac): dt    0 : Completed one_off_matrix_inmem.sync_tree_table
-INFO (unifrac): dt   46 : Completed one_off_matrix_inmem.process_stripes
+INFO (unifrac): dt 1107 : Completed one_off_matrix_inmem.process_stripes
 INFO (unifrac): dt   12 : Completed one_off_matrix_inmem.stripes_to_matrix
 
-real	1m51.738s
-user	1m31.734s
-sys	0m34.764s
+real	19m12.320s
+user	582m49.083s
+sys	0m34.488s
 rc=0
-e242366cc353d805d397dc710daba577  u_c3g.out
+05961067e4e289750c666467cbaea662  a_c3a.out
