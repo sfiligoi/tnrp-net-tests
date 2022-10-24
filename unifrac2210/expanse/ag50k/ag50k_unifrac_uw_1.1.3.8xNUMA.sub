@@ -1,0 +1,102 @@
+#!/bin/bash
+#SBATCH --account=DDP414
+#SBATCH --partition=ind-compute
+#SBATCH -t 45:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=128
+#SBATCH --mem=249325M
+#SBATCH --export=ALL
+hostname
+lscpu
+env
+echo "=============="
+cd /home/sfiligoi/unifrac
+source setup_conda.sh
+conda activate unifrac-1.1.3
+conda list
+echo "=============="
+md5sum ag_emp.tre
+md5sum ag_emp_even500.biom
+dc=16
+ds=3131
+smax=25043
+
+export UNIFRAC_TIMING_INFO=Y
+export OMP_NUM_THREADS=${dc}
+
+for ((i=0; $i<8; i=$i+1)); do
+  rm -f u_c3${i}.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<8; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching unweighted_fp32 ${s1} ${s2} using cores ${c1}-${c2}"
+  taskset -c ${c1}-${c2} ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --mode partial --start ${s1} --stop ${s2} -o ./u_c3${i}.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu took ${dt} seconds"
+
+ls -l u_c3?.out
+md5sum u_c3?.out
+
+for ((i=0; $i<8; i=$i+1)); do
+  rm -f u_c3${i}.out
+done
+echo "=============="
+t1=`date +%s`
+for ((i=0; $i<8; i=$i+1)); do
+  let s1=${i}*${ds}
+  let s2=${s1}+${ds}
+  if [ ${s2} -gt ${smax} ]; then
+    s2=${smax}
+  fi
+  let c1=${i}*${dc}
+  let c2=${c1}+${dc}-1
+  
+  echo "Launching unweighted_fp32 ${s1} ${s2} using cores ${c1}-${c2}"
+  taskset -c ${c1}-${c2} ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --mode partial --start ${s1} --stop ${s2} -o ./u_c3${i}.out &
+done
+wait
+t2=`date +%s`
+let dt=${t2}-${t1}
+echo "ssu took ${dt} seconds"
+
+ls -l u_c3?.out
+md5sum u_c3?.out
+
+for ((i=0; $i<8; i=$i+1)); do
+  rm -f u_c3${i}.out
+done
+#echo "=============="
+#t1=`date +%s`
+#for ((i=0; $i<8; i=$i+1)); do
+#  let s1=${i}*${ds}
+#  let s2=${s1}+${ds}
+#  if [ ${s2} -gt ${smax} ]; then
+#    s2=${smax}
+#  fi
+#  let c1=${i}*${dc}
+#  let c2=${c1}+${dc}-1
+#  
+#  echo "Launching unweighted_fp32 ${s1} ${s2} using cores ${c1}-${c2}"
+#  taskset -c ${c1}-${c2} ssu -f -m unweighted_fp32 -i ag_emp_even500.biom -t ag_emp.tre --mode partial --start ${s1} --stop ${s2} -o ./u_c3${i}.out &
+#done
+#wait
+#t2=`date +%s`
+#let dt=${t2}-${t1}
+#echo "ssu took ${dt} seconds"
+#
+#ls -l u_c3?.out
+#md5sum u_c3?.out
+
