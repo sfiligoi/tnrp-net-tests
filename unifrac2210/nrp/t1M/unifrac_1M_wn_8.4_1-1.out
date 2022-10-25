@@ -1,0 +1,952 @@
+GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-9c0224a4-3ca6-5256-511a-304f19d344fe)
+GPU 1: NVIDIA A100-SXM4-80GB (UUID: GPU-cca623ab-4034-03ff-1dba-b2c6c4a4c614)
+GPU 2: NVIDIA A100-SXM4-80GB (UUID: GPU-c54e9647-7ab7-6c4c-e6df-6ea36bc5a18c)
+GPU 3: NVIDIA A100-SXM4-80GB (UUID: GPU-77f5dd5c-ed59-cc00-32a1-aff303a128ca)
+GPU 4: NVIDIA A100-SXM4-80GB (UUID: GPU-4262a135-248a-4f9e-7032-b34c9df996e4)
+GPU 5: NVIDIA A100-SXM4-80GB (UUID: GPU-d6a17dd0-4c8f-d0d5-b535-22540666e869)
+GPU 6: NVIDIA A100-SXM4-80GB (UUID: GPU-c949334e-b83c-ae1b-c964-8f18e746ace7)
+GPU 7: NVIDIA A100-SXM4-80GB (UUID: GPU-a2e9dcc9-656d-0099-d75e-2e5931310148)
+=======================================
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   43 bits physical, 48 bits virtual
+CPU(s):                          128
+On-line CPU(s) list:             0-127
+Thread(s) per core:              1
+Core(s) per socket:              64
+Socket(s):                       2
+NUMA node(s):                    2
+Vendor ID:                       AuthenticAMD
+CPU family:                      23
+Model:                           49
+Model name:                      AMD EPYC 7742 64-Core Processor
+Stepping:                        0
+Frequency boost:                 enabled
+CPU MHz:                         2250.000
+CPU max MHz:                     2250.0000
+CPU min MHz:                     1500.0000
+BogoMIPS:                        4499.80
+Virtualization:                  AMD-V
+L1d cache:                       4 MiB
+L1i cache:                       4 MiB
+L2 cache:                        64 MiB
+L3 cache:                        512 MiB
+NUMA node0 CPU(s):               0-63
+NUMA node1 CPU(s):               64-127
+Vulnerability Itlb multihit:     Not affected
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Not affected
+Vulnerability Meltdown:          Not affected
+Vulnerability Mmio stale data:   Not affected
+Vulnerability Retbleed:          Mitigation; untrained return thunk; SMT disabled
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Retpolines, IBPB conditional, STIBP disabled, RSB filling, PBRSB-eIBRS Not affected
+Vulnerability Srbds:             Not affected
+Vulnerability Tsx async abort:   Not affected
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr rdpru wbnoinvd arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl umip rdpid overflow_recov succor smca sme sev sev_es
+=======================================
+Tue Oct 25 05:27:41 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.65.01    Driver Version: 515.65.01    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:0B:00.0 Off |                    0 |
+| N/A   32C    P0    63W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A100-SXM...  On   | 00000000:10:00.0 Off |                    0 |
+| N/A   34C    P0    62W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA A100-SXM...  On   | 00000000:40:00.0 Off |                    0 |
+| N/A   35C    P0    62W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA A100-SXM...  On   | 00000000:46:00.0 Off |                    0 |
+| N/A   33C    P0    64W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   4  NVIDIA A100-SXM...  On   | 00000000:8B:00.0 Off |                    0 |
+| N/A   32C    P0    63W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   5  NVIDIA A100-SXM...  On   | 00000000:91:00.0 Off |                    0 |
+| N/A   36C    P0    63W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   6  NVIDIA A100-SXM...  On   | 00000000:CB:00.0 Off |                    0 |
+| N/A   35C    P0    64W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   7  NVIDIA A100-SXM...  On   | 00000000:D0:00.0 Off |                    0 |
+| N/A   32C    P0    62W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+=======================================
+Tue Oct 25 05:27:43 UTC 2022
+NRP TEST Start: 1666675663
+start 0 stop 1458 gpu 0 cores 0-15
+start 37906 stop 39364 gpu 2 cores 32-47
+start 18953 stop 20411 gpu 1 cores 16-31
+start 56859 stop 58317 gpu 3 cores 48-63
+start 75812 stop 77270 gpu 4 cores 64-79
+start 94765 stop 96223 gpu 5 cores 80-95
+start 113718 stop 115176 gpu 6 cores 96-111
+start 132671 stop 134129 gpu 7 cores 112-127
+start 10206 stop 11664 gpu 0 cores 0-15
+start 29159 stop 30617 gpu 1 cores 16-31
+start 48112 stop 49570 gpu 2 cores 32-47
+start 67065 stop 68523 gpu 3 cores 48-63
+start 86018 stop 87476 gpu 4 cores 64-79
+start 104971 stop 106429 gpu 5 cores 80-95
+start 123924 stop 125382 gpu 6 cores 96-111
+start 142877 stop 144335 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   78 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4613 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028435735 Oct 25 06:46 a.p37906
+start 39364 stop 40822 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4632 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028487809 Oct 25 06:48 a.p48112
+start 49570 stop 51028 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   79 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5028 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028438967 Oct 25 06:53 a.p132671
+start 134129 stop 135587 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   78 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5072 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028494495 Oct 25 06:54 a.p94765
+start 96223 stop 97681 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4987 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028490948 Oct 25 06:54 a.p142877
+start 144335 stop 145793 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5053 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028416586 Oct 25 06:55 a.p104971
+start 106429 stop 107887 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   78 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5158 : Completed partial.process_stripes
+INFO (unifrac): dt    1 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028449806 Oct 25 06:55 a.p75812
+start 77270 stop 78728 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   79 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5211 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028484301 Oct 25 06:56 a.p113718
+start 115176 stop 116634 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5127 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028425521 Oct 25 06:56 a.p86018
+start 87476 stop 88934 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   79 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5274 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028348784 Oct 25 06:57 a.p0
+start 1458 stop 2916 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   92 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5188 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028492112 Oct 25 06:57 a.p123924
+start 125382 stop 126840 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5316 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028468027 Oct 25 06:59 a.p10206
+start 11664 stop 13122 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   78 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5468 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028467563 Oct 25 07:00 a.p18953
+start 20411 stop 21869 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   78 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5554 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028456405 Oct 25 07:02 a.p56859
+start 58317 stop 59775 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5555 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028448268 Oct 25 07:04 a.p29159
+start 30617 stop 32075 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 6326 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028486585 Oct 25 07:16 a.p67065
+start 68523 stop 69981 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4862 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028457907 Oct 25 08:11 a.p49570
+start 51028 stop 52486 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   87 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4986 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028445428 Oct 25 08:11 a.p39364
+start 40822 stop 42280 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   86 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4919 : Completed partial.process_stripes
+INFO (unifrac): dt    1 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028457302 Oct 25 08:17 a.p134129
+start 135587 stop 137045 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   86 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4909 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028479139 Oct 25 08:18 a.p144335
+start 145793 stop 147251 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   86 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4930 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028428769 Oct 25 08:18 a.p96223
+start 97681 stop 99139 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4986 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028483668 Oct 25 08:20 a.p106429
+start 107887 stop 109345 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4898 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028473681 Oct 25 08:21 a.p1458
+start 2916 stop 4374 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5177 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028440921 Oct 25 08:24 a.p77270
+start 78728 stop 80186 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4950 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028451149 Oct 25 08:24 a.p11664
+start 13122 stop 14580 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5184 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028458206 Oct 25 08:25 a.p115176
+start 116634 stop 118092 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5147 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028471865 Oct 25 08:25 a.p125382
+start 126840 stop 128298 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5242 : Completed partial.process_stripes
+INFO (unifrac): dt    1 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028439693 Oct 25 08:26 a.p87476
+start 88934 stop 90392 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5194 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028512808 Oct 25 08:29 a.p20411
+start 21869 stop 23327 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt  101 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5193 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028478514 Oct 25 08:31 a.p58317
+start 59775 stop 61233 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   94 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5117 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028416568 Oct 25 08:31 a.p30617
+start 32075 stop 33533 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   94 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5410 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028492732 Oct 25 08:49 a.p68523
+start 69981 stop 71439 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   85 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4843 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028511563 Oct 25 09:34 a.p40822
+start 42280 stop 43738 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   85 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4882 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028441266 Oct 25 09:35 a.p51028
+start 52486 stop 53944 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   85 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4962 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028437361 Oct 25 09:42 a.p135587
+start 137045 stop 138503 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4979 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028476489 Oct 25 09:43 a.p145793
+start 147251 stop 148709 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4987 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028435280 Oct 25 09:43 a.p97681
+start 99139 stop 100597 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4940 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028473701 Oct 25 09:45 a.p107887
+start 109345 stop 110803 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4946 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028468599 Oct 25 09:46 a.p2916
+start 4374 stop 5832 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4863 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028502640 Oct 25 09:48 a.p13122
+start 14580 stop 16038 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5118 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028446024 Oct 25 09:51 a.p78728
+start 80186 stop 81644 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5161 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028439174 Oct 25 09:54 a.p126840
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5132 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+start 128298 stop 129756 gpu 6 cores 96-111
+rc:  0
+-rw------- 1 root root 10028456498 Oct 25 09:54 a.p88934
+start 90392 stop 91850 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   87 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5239 : Completed partial.process_stripes
+INFO (unifrac): dt    1 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028467938 Oct 25 09:54 a.p116634
+start 118092 stop 119550 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5175 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028400507 Oct 25 09:58 a.p21869
+start 23327 stop 24785 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5294 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028475564 Oct 25 10:02 a.p59775
+start 61233 stop 62691 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   94 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5340 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028478816 Oct 25 10:02 a.p32075
+start 33533 stop 34991 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   95 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5466 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028429748 Oct 25 10:22 a.p69981
+start 71439 stop 72897 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   86 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4826 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028456066 Oct 25 10:57 a.p42280
+start 43738 stop 45196 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4936 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028428811 Oct 25 10:59 a.p52486
+start 53944 stop 55402 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4990 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028460800 Oct 25 11:07 a.p137045
+start 138503 stop 139961 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   87 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4990 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028450118 Oct 25 11:09 a.p147251
+start 148709 stop 150167 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   85 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5014 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028489741 Oct 25 11:09 a.p99139
+start 100597 stop 102055 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4926 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028429412 Oct 25 11:09 a.p109345
+start 110803 stop 112261 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4961 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028476256 Oct 25 11:11 a.p4374
+start 5832 stop 7290 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   92 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4988 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028468775 Oct 25 11:13 a.p14580
+start 16038 stop 17496 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   92 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5030 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028451594 Oct 25 11:18 a.p80186
+start 81644 stop 83102 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5049 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028499905 Oct 25 11:20 a.p90392
+start 91850 stop 93308 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5270 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028486111 Oct 25 11:24 a.p128298
+start 129756 stop 131214 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5264 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028500893 Oct 25 11:24 a.p118092
+start 119550 stop 121008 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   97 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5189 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028496966 Oct 25 11:30 a.p61233
+start 62691 stop 64149 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5186 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5470 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028456110 Oct 25 11:31 a.p33533
+rc:  0
+-rw------- 1 root root 10028486969 Oct 25 11:31 a.p23327
+start 34991 stop 36449 gpu 1 cores 16-31
+start 24785 stop 26243 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   95 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5139 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028481095 Oct 25 11:50 a.p71439
+start 72897 stop 74355 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4615 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028500584 Oct 25 12:16 a.p43738
+start 45196 stop 46654 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4618 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028475454 Oct 25 12:19 a.p53944
+start 55402 stop 56860 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   85 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4874 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028444027 Oct 25 12:31 a.p138503
+start 139961 stop 141419 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4834 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028532588 Oct 25 12:33 a.p5832
+start 7290 stop 8748 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   87 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4971 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028463119 Oct 25 12:34 a.p148709
+start 150167 stop 151625 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   86 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5108 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028447138 Oct 25 12:36 a.p100597
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   85 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5106 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+start 102055 stop 103513 gpu 5 cores 80-95
+rc:  0
+-rw------- 1 root root 10028502086 Oct 25 12:36 a.p110803
+start 112261 stop 113719 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5141 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028470840 Oct 25 12:41 a.p16038
+start 17496 stop 18954 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   94 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5095 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028459799 Oct 25 12:45 a.p81644
+start 83102 stop 84560 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   93 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5054 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028452658 Oct 25 12:47 a.p91850
+start 93308 stop 94766 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5252 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028433533 Oct 25 12:54 a.p129756
+start 131214 stop 132672 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5260 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028469407 Oct 25 12:54 a.p119550
+start 121008 stop 122466 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5179 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028507121 Oct 25 12:59 a.p62691
+start 64149 stop 65607 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5488 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028454231 Oct 25 13:05 a.p24785
+start 26243 stop 27701 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5501 : Completed partial.process_stripes
+INFO (unifrac): dt    1 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028501895 Oct 25 13:05 a.p34991
+start 36449 stop 37907 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   95 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5221 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028457661 Oct 25 13:20 a.p72897
+start 74355 stop 75813 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4515 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028456883 Oct 25 13:34 a.p45196
+start 46654 stop 48112 gpu 2 cores 32-47
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4475 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028472759 Oct 25 13:35 a.p55402
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4832 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028431166 Oct 25 13:54 a.p139961
+start 141419 stop 142877 gpu 7 cores 112-127
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4819 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028493755 Oct 25 13:56 a.p7290
+start 8748 stop 10206 gpu 0 cores 0-15
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4828 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028423764 Oct 25 13:56 a.p150167
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   86 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5050 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028445585 Oct 25 14:03 a.p112261
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   86 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5065 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028463062 Oct 25 14:03 a.p102055
+start 103513 stop 104971 gpu 5 cores 80-95
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4813 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028426763 Oct 25 14:03 a.p17496
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   91 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5024 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028492486 Oct 25 14:11 a.p83102
+start 84560 stop 86018 gpu 4 cores 64-79
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   94 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4991 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028504736 Oct 25 14:12 a.p93308
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   90 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5042 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028500577 Oct 25 14:20 a.p121008
+start 122466 stop 123924 gpu 6 cores 96-111
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 5124 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028482333 Oct 25 14:21 a.p131214
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   99 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4954 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 2898 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028454419 Oct 25 14:24 a.p64149
+rc:  0
+-rw------- 1 root root 10028432286 Oct 25 14:24 a.p46654
+start 65607 stop 67065 gpu 3 cores 48-63
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4931 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028463263 Oct 25 14:30 a.p36449
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4969 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028448162 Oct 25 14:30 a.p26243
+start 27701 stop 29159 gpu 1 cores 16-31
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   96 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 4545 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028438940 Oct 25 14:38 a.p74355
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   92 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 2735 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028465470 Oct 25 14:41 a.p141419
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   89 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 2790 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028535057 Oct 25 14:45 a.p8748
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   85 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 2660 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028501312 Oct 25 14:49 a.p103513
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   86 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 2620 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028473385 Oct 25 14:57 a.p84560
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   85 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 2451 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028487628 Oct 25 15:03 a.p122466
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   88 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 2489 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028459361 Oct 25 15:08 a.p65607
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   84 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt 2268 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+rc:  0
+-rw------- 1 root root 10028461775 Oct 25 15:10 a.p27701
+NRP TEST End: 1666710624
+Total runtime: 34961
+Tue Oct 25 15:10:24 UTC 2022
+NRP TEST Start: 1666710624
+start 0 stop 1458 gpu 0 cores 0-15
+start 18953 stop 20411 gpu 1 cores 16-31
+start 37906 stop 39364 gpu 2 cores 32-47
+start 56859 stop 58317 gpu 3 cores 48-63
+start 75812 stop 77270 gpu 4 cores 64-79
+start 94765 stop 96223 gpu 5 cores 80-95
+start 113718 stop 115176 gpu 6 cores 96-111
+start 132671 stop 134129 gpu 7 cores 112-127
+start 10206 stop 11664 gpu 0 cores 0-15
+start 29159 stop 30617 gpu 1 cores 16-31
+start 48112 stop 49570 gpu 2 cores 32-47
+start 67065 stop 68523 gpu 3 cores 48-63
+start 86018 stop 87476 gpu 4 cores 64-79
+start 104971 stop 106429 gpu 5 cores 80-95
+start 123924 stop 125382 gpu 6 cores 96-111
+start 142877 stop 144335 gpu 7 cores 112-127
