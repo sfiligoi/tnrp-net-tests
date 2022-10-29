@@ -1,0 +1,39 @@
+#!/bin/bash
+#SBATCH --exclusive
+#SBATCH --partition gpu
+#SBATCH --gres=gpu:1
+#SBATCH -t 1:55:00
+hostname
+lscpu
+nvidia-smi
+#echo "=============="
+#rm -fr /tmp/igor
+#mkdir -p /tmp/igor
+#cp /projects/wol/release/databases/bowtie2/WoLr1* /tmp/igor/
+#cp /qmounts/qiita_data/per_sample_FASTQ/88388/10317_000065377_S642_L003_R2_001.trimmed.fastq.gz /tmp/igor/
+#ls -l /tmp/igor/
+echo "=============="
+cd /panfs/isfiligoi/t6/batch
+source ../setup_conda.sh
+conda activate unifrac-1.1.3
+conda list
+echo "=============="
+md5sum /home/mcdonadt/redbiom-070920/x_merged.withplacement_even1k_4replicates.features.tre
+md5sum /home/mcdonadt/redbiom-070920/x_merged.withplacement_even1k_4replicates.biom
+export UNIFRAC_TIMING_INFO=Y
+export OMP_NUM_THREADS=32
+rm -f u_c3gM.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i /home/mcdonadt/redbiom-070920/x_merged.withplacement_even1k_4replicates.biom -t /home/mcdonadt/redbiom-070920/x_merged.withplacement_even1k_4replicates.features.tre --mode partial --start 0 --stop 2022  -o ./u_c3gM.out
+echo "rc=$?"
+md5sum u_c3gM.out
+rm -f u_c3gM.out
+echo "=============="
+time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i /home/mcdonadt/redbiom-070920/x_merged.withplacement_even1k_4replicates.biom -t /home/mcdonadt/redbiom-070920/x_merged.withplacement_even1k_4replicates.features.tre --mode partial --start 0 --stop 2022  -o ./u_c3gM.out
+echo "rc=$?"
+md5sum u_c3gM.out
+#rm -f u_c3gM.out
+#echo "=============="
+#time taskset -c 16-31,48-63 ssu -f -m unweighted_fp32 -i /home/mcdonadt/redbiom-070920/x_merged.withplacement_even1k_4replicates.biom -t /home/mcdonadt/redbiom-070920/x_merged.withplacement_even1k_4replicates.features.tre --mode partial --start 0 --stop 2022  -o ./u_c3gM.out
+#echo "rc=$?"
+#md5sum u_c3gM.out
