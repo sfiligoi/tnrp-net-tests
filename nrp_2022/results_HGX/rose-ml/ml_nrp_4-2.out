@@ -1,0 +1,156 @@
+GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-073d3564-35e2-868d-b965-4f856bea2df3)
+GPU 1: NVIDIA A100-SXM4-80GB (UUID: GPU-ff2f1d29-5b95-6eb6-2206-f2add9b62bf8)
+GPU 2: NVIDIA A100-SXM4-80GB (UUID: GPU-774400c7-c148-d2ca-a997-70eacdefc283)
+GPU 3: NVIDIA A100-SXM4-80GB (UUID: GPU-218eead9-bf9a-6332-ddff-ec4033893724)
+=======================================
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   43 bits physical, 48 bits virtual
+CPU(s):                          128
+On-line CPU(s) list:             0-127
+Thread(s) per core:              1
+Core(s) per socket:              64
+Socket(s):                       2
+NUMA node(s):                    2
+Vendor ID:                       AuthenticAMD
+CPU family:                      23
+Model:                           49
+Model name:                      AMD EPYC 7742 64-Core Processor
+Stepping:                        0
+Frequency boost:                 enabled
+CPU MHz:                         2250.000
+CPU max MHz:                     2250.0000
+CPU min MHz:                     1500.0000
+BogoMIPS:                        4499.95
+Virtualization:                  AMD-V
+L1d cache:                       4 MiB
+L1i cache:                       4 MiB
+L2 cache:                        64 MiB
+L3 cache:                        512 MiB
+NUMA node0 CPU(s):               0-63
+NUMA node1 CPU(s):               64-127
+Vulnerability Itlb multihit:     Not affected
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Not affected
+Vulnerability Meltdown:          Not affected
+Vulnerability Mmio stale data:   Not affected
+Vulnerability Retbleed:          Mitigation; untrained return thunk; SMT disabled
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Retpolines, IBPB conditional, STIBP disabled, RSB filling, PBRSB-eIBRS Not affected
+Vulnerability Srbds:             Not affected
+Vulnerability Tsx async abort:   Not affected
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr rdpru wbnoinvd arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl umip rdpid overflow_recov succor smca sme sev sev_es
+=======================================
+Wed Oct 19 01:23:39 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.65.01    Driver Version: 515.65.01    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:8B:00.0 Off |                    0 |
+| N/A   28C    P0    64W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A100-SXM...  On   | 00000000:91:00.0 Off |                    0 |
+| N/A   31C    P0    64W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA A100-SXM...  On   | 00000000:CB:00.0 Off |                    0 |
+| N/A   30C    P0    65W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA A100-SXM...  On   | 00000000:D0:00.0 Off |                    0 |
+| N/A   29C    P0    66W / 400W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+=======================================
+Archive:  /data/VD_TF_clean.zip
+   creating: VD_TF/
+  inflating: VD_TF/both_train.py     
+   creating: VD_TF/checkpoint/
+  inflating: VD_TF/Favre.py          
+  inflating: VD_TF/model_train.py    
+  inflating: VD_TF/model_utils.py    
+  inflating: VD_TF/readme.txt        
+  inflating: VD_TF/run.sh            
+  inflating: VD_TF/run_model.sh      
+  inflating: VD_TF/run_warp.sh       
+  inflating: VD_TF/utils.py          
+  inflating: VD_TF/warp.py           
+  inflating: VD_TF/warp_train.py     
+  inflating: VD_TF/warp_utils.py     
+NRP TEST Start: 1666147683
+initializing
+done
+0.4189 0.02692 2.00532
+0.05865 0.02523 1.9446
+0.04475 0.01949 1.90616
+0.03984 0.01718 1.99851
+0.03686 0.01729 1.98895
+0.03451 0.01393 1.99729
+0.03253 0.01452 1.98635
+0.03097 0.014 2.01685
+0.02964 0.01416 2.02008
+0.02821 0.01224 2.01856
+0.02707 0.01227 2.00418
+0.02601 0.01076 2.0604
+0.02512 0.011 2.0056
+0.02433 0.01023 2.09692
+0.02341 0.0104 1.99166
+
+real	30m9.809s
+user	71m46.709s
+sys	163m45.248s
+NRP TEST End: 1666149493
+Elapsed time: 1810
+Archive:  /data/VD_TF_clean.zip
+   creating: VD_TF/
+  inflating: VD_TF/both_train.py     
+   creating: VD_TF/checkpoint/
+  inflating: VD_TF/Favre.py          
+  inflating: VD_TF/model_train.py    
+  inflating: VD_TF/model_utils.py    
+  inflating: VD_TF/readme.txt        
+  inflating: VD_TF/run.sh            
+  inflating: VD_TF/run_model.sh      
+  inflating: VD_TF/run_warp.sh       
+  inflating: VD_TF/utils.py          
+  inflating: VD_TF/warp.py           
+  inflating: VD_TF/warp_train.py     
+  inflating: VD_TF/warp_utils.py     
+NRP TEST Start: 1666149493
+initializing
+done
+0.4603 0.03405 2.22827
+0.04669 0.01847 2.06553
+0.0387 0.01718 2.06883
+0.0348 0.01596 1.99297
+0.03203 0.01564 2.05577
+0.02975 0.01416 2.0759
+0.02801 0.01428 2.07315
+0.02645 0.01305 2.0556
+0.02515 0.01503 2.01096
+0.024 0.01212 2.01744
+0.02251 0.01167 2.08292
+0.02101 0.0131 2.06315
+0.01976 0.01352 2.07234
+0.01872 0.0112 2.03195
+0.01784 0.0124 2.03794
+
+real	31m7.273s
+user	71m41.769s
+sys	178m58.631s
+NRP TEST End: 1666151360
+Elapsed time: 1867
