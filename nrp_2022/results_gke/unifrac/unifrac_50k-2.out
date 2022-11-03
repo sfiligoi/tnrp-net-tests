@@ -1,0 +1,95 @@
+/usr/local/nvidia/bin /
+/
+/usr/local/nvidia/lib64 /
+/
+/root/cuda_paths.sh: line 17: pushd: /usr/local/cuda/lib64: No such file or directory
+ln: target '/usr/lib/libvdpau_nvidia.so': Not a directory
+/root/cuda_paths.sh: line 21: popd: directory stack empty
+GPU 0: NVIDIA A100-SXM4-40GB (UUID: GPU-954218cb-c0f5-3806-84d2-fa5b5a2d035f)
+=======================================
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   46 bits physical, 48 bits virtual
+CPU(s):                          12
+On-line CPU(s) list:             0-11
+Thread(s) per core:              2
+Core(s) per socket:              6
+Socket(s):                       1
+NUMA node(s):                    1
+Vendor ID:                       GenuineIntel
+CPU family:                      6
+Model:                           85
+Model name:                      Intel(R) Xeon(R) CPU @ 2.20GHz
+Stepping:                        7
+CPU MHz:                         2200.198
+BogoMIPS:                        4400.39
+Hypervisor vendor:               KVM
+Virtualization type:             full
+L1d cache:                       192 KiB
+L1i cache:                       192 KiB
+L2 cache:                        6 MiB
+L3 cache:                        38.5 MiB
+NUMA node0 CPU(s):               0-11
+Vulnerability Itlb multihit:     Not affected
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Mitigation; Clear CPU buffers; SMT Host state unknown
+Vulnerability Meltdown:          Not affected
+Vulnerability Mmio stale data:   Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown
+Vulnerability Retbleed:          Mitigation; Enhanced IBRS
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence
+Vulnerability Srbds:             Not affected
+Vulnerability Tsx async abort:   Mitigation; Clear CPU buffers; SMT Host state unknown
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat avx512_vnni md_clear arch_capabilities
+=======================================
+Thu Nov  3 19:32:09 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.141.03   Driver Version: 470.141.03   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  Off  | 00000000:00:04.0 Off |                    0 |
+| N/A   30C    P0    45W / 400W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+=======================================
+Thu Nov  3 19:32:12 UTC 2022
+NRP TEST Start: 1667503932
+INFO (unifrac): Starting one_off_matrix_fp32
+INFO (unifrac): dt    6 : Completed one_off_matrix_fp32.load_files
+INFO (unifrac): Starting one_off_matrix_inmem
+INFO (unifrac): dt    1 : Completed one_off_matrix_inmem.sync_tree_table
+INFO (unifrac): Using GPU
+INFO (unifrac): dt   60 : Completed one_off_matrix_inmem.process_stripes
+INFO (unifrac): dt   19 : Completed one_off_matrix_inmem.stripes_to_matrix
+
+real	1m31.152s
+user	1m27.626s
+sys	0m22.216s
+NRP TEST End: 1667504023
+Thu Nov  3 19:33:44 UTC 2022
+NRP TEST Start: 1667504024
+INFO (unifrac): Starting one_off_matrix_fp32
+INFO (unifrac): dt    6 : Completed one_off_matrix_fp32.load_files
+INFO (unifrac): Starting one_off_matrix_inmem
+INFO (unifrac): dt    1 : Completed one_off_matrix_inmem.sync_tree_table
+INFO (unifrac): Using GPU
+INFO (unifrac): dt   60 : Completed one_off_matrix_inmem.process_stripes
+INFO (unifrac): dt   19 : Completed one_off_matrix_inmem.stripes_to_matrix
+
+real	1m30.906s
+user	1m27.209s
+sys	0m22.341s
+NRP TEST End: 1667504115
