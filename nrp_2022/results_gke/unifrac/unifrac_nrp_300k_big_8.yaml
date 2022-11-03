@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: unifrac-nrp-300kb-8
+spec:
+  template:
+    spec:
+      containers:
+      - name: test
+        image: sfiligoi/unifrac
+        command:
+        - "/bin/bash"
+        args:
+        - "-l"
+        - "-c"
+        - "source /root/cuda_paths.sh; source /root/run_300k_big_8.sh"
+        resources:
+          limits:
+            memory: 700Gi
+            cpu: 96
+            nvidia.com/gpu: 8
+            ephemeral-storage: 320Gi
+          requests:
+            memory: 600Gi
+            cpu: 60
+            nvidia.com/gpu: 8
+            ephemeral-storage: 100Gi
+        volumeMounts:
+        - mountPath: /root
+          name: scratch
+        - name: cuda-script
+          mountPath: /root/cuda_paths.sh
+          subPath: cuda_paths.sh
+        - name: unifrac-nrp-script
+          mountPath: /root/run_300k_big_8.sh
+          subPath: run_300k_big_8.sh
+        - name: unifrac-nrp-script2
+          mountPath: /root/run_300k_support.sh
+          subPath: run_300k_support.sh
+      restartPolicy: Never
+      volumes:
+      - name: scratch
+        emptyDir: {}
+      - name: cuda-script
+        configMap:
+          items:
+          - key: cuda_paths.sh
+            path: cuda_paths.sh
+          name: unifrac-nrp-script
+      - name: unifrac-nrp-script
+        configMap:
+          items:
+          - key: run_300k_big_8.sh
+            path: run_300k_big_8.sh
+          name: unifrac-nrp-script
+      - name: unifrac-nrp-script2
+        configMap:
+          items:
+          - key: run_300k_support.sh
+            path: run_300k_support.sh
+          name: unifrac-nrp-script
