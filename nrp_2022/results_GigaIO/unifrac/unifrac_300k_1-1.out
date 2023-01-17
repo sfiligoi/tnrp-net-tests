@@ -1,0 +1,210 @@
+GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-a3ee3caa-96bb-83ab-376b-3a770da61348)
+=======================================
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   43 bits physical, 48 bits virtual
+CPU(s):                          256
+On-line CPU(s) list:             0-255
+Thread(s) per core:              2
+Core(s) per socket:              64
+Socket(s):                       2
+NUMA node(s):                    2
+Vendor ID:                       AuthenticAMD
+CPU family:                      23
+Model:                           49
+Model name:                      AMD EPYC 7742 64-Core Processor
+Stepping:                        0
+Frequency boost:                 enabled
+CPU MHz:                         1512.661
+CPU max MHz:                     2250.0000
+CPU min MHz:                     1500.0000
+BogoMIPS:                        4500.07
+Virtualization:                  AMD-V
+L1d cache:                       4 MiB
+L1i cache:                       4 MiB
+L2 cache:                        64 MiB
+L3 cache:                        512 MiB
+NUMA node0 CPU(s):               0-63,128-191
+NUMA node1 CPU(s):               64-127,192-255
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Not affected
+Vulnerability Meltdown:          Not affected
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Full AMD retpoline, IBPB conditional, IBRS_FW, STIBP conditional, RSB filling
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate sme ssbd mba sev ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip rdpid overflow_recov succor smca
+=======================================
+Wed Jan 11 20:21:36 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.65.01    Driver Version: 515.65.01    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100 80G...  On   | 00000000:B3:00.0 Off |                    0 |
+| N/A   58C    P0    52W / 300W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+=======================================
+Wed Jan 11 20:21:38 UTC 2023
+NRP TEST Start: 1673468498
+start 0 stop 25664 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   25 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  563 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m13.528s
+user	23m10.565s
+sys	1m12.935s
+rc:  0
+-rw------- 1 root root 43965518786 Jan 11 20:33 a.p0
+start 25664 stop 51328 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   25 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  562 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m12.412s
+user	22m51.502s
+sys	1m11.607s
+rc:  0
+-rw------- 1 root root 43965498720 Jan 11 20:46 a.p25664
+start 51328 stop 76992 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   26 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  563 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m14.762s
+user	24m3.152s
+sys	1m20.715s
+rc:  0
+-rw------- 1 root root 43965387130 Jan 11 20:58 a.p51328
+start 76992 stop 102656 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   25 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  563 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m13.794s
+user	23m27.380s
+sys	1m16.655s
+rc:  0
+-rw------- 1 root root 43965481932 Jan 11 21:10 a.p76992
+start 102656 stop 128320 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   26 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  562 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m13.576s
+rc:  0
+user	23m18.677s
+sys	1m15.687s
+-rw------- 1 root root 43965517493 Jan 11 21:22 a.p102656
+start 128320 stop 153619 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   25 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  563 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m10.251s
+user	23m2.563s
+rc:  0
+sys	1m11.279s
+-rw------- 1 root root 43340238035 Jan 11 21:35 a.p128320
+NRP TEST End: 1673472908
+Total runtime: 4410
+Wed Jan 11 21:35:08 UTC 2023
+NRP TEST Start: 1673472908
+start 0 stop 25664 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   26 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  561 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m13.473s
+user	22m53.339s
+sys	1m11.304s
+rc:  0
+-rw------- 1 root root 43965518786 Jan 11 21:47 a.p0
+start 25664 stop 51328 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   25 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  562 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m12.019s
+user	22m47.804s
+sys	1m11.196s
+rc:  0
+-rw------- 1 root root 43965498720 Jan 11 21:59 a.p25664
+start 51328 stop 76992 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   25 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  563 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m13.452s
+user	23m15.947s
+sys	1m14.481s
+rc:  0
+-rw------- 1 root root 43965387130 Jan 11 22:11 a.p51328
+start 76992 stop 102656 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   26 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  561 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m12.962s
+user	22m59.613s
+sys	1m11.215s
+rc:  0
+-rw------- 1 root root 43965481932 Jan 11 22:24 a.p76992
+start 102656 stop 128320 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   26 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  561 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m12.810s
+user	22m59.194s
+sys	1m11.436s
+rc:  0
+-rw------- 1 root root 43965517493 Jan 11 22:36 a.p102656
+start 128320 stop 153619 gpu 0 cores 64-127,192-255
+INFO (unifrac): Starting partial
+INFO (unifrac): dt   26 : Completed partial.load_files
+INFO (unifrac): Using GPU
+INFO (unifrac): dt  563 : Completed partial.process_stripes
+INFO (unifrac): dt    0 : Completed partial.partial_mat
+
+real	12m13.327s
+user	23m7.283s
+sys	1m13.551s
+rc:  0
+-rw------- 1 root root 43340238035 Jan 11 22:48 a.p128320
+NRP TEST End: 1673477318
+Total runtime: 4410
