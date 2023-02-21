@@ -29,11 +29,22 @@ spec:
         memory: 4Gi
         cpu: 0.2
         nvidia.com/gpu: 1
-    command: ["sh", "-c", "apt-get update; apt-get install --yes python; useradd -s /bin/bash -m cgyro; sleep 72000"]
+    command: ["sh", "-c", "/root/setup_node.sh; sleep 72000"]
     volumeMounts:
     - name: sw
       mountPath: /opt/fusion/software
+    - name: setup-node
+      mountPath: /root/setup_node.sh
+      subPath: setup_node.sh
   volumes:
   - name: sw
     persistentVolumeClaim:
       claimName: software
+  - name: setup-node
+    configMap:
+      items:
+      - key: setup_node.sh
+        path: setup_node.sh
+      name: setup-scripts
+      defaultMode: 320
+
