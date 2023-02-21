@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: login-small
+  namespace: fusion-psfc 
+spec:
+  affinity:
+   nodeAffinity:
+     requiredDuringSchedulingIgnoredDuringExecution:
+       nodeSelectorTerms:
+       - matchExpressions:
+         - key: nvidia.com/gpu.product
+           operator: In
+           values:
+           - NVIDIA-A100-SXM4-80GB
+  tolerations:
+  - effect: NoSchedule
+    key:  nautilus.io/nrp-testing
+    operator: Exists
+  containers:
+  - name: mypod
+    image: nvcr.io/nvidia/nvhpc:22.9-devel-cuda_multi-ubuntu20.04
+    resources:
+      limits:
+        memory: 4Gi
+        cpu: 2
+        nvidia.com/gpu: 1
+      requests:
+        memory: 4Gi
+        cpu: 0.2
+        nvidia.com/gpu: 1
+    command: ["sh", "-c", "apt-get update; apt-get install --yes python; useradd -s /bin/bash -m cgyro; sleep 72000"]
+    volumeMounts:
+    - name: sw
+      mountPath: /opt/fusion/software
+  volumes:
+  - name: sw
+    persistentVolumeClaim:
+      claimName: software
