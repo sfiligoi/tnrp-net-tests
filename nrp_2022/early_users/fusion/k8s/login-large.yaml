@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: login-large
+  namespace: fusion-psfc 
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      affinity:
+       nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+         nodeSelectorTerms:
+         - matchExpressions:
+           - key: nvidia.com/gpu.product
+             operator: In
+             values:
+             - NVIDIA-A100-SXM4-80GB
+      priorityClassName: owner
+      tolerations:
+      - effect: NoSchedule
+        key:  nautilus.io/nrp-testing
+        operator: Exists
+      containers:
+      - name: mypod
+        image: nvcr.io/nvidia/nvhpc:22.9-devel-cuda_multi-ubuntu20.04
+        resources:
+          limits:
+            memory: 1000Gi
+            cpu: 128
+            nvidia.com/gpu: 8
+            ephemeral-storage: 200Gi
+          requests:
+            memory: 480Gi
+            cpu: 96
+            nvidia.com/gpu: 8
+            ephemeral-storage: 100Gi
+        command: ["sh", "-c", "apt-get update; apt-get install --yes python; useradd -s /bin/bash -m cgyro; useradd -s /bin/bash -m nrpuser; cd /root; apt-get download nvidia-compute-utils-515; dpkg --force-all -i nvidia-compute-utils-515_515.76+really.515.65.01-0ubuntu0.20.04.1_amd64.deb; sleep 72000"]
+        volumeMounts:
+        - name: ramdisk
+          mountPath: /dev/shm
+        - name: sw
+          mountPath: /opt/fusion/software
+        - name: data
+          mountPath: /data
+      volumes:
+      - name: ramdisk
+        emptyDir:
+          medium: Memory
+      - name: sw
+        persistentVolumeClaim:
+          claimName: software
+      - name: data
+        persistentVolumeClaim:
+          claimName: data
+
