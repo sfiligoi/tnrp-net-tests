@@ -1,0 +1,81 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: batch-example-1
+  namespace: fusion-psfc 
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      affinity:
+       nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+         nodeSelectorTerms:
+         - matchExpressions:
+           - key: nvidia.com/gpu.product
+             operator: In
+             values:
+             - NVIDIA-A100-SXM4-80GB
+         - matchExpressions:
+           - key: topology.kubernetes.io/zone
+             operator: In
+             values:
+             - ucsd-nrp
+      priorityClassName: owner
+      tolerations:
+      - effect: NoSchedule
+        key:  nautilus.io/nrp-testing
+        operator: Exists
+      containers:
+      - name: mypod
+        image: nvcr.io/nvidia/nvhpc:22.9-devel-cuda_multi-ubuntu20.04
+        resources:
+          limits:
+            memory: 1000Gi
+            cpu: 128
+            nvidia.com/gpu: 8
+            ephemeral-storage: 200Gi
+          requests:
+            memory: 480Gi
+            cpu: 96
+            nvidia.com/gpu: 8
+            ephemeral-storage: 100Gi
+        command: ["/root/batch_run_8.sh","/data/nrpuser/igor","example1"]
+        volumeMounts:
+        - name: ramdisk
+          mountPath: /dev/shm
+        - name: sw
+          mountPath: /opt/fusion/software
+        - name: data
+          mountPath: /data
+        - name: setup-node
+          mountPath: /root/setup_node.sh
+          subPath: setup_node.sh
+        - name: batch-run
+          mountPath: /root/batch_run_8.sh
+          subPath: batch_run_8.sh
+      volumes:
+      - name: ramdisk
+        emptyDir:
+          medium: Memory
+      - name: sw
+        persistentVolumeClaim:
+          claimName: software
+      - name: data
+        persistentVolumeClaim:
+          claimName: data
+      - name: setup-node
+        configMap:
+          items:
+          - key: setup_node.sh
+            path: setup_node.sh
+          name: setup-scripts
+          defaultMode: 320
+      - name: batch-run
+        configMap:
+          items:
+          - key: batch_run_8.sh
+            path: batch_run_8.sh
+          name: batch-scripts
+          defaultMode: 320
+
