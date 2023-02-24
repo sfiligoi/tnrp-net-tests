@@ -16,11 +16,6 @@ spec:
              operator: In
              values:
              - NVIDIA-A100-SXM4-80GB
-         - matchExpressions:
-           - key: topology.kubernetes.io/zone
-             operator: In
-             values:
-             - ucsd-nrp
       priorityClassName: owner
       tolerations:
       - effect: NoSchedule
