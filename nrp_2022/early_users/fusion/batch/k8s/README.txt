@@ -24,8 +24,11 @@ kubectl create -f <filename>
 Job monitoring
 ==============
 
+The stdout and stderr are available using
+kubectl logs -n fusion-psfc <pod name>
+
 Once the pod starts, you can
-kubectl exec
+kubectl exec -n fusion-psfc <pod name> -it -- /bin/bash
 into it.
 
 After the pod terminates, you need to start a login pod to inspect the data.
