@@ -1,0 +1,203 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pilot-1
+spec:
+  serviceAccountName: sidecar-main-serviceaccount
+  restartPolicy: Always
+  shareProcessNamespace: true
+  volumes:
+    - name: shared-data
+      emptyDir: {}
+  containers:
+    # Sidecar container
+    - name: sidecar
+      image: bitnami/kubectl:latest
+      command:
+        - "/bin/bash"
+      args:
+        - "-c"
+        - |
+          TASK_COMPLETED_FILE="/shared/task_completed";
+          TEMP_FILE="/shared/start.sh.tmp";
+          START_FILE="/shared/start.sh";
+
+          while true; do
+            # Step 1: Create /shared/start.sh.tmp
+            echo -e "#!/bin/bash\nwhile true; do date; sleep 7200; done" > "$TEMP_FILE";
+            chmod +x "$TEMP_FILE";
+            sleep 30;
+
+            # Step 3: Print timestamp
+            echo "$(date): Sidecar is operational.";
+
+            # Step 4: Change the main container image to ubuntu:24.04
+            kubectl set image pod/example-pilot-1 main=ubuntu:24.04 ;
+
+            # Step 5: Move start.sh.tmp -> start.sh
+            mv "$TEMP_FILE" "$START_FILE";
+            if [[ -f "$START_FILE" && ! -f "$TEMP_FILE" ]]; then
+              echo "$(date): Successfully moved $TEMP_FILE to $START_FILE.";
+            else
+              echo "$(date): Failed to move $TEMP_FILE to $START_FILE.";
+            fi;
+            sleep 30;
+
+            # Step 6: Checking start.sh execution in the main container
+            echo "$(date): Checking if start.sh is running in the main container...";
+            if [[ -f "$START_FILE" ]]; then
+              echo "$(date): $START_FILE is present in the shared volume.";
+            else
+              echo "$(date): $START_FILE is NOT present in the shared volume. Investigate file movement.";
+            fi;
+
+            ps aux | grep "[s]tart.sh" > /dev/null
+            while true; do
+              if [ $? -eq 0 ]; then
+                echo "start.sh has started!"
+                break
+              fi
+              echo "still waiting for main container to receive the signal"
+              sleep 5
+            done
+
+            # Step 7: Move start.sh -> start.sh.tmp
+            mv "$START_FILE" "$TEMP_FILE";
+            sleep 30;
+
+            CONTAINER_STATE=$(kubectl get pod example-pilot-1 -o jsonpath="{.status.containerStatuses[?(@.name=='main')].state}" | grep -o 'running')
+
+            if [[ "$CONTAINER_STATE" == "running" ]]; then
+              echo "$(date): Main container is running."
+            else
+              echo "$(date): Main container is not running."
+            fi
+
+
+            # Step 9: Kill processes in the main container
+            MAIN_PID=$(ps aux | grep '/bin/sh -c' | grep -v 'grep' | awk '{print $2}' | head -n 1);
+            echo "$(ps aux)";
+            #echo "$MAIN_PID";
+            #echo "$(ps -o pid,state,command -p $MAIN_PID)"
+            sleep 30;
+            if [ -n "$MAIN_PID" ]; then
+              echo "Killing main container shell processes: $MAIN_PID";
+              kill -9 "$MAIN_PID" || echo "Failed to kill PID $MAIN_PID"
+              sleep 2;
+              # this one will always shows failed because of restart policy. If change restartPolicy as Never, then it will shows killed.
+              # Will this effect the result?
+              if ps aux | grep '[s]hared/start.sh' | grep -v 'grep' > /dev/null; then
+                echo "Failed to completely kill the process with PID: $MAIN_PID"
+              else
+                echo "Process with PID $MAIN_PID has been successfully terminated."
+              fi
+            else
+              echo "No main container main process found to kill.";
+            fi
+            # echo "$(ps aux)";
+            echo "Finish kill process of main container";
+
+            # Step 10: Main container exit code
+            EXIT_CODE=$(kubectl get pod example-pilot-1 -o jsonpath="{.status.containerStatuses[?(@.name=='main')].lastState.terminated.exitCode}");
+            if [[ -z "$EXIT_CODE" ]]; then
+              echo "$(date): No exit code found. Main container might not have terminated cleanly.";
+            else
+              echo "$(date): Main container exit code: $EXIT_CODE";
+            fi;
+
+            # Change main container image to rocky linux 9
+            echo "$(date): Changing main container image to rocky linux 9...";
+            kubectl set image pod/example-pilot-1 main=rockylinux:9;
+
+            echo -e "#!/bin/bash\nsleep 200\nexit 0" > "$TEMP_FILE";
+            chmod +x "$TEMP_FILE";
+            mv "$TEMP_FILE" "$START_FILE";
+            sleep 30;
+
+            # Check for second invocation
+            ps aux | grep "[s]tart.sh" > /dev/null;
+            while true; do
+              if [ $? -eq 0 ]; then
+                echo "start.sh has started!"
+                break
+              fi
+              echo "still waiting for main container to receive the signal"
+              sleep 5
+            done
+            sleep 150;
+
+            # Wait for task completion
+            echo "$(date): Waiting for task completed signal from main container...";
+            while true; do
+              if [[ -f "$TASK_COMPLETED_FILE" ]]; then
+                echo "$(date): Task completed signal received from main container.";
+                rm -f "$TASK_COMPLETED_FILE";
+                echo "$(date): Task completed file removed.";
+                echo "$(date): Ready to get exit code";
+                break;
+              else
+                # there will be less than 5 retry message
+                echo "$(date): Task completed signal not yet received. Retrying...";
+                sleep 10;
+              fi
+            done
+            
+            sleep 30;
+
+            EXIT_CODE=$(kubectl get pod example-pilot-1 -o jsonpath="{.status.containerStatuses[?(@.name=='main')].lastState.terminated.exitCode}");
+            echo "$(date): Main container exit code after second invocation: $EXIT_CODE";
+
+          done;
+      volumeMounts:
+        - name: shared-data
+          mountPath: /shared
+      securityContext:
+        runAsUser: 65534
+      resources:
+        requests:
+          memory: "100Mi"
+          cpu: "100m"
+        limits:
+          memory: "200Mi"
+          cpu: "200m"
+
+
+    # Main container
+    - name: main
+      image: ubuntu:23.04
+      volumeMounts:
+        - name: shared-data
+          mountPath: /shared
+      command:
+        - "/bin/sh"
+      args:
+        - "-c"
+        - |
+          START_FILE="/shared/start.sh"
+          TASK_COMPLETED_FILE="/shared/task_completed"
+          
+          while true; do
+          # Wait for /shared/start.sh to exist
+            while [ ! -f "$START_FILE" ]; do
+              echo "$(date): Waiting for $START_FILE..."
+              sleep 5
+            done
+          
+          # Execute /shared/start.sh
+            echo "$(date): Executing $START_FILE..."
+            sh "$START_FILE"
+
+            echo "$(date): Task completed, signaling sidecar..."
+            echo "done" > "$TASK_COMPLETED_FILE"
+            sleep 5
+            exit 0
+          done
+      securityContext:
+        runAsUser: 65534
+      resources:
+        requests:
+          memory: "500Mi"
+          cpu: "500m"
+        limits:
+          memory: "600Mi"
+          cpu: "600m"
